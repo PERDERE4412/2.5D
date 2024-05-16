@@ -1,6 +1,7 @@
 ﻿#include "main.h"
 
 #include "Scene/SceneManager.h"
+#include "Debug/ImGuiManager.h"
 
 // ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// /////
 // エントリーポイント
@@ -96,29 +97,8 @@ void Application::KdBeginDraw(bool usePostProcess)
 // ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// /////
 void Application::KdPostDraw()
 {
-	// ImGui開始
-	ImGui_ImplDX11_NewFrame();
-	ImGui_ImplWin32_NewFrame();
-	ImGui::NewFrame();
-
-	// ImGui Demo ウィンドウ表示
-	//ImGui::ShowDemoWindow(nullptr);
-
-	ImGui::SetNextWindowPos(ImVec2(20, 20), 2);
-	ImGui::SetNextWindowSize(ImVec2(300, 210), 2);
-
-	// デバッグウィンドウ
-	if (ImGui::Begin("Debug Window"))
-	{
-		// FPS
-		ImGui::Text("FPS : %d", m_fpsController.m_nowfps);
-		ImGui::Text((const char*)u8"あああああ");
-	}
-	ImGui::End();
-
-	// ImGuiのレタリング
-	ImGui::Render();
-	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+	// ImGuiの描画
+	ImGuiManager::Instance().Draw();
 
 	// BackBuffer -> 画面表示
 	KdDirect3D::Instance().WorkSwapChain()->Present(0, 0);

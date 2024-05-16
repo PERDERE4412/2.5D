@@ -4,6 +4,9 @@
 #include "../../Object/Player/Player.h"
 #include "../../Object/Map/Map.h"
 #include "../../Object/PlayerHp/PlayerHp.h"
+#include "../../Object/Slot/Slot.h"
+
+#include "../../Debug/ImGuiManager.h"
 
 void GameScene::Event()
 {
@@ -33,12 +36,15 @@ void GameScene::Event()
 	// カメラの「ワールド行列」を作成し、適応させる
 	Math::Matrix _worldMat = _mRotationX * _mTrans*_mRotationY;
 	m_camera->SetCameraMatrix(_worldMat);
+
+	ImGuiManager::Instance().SetCameraPos(m_pos);
 }
 
 void GameScene::Init()
 {
 	// カメラ
 	m_camera = std::make_unique<KdCamera>();
+	m_pos = { 0.0f,5.0f,-5.0f };
 
 	// プレイヤー
 	std::shared_ptr<Player> player = std::make_shared<Player>();
@@ -51,4 +57,8 @@ void GameScene::Init()
 	// HPバー
 	std::shared_ptr<PlayerHp> hp = std::make_shared<PlayerHp>();
 	AddObject(hp);
+
+	// スロット
+	std::shared_ptr<Slot> slot = std::make_shared<Slot>();
+	AddObject(slot);
 }

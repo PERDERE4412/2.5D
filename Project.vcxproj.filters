@@ -85,6 +85,12 @@
     <Filter Include="Src\Application\Object\PlayerHp">
       <UniqueIdentifier>{32887bf7-59b8-44c0-bfcd-9c055079fa25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Debug">
+      <UniqueIdentifier>{7f93a9f7-9bab-469f-aa20-e10b268cfe5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Slot">
+      <UniqueIdentifier>{e32d5a1c-868d-4e57-9677-08c04d93dba1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -264,6 +270,12 @@
     <ClInclude Include="Src\Application\Object\PlayerHp\PlayerHp.h">
       <Filter>Src\Application\Object\PlayerHp</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Debug\ImGuiManager.h">
+      <Filter>Src\Application\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Slot\Slot.h">
+      <Filter>Src\Application\Object\Slot</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -415,6 +427,12 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\PlayerHp\PlayerHp.cpp">
       <Filter>Src\Application\Object\PlayerHp</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Debug\ImGuiManager.cpp">
+      <Filter>Src\Application\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Slot\Slot.cpp">
+      <Filter>Src\Application\Object\Slot</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

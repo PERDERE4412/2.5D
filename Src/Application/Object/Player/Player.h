@@ -12,4 +12,10 @@ public:
 	void Init()override;		// 初期化
 
 private:
+
+	KdModelData m_player;
+	Math::Vector3 m_pos;
+	Math::Matrix m_scaleMat;
+	Math::Matrix m_transMat;
+	Math::Matrix m_mat;
 };
