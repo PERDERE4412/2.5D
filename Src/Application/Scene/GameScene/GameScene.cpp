@@ -18,15 +18,22 @@ void GameScene::Event()
 		);
 	}
 
+	std::list<std::shared_ptr<KdGameObject>> objList;
+	objList = SceneManager::Instance().GetObjList();
+
+	Math::Matrix playerMat;
+
+	for (auto& obj : objList)
+	{
+		if (obj->GetObjType() == KdGameObject::ObjType::Player)
+		{
+			playerMat = obj->GetMatrix();
+			break;
+		}
+	}
+
 	// どれだけ傾けているか
 	Math::Matrix _mRotationX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
-
-	if (GetAsyncKeyState('W') & 0x8000)m_pos.z += 0.1f;
-	if (GetAsyncKeyState('A') & 0x8000)m_pos.x -= 0.1f;
-	if (GetAsyncKeyState('S') & 0x8000)m_pos.z -= 0.1f;
-	if (GetAsyncKeyState('D') & 0x8000)m_pos.x += 0.1f;
-
-	if (GetAsyncKeyState('U') & 0x8000)m_pos.y += 0.1f;
 
 	Math::Matrix _mRotationY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(-45));
 
@@ -34,7 +41,7 @@ void GameScene::Event()
 	Math::Matrix _mTrans = Math::Matrix::CreateTranslation(m_pos);
 
 	// カメラの「ワールド行列」を作成し、適応させる
-	Math::Matrix _worldMat = _mRotationX * _mTrans*_mRotationY;
+	Math::Matrix _worldMat = _mRotationX * _mTrans*_mRotationY*playerMat;
 	m_camera->SetCameraMatrix(_worldMat);
 
 	ImGuiManager::Instance().SetCameraPos(m_pos);
@@ -44,7 +51,7 @@ void GameScene::Init()
 {
 	// カメラ
 	m_camera = std::make_unique<KdCamera>();
-	m_pos = { 0.0f,5.0f,-5.0f };
+	m_pos = { 0.0f,10.0f,-10.0f };
 
 	// プレイヤー
 	std::shared_ptr<Player> player = std::make_shared<Player>();

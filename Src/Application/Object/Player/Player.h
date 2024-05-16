@@ -13,9 +13,10 @@ public:
 
 private:
 
-	KdModelData m_player;
-	Math::Vector3 m_pos;
-	Math::Matrix m_scaleMat;
-	Math::Matrix m_transMat;
-	Math::Matrix m_mat;
+	KdModelData m_player;		// モデルデータ
+	Math::Vector3 m_pos;		// 座標
+	Math::Matrix m_scaleMat;	// 拡大行列
+	Math::Matrix m_transMat;	// 移動行列
+
+	const float MOVE_POW = 2.0f;
 };

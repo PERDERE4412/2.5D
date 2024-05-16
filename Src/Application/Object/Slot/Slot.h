@@ -13,8 +13,8 @@ public:
 
 private:
 
-	KdTexture m_tex;
-	Math::Vector3 m_pos;
-	Math::Matrix m_mat;
-	Math::Rectangle m_rect;
+	KdTexture m_tex;			// 画像データ
+	Math::Vector3 m_pos;		// 座標
+	Math::Matrix m_mat;			// 行列
+	Math::Rectangle m_rect;		// 切り取り範囲
 };
