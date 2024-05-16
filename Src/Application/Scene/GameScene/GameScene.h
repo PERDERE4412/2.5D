@@ -13,4 +13,6 @@ private:
 
 	void Event() override;
 	void Init() override;
+
+	Math::Vector3 m_pos = {};
 };
