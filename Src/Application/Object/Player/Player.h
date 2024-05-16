@@ -18,5 +18,5 @@ private:
 	Math::Matrix m_scaleMat;	// 拡大行列
 	Math::Matrix m_transMat;	// 移動行列
 
-	const float MOVE_POW = 2.0f;
+	const float MOVE_POW = 0.1f;
 };

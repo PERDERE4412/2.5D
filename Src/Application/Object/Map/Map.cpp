@@ -2,7 +2,8 @@
 
 void Map::DrawLit()
 {
-	KdShaderManager::Instance().m_StandardShader.DrawModel(*m_model);
+	Math::Matrix rotMat = Math::Matrix::CreateRotationY(45);
+	KdShaderManager::Instance().m_StandardShader.DrawModel(*m_model,rotMat);
 }
 
 void Map::Init()

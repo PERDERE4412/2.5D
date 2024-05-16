@@ -35,7 +35,7 @@ void GameScene::Event()
 	// どれだけ傾けているか
 	Math::Matrix _mRotationX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
 
-	Math::Matrix _mRotationY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(-45));
+	Math::Matrix _mRotationY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(0));
 
 	// どこに配置されるか
 	Math::Matrix _mTrans = Math::Matrix::CreateTranslation(m_pos);

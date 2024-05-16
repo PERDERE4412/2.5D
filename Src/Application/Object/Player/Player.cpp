@@ -4,10 +4,18 @@
 
 void Player::Update()
 {
-	if (GetAsyncKeyState('W') & 0x8000)m_pos.z += 0.1f;
-	if (GetAsyncKeyState('A') & 0x8000)m_pos.x -= 0.1f;
-	if (GetAsyncKeyState('S') & 0x8000)m_pos.z -= 0.1f;
-	if (GetAsyncKeyState('D') & 0x8000)m_pos.x += 0.1f;
+	Math::Vector3 moveVec = Math::Vector3::Zero;
+
+	if (GetAsyncKeyState('U') & 0x8000)m_pos.y += 0.1f;
+
+	if (GetAsyncKeyState('W') & 0x8000)moveVec.z = 1.0f;
+	if (GetAsyncKeyState('A') & 0x8000)moveVec.x = -1.0f;
+	if (GetAsyncKeyState('S') & 0x8000)moveVec.z = -1.0f;
+	if (GetAsyncKeyState('D') & 0x8000)moveVec.x = 1.0f;
+
+	moveVec.Normalize();
+	moveVec *= MOVE_POW;
+	m_pos += moveVec;
 
 	m_transMat = Math::Matrix::CreateTranslation(m_pos);
 	m_mWorld = m_scaleMat * m_transMat;
