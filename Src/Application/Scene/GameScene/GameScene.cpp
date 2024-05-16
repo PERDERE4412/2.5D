@@ -2,6 +2,7 @@
 #include"../SceneManager.h"
 
 #include "../../Object/Map/Map.h"
+#include "../../Object/PlayerHp/PlayerHp.h"
 
 void GameScene::Event()
 {
@@ -33,8 +34,14 @@ void GameScene::Event()
 
 void GameScene::Init()
 {
+	// カメラ
 	m_camera = std::make_unique<KdCamera>();
 
+	// 仮マップ
 	std::shared_ptr<Map> map = std::make_shared<Map>();
 	AddObject(map);
+
+	// HPバー
+	std::shared_ptr<PlayerHp> hp = std::make_shared<PlayerHp>();
+	AddObject(hp);
 }

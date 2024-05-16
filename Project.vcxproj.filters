@@ -76,6 +76,15 @@
     <Filter Include="Src\Application\Object\Map">
       <UniqueIdentifier>{40df8f5d-8b9d-4401-b405-d961f08bdcc0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Status">
+      <UniqueIdentifier>{35b9a88e-b66c-4588-af81-ed53c82836de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Player">
+      <UniqueIdentifier>{9954bfe0-0ad6-4096-a1b4-d7776a165c33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\PlayerHp">
+      <UniqueIdentifier>{32887bf7-59b8-44c0-bfcd-9c055079fa25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -246,6 +255,15 @@
     <ClInclude Include="Src\Application\Object\Map\Map.h">
       <Filter>Src\Application\Object\Map</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Status\Status.h">
+      <Filter>Src\Application\Status</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Player\Player.h">
+      <Filter>Src\Application\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\PlayerHp\PlayerHp.h">
+      <Filter>Src\Application\Object\PlayerHp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -388,6 +406,15 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Map\Map.cpp">
       <Filter>Src\Application\Object\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Status\Status.cpp">
+      <Filter>Src\Application\Status</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Player\Player.cpp">
+      <Filter>Src\Application\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\PlayerHp\PlayerHp.cpp">
+      <Filter>Src\Application\Object\PlayerHp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
