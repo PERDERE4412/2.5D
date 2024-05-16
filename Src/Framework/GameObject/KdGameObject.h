@@ -1,9 +1,17 @@
 ﻿#pragma once
 
+class Status;
+
 // ゲーム上に存在するすべてのオブジェクトの基底となるクラス
 class KdGameObject : public std::enable_shared_from_this<KdGameObject>
 {
 public:
+
+	enum class ObjType
+	{
+		Player,
+		none,
+	};
 
 	// どのような描画を行うのかを設定するTypeID：Bitフラグで複数指定可能
 	enum
@@ -66,6 +74,12 @@ public:
 	bool Intersects(const KdCollider::BoxInfo& targetBox, std::list<KdCollider::CollisionResult>* pResults);
 	bool Intersects(const KdCollider::RayInfo& targetShape, std::list<KdCollider::CollisionResult>* pResults);
 
+	// オブジェクトタイプ取得
+	ObjType GetObjType() { return m_objType; }
+
+	// ステータス取得
+	std::shared_ptr<Status> GetStatus() { return m_pStatus; }
+
 protected:
 
 	void Release() {}
@@ -87,4 +101,10 @@ protected:
 
 	// デバッグ情報クラス
 	std::unique_ptr<KdDebugWireFrame> m_pDebugWire = nullptr;
+
+	// オブジェクトタイプ
+	ObjType m_objType = ObjType::none;
+
+	// ステータス
+	std::shared_ptr<Status> m_pStatus = nullptr;
 };
