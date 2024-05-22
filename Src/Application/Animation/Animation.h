@@ -14,6 +14,7 @@ public:
 	void SetState(PlayerState _state) { m_state = _state; }
 
 	void CreateAnime(KdSquarePolygon* _polygon);
+	int a;
 
 private:
 
