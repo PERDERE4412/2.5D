@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "../../Animation/Animation.h"
+
 class Player :public KdGameObject
 {
 public:
@@ -13,8 +15,10 @@ public:
 
 private:
 
-	KdModelData m_player;		// モデルデータ
-	Math::Vector3 m_pos;		// 座標
+	KdSquarePolygon m_polygon;		// 板ポリゴン
+	Math::Vector3 m_pos;			// 座標
+
+	Animation::PlayerState m_state;	// プレイヤーの状態
 
 	const float MOVE_POW = 0.2f;	// 移動量
 };

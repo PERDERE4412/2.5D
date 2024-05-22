@@ -3,20 +3,24 @@
 #include "../../Debug/ImGuiManager.h"
 
 #include "../../Lib/Utility.h"
+#include "../../Lib/AssetManager/AssetManager.h"
 #include "../../Status/Status.h"
 
 void Player::Update()
 {
+	m_state = Animation::PlayerState::Idol;
+
 	// 方向ベクトルの作成
 	Math::Vector3 moveVec = Math::Vector3::Zero;
 	if (GetAsyncKeyState('W') & 0x8000)moveVec.z = 1.0f;
 	if (GetAsyncKeyState('A') & 0x8000)moveVec.x = -1.0f;
 	if (GetAsyncKeyState('S') & 0x8000)moveVec.z = -1.0f;
 	if (GetAsyncKeyState('D') & 0x8000)moveVec.x = 1.0f;
+	if (moveVec != Math::Vector3::Zero)m_state = Animation::PlayerState::Walk;
 
 	moveVec.Normalize();	// 正規化
-	moveVec *= MOVE_POW;
-	m_pos += moveVec;
+	moveVec *= MOVE_POW;	
+	m_pos += moveVec;		// 移動量を加算
 
 	// 壁との当たり判定
 	if (m_pos.x > Screen::MapMaxX)m_pos.x = Screen::MapMaxX;
@@ -24,7 +28,15 @@ void Player::Update()
 	if (m_pos.z > Screen::MapMaxZ)m_pos.z = Screen::MapMaxZ;
 	if (m_pos.z < Screen::MapMinZ)m_pos.z = Screen::MapMinZ;
 
-	m_world = Math::Matrix::CreateTranslation(m_pos);
+	// 行列作成
+	Math::Matrix rotY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(45));
+	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
+	m_world = rotX*rotY*Math::Matrix::CreateTranslation(m_pos);
+
+	// アニメーション作成
+	Animation::Instance().SetState(m_state);
+	Animation::Instance().CreateAnime(&m_polygon);
+	m_polygon.SetUVRect(0);
 
 	// デバッグ
 	ImGuiManager::Instance().SetPlayerPos(m_pos);
@@ -32,19 +44,22 @@ void Player::Update()
 
 void Player::DrawLit()
 {
-	KdShaderManager::Instance().m_StandardShader.DrawModel(m_player, m_world);
+	KdShaderManager::Instance().m_StandardShader.DrawPolygon(m_polygon,m_world);
 }
 
 void Player::Init()
 {
+	// オブジェクトタイプ
 	m_objType = ObjType::Player;
 
 	// ステータス
 	m_pStatus = std::make_shared<Status>();
 	m_pStatus->Init(100, 100, 10, 10);
 
+	// 状態
+	m_state = Animation::PlayerState::Idol;
+
 	// 本体
-	m_player.Load("Asset/Models/human.gltf");
-	m_pos = {};
-	m_world = Math::Matrix::CreateTranslation(m_pos);
+	//m_polygon = AssetManager::Instance().GetMaterial("playerIdol");
+	//m_polygon.SetUVRect(1);
 }

@@ -5,12 +5,13 @@ class AssetManager
 public:
 
 	// 画像のポインタを取得
-	KdSquarePolygon* GetMaterial(std::string TextureName);
+	KdSquarePolygon GetMaterial(std::string materialName);
 
 private:
 
 	std::unordered_map<std::string, KdSquarePolygon> m_materialList;
-	void LoadMaterial(std::string TextureName, std::string file_name) { m_materialList[TextureName].SetMaterial(file_name); }
+	void LoadMaterial(std::string _name, std::string _path) { m_materialList[_name].SetMaterial(_path); }
+	void SetMaterial(std::string _name,float _scale,KdSquarePolygon::PivotType _pivot,int _splitX,int _splitY);
 
 	void Init();				// 初期化
 

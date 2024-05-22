@@ -100,6 +100,9 @@
     <Filter Include="Src\Application\Lib\AssetManager">
       <UniqueIdentifier>{eee63729-f101-4372-8a4e-a5db4697d0c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Animation">
+      <UniqueIdentifier>{867de75f-f45a-4a27-a4c2-eb4a1442d8cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -294,6 +297,9 @@
     <ClInclude Include="Src\Application\Lib\AssetManager\AssetManager.h">
       <Filter>Src\Application\Lib\AssetManager</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Animation\Animation.h">
+      <Filter>Src\Application\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -457,6 +463,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Lib\AssetManager\AssetManager.cpp">
       <Filter>Src\Application\Lib\AssetManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Animation\Animation.cpp">
+      <Filter>Src\Application\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

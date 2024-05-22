@@ -28,7 +28,7 @@ void GameScene::Init()
 {
 	// カメラ
 	m_camera = std::make_unique<KdCamera>();
-	m_pos = { -10.0f,15.0f,-10.0f };
+	m_pos = { -12.0f,13.0f,-12.0f };
 
 	// プレイヤー
 	std::shared_ptr<Player> player = std::make_shared<Player>();
@@ -61,16 +61,17 @@ void GameScene::UpdateCamera()
 			break;
 		}
 	}
+	Math::Matrix playerTransMat = Math::Matrix::CreateTranslation(playerMat.Translation());
 
 	// どれだけ傾けているか
-	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
+	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(30));
 	Math::Matrix rotY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(45));
 
 	// どこに配置されるか
 	Math::Matrix transMat = Math::Matrix::CreateTranslation(m_pos);
 
 	// カメラの「ワールド行列」を作成し、適応させる
-	Math::Matrix worldMat = rotX * rotY * transMat * playerMat;
+	Math::Matrix worldMat = rotX * rotY * transMat * playerTransMat;
 	m_camera->SetCameraMatrix(worldMat);
 
 	ImGuiManager::Instance().SetCameraPos(worldMat.Translation());
