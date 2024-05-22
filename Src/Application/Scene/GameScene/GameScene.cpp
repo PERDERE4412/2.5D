@@ -1,6 +1,7 @@
 ﻿#include "GameScene.h"
 #include"../SceneManager.h"
 
+#include "../../Hit/Hit.h"
 #include "../../Object/Player/Player.h"
 #include "../../Object/Map/Map.h"
 #include "../../Object/PlayerHp/PlayerHp.h"
@@ -18,40 +19,16 @@ void GameScene::Event()
 		);
 	}
 
-	std::list<std::shared_ptr<KdGameObject>> objList;
-	objList = SceneManager::Instance().GetObjList();
+	Hit::Instance().Update();
 
-	Math::Matrix playerMat;
-
-	for (auto& obj : objList)
-	{
-		if (obj->GetObjType() == KdGameObject::ObjType::Player)
-		{
-			playerMat = obj->GetMatrix();
-			break;
-		}
-	}
-
-	// どれだけ傾けているか
-	Math::Matrix _mRotationX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
-
-	Math::Matrix _mRotationY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(0));
-
-	// どこに配置されるか
-	Math::Matrix _mTrans = Math::Matrix::CreateTranslation(m_pos);
-
-	// カメラの「ワールド行列」を作成し、適応させる
-	Math::Matrix _worldMat = _mRotationX * _mTrans*_mRotationY*playerMat;
-	m_camera->SetCameraMatrix(_worldMat);
-
-	ImGuiManager::Instance().SetCameraPos(m_pos);
+	UpdateCamera();
 }
 
 void GameScene::Init()
 {
 	// カメラ
 	m_camera = std::make_unique<KdCamera>();
-	m_pos = { 0.0f,10.0f,-10.0f };
+	m_pos = { -10.0f,15.0f,-10.0f };
 
 	// プレイヤー
 	std::shared_ptr<Player> player = std::make_shared<Player>();
@@ -68,4 +45,33 @@ void GameScene::Init()
 	// スロット
 	std::shared_ptr<Slot> slot = std::make_shared<Slot>();
 	AddObject(slot);
+}
+
+void GameScene::UpdateCamera()
+{
+	std::list<std::shared_ptr<KdGameObject>> objList;
+	objList = SceneManager::Instance().GetObjList();
+
+	Math::Matrix playerMat;
+	for (auto& obj : objList)
+	{
+		if (obj->GetObjType() == KdGameObject::ObjType::Player)
+		{
+			playerMat = obj->GetMatrix();
+			break;
+		}
+	}
+
+	// どれだけ傾けているか
+	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
+	Math::Matrix rotY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(45));
+
+	// どこに配置されるか
+	Math::Matrix transMat = Math::Matrix::CreateTranslation(m_pos);
+
+	// カメラの「ワールド行列」を作成し、適応させる
+	Math::Matrix worldMat = rotX * rotY * transMat * playerMat;
+	m_camera->SetCameraMatrix(worldMat);
+
+	ImGuiManager::Instance().SetCameraPos(worldMat.Translation());
 }

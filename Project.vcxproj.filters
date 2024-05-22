@@ -91,6 +91,15 @@
     <Filter Include="Src\Application\Object\Slot">
       <UniqueIdentifier>{e32d5a1c-868d-4e57-9677-08c04d93dba1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Hit">
+      <UniqueIdentifier>{9037c965-b60c-4251-aa6b-a52aab2f8bc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Lib">
+      <UniqueIdentifier>{faf97e61-dceb-479d-a273-cb66a59cc520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Lib\AssetManager">
+      <UniqueIdentifier>{eee63729-f101-4372-8a4e-a5db4697d0c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -276,6 +285,15 @@
     <ClInclude Include="Src\Application\Object\Slot\Slot.h">
       <Filter>Src\Application\Object\Slot</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Hit\Hit.h">
+      <Filter>Src\Application\Hit</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Lib\Utility.h">
+      <Filter>Src\Application\Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Lib\AssetManager\AssetManager.h">
+      <Filter>Src\Application\Lib\AssetManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -433,6 +451,12 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Slot\Slot.cpp">
       <Filter>Src\Application\Object\Slot</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Hit\Hit.cpp">
+      <Filter>Src\Application\Hit</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Lib\AssetManager\AssetManager.cpp">
+      <Filter>Src\Application\Lib\AssetManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@ class Slot :public KdGameObject
 public:
 
 	Slot() { Init(); }			// コンストラクタ
-	~Slot() {}					// デストラクタ
+	~Slot()override {}			// デストラクタ
 
 	void Update()override;		// 更新
 	void DrawSprite()override;	// 描画
@@ -15,6 +15,5 @@ private:
 
 	KdTexture m_tex;			// 画像データ
 	Math::Vector3 m_pos;		// 座標
-	Math::Matrix m_mat;			// 行列
 	Math::Rectangle m_rect;		// 切り取り範囲
 };

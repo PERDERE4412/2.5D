@@ -4,14 +4,14 @@ class Map :public KdGameObject
 {
 public:
 
-	Map() { Init(); }
-	~Map() {}
+	Map() { Init(); }	// コンストラクタ
+	~Map()override {}	// デストラクタ
 
-	void DrawLit();
-	void Init();
+	void DrawLit();		// 描画
+	void Init();		// 初期化
 
 private:
 
-	std::shared_ptr<KdModelData> m_model=nullptr;
-
+	// モデルデータ
+	KdModelData m_model;
 };

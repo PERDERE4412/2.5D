@@ -1,29 +1,38 @@
 ﻿#include "Player.h"
 
+#include "../../Debug/ImGuiManager.h"
+
+#include "../../Lib/Utility.h"
 #include "../../Status/Status.h"
 
 void Player::Update()
 {
+	// 方向ベクトルの作成
 	Math::Vector3 moveVec = Math::Vector3::Zero;
-
-	if (GetAsyncKeyState('U') & 0x8000)m_pos.y += 0.1f;
-
 	if (GetAsyncKeyState('W') & 0x8000)moveVec.z = 1.0f;
 	if (GetAsyncKeyState('A') & 0x8000)moveVec.x = -1.0f;
 	if (GetAsyncKeyState('S') & 0x8000)moveVec.z = -1.0f;
 	if (GetAsyncKeyState('D') & 0x8000)moveVec.x = 1.0f;
 
-	moveVec.Normalize();
+	moveVec.Normalize();	// 正規化
 	moveVec *= MOVE_POW;
 	m_pos += moveVec;
 
-	m_transMat = Math::Matrix::CreateTranslation(m_pos);
-	m_mWorld = m_scaleMat * m_transMat;
+	// 壁との当たり判定
+	if (m_pos.x > Screen::MapMaxX)m_pos.x = Screen::MapMaxX;
+	if (m_pos.x < Screen::MapMinX)m_pos.x = Screen::MapMinX;
+	if (m_pos.z > Screen::MapMaxZ)m_pos.z = Screen::MapMaxZ;
+	if (m_pos.z < Screen::MapMinZ)m_pos.z = Screen::MapMinZ;
+
+	m_world = Math::Matrix::CreateTranslation(m_pos);
+
+	// デバッグ
+	ImGuiManager::Instance().SetPlayerPos(m_pos);
 }
 
 void Player::DrawLit()
 {
-	KdShaderManager::Instance().m_StandardShader.DrawModel(m_player, m_mWorld);
+	KdShaderManager::Instance().m_StandardShader.DrawModel(m_player, m_world);
 }
 
 void Player::Init()
@@ -36,8 +45,6 @@ void Player::Init()
 
 	// 本体
 	m_player.Load("Asset/Models/human.gltf");
-	m_scaleMat = Math::Matrix::CreateScale(0.5f, 0.5f, 0.5f);
 	m_pos = {};
-	m_transMat = Math::Matrix::CreateTranslation(m_pos);
-	m_mWorld = m_scaleMat * m_transMat;
+	m_world = Math::Matrix::CreateTranslation(m_pos);
 }

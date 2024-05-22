@@ -5,7 +5,7 @@ class PlayerHp :public KdGameObject
 public:
 
 	PlayerHp() { Init(); }		// コンストラクタ
-	~PlayerHp() {}				// デストラクタ
+	~PlayerHp()override {}		// デストラクタ
 
 	void Update()override;		// 更新
 	void DrawSprite()override;	// 描画

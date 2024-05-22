@@ -14,5 +14,7 @@ private:
 	void Event() override;
 	void Init() override;
 
+	void UpdateCamera();
+
 	Math::Vector3 m_pos = {};
 };

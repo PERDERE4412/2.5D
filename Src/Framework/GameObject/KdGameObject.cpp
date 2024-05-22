@@ -17,46 +17,46 @@ void KdGameObject::SetScale(float scalar)
 
 void KdGameObject::SetScale(const Math::Vector3& scale)
 {
-	Math::Vector3 vecX = m_mWorld.Right();
-	Math::Vector3 vecY = m_mWorld.Up();
-	Math::Vector3 vecZ = m_mWorld.Backward(); 
+	Math::Vector3 vecX = m_world.Right();
+	Math::Vector3 vecY = m_world.Up();
+	Math::Vector3 vecZ = m_world.Backward(); 
 	
 	vecX.Normalize();
 	vecY.Normalize();
 	vecZ.Normalize();
 
-	m_mWorld.Right(vecX * scale.x);
-	m_mWorld.Up(vecY * scale.y);
-	m_mWorld.Backward(vecZ * scale.z);
+	m_world.Right(vecX * scale.x);
+	m_world.Up(vecY * scale.y);
+	m_world.Backward(vecZ * scale.z);
 }
 
 Math::Vector3 KdGameObject::GetScale() const
 {
-	return Math::Vector3(m_mWorld.Right().Length(), m_mWorld.Up().Length(), m_mWorld.Backward().Length());
+	return Math::Vector3(m_world.Right().Length(), m_world.Up().Length(), m_world.Backward().Length());
 }
 
 void KdGameObject::CalcDistSqrFromCamera(const Math::Vector3& camPos)
 {
-	m_distSqrFromCamera = (m_mWorld.Translation() - camPos).LengthSquared();
+	m_distSqrFromCamera = (m_world.Translation() - camPos).LengthSquared();
 }
 
 bool KdGameObject::Intersects(const KdCollider::SphereInfo& targetShape, std::list<KdCollider::CollisionResult>* pResults)
 {
 	if (!m_pCollider) { return false; }
 
-	return m_pCollider->Intersects(targetShape, m_mWorld, pResults);
+	return m_pCollider->Intersects(targetShape, m_world, pResults);
 }
 
 bool KdGameObject::Intersects(const KdCollider::BoxInfo& targetBox, std::list<KdCollider::CollisionResult>* pResults)
 {
 	if (!m_pCollider) { return false; }
 
-	return m_pCollider->Intersects(targetBox, m_mWorld, pResults);
+	return m_pCollider->Intersects(targetBox, m_world, pResults);
 }
 
 bool KdGameObject::Intersects(const KdCollider::RayInfo& targetShape, std::list<KdCollider::CollisionResult>* pResults)
 {
 	if (!m_pCollider) { return false; }
 
-	return m_pCollider->Intersects(targetShape, m_mWorld, pResults);
+	return m_pCollider->Intersects(targetShape, m_world, pResults);
 }
