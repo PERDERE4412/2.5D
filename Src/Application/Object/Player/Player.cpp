@@ -8,6 +8,7 @@
 
 void Player::Update()
 {
+	// 状態を初期化
 	m_state = Animation::PlayerState::Idol;
 
 	// 方向ベクトルの作成

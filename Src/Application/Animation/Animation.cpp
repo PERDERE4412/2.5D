@@ -4,6 +4,7 @@
 
 void Animation::CreateAnime(PlayerState _state, KdSquarePolygon* _polygon)
 {
+	// 現在の状態と異なっていたら
 	if (m_state != _state)
 	{
 		m_state = _state;
@@ -12,7 +13,6 @@ void Animation::CreateAnime(PlayerState _state, KdSquarePolygon* _polygon)
 		{
 		case Animation::PlayerState::Idol:
 			*_polygon = AssetManager::Instance().GetMaterial("playerIdol");
-			m_cntSpeed = 0.05f;
 			break;
 		case Animation::PlayerState::Walk:
 			*_polygon = AssetManager::Instance().GetMaterial("playerDash");

@@ -76,9 +76,6 @@
     <Filter Include="Src\Application\Object\Map">
       <UniqueIdentifier>{40df8f5d-8b9d-4401-b405-d961f08bdcc0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Status">
-      <UniqueIdentifier>{35b9a88e-b66c-4588-af81-ed53c82836de}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Object\Player">
       <UniqueIdentifier>{9954bfe0-0ad6-4096-a1b4-d7776a165c33}</UniqueIdentifier>
     </Filter>
@@ -102,6 +99,12 @@
     </Filter>
     <Filter Include="Src\Application\Animation">
       <UniqueIdentifier>{867de75f-f45a-4a27-a4c2-eb4a1442d8cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Data">
+      <UniqueIdentifier>{35b9a88e-b66c-4588-af81-ed53c82836de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Data\Status">
+      <UniqueIdentifier>{0cfdce56-6468-47b6-b52d-3a5b5b1e94d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -273,9 +276,6 @@
     <ClInclude Include="Src\Application\Object\Map\Map.h">
       <Filter>Src\Application\Object\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Status\Status.h">
-      <Filter>Src\Application\Status</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Object\Player\Player.h">
       <Filter>Src\Application\Object\Player</Filter>
     </ClInclude>
@@ -299,6 +299,9 @@
     </ClInclude>
     <ClInclude Include="Src\Application\Animation\Animation.h">
       <Filter>Src\Application\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Data\Status\Status.h">
+      <Filter>Src\Application\Data\Status</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -443,9 +446,6 @@
     <ClCompile Include="Src\Application\Object\Map\Map.cpp">
       <Filter>Src\Application\Object\Map</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Status\Status.cpp">
-      <Filter>Src\Application\Status</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Object\Player\Player.cpp">
       <Filter>Src\Application\Object\Player</Filter>
     </ClCompile>
@@ -466,6 +466,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Animation\Animation.cpp">
       <Filter>Src\Application\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Data\Status\Status.cpp">
+      <Filter>Src\Application\Data\Status</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -157,6 +157,7 @@
     <ClInclude Include="..\Library\tinygltf\stb_image_write.h" />
     <ClInclude Include="..\Library\tinygltf\tiny_gltf.h" />
     <ClInclude Include="Src\Application\Animation\Animation.h" />
+    <ClInclude Include="Src\Application\Data\Status\Status.h" />
     <ClInclude Include="Src\Application\Debug\ImGuiManager.h" />
     <ClInclude Include="Src\Application\Hit\Hit.h" />
     <ClInclude Include="Src\Application\Lib\AssetManager\AssetManager.h" />
@@ -170,7 +171,6 @@
     <ClInclude Include="Src\Application\Scene\GameScene\GameScene.h" />
     <ClInclude Include="Src\Application\Scene\SceneManager.h" />
     <ClInclude Include="Src\Application\Scene\TitleScene\TitleScene.h" />
-    <ClInclude Include="Src\Application\Status\Status.h" />
     <ClInclude Include="Src\Framework\Direct3D\KdMaterial.h" />
     <ClInclude Include="Src\Framework\Direct3D\Polygon\KdPolygon.h" />
     <ClInclude Include="Src\Framework\Direct3D\Polygon\KdSquarePolygon.h" />
@@ -217,6 +217,7 @@
     <ClCompile Include="..\Library\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\Library\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Src\Application\Animation\Animation.cpp" />
+    <ClCompile Include="Src\Application\Data\Status\Status.cpp" />
     <ClCompile Include="Src\Application\Debug\ImGuiManager.cpp" />
     <ClCompile Include="Src\Application\Hit\Hit.cpp" />
     <ClCompile Include="Src\Application\Lib\AssetManager\AssetManager.cpp" />
@@ -229,7 +230,6 @@
     <ClCompile Include="Src\Application\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Src\Application\Scene\SceneManager.cpp" />
     <ClCompile Include="Src\Application\Scene\TitleScene\TitleScene.cpp" />
-    <ClCompile Include="Src\Application\Status\Status.cpp" />
     <ClCompile Include="Src\Framework\Direct3D\KdMaterial.cpp">
       <SubType>
       </SubType>

@@ -14,6 +14,7 @@ public:
 
 	PlayerState GetState() { return m_state; }
 
+	// アニメーション作成
 	void CreateAnime(PlayerState _state,KdSquarePolygon* _polygon);
 
 private:

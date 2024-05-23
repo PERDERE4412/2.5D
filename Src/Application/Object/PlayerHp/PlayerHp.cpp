@@ -1,7 +1,7 @@
 ﻿#include "PlayerHp.h"
 
 #include "../../Scene/SceneManager.h"
-#include "../../Status/Status.h"
+#include "../../Data/Status/Status.h"
 
 void PlayerHp::Update()
 {
