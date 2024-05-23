@@ -34,9 +34,7 @@ void Player::Update()
 	m_world = rotX*rotY*Math::Matrix::CreateTranslation(m_pos);
 
 	// アニメーション作成
-	Animation::Instance().SetState(m_state);
-	Animation::Instance().CreateAnime(&m_polygon);
-	m_polygon.SetUVRect(0);
+	Animation::Instance().CreateAnime(m_state,&m_polygon);
 
 	// デバッグ
 	ImGuiManager::Instance().SetPlayerPos(m_pos);

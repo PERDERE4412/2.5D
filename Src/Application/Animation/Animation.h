@@ -4,28 +4,31 @@ class Animation
 {
 public:
 
+	// プレイヤーの状態
 	enum class PlayerState
 	{
+		None,
 		Idol,
 		Walk,
 	};
 
 	PlayerState GetState() { return m_state; }
-	void SetState(PlayerState _state) { m_state = _state; }
 
-	void CreateAnime(KdSquarePolygon* _polygon);
-	int a;
+	void CreateAnime(PlayerState _state,KdSquarePolygon* _polygon);
 
 private:
 
-	void Init();
+	void Init();				// 初期化
 
-	PlayerState m_state;
+	PlayerState m_state;		// プレイヤーの状態
+	float m_cnt;				// アニメのカウント
+	float m_cntSpeed;			// アニメのスピード
+	int m_maxAnime;				// 最大のアニメ数
 
 private:
 
-	Animation() { Init(); }
-	~Animation() {}
+	Animation() { Init(); }		// コンストラクタ
+	~Animation() {}				// デストラクタ
 
 public:
 
