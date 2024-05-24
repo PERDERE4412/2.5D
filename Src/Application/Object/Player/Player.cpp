@@ -2,12 +2,15 @@
 
 //#include "../../Debug/ImGuiManager.h"
 
+#include "../../Data/Skill/Skill.h"
 #include "../../Lib/Utility/Utility.h"
 #include "../../Lib/AssetManager/AssetManager.h"
 #include "../../Data/Status/Status.h"
 
 void Player::Update()
 {
+	int a=Skill::Instance().GetBonus("HP");
+
 	// 状態を初期化
 	m_state = Animation::PlayerState::Idol;
 
