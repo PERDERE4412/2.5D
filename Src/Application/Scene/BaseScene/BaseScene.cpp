@@ -48,8 +48,7 @@ void BaseScene::PostUpdate()
 
 void BaseScene::PreDraw()
 {
-	// カメラ情報が
-	// ある場合は現在のカメラ情報をシェーダーにセット
+	// カメラ情報がある場合は現在のカメラ情報をシェーダーにセット
 	if (m_camera)
 	{
 		m_camera->SetToShader();

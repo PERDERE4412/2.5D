@@ -13,7 +13,7 @@ namespace Screen
 	const int Bottom = -Height / 2;		// 画面の下端
 
 	// マップ
-	const float MapMaxX = 17.5f;		// マップの奥端(X軸)
+	const float MapMaxX = 17.0f;		// マップの奥端(X軸)
 	const float MapMinX = -17.0f;		// マップの手前端(X軸)
 	const float MapMaxZ = 14.0f;		// マップの奥端(Z軸)
 	const float MapMinZ = -20.5f;		// マップの手前端(Z軸)

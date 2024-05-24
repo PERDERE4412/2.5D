@@ -35,7 +35,7 @@ public:
 	void CreateNodes(const std::shared_ptr<KdGLTFModel>& spGltfModel);									// ノード作成
 	void CreateMaterials(const std::shared_ptr<KdGLTFModel>& spGltfModel, const  std::string& fileDir);	// マテリアル作成
 	void CreateAnimations(const std::shared_ptr<KdGLTFModel>& spGltfModel);								// アニメーション作成
-	
+
 	//アクセサ
 	const std::shared_ptr<KdMesh> GetMesh(UINT index) const { return index < m_originalNodes.size() ? m_originalNodes[ index ].m_spMesh : nullptr; }
 	

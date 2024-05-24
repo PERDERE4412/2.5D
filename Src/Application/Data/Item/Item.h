@@ -9,7 +9,7 @@ public:
 
 	// ゲッター
 	int GetGold() { return m_gold; }
-	
+
 private:
 
 	void Init();			// 初期化

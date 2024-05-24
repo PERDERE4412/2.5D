@@ -4,7 +4,7 @@
 
 class GameScene : public BaseScene
 {
-public :
+public:
 
 	GameScene() { Init(); }
 	~GameScene() {}

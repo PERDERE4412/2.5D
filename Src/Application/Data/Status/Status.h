@@ -7,22 +7,14 @@ public:
 	Status() {}		// コンストラクタ	
 	~Status() {}	// デストラクタ
 
-	void Init(int hp, int mp, int atk, int def);	// 初期化
+	void Init();	// 初期化
 
 	// ゲッター
-	int GetHp() { return m_hp; }
-	int GetMaxHp() { return m_maxHp; }
-	int GetMp() { return m_mp; }
-	int GetMaxMp() { return m_maxMp; }
-	int GetAtk() { return m_atk; }
-	int GetDef() { return m_def; }
+	int GetValue(std::string _name) { return m_statusList[_name]; }
 
 private:
 
-	int m_hp;		// HP
-	int m_maxHp;	// 最大HP
-	int m_mp;		// MP
-	int m_maxMp;	// 最大MP
-	int m_atk;		// 攻撃力
-	int m_def;		// 防御力
+	// ステータスリスト
+	std::unordered_map<std::string, int> m_statusList;
+
 };

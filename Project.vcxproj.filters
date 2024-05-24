@@ -67,44 +67,47 @@
     <Filter Include="Src\Application\Scene\GameScene">
       <UniqueIdentifier>{15b4a73e-7369-4959-bb49-4b163a24b7b5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Library\imgui">
-      <UniqueIdentifier>{b19b8087-2cc1-45b8-8184-fee78f99e77b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Object">
-      <UniqueIdentifier>{a2f3afb3-828f-416b-b89b-461928ce9770}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Object\Map">
-      <UniqueIdentifier>{40df8f5d-8b9d-4401-b405-d961f08bdcc0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Object\Player">
-      <UniqueIdentifier>{9954bfe0-0ad6-4096-a1b4-d7776a165c33}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Object\PlayerHp">
-      <UniqueIdentifier>{32887bf7-59b8-44c0-bfcd-9c055079fa25}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Debug">
-      <UniqueIdentifier>{7f93a9f7-9bab-469f-aa20-e10b268cfe5e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Object\Slot">
-      <UniqueIdentifier>{e32d5a1c-868d-4e57-9677-08c04d93dba1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Hit">
-      <UniqueIdentifier>{9037c965-b60c-4251-aa6b-a52aab2f8bc4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Lib">
-      <UniqueIdentifier>{faf97e61-dceb-479d-a273-cb66a59cc520}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Lib\AssetManager">
-      <UniqueIdentifier>{eee63729-f101-4372-8a4e-a5db4697d0c4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Animation">
-      <UniqueIdentifier>{867de75f-f45a-4a27-a4c2-eb4a1442d8cc}</UniqueIdentifier>
+      <UniqueIdentifier>{fcbb16a9-f968-4b0c-8b6e-4699457c417e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Src\Application\Data">
-      <UniqueIdentifier>{35b9a88e-b66c-4588-af81-ed53c82836de}</UniqueIdentifier>
+      <UniqueIdentifier>{8502f5f5-6d4b-48a0-a6f0-b538b8c077ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Debug">
+      <UniqueIdentifier>{b814fefc-22a0-4710-9c31-e651fe29ccf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Lib">
+      <UniqueIdentifier>{ac5d4a96-2722-4588-a465-e08f4a0f9fb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object">
+      <UniqueIdentifier>{8c1df753-a2e9-46c2-8006-b0672a9d8b8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Data\Item">
+      <UniqueIdentifier>{3ee22b58-fff5-429c-8153-159a63a5ab02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Data\Skill">
+      <UniqueIdentifier>{35053b26-fca5-47f6-afa2-40324feb1d08}</UniqueIdentifier>
     </Filter>
     <Filter Include="Src\Application\Data\Status">
-      <UniqueIdentifier>{0cfdce56-6468-47b6-b52d-3a5b5b1e94d4}</UniqueIdentifier>
+      <UniqueIdentifier>{824a3edc-68cf-4f67-bb32-c6506f4850d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Lib\AssetManager">
+      <UniqueIdentifier>{fc8eb2ca-6fdb-4b8a-acad-d627896b3d64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Lib\Utility">
+      <UniqueIdentifier>{cf6d859c-a2be-4e54-81d7-4bb3cf96933b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Map">
+      <UniqueIdentifier>{d7d38c11-fdf5-485f-a462-d40b7f0e2093}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Player">
+      <UniqueIdentifier>{cd79d7af-c3a5-4bb3-8367-d01d0a7c4413}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Slot">
+      <UniqueIdentifier>{f88a16c3-d97f-4b43-97e1-49918891f5b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\PlayerHp">
+      <UniqueIdentifier>{fba0c754-a92f-45e9-a3f6-5c528b7e49a5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -243,56 +246,17 @@
     <ClInclude Include="Src\Application\Scene\TitleScene\TitleScene.h">
       <Filter>Src\Application\Scene\TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="..\Library\imgui\imgui.h">
-      <Filter>Library\imgui</Filter>
+    <ClInclude Include="Src\Application\Data\Status\Status.h">
+      <Filter>Src\Application\Data\Status</Filter>
     </ClInclude>
-    <ClInclude Include="..\Library\imgui\imgui_impl_dx11.h">
-      <Filter>Library\imgui</Filter>
+    <ClInclude Include="Src\Application\Data\Skill\Skill.h">
+      <Filter>Src\Application\Data\Skill</Filter>
     </ClInclude>
-    <ClInclude Include="..\Library\imgui\imgui_impl_win32.h">
-      <Filter>Library\imgui</Filter>
+    <ClInclude Include="Src\Application\Data\Item\Item.h">
+      <Filter>Src\Application\Data\Item</Filter>
     </ClInclude>
-    <ClInclude Include="..\Library\imgui\imgui_internal.h">
-      <Filter>Library\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\imgui\imgui_stdlib.h">
-      <Filter>Library\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\imgui\imstb_rectpack.h">
-      <Filter>Library\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\imgui\imstb_textedit.h">
-      <Filter>Library\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\imgui\imstb_truetype.h">
-      <Filter>Library\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\imgui\ja_glyph_ranges.h">
-      <Filter>Library\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\imgui\imconfig.h">
-      <Filter>Library\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\Map\Map.h">
-      <Filter>Src\Application\Object\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\Player\Player.h">
-      <Filter>Src\Application\Object\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\PlayerHp\PlayerHp.h">
-      <Filter>Src\Application\Object\PlayerHp</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Debug\ImGuiManager.h">
-      <Filter>Src\Application\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\Slot\Slot.h">
-      <Filter>Src\Application\Object\Slot</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Hit\Hit.h">
-      <Filter>Src\Application\Hit</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Lib\Utility.h">
-      <Filter>Src\Application\Lib</Filter>
+    <ClInclude Include="Src\Application\Lib\Utility\Utility.h">
+      <Filter>Src\Application\Lib\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Lib\AssetManager\AssetManager.h">
       <Filter>Src\Application\Lib\AssetManager</Filter>
@@ -300,8 +264,17 @@
     <ClInclude Include="Src\Application\Animation\Animation.h">
       <Filter>Src\Application\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Data\Status\Status.h">
-      <Filter>Src\Application\Data\Status</Filter>
+    <ClInclude Include="Src\Application\Object\Map\Map.h">
+      <Filter>Src\Application\Object\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Player\Player.h">
+      <Filter>Src\Application\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Slot\Slot.h">
+      <Filter>Src\Application\Object\Slot</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\PlayerHp\PlayerHp.h">
+      <Filter>Src\Application\Object\PlayerHp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -419,47 +392,14 @@
     <ClCompile Include="Src\Application\Scene\TitleScene\TitleScene.cpp">
       <Filter>Src\Application\Scene\TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Library\imgui\imgui.cpp">
-      <Filter>Library\imgui</Filter>
+    <ClCompile Include="Src\Application\Data\Status\Status.cpp">
+      <Filter>Src\Application\Data\Status</Filter>
     </ClCompile>
-    <ClCompile Include="..\Library\imgui\imgui_demo.cpp">
-      <Filter>Library\imgui</Filter>
+    <ClCompile Include="Src\Application\Data\Skill\Skill.cpp">
+      <Filter>Src\Application\Data\Skill</Filter>
     </ClCompile>
-    <ClCompile Include="..\Library\imgui\imgui_draw.cpp">
-      <Filter>Library\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\imgui\imgui_impl_dx11.cpp">
-      <Filter>Library\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\imgui\imgui_impl_win32.cpp">
-      <Filter>Library\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\imgui\imgui_stdlib.cpp">
-      <Filter>Library\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\imgui\imgui_tables.cpp">
-      <Filter>Library\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\imgui\imgui_widgets.cpp">
-      <Filter>Library\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\Map\Map.cpp">
-      <Filter>Src\Application\Object\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\Player\Player.cpp">
-      <Filter>Src\Application\Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\PlayerHp\PlayerHp.cpp">
-      <Filter>Src\Application\Object\PlayerHp</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Debug\ImGuiManager.cpp">
-      <Filter>Src\Application\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\Slot\Slot.cpp">
-      <Filter>Src\Application\Object\Slot</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Hit\Hit.cpp">
-      <Filter>Src\Application\Hit</Filter>
+    <ClCompile Include="Src\Application\Data\Item\Item.cpp">
+      <Filter>Src\Application\Data\Item</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Lib\AssetManager\AssetManager.cpp">
       <Filter>Src\Application\Lib\AssetManager</Filter>
@@ -467,8 +407,17 @@
     <ClCompile Include="Src\Application\Animation\Animation.cpp">
       <Filter>Src\Application\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Data\Status\Status.cpp">
-      <Filter>Src\Application\Data\Status</Filter>
+    <ClCompile Include="Src\Application\Object\Map\Map.cpp">
+      <Filter>Src\Application\Object\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Player\Player.cpp">
+      <Filter>Src\Application\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Slot\Slot.cpp">
+      <Filter>Src\Application\Object\Slot</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\PlayerHp\PlayerHp.cpp">
+      <Filter>Src\Application\Object\PlayerHp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

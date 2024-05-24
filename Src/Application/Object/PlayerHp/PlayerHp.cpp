@@ -16,8 +16,8 @@ void PlayerHp::Update()
 	{
 		if (obj->GetObjType() == ObjType::Player)
 		{
-			hp = obj->GetStatus()->GetHp();
-			maxHp = obj->GetStatus()->GetMaxHp();
+			hp = obj->GetStatus()->GetValue("HP");
+			maxHp = obj->GetStatus()->GetValue("MAXHP");
 			break;
 		}
 	}
@@ -50,11 +50,11 @@ void PlayerHp::Init()
 	m_frame.tex.Load("Asset/Textures/hp.png");
 	m_frame.pos = { -450.0f,-300.0f,0.0f };
 	m_frame.mat = Math::Matrix::CreateTranslation(m_frame.pos);
-	m_frame.rect = { 0,0,(int)m_frame.tex.GetWidth(),(int)m_frame.tex.GetHeight()};
+	m_frame.rect = { 0,0,(int)m_frame.tex.GetWidth(),(int)m_frame.tex.GetHeight() };
 
 	// バー
 	m_bar.tex.Load("Asset/Textures/hpBar.png");
 	m_bar.pos = { -450.0f,-300.0f,0.0f };
 	m_bar.mat = Math::Matrix::CreateTranslation(m_bar.pos);
-	m_bar.rect = { 0,0,(int)m_bar.tex.GetWidth(),(int)m_bar.tex.GetHeight()};
+	m_bar.rect = { 0,0,(int)m_bar.tex.GetWidth(),(int)m_bar.tex.GetHeight() };
 }

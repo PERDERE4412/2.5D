@@ -1,7 +1,6 @@
 ﻿#include "main.h"
 
 #include "Scene/SceneManager.h"
-#include "Debug/ImGuiManager.h"
 
 // ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// /////
 // エントリーポイント
@@ -97,9 +96,6 @@ void Application::KdBeginDraw(bool usePostProcess)
 // ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// /////
 void Application::KdPostDraw()
 {
-	// ImGuiの描画
-	ImGuiManager::Instance().Draw();
-
 	// BackBuffer -> 画面表示
 	KdDirect3D::Instance().WorkSwapChain()->Present(0, 0);
 }
@@ -189,27 +185,6 @@ bool Application::Init(int w, int h)
 			return false;
 		}
 	}
-
-	//===================================================================
-	// imgui
-	//===================================================================
-	// Setup Dear ImGui context
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	// Setup Dear ImGui style
-	// ImGui::StyleColorDark();
-	ImGui::StyleColorsClassic();
-	// Setup Platform/Renderer bindings
-	ImGui_ImplWin32_Init(m_window.GetWndHandle());
-	ImGui_ImplDX11_Init(KdDirect3D::Instance().WorkDev(), KdDirect3D::Instance().WorkDevContext());
-
-#include "imgui/ja_glyph_ranges.h"
-	ImGuiIO& io = ImGui::GetIO();
-	ImFontConfig config;
-	config.MergeMode = true;
-	io.Fonts->AddFontDefault();
-	// 日本語対応
-	io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\msgothic.ttc", 13.0f, &config, glyphRangesJapanese);
 
 	//===================================================================
 	// シェーダー初期化

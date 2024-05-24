@@ -1,10 +1,10 @@
 ﻿#include "Player.h"
 
-#include "../../Debug/ImGuiManager.h"
+//#include "../../Debug/ImGuiManager.h"
 
-#include "../../Lib/Utility.h"
+#include "../../Lib/Utility/Utility.h"
 #include "../../Lib/AssetManager/AssetManager.h"
-#include "../../Status/Status.h"
+#include "../../Data/Status/Status.h"
 
 void Player::Update()
 {
@@ -20,7 +20,7 @@ void Player::Update()
 	if (moveVec != Math::Vector3::Zero)m_state = Animation::PlayerState::Walk;
 
 	moveVec.Normalize();	// 正規化
-	moveVec *= MOVE_POW;	
+	moveVec *= MOVE_POW;
 	m_pos += moveVec;		// 移動量を加算
 
 	// 壁との当たり判定
@@ -32,18 +32,18 @@ void Player::Update()
 	// 行列作成
 	Math::Matrix rotY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(45));
 	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
-	m_world = rotX*rotY*Math::Matrix::CreateTranslation(m_pos);
+	m_world = rotX * rotY * Math::Matrix::CreateTranslation(m_pos);
 
 	// アニメーション作成
-	Animation::Instance().CreateAnime(m_state,&m_polygon);
+	Animation::Instance().CreateAnime(m_state, &m_polygon);
 
 	// デバッグ
-	ImGuiManager::Instance().SetPlayerPos(m_pos);
+	//ImGuiManager::Instance().SetPlayerPos(m_pos);
 }
 
 void Player::DrawLit()
 {
-	KdShaderManager::Instance().m_StandardShader.DrawPolygon(m_polygon,m_world);
+	KdShaderManager::Instance().m_StandardShader.DrawPolygon(m_polygon, m_world);
 }
 
 void Player::Init()
@@ -53,7 +53,7 @@ void Player::Init()
 
 	// ステータス
 	m_pStatus = std::make_shared<Status>();
-	m_pStatus->Init(100, 100, 10, 10);
+	m_pStatus->Init();
 
 	// 状態
 	m_state = Animation::PlayerState::Idol;

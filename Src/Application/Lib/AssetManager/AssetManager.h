@@ -15,7 +15,7 @@ private:
 	// ポリゴン
 	std::unordered_map<std::string, KdSquarePolygon> m_materialList;
 	void LoadMaterial(std::string _name, std::string _path) { m_materialList[_name].SetMaterial(_path); }
-	void SetMaterial(std::string _name,float _scale,KdSquarePolygon::PivotType _pivot,int _splitX,int _splitY);
+	void SetMaterial(std::string _name, float _scale, KdSquarePolygon::PivotType _pivot, int _splitX, int _splitY);
 
 	// モデル
 	std::unordered_map<std::string, KdModelData> m_modelList;

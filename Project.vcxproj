@@ -141,27 +141,17 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Library\imgui\imconfig.h" />
-    <ClInclude Include="..\Library\imgui\imgui.h" />
-    <ClInclude Include="..\Library\imgui\imgui_impl_dx11.h" />
-    <ClInclude Include="..\Library\imgui\imgui_impl_win32.h" />
-    <ClInclude Include="..\Library\imgui\imgui_internal.h" />
-    <ClInclude Include="..\Library\imgui\imgui_stdlib.h" />
-    <ClInclude Include="..\Library\imgui\imstb_rectpack.h" />
-    <ClInclude Include="..\Library\imgui\imstb_textedit.h" />
-    <ClInclude Include="..\Library\imgui\imstb_truetype.h" />
-    <ClInclude Include="..\Library\imgui\ja_glyph_ranges.h" />
     <ClInclude Include="..\Library\strconv.h" />
     <ClInclude Include="..\Library\tinygltf\json.hpp" />
     <ClInclude Include="..\Library\tinygltf\stb_image.h" />
     <ClInclude Include="..\Library\tinygltf\stb_image_write.h" />
     <ClInclude Include="..\Library\tinygltf\tiny_gltf.h" />
     <ClInclude Include="Src\Application\Animation\Animation.h" />
+    <ClInclude Include="Src\Application\Data\Item\Item.h" />
+    <ClInclude Include="Src\Application\Data\Skill\Skill.h" />
     <ClInclude Include="Src\Application\Data\Status\Status.h" />
-    <ClInclude Include="Src\Application\Debug\ImGuiManager.h" />
-    <ClInclude Include="Src\Application\Hit\Hit.h" />
     <ClInclude Include="Src\Application\Lib\AssetManager\AssetManager.h" />
-    <ClInclude Include="Src\Application\Lib\Utility.h" />
+    <ClInclude Include="Src\Application\Lib\Utility\Utility.h" />
     <ClInclude Include="Src\Application\main.h" />
     <ClInclude Include="Src\Application\Object\Map\Map.h" />
     <ClInclude Include="Src\Application\Object\PlayerHp\PlayerHp.h" />
@@ -208,18 +198,10 @@
     <ClInclude Include="src\Framework\Window\KdWindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Library\imgui\imgui.cpp" />
-    <ClCompile Include="..\Library\imgui\imgui_demo.cpp" />
-    <ClCompile Include="..\Library\imgui\imgui_draw.cpp" />
-    <ClCompile Include="..\Library\imgui\imgui_impl_dx11.cpp" />
-    <ClCompile Include="..\Library\imgui\imgui_impl_win32.cpp" />
-    <ClCompile Include="..\Library\imgui\imgui_stdlib.cpp" />
-    <ClCompile Include="..\Library\imgui\imgui_tables.cpp" />
-    <ClCompile Include="..\Library\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Src\Application\Animation\Animation.cpp" />
+    <ClCompile Include="Src\Application\Data\Item\Item.cpp" />
+    <ClCompile Include="Src\Application\Data\Skill\Skill.cpp" />
     <ClCompile Include="Src\Application\Data\Status\Status.cpp" />
-    <ClCompile Include="Src\Application\Debug\ImGuiManager.cpp" />
-    <ClCompile Include="Src\Application\Hit\Hit.cpp" />
     <ClCompile Include="Src\Application\Lib\AssetManager\AssetManager.cpp" />
     <ClCompile Include="Src\Application\main.cpp" />
     <ClCompile Include="Src\Application\Object\Map\Map.cpp" />

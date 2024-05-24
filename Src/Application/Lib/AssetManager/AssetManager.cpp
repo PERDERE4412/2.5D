@@ -21,7 +21,7 @@ void AssetManager::Init()
 	// ポリゴン
 	KdSquarePolygon::PivotType pivot = KdSquarePolygon::PivotType::Center_Bottom;
 	LoadMaterial("playerIdol", "Asset/Textures/player/idol.png");
-	SetMaterial("playerIdol", 2.0f,pivot, 4, 1);
+	SetMaterial("playerIdol", 2.0f, pivot, 4, 1);
 
 	LoadMaterial("playerDash", "Asset/Textures/player/dash.png");
 	SetMaterial("playerDash", 2.0f, pivot, 7, 1);

@@ -1,26 +1,15 @@
 ﻿#include "GameScene.h"
 #include"../SceneManager.h"
 
-#include "../../Hit/Hit.h"
 #include "../../Object/Player/Player.h"
 #include "../../Object/Map/Map.h"
 #include "../../Object/PlayerHp/PlayerHp.h"
 #include "../../Object/Slot/Slot.h"
 
-#include "../../Debug/ImGuiManager.h"
+//#include "../../Debug/ImGuiManager.h"
 
 void GameScene::Event()
 {
-	if (GetAsyncKeyState('T') & 0x8000)
-	{
-		SceneManager::Instance().SetNextScene
-		(
-			SceneManager::SceneType::Title
-		);
-	}
-
-	Hit::Instance().Update();
-
 	UpdateCamera();
 }
 
@@ -74,5 +63,5 @@ void GameScene::UpdateCamera()
 	Math::Matrix worldMat = rotX * rotY * transMat * playerTransMat;
 	m_camera->SetCameraMatrix(worldMat);
 
-	ImGuiManager::Instance().SetCameraPos(worldMat.Translation());
+	//ImGuiManager::Instance().SetCameraPos(worldMat.Translation());
 }
