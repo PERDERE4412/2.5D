@@ -10,13 +10,13 @@ void Status::Init()
 	while (std::getline(ifs, lineString))
 	{
 		std::istringstream iss(lineString); // 文字列を操作する変数にファイルから読み取った文字列を格納
-		std::string commaString;			// ファイルから読み取った文字列をコンマ区切りにする
+		std::string name;					// 名前を格納
 		std::string value;					// 数値を格納
 
-		std::getline(iss, commaString, ',');
+		std::getline(iss, name, ',');
 		std::getline(iss, value, ',');
 
-		m_statusList[commaString] = stoi(value);
+		m_statusList[name] = stoi(value);
 	}
 
 	ifs.close();
