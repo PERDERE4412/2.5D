@@ -12,7 +12,7 @@ private:
 	
 	struct SkillData
 	{
-		int no;
+		int no;				// スキル番号
 		int value;			// 値
 		int point;			// 必要ポイント
 		std::string type;	// スキルタイプ
