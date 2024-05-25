@@ -16,13 +16,19 @@ public:
 		Attack3
 	};
 
+	enum class PlayerDir
+	{
+		Right,
+		Left
+	};
+
 	PlayerState GetState() { return m_state; }
 
 	bool GetAction() { return m_bAction; }
 	bool GetStiff() { return m_bStiff; }
 
 	// アニメーション作成
-	void CreateAnime(PlayerState _state, KdSquarePolygon* _polygon);
+	void CreateAnime(PlayerDir _dir,PlayerState _state, KdSquarePolygon* _polygon);
 
 private:
 

@@ -2,7 +2,7 @@
 
 #include "../Lib/AssetManager/AssetManager.h"
 
-void Animation::CreateAnime(PlayerState _state, KdSquarePolygon* _polygon)
+void Animation::CreateAnime(PlayerDir _dir,PlayerState _state, KdSquarePolygon* _polygon)
 {
 	// 現在の状態と異なっていたら
 	if (m_state != _state)
@@ -41,6 +41,8 @@ void Animation::CreateAnime(PlayerState _state, KdSquarePolygon* _polygon)
 			break;
 		}
 
+		if (_dir == PlayerDir::Left)_polygon->TurnScale();
+
 		m_maxAnime = _polygon->GetSplitX();
 		m_cnt = 0.0f;
 	}
@@ -73,6 +75,24 @@ void Animation::AnimeCnt()
 			m_bStiff = true;
 			m_bAction = true;
 			m_wait = 20;
+		}
+		if (m_state == PlayerState::Attack1)
+		{
+			m_bStiff = true;
+			m_bAction = true;
+			m_wait = 10;
+		}
+		if (m_state == PlayerState::Attack2)
+		{
+			m_bStiff = true;
+			m_bAction = true;
+			m_wait = 10;
+		}
+		if (m_state == PlayerState::Attack3)
+		{
+			m_bStiff = true;
+			m_bAction = true;
+			m_wait = 10;
 		}
 	}
 }

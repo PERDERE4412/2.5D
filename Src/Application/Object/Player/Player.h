@@ -15,23 +15,25 @@ public:
 
 private:
 
-	void Action();				// プレイヤーの操作
+	void Action();				// 操作
 	void Move();				// 移動系
 	void Attack();				// 攻撃系
-
-	// 向き
-	enum PlayerDir
-	{
-		Right,		// 右
-		Left		// 左
-	};
 
 	KdSquarePolygon m_polygon;		// 板ポリゴン
 	Math::Vector3 m_pos;			// 座標
 	Math::Vector3 m_vec;			// 方向ベクトル
 
-	Animation::PlayerState m_state;	// プレイヤーの状態
-	PlayerDir m_dir;
+	Animation::PlayerState m_state;	// 状態
+	Animation::PlayerDir m_dir;		// 向き
+
+	enum class Combo
+	{
+		None,
+		One,
+		Two
+	};
+	int m_comboTime;				// コンボ時間
+	Combo m_combo;					// 現在のコンボ
 
 	float m_movePow;				// 移動量
 };

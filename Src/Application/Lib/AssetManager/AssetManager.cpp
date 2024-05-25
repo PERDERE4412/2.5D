@@ -22,22 +22,22 @@ void AssetManager::Init()
 	// 主人公
 	KdSquarePolygon::PivotType pivot = KdSquarePolygon::PivotType::Center_Bottom;
 	LoadMaterial("playerIdol", "Asset/Textures/Player/idle.png");
-	SetMaterial("playerIdol", 2.0f, pivot, 3, 1);
+	SetMaterial("playerIdol", 1.8f, pivot, 3, 1);
 
 	LoadMaterial("playerRun", "Asset/Textures/Player/run.png");
-	SetMaterial("playerRun", 2.0f, pivot, 10, 1);
+	SetMaterial("playerRun", 1.8f, pivot, 10, 1);
 
 	LoadMaterial("playerRoll", "Asset/Textures/Player/roll.png");
-	SetMaterial("playerRoll", 2.0f, pivot, 10, 1);
+	SetMaterial("playerRoll", 2.0f, pivot, 11, 1);
 
 	LoadMaterial("playerAttack1", "Asset/Textures/Player/attack1.png");
-	SetMaterial("playerAttack1", 2.0f, pivot, 10, 1);
+	SetMaterial("playerAttack1", 3.0f, pivot, 10, 1);
 
 	LoadMaterial("playerAttack2", "Asset/Textures/Player/attack2.png");
-	SetMaterial("playerAttack2", 2.0f, pivot, 10, 1);
+	SetMaterial("playerAttack2", 3.0f, pivot, 10, 1);
 
 	LoadMaterial("playerAttack3", "Asset/Textures/Player/attack3.png");
-	SetMaterial("playerAttack3", 2.0f, pivot, 11, 1);
+	SetMaterial("playerAttack3", 3.0f, pivot, 11, 1);
 
 	// モデル
 	LoadModel("map", "Asset/Models/floor.gltf");

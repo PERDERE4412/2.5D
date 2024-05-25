@@ -20,7 +20,7 @@ void Player::Update()
 	m_world = rotX * rotY * Math::Matrix::CreateTranslation(m_pos);
 
 	// アニメーション作成
-	Animation::Instance().CreateAnime(m_state, &m_polygon);
+	Animation::Instance().CreateAnime(m_dir,m_state, &m_polygon);
 }
 
 void Player::DrawLit()
@@ -41,7 +41,10 @@ void Player::Init()
 	m_state = Animation::PlayerState::Idol;
 
 	m_movePow = 0.2f;
-	m_dir = PlayerDir::Right;
+	m_dir = Animation::PlayerDir::Right;
+
+	m_comboTime = 0;
+	m_combo = Combo::None;
 
 	// 本体
 	//m_polygon = AssetManager::Instance().GetMaterial("playerIdol");
@@ -73,8 +76,6 @@ void Player::Action()
 		}
 	}
 
-	if (m_dir == PlayerDir::Right)m_polygon.SetScale({ 2.0f, 2.0f });
-	if (m_dir == PlayerDir::Left)m_polygon.SetScale({ -2.0f, 2.0f });
 	m_vec.Normalize();	// 正規化
 	m_vec *= m_movePow;
 	if(!Animation::Instance().GetStiff())m_pos += m_vec;		// 移動量を加算
@@ -85,14 +86,22 @@ void Player::Move()
 	if (GetAsyncKeyState('W') & 0x8000)m_vec.z = 1.0f;
 	if (GetAsyncKeyState('A') & 0x8000)
 	{
-		m_dir = PlayerDir::Left;
 		m_vec.x = -1.0f;
+		if (m_dir == Animation::PlayerDir::Right)
+		{
+			m_dir = Animation::PlayerDir::Left;
+			m_polygon.TurnScale();
+		}
 	}
 	if (GetAsyncKeyState('S') & 0x8000)m_vec.z = -1.0f;
 	if (GetAsyncKeyState('D') & 0x8000)
 	{
-		m_dir = PlayerDir::Right;
 		m_vec.x = 1.0f;
+		if (m_dir == Animation::PlayerDir::Left)
+		{
+			m_dir = Animation::PlayerDir::Right;
+			m_polygon.TurnScale();
+		}
 	}
 	if (m_vec != Math::Vector3::Zero)m_state = Animation::PlayerState::Run;
 
@@ -111,6 +120,30 @@ void Player::Attack()
 {
 	if (GetAsyncKeyState(VK_LBUTTON) & 0x8000)
 	{
-		m_state=Animation::PlayerState::Attack1;
+		m_movePow = 0.0f;
+		if (m_combo == Combo::None)
+		{
+			m_combo = Combo::One;
+			m_state = Animation::PlayerState::Attack1;
+			m_comboTime = 30;
+		}
+		else if (m_combo == Combo::One)
+		{
+			m_combo = Combo::Two;
+			m_state = Animation::PlayerState::Attack2;
+			m_comboTime = 30;
+		}
+		else if (m_combo == Combo::Two)
+		{
+			m_combo = Combo::None;
+			m_state = Animation::PlayerState::Attack3;
+			m_comboTime = 30;
+		}
+	}
+
+	if (m_comboTime > 0)
+	{
+		m_comboTime--;
+		if (m_comboTime <= 0)m_combo = Combo::None;
 	}
 }

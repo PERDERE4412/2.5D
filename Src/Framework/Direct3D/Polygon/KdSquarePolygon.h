@@ -34,6 +34,8 @@ public:
 	void SetScale(const Math::Vector2& scale);
 	void SetScale(float _scalar);
 
+	void TurnScale();
+
 	// 頂点の描画色の設定、それぞれの頂点色を指定
 	void SetVertexColor(const std::vector<Math::Color>& _vertCols);
 

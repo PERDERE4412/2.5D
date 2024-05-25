@@ -61,6 +61,22 @@ void KdSquarePolygon::SetScale(float scalar)
 	SetScale(scale);
 }
 
+void KdSquarePolygon::TurnScale()
+{
+	// 作業用
+	Math::Vector3 workPos;
+
+	// 左上と右上を入れ替え
+	workPos = m_vertices[0].pos;
+	m_vertices[0].pos = m_vertices[2].pos;
+	m_vertices[2].pos = workPos;
+
+	// 左下と右下を入れ替え
+	workPos = m_vertices[1].pos;
+	m_vertices[1].pos = m_vertices[3].pos;
+	m_vertices[3].pos = workPos;
+}
+
 // ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// /////
 // テクスチャの描画合成色の設定
 // それぞれの頂点で色を変えたい特殊な状況でのみ使用する関数：全体を変えたいときはSetColor
