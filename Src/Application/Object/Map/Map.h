@@ -7,8 +7,8 @@ public:
 	Map() { Init(); }	// コンストラクタ
 	~Map()override {}	// デストラクタ
 
-	void DrawLit();		// 描画
-	void Init();		// 初期化
+	void DrawLit()override;		// 描画
+	void Init()override;		// 初期化
 
 private:
 

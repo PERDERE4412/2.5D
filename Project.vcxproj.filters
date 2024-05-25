@@ -109,6 +109,9 @@
     <Filter Include="Src\Application\Object\PlayerHp">
       <UniqueIdentifier>{fba0c754-a92f-45e9-a3f6-5c528b7e49a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Object\Gold">
+      <UniqueIdentifier>{006d13eb-8ed2-4c49-9f23-518f73e4f29d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -276,6 +279,9 @@
     <ClInclude Include="Src\Application\Object\PlayerHp\PlayerHp.h">
       <Filter>Src\Application\Object\PlayerHp</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Object\Gold\Gold.h">
+      <Filter>Src\Application\Object\Gold</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -418,6 +424,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\PlayerHp\PlayerHp.cpp">
       <Filter>Src\Application\Object\PlayerHp</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Gold\Gold.cpp">
+      <Filter>Src\Application\Object\Gold</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

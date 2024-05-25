@@ -18,9 +18,14 @@ void Player::Update()
 	Math::Matrix rotY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(45));
 	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
 	m_world = rotX * rotY * Math::Matrix::CreateTranslation(m_pos);
-
+	
 	// アニメーション作成
 	Animation::Instance().CreateAnime(m_dir,m_state, &m_polygon);
+}
+
+void Player::GenerateDepthMapFromLight()
+{
+	KdShaderManager::Instance().m_StandardShader.DrawPolygon(m_polygon, m_world);
 }
 
 void Player::DrawLit()

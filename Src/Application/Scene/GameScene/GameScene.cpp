@@ -6,8 +6,6 @@
 #include "../../Object/PlayerHp/PlayerHp.h"
 #include "../../Object/Slot/Slot.h"
 
-//#include "../../Debug/ImGuiManager.h"
-
 void GameScene::Event()
 {
 	UpdateCamera();
@@ -62,6 +60,4 @@ void GameScene::UpdateCamera()
 	// カメラの「ワールド行列」を作成し、適応させる
 	Math::Matrix worldMat = rotX * rotY * transMat * playerTransMat;
 	m_camera->SetCameraMatrix(worldMat);
-
-	//ImGuiManager::Instance().SetCameraPos(worldMat.Translation());
 }
