@@ -19,12 +19,25 @@ KdModelData AssetManager::GetModel(std::string _name)
 void AssetManager::Init()
 {
 	// ポリゴン
+	// 主人公
 	KdSquarePolygon::PivotType pivot = KdSquarePolygon::PivotType::Center_Bottom;
-	LoadMaterial("playerIdol", "Asset/Textures/player/idol.png");
-	SetMaterial("playerIdol", 2.0f, pivot, 4, 1);
+	LoadMaterial("playerIdol", "Asset/Textures/Player/idle.png");
+	SetMaterial("playerIdol", 2.0f, pivot, 3, 1);
 
-	LoadMaterial("playerDash", "Asset/Textures/player/dash.png");
-	SetMaterial("playerDash", 2.0f, pivot, 7, 1);
+	LoadMaterial("playerRun", "Asset/Textures/Player/run.png");
+	SetMaterial("playerRun", 2.0f, pivot, 10, 1);
+
+	LoadMaterial("playerRoll", "Asset/Textures/Player/roll.png");
+	SetMaterial("playerRoll", 2.0f, pivot, 10, 1);
+
+	LoadMaterial("playerAttack1", "Asset/Textures/Player/attack1.png");
+	SetMaterial("playerAttack1", 2.0f, pivot, 10, 1);
+
+	LoadMaterial("playerAttack2", "Asset/Textures/Player/attack2.png");
+	SetMaterial("playerAttack2", 2.0f, pivot, 10, 1);
+
+	LoadMaterial("playerAttack3", "Asset/Textures/Player/attack3.png");
+	SetMaterial("playerAttack3", 2.0f, pivot, 11, 1);
 
 	// モデル
 	LoadModel("map", "Asset/Models/floor.gltf");
