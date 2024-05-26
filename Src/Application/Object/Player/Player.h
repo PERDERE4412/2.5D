@@ -10,7 +10,7 @@ public:
 	~Player()override {}		// デストラクタ
 
 	void Update()override;		// 更新
-	void GenerateDepthMapFromLight()override;
+	void GenerateDepthMapFromLight()override;	// 描画
 	void DrawLit()override;		// 描画
 	void Init()override;		// 初期化
 

@@ -5,6 +5,7 @@
 #include "../../Object/Map/Map.h"
 #include "../../Object/PlayerHp/PlayerHp.h"
 #include "../../Object/Slot/Slot.h"
+#include "../../Object/Gold/Gold.h"
 
 void GameScene::Event()
 {
@@ -32,6 +33,10 @@ void GameScene::Init()
 	// スロット
 	std::shared_ptr<Slot> slot = std::make_shared<Slot>();
 	AddObject(slot);
+
+	// ゴールド
+	std::shared_ptr<Gold> gold = std::make_shared<Gold>();
+	AddObject(gold);
 }
 
 void GameScene::UpdateCamera()

@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+class KdTexture;
+
 class AssetManager
 {
 public:
@@ -9,6 +11,9 @@ public:
 
 	// モデル
 	KdModelData GetModel(std::string _name);
+
+	// テクスチャ
+	KdTexture* GetTex(std::string _name);
 
 private:
 
@@ -21,6 +26,10 @@ private:
 	std::unordered_map<std::string, KdModelData> m_modelList;
 	void LoadModel(std::string _name, std::string _path) { m_modelList[_name].Load(_path); }
 
+	// テクスチャ
+	std::unordered_map<std::string, KdTexture> m_texList;
+	void LoadTex(std::string _name, std::string _path) { m_texList[_name].Load(_path); }
+	
 	void Init();				// 初期化
 
 private:

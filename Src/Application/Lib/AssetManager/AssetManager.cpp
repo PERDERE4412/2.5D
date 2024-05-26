@@ -16,6 +16,14 @@ KdModelData AssetManager::GetModel(std::string _name)
 	}
 }
 
+KdTexture* AssetManager::GetTex(std::string _name)
+{
+	if (m_texList.find(_name) != m_texList.end())
+	{
+		return &m_texList.at(_name);
+	}
+}
+
 void AssetManager::Init()
 {
 	// ポリゴン
@@ -41,6 +49,9 @@ void AssetManager::Init()
 
 	// モデル
 	LoadModel("map", "Asset/Models/floor.gltf");
+
+	// テクスチャ
+	LoadTex("gold", "Asset/Textures/gold.png");
 }
 
 void AssetManager::SetMaterial(std::string _name, float _scale, KdSquarePolygon::PivotType _pivot, int _splitX, int _splitY)
