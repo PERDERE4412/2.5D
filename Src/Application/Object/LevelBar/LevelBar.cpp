@@ -4,6 +4,13 @@
 
 void LevelBar::Update()
 {
+	// 現在のレベルと経験値・次のレベルまでの経験値を取得
+
+	// サイズ変更
+
+	// 座標をずらす
+
+	// 行列作成
 }
 
 void LevelBar::DrawSprite()
@@ -21,12 +28,12 @@ void LevelBar::Init()
 {
 	// フレーム
 	m_frame.pTex = AssetManager::Instance().GetTex("levelFrame");
-	m_frame.pos = { 0,0,0 };
+	m_frame.pos = { -450.0f,-200.0f,0.0f };
 	m_frame.Set();
 
 	// バー
 	m_bar.pTex = AssetManager::Instance().GetTex("levelBar");
-	m_bar.pos = { 0,0,0 };
+	m_bar.pos = { -450.0f,-200.0f,0.0f };
 	m_bar.Set();
 }
 

@@ -6,6 +6,7 @@
 #include "../../Object/PlayerHp/PlayerHp.h"
 #include "../../Object/Slot/Slot.h"
 #include "../../Object/Gold/Gold.h"
+#include "../../Object/LevelBar/LevelBar.h"
 
 void GameScene::Event()
 {
@@ -37,6 +38,10 @@ void GameScene::Init()
 	// ゴールド
 	std::shared_ptr<Gold> gold = std::make_shared<Gold>();
 	AddObject(gold);
+
+	// レベル
+	std::shared_ptr<LevelBar> level = std::make_shared<LevelBar>();
+	AddObject(level);
 }
 
 void GameScene::UpdateCamera()
