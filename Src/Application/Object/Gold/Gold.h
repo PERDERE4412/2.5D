@@ -14,7 +14,17 @@ private:
 
 	void Init()override;		// 初期化
 
-	KdTexture* m_pTex;			// 画像データ
-	Math::Vector3 m_pos;		// 座標
-	Math::Rectangle m_rect;		// 切り取り範囲
+	struct TexData
+	{
+		KdTexture* pTex = nullptr;
+		Math::Vector3 pos;
+		Math::Matrix mat;
+		Math::Rectangle rect;
+	};
+
+	TexData m_gold;
+	static const int NUM = 3;
+	TexData m_number[NUM];
+
+	int m_currentGold;
 };

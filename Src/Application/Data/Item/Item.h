@@ -4,7 +4,7 @@ class Item
 {
 public:
 
-	void ChangeGold(int _gold) { m_gold += _gold; }
+	void ChangeGold(int _gold);
 
 	// ゲッター
 	int GetGold() { return m_gold; }

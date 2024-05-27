@@ -52,6 +52,9 @@ void AssetManager::Init()
 
 	// テクスチャ
 	LoadTex("gold", "Asset/Textures/gold.png");
+	LoadTex("number", "Asset/Textures/number.png");
+	LoadTex("levelFrame", "Asset/Textures/levelFrame.png");
+	LoadTex("levelBar", "Asset/Textures/levelBar.png");
 }
 
 void AssetManager::SetMaterial(std::string _name, float _scale, KdSquarePolygon::PivotType _pivot, int _splitX, int _splitY)

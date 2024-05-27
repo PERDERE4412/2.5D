@@ -112,6 +112,9 @@
     <Filter Include="Src\Application\Object\Gold">
       <UniqueIdentifier>{006d13eb-8ed2-4c49-9f23-518f73e4f29d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Object\LevelBar">
+      <UniqueIdentifier>{8f7a2275-f6c2-4c67-abd7-f98152740bae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -282,6 +285,9 @@
     <ClInclude Include="Src\Application\Object\Gold\Gold.h">
       <Filter>Src\Application\Object\Gold</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Object\LevelBar\LevelBar.h">
+      <Filter>Src\Application\Object\LevelBar</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -427,6 +433,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Gold\Gold.cpp">
       <Filter>Src\Application\Object\Gold</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\LevelBar\LevelBar.cpp">
+      <Filter>Src\Application\Object\LevelBar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
