@@ -1,7 +1,7 @@
 ﻿#include "PlayerHp.h"
 
 #include "../../Scene/SceneManager.h"
-#include "../../Data/Status/Status.h"
+#include "../../Data/Status/PlayerStatus.h"
 
 void PlayerHp::Update()
 {
@@ -12,15 +12,8 @@ void PlayerHp::Update()
 	int hp = 0, maxHp = 0;
 
 	// プレイヤーのHPと最大HPを取得
-	for (auto& obj : objList)
-	{
-		if (obj->GetObjType() == ObjType::Player)
-		{
-			hp = obj->GetStatus()->GetValue("HP");
-			maxHp = obj->GetStatus()->GetValue("MAXHP");
-			break;
-		}
-	}
+	hp = PlayerStatus::Instance().GetValue("HP");
+	maxHp = PlayerStatus::Instance().GetValue("MAXHP");
 
 	// 切り取り範囲の変更
 	rectX = m_bar.tex.GetWidth() * ((float)hp / maxHp);

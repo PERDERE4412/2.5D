@@ -2,7 +2,7 @@
 
 #include "../../Lib/Utility/Utility.h"
 #include "../../Lib/AssetManager/AssetManager.h"
-#include "../../Data/Status/Status.h"
+#include "../../Data/Status/PlayerStatus.h"
 
 void Player::Update()
 {
@@ -37,10 +37,6 @@ void Player::Init()
 {
 	// オブジェクトタイプ
 	m_objType = ObjType::Player;
-
-	// ステータス
-	m_pStatus = std::make_shared<Status>();
-	m_pStatus->Init();
 
 	// 状態
 	m_state = Animation::PlayerState::Idol;

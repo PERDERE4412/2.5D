@@ -149,7 +149,7 @@
     <ClInclude Include="Src\Application\Animation\Animation.h" />
     <ClInclude Include="Src\Application\Data\Item\Item.h" />
     <ClInclude Include="Src\Application\Data\Skill\Skill.h" />
-    <ClInclude Include="Src\Application\Data\Status\Status.h" />
+    <ClInclude Include="Src\Application\Data\Status\PlayerStatus.h" />
     <ClInclude Include="Src\Application\Lib\AssetManager\AssetManager.h" />
     <ClInclude Include="Src\Application\Lib\Utility\Utility.h" />
     <ClInclude Include="Src\Application\main.h" />
@@ -203,7 +203,7 @@
     <ClCompile Include="Src\Application\Animation\Animation.cpp" />
     <ClCompile Include="Src\Application\Data\Item\Item.cpp" />
     <ClCompile Include="Src\Application\Data\Skill\Skill.cpp" />
-    <ClCompile Include="Src\Application\Data\Status\Status.cpp" />
+    <ClCompile Include="Src\Application\Data\Status\PlayerStatus.cpp" />
     <ClCompile Include="Src\Application\Lib\AssetManager\AssetManager.cpp" />
     <ClCompile Include="Src\Application\main.cpp" />
     <ClCompile Include="Src\Application\Object\Gold\Gold.cpp" />

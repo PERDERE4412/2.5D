@@ -252,7 +252,7 @@
     <ClInclude Include="Src\Application\Scene\TitleScene\TitleScene.h">
       <Filter>Src\Application\Scene\TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Data\Status\Status.h">
+    <ClInclude Include="Src\Application\Data\Status\PlayerStatus.h">
       <Filter>Src\Application\Data\Status</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Data\Skill\Skill.h">
@@ -404,7 +404,7 @@
     <ClCompile Include="Src\Application\Scene\TitleScene\TitleScene.cpp">
       <Filter>Src\Application\Scene\TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Data\Status\Status.cpp">
+    <ClCompile Include="Src\Application\Data\Status\PlayerStatus.cpp">
       <Filter>Src\Application\Data\Status</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Data\Skill\Skill.cpp">

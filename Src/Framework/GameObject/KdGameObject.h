@@ -1,7 +1,5 @@
 ﻿#pragma once
 
-class Status;
-
 // ゲーム上に存在するすべてのオブジェクトの基底となるクラス
 class KdGameObject : public std::enable_shared_from_this<KdGameObject>
 {
@@ -78,9 +76,6 @@ public:
 	// オブジェクトタイプ取得
 	ObjType GetObjType() { return m_objType; }
 
-	// ステータス取得
-	std::shared_ptr<Status> GetStatus() { return m_pStatus; }
-
 protected:
 
 	void Release() {}
@@ -105,7 +100,4 @@ protected:
 
 	// オブジェクトタイプ
 	ObjType m_objType = ObjType::none;
-
-	// ステータス
-	std::shared_ptr<Status> m_pStatus = nullptr;
 };

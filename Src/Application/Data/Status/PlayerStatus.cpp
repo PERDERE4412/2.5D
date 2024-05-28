@@ -1,6 +1,21 @@
-﻿#include "Status.h"
+﻿#include "PlayerStatus.h"
 
-void Status::Init()
+void PlayerStatus::SetExp(int _point)
+{
+	m_statusList["EXP"] += _point;	// 経験値を加算
+
+	// 次のレベルまでの経験値を超えたら
+	if (m_statusList["EXP"] >= m_statusList["NEXTEXP"])
+	{
+		if (m_statusList["LEVEL"] > 99)return;
+
+		m_statusList["LEVEL"]++;
+		m_statusList["EXP"] = 0;
+		m_statusList["NEXTEXP"] *= 1.5;
+	}
+}
+
+void PlayerStatus::Init()
 {
 	std::ifstream ifs("Asset/Data/Player/PlayerStatus.csv"); //ファイル操作用の変数
 
