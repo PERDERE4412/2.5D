@@ -8,6 +8,8 @@
 #include "../../Object/Gold/Gold.h"
 #include "../../Object/LevelBar/LevelBar.h"
 #include "../../Object//Back/Back.h"
+#include "../../Object/Wall/Wall.h"
+#include "../../Object/Wall/WallHit.h"
 
 #include "../../Data/Status/PlayerStatus.h"
 
@@ -31,7 +33,7 @@ void GameScene::Init()
 {
 	// カメラ
 	m_camera = std::make_unique<KdCamera>();
-	m_pos = { -12.0f,13.0f,-12.0f };
+	m_pos = { -17.0f,25.0f,-17.0f };
 
 	// プレイヤー
 	std::shared_ptr<Player> player = std::make_shared<Player>();
@@ -60,6 +62,14 @@ void GameScene::Init()
 	// 背景
 	std::shared_ptr<Back> back = std::make_shared<Back>();
 	AddObject(back);
+
+	// 壁
+	std::shared_ptr<Wall> wall = std::make_shared<Wall>();
+	AddObject(wall);
+
+	// 壁(当たり判定)
+	std::shared_ptr<WallHit> wallHit = std::make_shared<WallHit>();
+	AddObject(wallHit);
 }
 
 void GameScene::UpdateCamera()
@@ -79,7 +89,7 @@ void GameScene::UpdateCamera()
 	Math::Matrix playerTransMat = Math::Matrix::CreateTranslation(playerMat.Translation());
 
 	// どれだけ傾けているか
-	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(30));
+	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(40));
 	Math::Matrix rotY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(45));
 
 	// どこに配置されるか

@@ -160,6 +160,8 @@
     <ClInclude Include="Src\Application\Object\PlayerHp\PlayerHp.h" />
     <ClInclude Include="Src\Application\Object\Player\Player.h" />
     <ClInclude Include="Src\Application\Object\Slot\Slot.h" />
+    <ClInclude Include="Src\Application\Object\Wall\Wall.h" />
+    <ClInclude Include="Src\Application\Object\Wall\WallHit.h" />
     <ClInclude Include="Src\Application\Scene\BaseScene\BaseScene.h" />
     <ClInclude Include="Src\Application\Scene\GameScene\GameScene.h" />
     <ClInclude Include="Src\Application\Scene\SceneManager.h" />
@@ -214,6 +216,8 @@
     <ClCompile Include="Src\Application\Object\PlayerHp\PlayerHp.cpp" />
     <ClCompile Include="Src\Application\Object\Player\Player.cpp" />
     <ClCompile Include="Src\Application\Object\Slot\Slot.cpp" />
+    <ClCompile Include="Src\Application\Object\Wall\Wall.cpp" />
+    <ClCompile Include="Src\Application\Object\Wall\WallHit.cpp" />
     <ClCompile Include="Src\Application\Scene\BaseScene\BaseScene.cpp" />
     <ClCompile Include="Src\Application\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Src\Application\Scene\SceneManager.cpp" />

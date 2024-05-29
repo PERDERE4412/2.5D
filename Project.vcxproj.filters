@@ -118,6 +118,9 @@
     <Filter Include="Src\Application\Object\Back">
       <UniqueIdentifier>{fafae681-50a4-4674-a6a9-f90b5f9794c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Object\Wall">
+      <UniqueIdentifier>{1f440039-d8ff-4f73-ae4e-f6b32d92d186}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -294,6 +297,12 @@
     <ClInclude Include="Src\Application\Object\Back\Back.h">
       <Filter>Src\Application\Object\Back</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Object\Wall\Wall.h">
+      <Filter>Src\Application\Object\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Wall\WallHit.h">
+      <Filter>Src\Application\Object\Wall</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -445,6 +454,12 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Back\Back.cpp">
       <Filter>Src\Application\Object\Back</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Wall\Wall.cpp">
+      <Filter>Src\Application\Object\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Wall\WallHit.cpp">
+      <Filter>Src\Application\Object\Wall</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
