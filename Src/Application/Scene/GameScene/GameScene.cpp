@@ -7,10 +7,24 @@
 #include "../../Object/Slot/Slot.h"
 #include "../../Object/Gold/Gold.h"
 #include "../../Object/LevelBar/LevelBar.h"
+#include "../../Object//Back/Back.h"
+
+#include "../../Data/Status/PlayerStatus.h"
 
 void GameScene::Event()
 {
 	UpdateCamera();
+
+	static bool a = false;
+	if (GetAsyncKeyState('U') & 0x8000)
+	{
+		if (!a)
+		{
+			a = true;
+			PlayerStatus::Instance().SetExp(3);
+		}
+	}
+	else a = false;
 }
 
 void GameScene::Init()
@@ -42,6 +56,10 @@ void GameScene::Init()
 	// レベル
 	std::shared_ptr<LevelBar> level = std::make_shared<LevelBar>();
 	AddObject(level);
+
+	// 背景
+	std::shared_ptr<Back> back = std::make_shared<Back>();
+	AddObject(back);
 }
 
 void GameScene::UpdateCamera()

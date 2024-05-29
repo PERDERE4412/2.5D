@@ -19,7 +19,7 @@ void LevelBar::Update()
 	{
 		digit[1] = level;
 	}
-	for (int i = 0; i < NUM; i++)m_level[i].rect = { digit[i],0,8,8};
+	for (int i = 0; i < NUM; i++)m_level[i].rect = { digit[i]*8,0,8,8};
 
 	// 経験値バー
 	// 経験値・次のレベルまでの経験値を取得

@@ -47,6 +47,10 @@ void AssetManager::Init()
 	LoadMaterial("playerAttack3", "Asset/Textures/Player/attack3.png");
 	SetMaterial("playerAttack3", 3.0f, pivot, 11, 1);
 
+	pivot = KdSquarePolygon::PivotType::Center_Middle;
+	LoadMaterial("back", "Asset/Textures/back.png");
+	SetMaterial("back", 1.0f, pivot, 1, 1);
+
 	// モデル
 	LoadModel("map", "Asset/Models/floor.gltf");
 

@@ -115,6 +115,9 @@
     <Filter Include="Src\Application\Object\LevelBar">
       <UniqueIdentifier>{8f7a2275-f6c2-4c67-abd7-f98152740bae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Object\Back">
+      <UniqueIdentifier>{fafae681-50a4-4674-a6a9-f90b5f9794c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -288,6 +291,9 @@
     <ClInclude Include="Src\Application\Object\LevelBar\LevelBar.h">
       <Filter>Src\Application\Object\LevelBar</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Object\Back\Back.h">
+      <Filter>Src\Application\Object\Back</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -436,6 +442,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\LevelBar\LevelBar.cpp">
       <Filter>Src\Application\Object\LevelBar</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Back\Back.cpp">
+      <Filter>Src\Application\Object\Back</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -153,6 +153,7 @@
     <ClInclude Include="Src\Application\Lib\AssetManager\AssetManager.h" />
     <ClInclude Include="Src\Application\Lib\Utility\Utility.h" />
     <ClInclude Include="Src\Application\main.h" />
+    <ClInclude Include="Src\Application\Object\Back\Back.h" />
     <ClInclude Include="Src\Application\Object\Gold\Gold.h" />
     <ClInclude Include="Src\Application\Object\LevelBar\LevelBar.h" />
     <ClInclude Include="Src\Application\Object\Map\Map.h" />
@@ -206,6 +207,7 @@
     <ClCompile Include="Src\Application\Data\Status\PlayerStatus.cpp" />
     <ClCompile Include="Src\Application\Lib\AssetManager\AssetManager.cpp" />
     <ClCompile Include="Src\Application\main.cpp" />
+    <ClCompile Include="Src\Application\Object\Back\Back.cpp" />
     <ClCompile Include="Src\Application\Object\Gold\Gold.cpp" />
     <ClCompile Include="Src\Application\Object\LevelBar\LevelBar.cpp" />
     <ClCompile Include="Src\Application\Object\Map\Map.cpp" />

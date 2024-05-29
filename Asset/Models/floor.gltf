@@ -15,23 +15,22 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"\u7acb\u65b9\u4f53",
+			"name":"tileBrickA_large",
 			"translation":[
-				-0.27901172637939453,
-				0.06188845634460449,
-				3.273296356201172
+				0,
+				-1.0320947170257568,
+				0
 			]
 		}
 	],
 	"materials":[
 		{
-			"doubleSided":true,
-			"name":"\u30de\u30c6\u30ea\u30a2\u30eb",
+			"name":"StoneDark",
 			"pbrMetallicRoughness":{
 				"baseColorFactor":[
-					0.800000011920929,
-					0.800000011920929,
-					0.800000011920929,
+					0.10092172026634216,
+					0.11823292821645737,
+					0.12790560722351074,
 					1
 				],
 				"metallicFactor":0,
@@ -39,12 +38,14 @@
 			}
 		},
 		{
-			"doubleSided":true,
-			"name":"\u30de\u30c6\u30ea\u30a2\u30eb.001",
+			"name":"Stone",
 			"pbrMetallicRoughness":{
-				"baseColorTexture":{
-					"index":0
-				},
+				"baseColorFactor":[
+					0.1923278123140335,
+					0.22819341719150543,
+					0.24619518220424652,
+					1
+				],
 				"metallicFactor":0,
 				"roughnessFactor":0.5
 			}
@@ -52,7 +53,7 @@
 	],
 	"meshes":[
 		{
-			"name":"\u7acb\u65b9\u4f53",
+			"name":"Cube.4518",
 			"primitives":[
 				{
 					"attributes":{
@@ -75,148 +76,129 @@
 			]
 		}
 	],
-	"textures":[
-		{
-			"sampler":0,
-			"source":0
-		}
-	],
-	"images":[
-		{
-			"mimeType":"image/jpeg",
-			"name":"3td_BrickOldRound_03",
-			"uri":"3td_BrickOldRound_03.jpg"
-		}
-	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":361,
+			"count":412358,
 			"max":[
-				18.225976943969727,
-				-0.037699222564697266,
-				18.225976943969727
+				57.474998474121094,
+				1.059999942779541,
+				3.0250000953674316
 			],
 			"min":[
-				-18.225976943969727,
-				-0.6774865388870239,
-				-18.225976943969727
+				-3.0250000953674316,
+				0.24374999105930328,
+				-57.474998474121094
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":361,
+			"count":412358,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":361,
+			"count":412358,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
-			"componentType":5123,
-			"count":1734,
+			"componentType":5125,
+			"count":1377600,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":4,
 			"componentType":5126,
-			"count":1154,
+			"count":16082,
 			"max":[
-				18.225976943969727,
-				-0.037699222564697266,
-				18.225976943969727
+				57.44999694824219,
+				1,
+				3.000000238418579
 			],
 			"min":[
-				-18.225976943969727,
-				-0.6774865388870239,
-				-18.225976943969727
+				-3.000000238418579,
+				0,
+				-57.44999694824219
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":1154,
+			"count":16082,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":1154,
+			"count":16082,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":7,
 			"componentType":5123,
-			"count":1734,
+			"count":56400,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":4332,
+			"byteLength":4948296,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4332,
-			"byteOffset":4332,
+			"byteLength":4948296,
+			"byteOffset":4948296,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2888,
-			"byteOffset":8664,
+			"byteLength":3298864,
+			"byteOffset":9896592,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3468,
-			"byteOffset":11552,
+			"byteLength":5510400,
+			"byteOffset":13195456,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":13848,
-			"byteOffset":15020,
+			"byteLength":192984,
+			"byteOffset":18705856,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":13848,
-			"byteOffset":28868,
+			"byteLength":192984,
+			"byteOffset":18898840,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":9232,
-			"byteOffset":42716,
+			"byteLength":128656,
+			"byteOffset":19091824,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3468,
-			"byteOffset":51948,
+			"byteLength":112800,
+			"byteOffset":19220480,
 			"target":34963
-		}
-	],
-	"samplers":[
-		{
-			"magFilter":9729,
-			"minFilter":9987
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":55416,
+			"byteLength":19333280,
 			"uri":"floor.bin"
 		}
 	]

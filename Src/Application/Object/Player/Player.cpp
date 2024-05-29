@@ -9,10 +9,10 @@ void Player::Update()
 	Action();
 
 	// 壁との当たり判定
-	if (m_pos.x > Screen::MapMaxX)m_pos.x = Screen::MapMaxX;
+	/*if (m_pos.x > Screen::MapMaxX)m_pos.x = Screen::MapMaxX;
 	if (m_pos.x < Screen::MapMinX)m_pos.x = Screen::MapMinX;
 	if (m_pos.z > Screen::MapMaxZ)m_pos.z = Screen::MapMaxZ;
-	if (m_pos.z < Screen::MapMinZ)m_pos.z = Screen::MapMinZ;
+	if (m_pos.z < Screen::MapMinZ)m_pos.z = Screen::MapMinZ;*/
 
 	// 行列作成
 	Math::Matrix rotY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(45));
@@ -46,10 +46,6 @@ void Player::Init()
 
 	m_comboTime = 0;
 	m_combo = Combo::None;
-
-	// 本体
-	//m_polygon = AssetManager::Instance().GetMaterial("playerIdol");
-	//m_polygon.SetUVRect(1);
 }
 
 void Player::Action()
