@@ -73,9 +73,6 @@
     <Filter Include="Src\Application\Data">
       <UniqueIdentifier>{8502f5f5-6d4b-48a0-a6f0-b538b8c077ee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Debug">
-      <UniqueIdentifier>{b814fefc-22a0-4710-9c31-e651fe29ccf8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Lib">
       <UniqueIdentifier>{ac5d4a96-2722-4588-a465-e08f4a0f9fb4}</UniqueIdentifier>
     </Filter>
@@ -120,6 +117,9 @@
     </Filter>
     <Filter Include="Src\Application\Object\Wall">
       <UniqueIdentifier>{1f440039-d8ff-4f73-ae4e-f6b32d92d186}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Enemy">
+      <UniqueIdentifier>{72e4db32-c77c-44e2-a6b5-79b95646f264}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -303,6 +303,9 @@
     <ClInclude Include="Src\Application\Object\Wall\WallHit.h">
       <Filter>Src\Application\Object\Wall</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Object\Enemy\Enemy.h">
+      <Filter>Src\Application\Object\Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -460,6 +463,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Wall\WallHit.cpp">
       <Filter>Src\Application\Object\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Enemy\Enemy.cpp">
+      <Filter>Src\Application\Object\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

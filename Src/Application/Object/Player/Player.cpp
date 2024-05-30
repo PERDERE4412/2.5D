@@ -9,17 +9,6 @@ void Player::Update()
 {
 	Action();
 
-	// 壁との当たり判定
-	/*if (m_pos.x > Screen::MapMaxX)m_pos.x = Screen::MapMaxX;
-	if (m_pos.x < Screen::MapMinX)m_pos.x = Screen::MapMinX;
-	if (m_pos.z > Screen::MapMaxZ)m_pos.z = Screen::MapMaxZ;
-	if (m_pos.z < Screen::MapMinZ)m_pos.z = Screen::MapMinZ;*/
-
-	// 行列作成
-	Math::Matrix rotY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(45));
-	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
-	m_world = rotX * rotY * Math::Matrix::CreateTranslation(m_pos);
-	
 	// アニメーション作成
 	Animation::Instance().CreateAnime(m_dir,m_state, &m_polygon);
 }
@@ -70,6 +59,9 @@ void Player::PostUpdate()
 
 	if (isHit)
 	{
+		// 地面にめり込ませない
+		hitDir.y = 0;
+
 		// 正規化(長さを１にする)
 		// 方向は絶対長さ１
 		hitDir.Normalize();
@@ -77,6 +69,11 @@ void Player::PostUpdate()
 		// 地面に当たっている
 		m_pos += hitDir * maxOverLap;
 	}
+
+	// 行列作成
+	Math::Matrix rotY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(45));
+	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
+	m_world = rotX * rotY * Math::Matrix::CreateTranslation(m_pos);
 }
 
 void Player::GenerateDepthMapFromLight()
@@ -91,9 +88,6 @@ void Player::DrawLit()
 
 void Player::Init()
 {
-	// オブジェクトタイプ
-	m_objType = ObjType::Player;
-
 	// 状態
 	m_state = Animation::PlayerState::Idol;
 
@@ -103,6 +97,7 @@ void Player::Init()
 	m_comboTime = 0;
 	m_combo = Combo::None;
 
+	// デバッグ表示
 	m_pDebugWire = std::make_unique<KdDebugWireFrame>();
 }
 

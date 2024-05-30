@@ -9,7 +9,5 @@ void Map::DrawLit()
 
 void Map::Init()
 {
-	m_objType = ObjType::Map;
-
 	m_model = AssetManager::Instance().GetModel("map");
 }

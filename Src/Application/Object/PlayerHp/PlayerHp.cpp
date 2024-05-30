@@ -37,8 +37,6 @@ void PlayerHp::DrawSprite()
 
 void PlayerHp::Init()
 {
-	m_objType = ObjType::none;
-
 	// フレーム
 	m_frame.tex.Load("Asset/Textures/hp.png");
 	m_frame.pos = { -450.0f,-300.0f,0.0f };

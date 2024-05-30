@@ -2,6 +2,8 @@
 
 #include"../BaseScene/BaseScene.h"
 
+class Player;
+
 class GameScene : public BaseScene
 {
 public:
@@ -17,4 +19,5 @@ private:
 	void UpdateCamera();
 
 	Math::Vector3 m_pos = {};
+	std::weak_ptr<Player> m_player;
 };

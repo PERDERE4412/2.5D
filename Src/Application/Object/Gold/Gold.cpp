@@ -47,8 +47,6 @@ void Gold::DrawSprite()
 
 void Gold::Init()
 {
-	m_objType = ObjType::none;
-
 	// ゴールド
 	m_gold.pTex = AssetManager::Instance().GetTex("gold");
 	m_gold.pos = { -550.0f,-250.0f,0.0f };
