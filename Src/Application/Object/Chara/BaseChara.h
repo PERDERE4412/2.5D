@@ -10,9 +10,7 @@ public:
 	void GenerateDepthMapFromLight()override;	// 描画
 	void DrawLit()override;						// 描画
 
-	void Init()override;
-
-private:
+protected:
 
 	KdSquarePolygon m_polygon;		// 板ポリゴン
 	Math::Vector3 m_pos;			// 座標

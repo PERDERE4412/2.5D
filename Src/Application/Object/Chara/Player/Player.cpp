@@ -1,9 +1,9 @@
 ﻿#include "Player.h"
 
-#include "../../Lib/Utility/Utility.h"
-#include "../../Lib/AssetManager/AssetManager.h"
-#include "../../Data/Status/PlayerStatus.h"
-#include "../../Scene/SceneManager.h"
+#include "../../../Lib/Utility/Utility.h"
+#include "../../../Lib/AssetManager/AssetManager.h"
+#include "../../../Data/Status/PlayerStatus.h"
+#include "../../../Scene/SceneManager.h"
 
 void Player::Update()
 {

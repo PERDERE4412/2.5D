@@ -1,7 +1,7 @@
 ﻿#include "GameScene.h"
 #include"../SceneManager.h"
 
-#include "../../Object/Player/Player.h"
+#include "../../Object/Chara/Player/Player.h"
 #include "../../Object/Map/Map.h"
 #include "../../Object/PlayerHp/PlayerHp.h"
 #include "../../Object/Slot/Slot.h"

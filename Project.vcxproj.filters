@@ -97,9 +97,6 @@
     <Filter Include="Src\Application\Object\Map">
       <UniqueIdentifier>{d7d38c11-fdf5-485f-a462-d40b7f0e2093}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Object\Player">
-      <UniqueIdentifier>{cd79d7af-c3a5-4bb3-8367-d01d0a7c4413}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Object\Slot">
       <UniqueIdentifier>{f88a16c3-d97f-4b43-97e1-49918891f5b4}</UniqueIdentifier>
     </Filter>
@@ -120,6 +117,12 @@
     </Filter>
     <Filter Include="Src\Application\Object\Enemy">
       <UniqueIdentifier>{72e4db32-c77c-44e2-a6b5-79b95646f264}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Chara">
+      <UniqueIdentifier>{df5045c6-9f89-4673-bca4-d9611df50e4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Chara\Player">
+      <UniqueIdentifier>{c7654f0c-6d11-43e8-9d47-e1cbccb491e5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -279,9 +282,6 @@
     <ClInclude Include="Src\Application\Object\Map\Map.h">
       <Filter>Src\Application\Object\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\Player\Player.h">
-      <Filter>Src\Application\Object\Player</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Object\Slot\Slot.h">
       <Filter>Src\Application\Object\Slot</Filter>
     </ClInclude>
@@ -305,6 +305,12 @@
     </ClInclude>
     <ClInclude Include="Src\Application\Object\Enemy\Enemy.h">
       <Filter>Src\Application\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\BaseChara.h">
+      <Filter>Src\Application\Object\Chara</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Player\Player.h">
+      <Filter>Src\Application\Object\Chara\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -440,9 +446,6 @@
     <ClCompile Include="Src\Application\Object\Map\Map.cpp">
       <Filter>Src\Application\Object\Map</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\Player\Player.cpp">
-      <Filter>Src\Application\Object\Player</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Object\Slot\Slot.cpp">
       <Filter>Src\Application\Object\Slot</Filter>
     </ClCompile>
@@ -466,6 +469,12 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Enemy\Enemy.cpp">
       <Filter>Src\Application\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\BaseChara.cpp">
+      <Filter>Src\Application\Object\Chara</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Player\Player.cpp">
+      <Filter>Src\Application\Object\Chara\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
