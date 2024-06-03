@@ -11,30 +11,30 @@ void Animation::CreateAnime(PlayerDir _dir,PlayerState _state, KdSquarePolygon* 
 
 		switch (m_state)
 		{
-		case Animation::PlayerState::Idol:
-			*_polygon = AssetManager::Instance().GetMaterial("playerIdol");
+		case PlayerState::Idle:
+			*_polygon = AssetManager::Instance().GetMaterial("playerIdle");
 			m_cntSpeed = 0.05f;
 			break;
-		case Animation::PlayerState::Run:
+		case PlayerState::Run:
 			*_polygon = AssetManager::Instance().GetMaterial("playerRun");
 			m_cntSpeed = 0.2f;
 			break;
-		case Animation::PlayerState::Roll:
+		case PlayerState::Roll:
 			*_polygon = AssetManager::Instance().GetMaterial("playerRoll");
 			m_cntSpeed = 0.5f;
 			m_bAction = false;
 			break;
-		case Animation::PlayerState::Attack1:
+		case PlayerState::Attack1:
 			*_polygon = AssetManager::Instance().GetMaterial("playerAttack1");
 			m_cntSpeed = 0.5f;
 			m_bAction = false;
 			break;
-		case Animation::PlayerState::Attack2:
+		case PlayerState::Attack2:
 			*_polygon = AssetManager::Instance().GetMaterial("playerAttack2");
 			m_cntSpeed = 0.5f;
 			m_bAction = false;
 			break;
-		case Animation::PlayerState::Attack3:
+		case PlayerState::Attack3:
 			*_polygon = AssetManager::Instance().GetMaterial("playerAttack3");
 			m_cntSpeed = 0.5f;
 			m_bAction = false;

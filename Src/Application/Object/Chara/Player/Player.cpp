@@ -79,7 +79,7 @@ void Player::PostUpdate()
 void Player::Init()
 {
 	// 状態
-	m_state = Animation::PlayerState::Idol;
+	m_state = Animation::PlayerState::Idle;
 
 	m_movePow = 0.2f;
 	m_dir = Animation::PlayerDir::Right;
@@ -100,7 +100,7 @@ void Player::Action()
 		if (Animation::Instance().GetState() != Animation::PlayerState::Roll)m_movePow = 0.3f;
 
 		// 状態を初期化
-		m_state = Animation::PlayerState::Idol;
+		m_state = Animation::PlayerState::Idle;
 
 		// 硬直状態じゃなければ
 		if (!Animation::Instance().GetStiff())

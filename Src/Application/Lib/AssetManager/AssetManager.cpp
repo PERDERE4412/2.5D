@@ -29,8 +29,8 @@ void AssetManager::Init()
 	// ポリゴン
 	// 主人公
 	KdSquarePolygon::PivotType pivot = KdSquarePolygon::PivotType::Center_Bottom;
-	LoadMaterial("playerIdol", "Asset/Textures/Player/idle.png");
-	SetMaterial("playerIdol", 2.8f, pivot, 3, 1);
+	LoadMaterial("playerIdle", "Asset/Textures/Player/idle.png");
+	SetMaterial("playerIdle", 2.8f, pivot, 3, 1);
 
 	LoadMaterial("playerRun", "Asset/Textures/Player/run.png");
 	SetMaterial("playerRun", 2.8f, pivot, 10, 1);
@@ -46,6 +46,10 @@ void AssetManager::Init()
 
 	LoadMaterial("playerAttack3", "Asset/Textures/Player/attack3.png");
 	SetMaterial("playerAttack3", 4.0f, pivot, 11, 1);
+
+	// 敵
+	LoadMaterial("enemyIdle", "Asset/Textures/Enemy/idle.png");
+	SetMaterial("enemyIdle", 10.0f, pivot, 8, 1);
 
 	pivot = KdSquarePolygon::PivotType::Center_Middle;
 	LoadMaterial("back", "Asset/Textures/back.png");

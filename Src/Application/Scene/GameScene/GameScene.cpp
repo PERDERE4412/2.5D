@@ -2,6 +2,7 @@
 #include"../SceneManager.h"
 
 #include "../../Object/Chara/Player/Player.h"
+#include "../../Object/Chara/Enemy/Enemy.h"
 #include "../../Object/Map/Map.h"
 #include "../../Object/PlayerHp/PlayerHp.h"
 #include "../../Object/Slot/Slot.h"
@@ -10,6 +11,8 @@
 #include "../../Object//Back/Back.h"
 #include "../../Object/Wall/Wall.h"
 #include "../../Object/Wall/WallHit.h"
+
+#include "../../Object/Chara/Enemy/EnemyManager.h"
 
 #include "../../Data/Status/PlayerStatus.h"
 
@@ -39,6 +42,11 @@ void GameScene::Init()
 	std::shared_ptr<Player> player = std::make_shared<Player>();
 	AddObject(player);
 	m_player = player;
+	EnemyManager::Instance().SetPlayer(player);
+
+	// エネミー
+	std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
+	AddObject(enemy);
 
 	// 仮マップ
 	std::shared_ptr<Map> map = std::make_shared<Map>();

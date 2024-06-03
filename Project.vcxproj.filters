@@ -115,14 +115,14 @@
     <Filter Include="Src\Application\Object\Wall">
       <UniqueIdentifier>{1f440039-d8ff-4f73-ae4e-f6b32d92d186}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Object\Enemy">
-      <UniqueIdentifier>{72e4db32-c77c-44e2-a6b5-79b95646f264}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Object\Chara">
       <UniqueIdentifier>{df5045c6-9f89-4673-bca4-d9611df50e4e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Src\Application\Object\Chara\Player">
       <UniqueIdentifier>{c7654f0c-6d11-43e8-9d47-e1cbccb491e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Chara\Enemy">
+      <UniqueIdentifier>{02948e43-5843-4ace-9647-c262d13ec7c1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -303,14 +303,17 @@
     <ClInclude Include="Src\Application\Object\Wall\WallHit.h">
       <Filter>Src\Application\Object\Wall</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\Enemy\Enemy.h">
-      <Filter>Src\Application\Object\Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Object\Chara\BaseChara.h">
       <Filter>Src\Application\Object\Chara</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Object\Chara\Player\Player.h">
       <Filter>Src\Application\Object\Chara\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\Enemy.h">
+      <Filter>Src\Application\Object\Chara\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Animation\EnemyAnimation.h">
+      <Filter>Src\Application\Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -467,14 +470,17 @@
     <ClCompile Include="Src\Application\Object\Wall\WallHit.cpp">
       <Filter>Src\Application\Object\Wall</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\Enemy\Enemy.cpp">
-      <Filter>Src\Application\Object\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Object\Chara\BaseChara.cpp">
       <Filter>Src\Application\Object\Chara</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Chara\Player\Player.cpp">
       <Filter>Src\Application\Object\Chara\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\Enemy.cpp">
+      <Filter>Src\Application\Object\Chara\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Animation\EnemyAnimation.cpp">
+      <Filter>Src\Application\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
