@@ -309,11 +309,14 @@
     <ClInclude Include="Src\Application\Object\Chara\Player\Player.h">
       <Filter>Src\Application\Object\Chara\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\Chara\Enemy\Enemy.h">
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\Enemy01.h">
       <Filter>Src\Application\Object\Chara\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Animation\EnemyAnimation.h">
       <Filter>Src\Application\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\EnemyManager.h">
+      <Filter>Src\Application\Object\Chara\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -476,11 +479,14 @@
     <ClCompile Include="Src\Application\Object\Chara\Player\Player.cpp">
       <Filter>Src\Application\Object\Chara\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\Chara\Enemy\Enemy.cpp">
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\Enemy01.cpp">
       <Filter>Src\Application\Object\Chara\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Animation\EnemyAnimation.cpp">
       <Filter>Src\Application\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\EnemyManager.cpp">
+      <Filter>Src\Application\Object\Chara\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
