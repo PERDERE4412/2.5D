@@ -2,7 +2,7 @@
 
 #include "../../../Lib/Utility/Utility.h"
 #include "../../../Lib/AssetManager/AssetManager.h"
-#include "../../../Data/Status/PlayerStatus.h"
+#include "../../../Data/Status/Player/PlayerStatus.h"
 #include "../../../Scene/SceneManager.h"
 
 void Player::Update()

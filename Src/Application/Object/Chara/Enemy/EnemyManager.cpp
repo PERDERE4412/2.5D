@@ -1,7 +1,7 @@
 ﻿#include "EnemyManager.h"
 
 #include "../../../Scene/SceneManager.h"
-#include "Enemy01.h"
+#include "Enemy01/Enemy01.h"
 
 void EnemyManager::Spawn()
 {

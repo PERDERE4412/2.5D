@@ -21,7 +21,7 @@ void Enemy01Animation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _pol
 			break;
 		case State::Attack1:
 			*_polygon = AssetManager::Instance().GetMaterial("enemyAttack1");
-			m_cntSpeed = 0.5f;
+			m_cntSpeed = 0.3f;
 			m_bAction = false;
 			break;
 		case State::Attack2:
@@ -29,6 +29,10 @@ void Enemy01Animation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _pol
 			m_cntSpeed = 0.5f;
 			m_bAction = false;
 			break;
+		case State::Death:
+			*_polygon = AssetManager::Instance().GetMaterial("enemyDeath");
+			m_cntSpeed = 0.2f;
+			m_bAction = false;
 		}
 
 		if (_dir == Dir::Left)_polygon->TurnScale();
@@ -70,13 +74,17 @@ void Enemy01Animation::AnimeCnt()
 			m_bAction = true;
 			m_wait = 10;
 		}
+		else if (m_state == State::Death)
+		{
+			m_bKill = true;
+		}
 		else m_cnt = 0.0f;
 	}
 }
 
 void Enemy01Animation::Init()
 {
-	m_state = State::None;
+	m_state = State::Idle;
 
 	m_cnt = 0.0f;
 	m_cntSpeed = 0.2f;
@@ -85,4 +93,6 @@ void Enemy01Animation::Init()
 	m_bAction = true;
 	m_bStiff = false;
 	m_wait = 0;
+
+	m_bKill = false;
 }

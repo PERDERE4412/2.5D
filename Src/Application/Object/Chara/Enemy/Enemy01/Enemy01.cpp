@@ -1,18 +1,29 @@
 ﻿#include "Enemy01.h"
 
-#include "../../../Lib/AssetManager/AssetManager.h"
-#include "../../../Animation/Enemy01Animation.h"
-#include "../Player/Player.h"
-#include "../../../Scene/GameScene/GameScene.h"
+#include "../../../../Lib/AssetManager/AssetManager.h"
+#include "../../../../Animation/Enemy01Animation.h"
+#include "../../Player/Player.h"
+#include "../../../../Scene/GameScene/GameScene.h"
 
 void Enemy01::Update()
 {
+	// デバッグ用
+	if (GetAsyncKeyState('P') & 0x8000)m_status->Damage(5);
+
+	if (m_status->GetValue("HP") <= 0)m_state = Enemy01Animation::State::Death;
+
 	if (!m_player.expired())m_playerPos = m_player.lock()->GetPos();
 	else return;
 
-	if (m_anim->GetAction())Move();
-	
+	// デバッグ用
+	if (m_state != Enemy01Animation::State::Death)
+	{
+		if (m_anim->GetAction())Move();
+	}
+
 	m_anim->CreateAnime(m_dir, m_state, &m_polygon);
+
+	if (m_anim->GetKill())m_isExpired = true;
 }
 
 void Enemy01::PostUpdate()
@@ -30,7 +41,10 @@ void Enemy01::Init()
 
 	m_dir = Enemy01Animation::Dir::Right;
 
+	m_status = std::make_shared<Enemy01Status>();
+
 	m_polygon = AssetManager::Instance().GetMaterial("enemyIdle");
+	m_polygon.SetUVRect(0);
 
 	m_movePow = 0.15f;
 
@@ -54,6 +68,23 @@ void Enemy01::Move()
 		m_vec.Normalize();
 		m_vec *= m_movePow;
 		m_pos += m_vec;
+
+		if (m_vec.x > 0.0f&& m_vec.z < 0.0f)
+		{
+			if (m_dir == Enemy01Animation::Dir::Left)
+			{
+				m_dir = Enemy01Animation::Dir::Right;
+				m_polygon.TurnScale();
+			}
+		}
+		else if (m_vec.x < 0.0f&& m_vec.z > 0.0f)
+		{
+			if (m_dir == Enemy01Animation::Dir::Right)
+			{
+				m_dir = Enemy01Animation::Dir::Left;
+				m_polygon.TurnScale();
+			}
+		}
 	}
 	else if (dist <= 5.0f)
 	{
@@ -61,17 +92,6 @@ void Enemy01::Move()
 	}
 
 	if (m_attackWait > 0)m_attackWait--;
-
-	if (m_dir == Enemy01Animation::Dir::Right)
-	{
-		m_dir = Enemy01Animation::Dir::Left;
-		m_polygon.TurnScale();
-	}
-	if (m_dir == Enemy01Animation::Dir::Left)
-	{
-		m_dir = Enemy01Animation::Dir::Right;
-		m_polygon.TurnScale();
-	}
 
 	if (m_vec != Math::Vector3::Zero && m_state != Enemy01Animation::State::Attack1)
 	{

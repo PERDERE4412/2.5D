@@ -1,7 +1,7 @@
 ﻿#include "LevelBar.h"
 
-#include "../../Lib/AssetManager/AssetManager.h"
-#include "../../Data/Status/PlayerStatus.h"
+#include "../../../Lib/AssetManager/AssetManager.h"
+#include "../../../Data/Status/Player/PlayerStatus.h"
 
 void LevelBar::Update()
 {
@@ -12,14 +12,14 @@ void LevelBar::Update()
 	int digit[NUM] = { 0,0 };
 	if (level > 9)
 	{
-		digit[0]=level/10;
-		digit[1]=level%10;
+		digit[0] = level / 10;
+		digit[1] = level % 10;
 	}
 	else
 	{
 		digit[1] = level;
 	}
-	for (int i = 0; i < NUM; i++)m_level[i].rect = { digit[i]*8,0,8,8};
+	for (int i = 0; i < NUM; i++)m_level[i].rect = { digit[i] * 8,0,8,8 };
 
 	// 経験値バー
 	// 経験値・次のレベルまでの経験値を取得
@@ -62,7 +62,7 @@ void LevelBar::Init()
 	for (int i = 0; i < NUM; i++)
 	{
 		m_level[i].pTex = AssetManager::Instance().GetTex("number");
-		m_level[i].pos = { -550.0f+12.0f*i,-160.0f,0.0f };
+		m_level[i].pos = { -550.0f + 12.0f * i,-160.0f,0.0f };
 		m_level[i].mat = Math::Matrix::CreateTranslation(m_level[i].pos);
 		m_level[i].width = 8;
 		m_level[i].height = 8;

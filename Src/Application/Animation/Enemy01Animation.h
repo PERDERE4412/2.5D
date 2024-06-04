@@ -10,11 +10,11 @@ public:
 	// エネミーの状態
 	enum class State
 	{
-		None,
 		Idle,
 		Run,
 		Attack1,
 		Attack2,
+		Death,
 	};
 
 	enum class Dir
@@ -27,6 +27,8 @@ public:
 
 	bool GetAction() { return m_bAction; }
 	bool GetStiff() { return m_bStiff; }
+
+	bool GetKill() { return m_bKill; }
 
 	// アニメーション作成
 	void CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polygon);
@@ -45,4 +47,6 @@ private:
 	bool m_bAction;				// アクション可能か？(true:可能 false:不可能)
 	bool m_bStiff;				// 硬直中か？(true:はい false:いいえ)
 	int m_wait;					// 硬直時間
+
+	bool m_bKill;				// 殺す
 };

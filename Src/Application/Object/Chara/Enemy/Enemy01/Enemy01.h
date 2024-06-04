@@ -1,8 +1,9 @@
 ﻿#pragma once
 
-#include "../../../Animation/Enemy01Animation.h"
+#include "../../../../Animation/Enemy01Animation.h"
+#include "../../../../Data/Status/Enemy/Enemy01/Enemy01Status.h"
 
-#include "../BaseChara.h"
+#include "../../BaseChara.h"
 
 class Player;
 
@@ -29,6 +30,8 @@ private:
 	Math::Vector3 m_playerPos;
 
 	std::shared_ptr<Enemy01Animation> m_anim;
+
+	std::shared_ptr<Enemy01Status> m_status;
 
 	Enemy01Animation::State m_state;	// 状態
 	Enemy01Animation::Dir m_dir;		// 向き

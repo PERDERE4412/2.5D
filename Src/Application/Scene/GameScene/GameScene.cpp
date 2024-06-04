@@ -3,10 +3,10 @@
 
 #include "../../Object/Chara/Player/Player.h"
 #include "../../Object/Map/Map.h"
-#include "../../Object/PlayerHp/PlayerHp.h"
-#include "../../Object/Slot/Slot.h"
-#include "../../Object/Gold/Gold.h"
-#include "../../Object/LevelBar/LevelBar.h"
+#include "../../Object/UI/PlayerHp/PlayerHp.h"
+#include "../../Object/UI/Slot/Slot.h"
+#include "../../Object/UI/Gold/Gold.h"
+#include "../../Object/UI/LevelBar/LevelBar.h"
 #include "../../Object//Back/Back.h"
 #include "../../Object/Wall/Wall.h"
 #include "../../Object/Wall/WallHit.h"
@@ -17,6 +17,7 @@ void GameScene::Event()
 {
 	UpdateCamera();
 
+	// デバッグ用
 	static bool a = false;
 	if (GetAsyncKeyState('U') & 0x8000)
 	{
