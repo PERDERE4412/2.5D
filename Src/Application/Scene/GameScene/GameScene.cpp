@@ -13,8 +13,6 @@
 
 #include "../../Object/Chara/Enemy/EnemyManager.h"
 
-#include "../../Data/Status/PlayerStatus.h"
-
 void GameScene::Event()
 {
 	UpdateCamera();
@@ -25,7 +23,7 @@ void GameScene::Event()
 		if (!a)
 		{
 			a = true;
-			PlayerStatus::Instance().SetExp(3);
+			EnemyManager::Instance().Spawn();
 		}
 	}
 	else a = false;

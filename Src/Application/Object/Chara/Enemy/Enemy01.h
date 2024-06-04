@@ -16,6 +16,8 @@ public:
 	void Update()override;
 	void PostUpdate()override;
 
+	void SetPlayer(std::weak_ptr<Player> _player) { m_player = _player; }
+
 private:
 
 	void Init()override;
@@ -24,9 +26,10 @@ private:
 	void Attack();
 
 	std::weak_ptr<Player> m_player;
+	Math::Vector3 m_playerPos;
 
 	EnemyAnimation::EnemyState m_state;	// 状態
 	EnemyAnimation::EnemyDir m_dir;		// 向き
 
-
+	int m_attackWait;					// 攻撃のクールタイム
 };

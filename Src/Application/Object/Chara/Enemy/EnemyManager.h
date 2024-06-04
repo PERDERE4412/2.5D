@@ -6,10 +6,10 @@ class EnemyManager
 {
 public:
 
-	void Update();
-
 	void SetPlayer(std::shared_ptr<Player> _player) { m_player = _player; }
-	std::weak_ptr<Player> GetPlayer() { return m_player; }
+	//std::weak_ptr<Player> GetPlayer() { return m_player; }
+
+	void Spawn();
 
 private:
 
@@ -21,7 +21,7 @@ private:
 
 private:
 
-	EnemyManager() { Init(); }
+	EnemyManager() { /*Init();*/ }
 	~EnemyManager() {}
 
 public:

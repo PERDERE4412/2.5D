@@ -58,20 +58,19 @@ void EnemyAnimation::AnimeCnt()
 
 	if (m_cnt >= m_maxAnime)	// アニメーションが１週したら
 	{
-		m_cnt = 0.0f;
-		
 		if (m_state == EnemyState::Attack1)
 		{
 			m_bStiff = true;
 			m_bAction = true;
 			m_wait = 10;
 		}
-		if (m_state == EnemyState::Attack2)
+		else if (m_state == EnemyState::Attack2)
 		{
 			m_bStiff = true;
 			m_bAction = true;
 			m_wait = 10;
 		}
+		else m_cnt = 0.0f;
 	}
 }
 

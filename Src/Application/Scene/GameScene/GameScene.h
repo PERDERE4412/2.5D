@@ -11,6 +11,8 @@ public:
 	GameScene() { Init(); }
 	~GameScene() {}
 
+	std::weak_ptr<Player> GetPlayer() { return m_player; }
+
 private:
 
 	void Event() override;

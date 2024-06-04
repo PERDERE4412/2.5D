@@ -51,6 +51,12 @@ void AssetManager::Init()
 	LoadMaterial("enemyIdle", "Asset/Textures/Enemy/idle.png");
 	SetMaterial("enemyIdle", 10.0f, pivot, 8, 1);
 
+	LoadMaterial("enemyRun", "Asset/Textures/Enemy/run.png");
+	SetMaterial("enemyRun", 10.0f, pivot, 8, 1);
+
+	LoadMaterial("enemyAttack1", "Asset/Textures/Enemy/attack1.png");
+	SetMaterial("enemyAttack1", 10.0f, pivot, 13, 1);
+
 	pivot = KdSquarePolygon::PivotType::Center_Middle;
 	LoadMaterial("back", "Asset/Textures/back.png");
 	SetMaterial("back", 1.0f, pivot, 1, 1);
