@@ -147,7 +147,7 @@
     <ClInclude Include="..\Library\tinygltf\stb_image_write.h" />
     <ClInclude Include="..\Library\tinygltf\tiny_gltf.h" />
     <ClInclude Include="Src\Application\Animation\Animation.h" />
-    <ClInclude Include="Src\Application\Animation\EnemyAnimation.h" />
+    <ClInclude Include="Src\Application\Animation\Enemy01Animation.h" />
     <ClInclude Include="Src\Application\Data\Item\Item.h" />
     <ClInclude Include="Src\Application\Data\Skill\Skill.h" />
     <ClInclude Include="Src\Application\Data\Status\PlayerStatus.h" />
@@ -208,7 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Application\Animation\Animation.cpp" />
-    <ClCompile Include="Src\Application\Animation\EnemyAnimation.cpp" />
+    <ClCompile Include="Src\Application\Animation\Enemy01Animation.cpp" />
     <ClCompile Include="Src\Application\Data\Item\Item.cpp" />
     <ClCompile Include="Src\Application\Data\Skill\Skill.cpp" />
     <ClCompile Include="Src\Application\Data\Status\PlayerStatus.cpp" />

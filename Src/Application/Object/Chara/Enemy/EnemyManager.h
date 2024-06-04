@@ -21,7 +21,7 @@ private:
 
 private:
 
-	EnemyManager() { /*Init();*/ }
+	EnemyManager() { Init(); }
 	~EnemyManager() {}
 
 public:

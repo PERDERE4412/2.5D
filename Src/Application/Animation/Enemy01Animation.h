@@ -1,11 +1,14 @@
 ﻿#pragma once
 
-class EnemyAnimation
+class Enemy01Animation
 {
 public:
 
+	Enemy01Animation() { Init(); }		// コンストラクタ
+	~Enemy01Animation() {}				// デストラクタ
+
 	// エネミーの状態
-	enum class EnemyState
+	enum class State
 	{
 		None,
 		Idle,
@@ -14,19 +17,19 @@ public:
 		Attack2,
 	};
 
-	enum class EnemyDir
+	enum class Dir
 	{
 		Right,
 		Left
 	};
 
-	EnemyState GetState() { return m_state; }
+	State GetState() { return m_state; }
 
 	bool GetAction() { return m_bAction; }
 	bool GetStiff() { return m_bStiff; }
 
 	// アニメーション作成
-	void CreateAnime(EnemyDir _dir, EnemyState _state, KdSquarePolygon* _polygon);
+	void CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polygon);
 
 private:
 
@@ -34,7 +37,7 @@ private:
 
 	void AnimeCnt();
 
-	EnemyState m_state;			// プレイヤーの状態
+	State m_state;				// プレイヤーの状態
 	float m_cnt;				// アニメのカウント
 	float m_cntSpeed;			// アニメのスピード
 	int m_maxAnime;				// 最大のアニメ数
@@ -42,18 +45,4 @@ private:
 	bool m_bAction;				// アクション可能か？(true:可能 false:不可能)
 	bool m_bStiff;				// 硬直中か？(true:はい false:いいえ)
 	int m_wait;					// 硬直時間
-
-private:
-
-	EnemyAnimation() { Init(); }		// コンストラクタ
-	~EnemyAnimation() {}				// デストラクタ
-
-public:
-
-	// シングルトンパターン
-	static EnemyAnimation& Instance()
-	{
-		static EnemyAnimation instance;
-		return instance;
-	}
 };

@@ -1,7 +1,7 @@
 ﻿#include "Enemy01.h"
 
 #include "../../../Lib/AssetManager/AssetManager.h"
-#include "../../../Animation/EnemyAnimation.h"
+#include "../../../Animation/Enemy01Animation.h"
 #include "../Player/Player.h"
 #include "../../../Scene/GameScene/GameScene.h"
 
@@ -10,9 +10,9 @@ void Enemy01::Update()
 	if (!m_player.expired())m_playerPos = m_player.lock()->GetPos();
 	else return;
 
-	if (EnemyAnimation::Instance().GetAction())Move();
-
-	EnemyAnimation::Instance().CreateAnime(m_dir, m_state, &m_polygon);
+	if (m_anim->GetAction())Move();
+	
+	m_anim->CreateAnime(m_dir, m_state, &m_polygon);
 }
 
 void Enemy01::PostUpdate()
@@ -24,9 +24,11 @@ void Enemy01::PostUpdate()
 
 void Enemy01::Init()
 {
-	m_state = EnemyAnimation::EnemyState::Idle;
+	m_anim = std::make_shared<Enemy01Animation>();
 
-	m_dir = EnemyAnimation::EnemyDir::Right;
+	m_state = Enemy01Animation::State::Idle;
+
+	m_dir = Enemy01Animation::Dir::Right;
 
 	m_polygon = AssetManager::Instance().GetMaterial("enemyIdle");
 
@@ -37,7 +39,7 @@ void Enemy01::Init()
 
 void Enemy01::Move()
 {
-	m_state = EnemyAnimation::EnemyState::Idle;
+	m_state = Enemy01Animation::State::Idle;
 
 	m_movePow = 0.15f;
 
@@ -60,20 +62,20 @@ void Enemy01::Move()
 
 	if (m_attackWait > 0)m_attackWait--;
 
-	if (m_dir == EnemyAnimation::EnemyDir::Right)
+	if (m_dir == Enemy01Animation::Dir::Right)
 	{
-		m_dir = EnemyAnimation::EnemyDir::Left;
+		m_dir = Enemy01Animation::Dir::Left;
 		m_polygon.TurnScale();
 	}
-	if (m_dir == EnemyAnimation::EnemyDir::Left)
+	if (m_dir == Enemy01Animation::Dir::Left)
 	{
-		m_dir = EnemyAnimation::EnemyDir::Right;
+		m_dir = Enemy01Animation::Dir::Right;
 		m_polygon.TurnScale();
 	}
 
-	if (m_vec != Math::Vector3::Zero && m_state != EnemyAnimation::EnemyState::Attack1)
+	if (m_vec != Math::Vector3::Zero && m_state != Enemy01Animation::State::Attack1)
 	{
-		m_state = EnemyAnimation::EnemyState::Run;
+		m_state = Enemy01Animation::State::Run;
 	}
 }
 
@@ -83,7 +85,7 @@ void Enemy01::Attack()
 
 	if (m_attackWait <= 0)
 	{
-		m_state = EnemyAnimation::EnemyState::Attack1;
+		m_state = Enemy01Animation::State::Attack1;
 		m_attackWait = 120;
 	}
 }

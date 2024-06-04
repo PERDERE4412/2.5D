@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../../../Animation/EnemyAnimation.h"
+#include "../../../Animation/Enemy01Animation.h"
 
 #include "../BaseChara.h"
 
@@ -28,8 +28,10 @@ private:
 	std::weak_ptr<Player> m_player;
 	Math::Vector3 m_playerPos;
 
-	EnemyAnimation::EnemyState m_state;	// 状態
-	EnemyAnimation::EnemyDir m_dir;		// 向き
+	std::shared_ptr<Enemy01Animation> m_anim;
+
+	Enemy01Animation::State m_state;	// 状態
+	Enemy01Animation::Dir m_dir;		// 向き
 
 	int m_attackWait;					// 攻撃のクールタイム
 };

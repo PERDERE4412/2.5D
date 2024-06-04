@@ -1,8 +1,8 @@
-﻿#include "EnemyAnimation.h"
+﻿#include "Enemy01Animation.h"
 
 #include "../Lib/AssetManager/AssetManager.h"
 
-void EnemyAnimation::CreateAnime(EnemyDir _dir, EnemyState _state, KdSquarePolygon* _polygon)
+void Enemy01Animation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polygon)
 {
 	// 現在の状態と異なっていたら
 	if (m_state != _state)
@@ -11,27 +11,27 @@ void EnemyAnimation::CreateAnime(EnemyDir _dir, EnemyState _state, KdSquarePolyg
 
 		switch (m_state)
 		{
-		case EnemyState::Idle:
+		case State::Idle:
 			*_polygon = AssetManager::Instance().GetMaterial("enemyIdle");
 			m_cntSpeed = 0.05f;
 			break;
-		case EnemyState::Run:
+		case State::Run:
 			*_polygon = AssetManager::Instance().GetMaterial("enemyRun");
 			m_cntSpeed = 0.2f;
 			break;
-		case EnemyState::Attack1:
+		case State::Attack1:
 			*_polygon = AssetManager::Instance().GetMaterial("enemyAttack1");
 			m_cntSpeed = 0.5f;
 			m_bAction = false;
 			break;
-		case EnemyState::Attack2:
+		case State::Attack2:
 			*_polygon = AssetManager::Instance().GetMaterial("enemyAttack2");
 			m_cntSpeed = 0.5f;
 			m_bAction = false;
 			break;
 		}
 
-		if (_dir == EnemyDir::Left)_polygon->TurnScale();
+		if (_dir == Dir::Left)_polygon->TurnScale();
 
 		m_maxAnime = _polygon->GetSplitX();
 		m_cnt = 0.0f;
@@ -42,7 +42,7 @@ void EnemyAnimation::CreateAnime(EnemyDir _dir, EnemyState _state, KdSquarePolyg
 	_polygon->SetUVRect((int)m_cnt);
 }
 
-void EnemyAnimation::AnimeCnt()
+void Enemy01Animation::AnimeCnt()
 {
 	if (m_bStiff)
 	{
@@ -58,13 +58,13 @@ void EnemyAnimation::AnimeCnt()
 
 	if (m_cnt >= m_maxAnime)	// アニメーションが１週したら
 	{
-		if (m_state == EnemyState::Attack1)
+		if (m_state == State::Attack1)
 		{
 			m_bStiff = true;
 			m_bAction = true;
 			m_wait = 10;
 		}
-		else if (m_state == EnemyState::Attack2)
+		else if (m_state == State::Attack2)
 		{
 			m_bStiff = true;
 			m_bAction = true;
@@ -74,9 +74,9 @@ void EnemyAnimation::AnimeCnt()
 	}
 }
 
-void EnemyAnimation::Init()
+void Enemy01Animation::Init()
 {
-	m_state = EnemyState::None;
+	m_state = State::None;
 
 	m_cnt = 0.0f;
 	m_cntSpeed = 0.2f;

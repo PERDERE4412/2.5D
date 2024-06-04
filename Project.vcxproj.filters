@@ -312,7 +312,7 @@
     <ClInclude Include="Src\Application\Object\Chara\Enemy\Enemy01.h">
       <Filter>Src\Application\Object\Chara\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Animation\EnemyAnimation.h">
+    <ClInclude Include="Src\Application\Animation\Enemy01Animation.h">
       <Filter>Src\Application\Animation</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Object\Chara\Enemy\EnemyManager.h">
@@ -482,7 +482,7 @@
     <ClCompile Include="Src\Application\Object\Chara\Enemy\Enemy01.cpp">
       <Filter>Src\Application\Object\Chara\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Animation\EnemyAnimation.cpp">
+    <ClCompile Include="Src\Application\Animation\Enemy01Animation.cpp">
       <Filter>Src\Application\Animation</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Chara\Enemy\EnemyManager.cpp">
