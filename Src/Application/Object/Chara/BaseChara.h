@@ -16,5 +16,5 @@ protected:
 	Math::Vector3 m_pos;			// 座標
 	Math::Vector3 m_vec;			// 方向ベクトル
 
-	float m_movePow;				// 移動量
+	float m_movePow=0.0f;			// 移動量
 };

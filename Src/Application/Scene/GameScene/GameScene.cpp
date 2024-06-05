@@ -33,7 +33,7 @@ void GameScene::Event()
 void GameScene::Init()
 {
 	// カメラ
-	m_camera = std::make_unique<KdCamera>();
+	m_camera = std::make_shared<KdCamera>();
 	m_pos = { -17.0f,25.0f,-17.0f };
 
 	// プレイヤー

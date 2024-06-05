@@ -28,13 +28,16 @@ public :
 		m_objList.push_back(_obj);
 	}
 
+	// カメラ取得
+	std::shared_ptr<KdCamera> GetCamera() { return m_camera; }
+
 protected :
 
 	// 継承先シーンで必要ならオーバーライドする
 	virtual void Event();
 	virtual void Init();
 
-	std::unique_ptr<KdCamera> m_camera = nullptr;
+	std::shared_ptr<KdCamera> m_camera = nullptr;
 
 	// 全オブジェクトのアドレスをリストで管理
 	std::list<std::shared_ptr<KdGameObject>> m_objList;

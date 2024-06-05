@@ -37,7 +37,7 @@ void Enemy01::Update()
 	if (m_anim->GetKill())
 	{
 		std::shared_ptr<DropGold> drop = std::make_shared<DropGold>();
-		drop->Set(m_pos, 10);
+		drop->Set(m_player,m_pos, 10);
 		SceneManager::Instance().AddObject(drop);
 		m_isExpired = true;
 	}
@@ -45,6 +45,71 @@ void Enemy01::Update()
 
 void Enemy01::PostUpdate()
 {
+	// 敵の当たり判定を可視化
+	m_pDebugWire->AddDebugSphere(m_pos + Math::Vector3(0, 3.0f, 0), 2.0f, kGreenColor);
+
+	//========================================
+	// 球判定
+	//========================================
+
+	// 球判定用の変数を作成
+	KdCollider::SphereInfo sphere;
+
+	// 球の中心点を設定
+	Math::Vector3 pos = { 0.0f,0.5f,0.0f };
+	sphere.m_sphere.Center = m_pos + pos;
+
+	// 球の半径を設定
+	sphere.m_sphere.Radius = 0.3f;
+
+	// 当たり判定をしたいタイプを設定
+	sphere.m_type = KdCollider::TypeGround | KdCollider::TypeBump;
+
+	//球に当たったオブジェクトの状態を格納
+	std::list<KdCollider::CollisionResult> retSphereList;
+
+	// 当たり判定(sphere)
+	for (auto& obj : SceneManager::Instance().GetObjList())
+	{
+		// 自分だったら処理を飛ばす
+		if (obj.get() == this)
+		{
+			continue;
+		}
+
+		obj->Intersects(sphere, &retSphereList);
+	}
+
+	// 球に当たったリストから一番近い
+	float maxOverLap = 0;		// はみ出たレイの長さ
+	Math::Vector3 hitDir;		// 当たった方法
+	bool isHit = false;			// 当たっていたらtrue
+
+	for (auto& ret : retSphereList)
+	{
+		// 球にめり込んで、オーバーした長さが一番長いものを探す
+		if (maxOverLap < ret.m_overlapDistance)
+		{
+			maxOverLap = ret.m_overlapDistance;
+			hitDir = ret.m_hitDir;
+			isHit = true;
+		}
+	}
+
+	if (isHit)
+	{
+		// zへの押し返し無効
+		hitDir.z = 0;
+
+		// 正規化(長さを1にする)
+		// 方向は絶対長さが1
+		hitDir.Normalize();
+
+		// 地面に当たっている
+		m_pos += hitDir * maxOverLap;
+	}
+
+	// 行列作成
 	Math::Matrix rotY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(45));
 	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
 	m_world = rotX * rotY * Math::Matrix::CreateTranslation(m_pos);
@@ -66,6 +131,13 @@ void Enemy01::Init()
 	m_movePow = 0.15f;
 
 	m_attackWait = 0;
+
+	// デバッグ用
+	m_pDebugWire = std::make_unique<KdDebugWireFrame>();
+
+	m_pCollider = std::make_unique<KdCollider>();
+	m_pCollider->RegisterCollisionShape("Enemy01Collision", { 0.0f,3.0f,0.0f },0.5f, KdCollider::TypeBump);
+	//m_pCollider->RegisterCollisionShape("Enemy01Collision",KdCollider::TypeBump);
 }
 
 void Enemy01::Move()

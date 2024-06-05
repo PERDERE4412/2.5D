@@ -27,7 +27,7 @@ void Player::PostUpdate()
 	// 球の半径を設定
 	sphere.m_sphere.Radius = 2.0f;
 	// 当たり判定をしたいタイプを設定
-	sphere.m_type = KdCollider::TypeGround;
+	sphere.m_type = KdCollider::TypeGround | KdCollider::TypeBump;
 
 	//デバッグ表示
 	Math::Color gyro = { 1,1,0,1 };

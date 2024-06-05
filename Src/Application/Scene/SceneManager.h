@@ -34,6 +34,9 @@ public :
 	// 現在のシーンにオブジェクトを追加
 	void AddObject(const std::shared_ptr<KdGameObject>& _obj);
 
+	// カメラ情報を取得
+	std::shared_ptr<KdCamera> GetCamera();
+
 private :
 
 	// マネージャーの初期化

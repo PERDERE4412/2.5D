@@ -62,7 +62,7 @@ void AssetManager::Init()
 	
 	// アイテム
 	LoadMaterial("drop", "Asset/Textures/drop.png");
-	SetMaterial("drop", 3.0f, pivot, 1, 1);
+	SetMaterial("drop", 2.0f, pivot, 1, 1);
 
 	// 背景
 	pivot = KdSquarePolygon::PivotType::Center_Middle;
@@ -78,6 +78,7 @@ void AssetManager::Init()
 	LoadTex("number", "Asset/Textures/number.png");
 	LoadTex("levelFrame", "Asset/Textures/levelFrame.png");
 	LoadTex("levelBar", "Asset/Textures/levelBar.png");
+	LoadTex("get", "Asset/Textures/get.png");
 }
 
 void AssetManager::SetMaterial(std::string _name, float _scale, KdSquarePolygon::PivotType _pivot, int _splitX, int _splitY)
