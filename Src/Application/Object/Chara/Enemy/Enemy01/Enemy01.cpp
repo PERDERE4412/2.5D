@@ -4,26 +4,43 @@
 #include "../../../../Animation/Enemy01Animation.h"
 #include "../../Player/Player.h"
 #include "../../../../Scene/GameScene/GameScene.h"
+#include "../../../../Data/Status/Player/PlayerStatus.h"
+#include "../../../DropGold/DropGold.h"
+#include "../../../../Scene/SceneManager.h"
 
 void Enemy01::Update()
 {
 	// デバッグ用
 	if (GetAsyncKeyState('P') & 0x8000)m_status->Damage(5);
 
-	if (m_status->GetValue("HP") <= 0)m_state = Enemy01Animation::State::Death;
+	if (m_status->GetValue("HP") <= 0)
+	{
+		if (m_state != Enemy01Animation::State::Death)
+		{
+			PlayerStatus::Instance().SetExp(10);
+			m_state = Enemy01Animation::State::Death;
+		}
+	}
 
 	if (!m_player.expired())m_playerPos = m_player.lock()->GetPos();
 	else return;
 
-	// デバッグ用
 	if (m_state != Enemy01Animation::State::Death)
 	{
 		if (m_anim->GetAction())Move();
 	}
 
+	// アニメーション作成
 	m_anim->CreateAnime(m_dir, m_state, &m_polygon);
 
-	if (m_anim->GetKill())m_isExpired = true;
+	// 消滅
+	if (m_anim->GetKill())
+	{
+		std::shared_ptr<DropGold> drop = std::make_shared<DropGold>();
+		drop->Set(m_pos, 10);
+		SceneManager::Instance().AddObject(drop);
+		m_isExpired = true;
+	}
 }
 
 void Enemy01::PostUpdate()

@@ -139,6 +139,9 @@
     <Filter Include="Src\Application\Data\Status\Enemy\Enemy01">
       <UniqueIdentifier>{4584ffa1-e356-470f-a7c8-7e054d8ad41d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Object\DropGold">
+      <UniqueIdentifier>{def7de0e-c30f-4408-9f21-d2d1b7955f21}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -339,6 +342,9 @@
     <ClInclude Include="Src\Application\Data\Status\Enemy\Enemy01\Enemy01Status.h">
       <Filter>Src\Application\Data\Status\Enemy\Enemy01</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Object\DropGold\DropGold.h">
+      <Filter>Src\Application\Object\DropGold</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -514,6 +520,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Data\Status\Enemy\Enemy01\Enemy01Status.cpp">
       <Filter>Src\Application\Data\Status\Enemy\Enemy01</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\DropGold\DropGold.cpp">
+      <Filter>Src\Application\Object\DropGold</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

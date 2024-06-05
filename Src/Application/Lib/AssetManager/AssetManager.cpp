@@ -59,11 +59,16 @@ void AssetManager::Init()
 
 	LoadMaterial("enemyDeath", "Asset/Textures/Enemy/death.png");
 	SetMaterial("enemyDeath", 10.0f, pivot, 16, 1);
+	
+	// アイテム
+	LoadMaterial("drop", "Asset/Textures/drop.png");
+	SetMaterial("drop", 3.0f, pivot, 1, 1);
 
+	// 背景
 	pivot = KdSquarePolygon::PivotType::Center_Middle;
 	LoadMaterial("back", "Asset/Textures/back.png");
 	SetMaterial("back", 1.0f, pivot, 1, 1);
-
+	
 	// モデル
 	LoadModel("map", "Asset/Models/floor.gltf");
 	LoadModel("wall", "Asset/Models/wall.gltf");
