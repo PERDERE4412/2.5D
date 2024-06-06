@@ -142,6 +142,9 @@
     <Filter Include="Src\Application\Object\DropGold">
       <UniqueIdentifier>{def7de0e-c30f-4408-9f21-d2d1b7955f21}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Object\UI\Action">
+      <UniqueIdentifier>{1ddf5b33-0cff-4b43-8be3-6f796f46a1d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -345,6 +348,9 @@
     <ClInclude Include="Src\Application\Object\DropGold\DropGold.h">
       <Filter>Src\Application\Object\DropGold</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Object\UI\ActionManager\ActionManager.h">
+      <Filter>Src\Application\Object\UI\Action</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -523,6 +529,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\DropGold\DropGold.cpp">
       <Filter>Src\Application\Object\DropGold</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\UI\ActionManager\ActionManager.cpp">
+      <Filter>Src\Application\Object\UI\Action</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

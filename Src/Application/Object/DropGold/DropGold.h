@@ -36,4 +36,6 @@ private:
 	std::weak_ptr<Player> m_player;	// プレイヤー情報
 
 	int m_gold;						// 取得するゴールド
+
+	bool m_bGet;
 };

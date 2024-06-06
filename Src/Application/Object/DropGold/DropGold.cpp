@@ -1,5 +1,6 @@
 ﻿#include "DropGold.h"
 
+#include "../../Object/UI/ActionManager/ActionManager.h"
 #include "../../Scene/SceneManager.h"
 #include "../../Lib/AssetManager/AssetManager.h"
 #include "../Chara/Player/Player.h"
@@ -14,12 +15,38 @@ void DropGold::Update()
 
 		float dist = Math::Vector3::Distance(playerPos, m_pos);
 
+		// 範囲内なら
 		if (dist < 5.0f)
 		{
+			// UIを表示
+			if (!ActionManager::Instance().GetAction())
+			{
+				ActionManager::Instance().OnAction();
+				m_bGet = true;
+			}
+
+			// 取得
 			if (GetAsyncKeyState('F') & 0x8000)
 			{
-				Item::Instance().ChangeGold(m_gold);
-				m_isExpired = true;		// 消滅
+				// UIが表示されてる && キーが押されていなければ
+				if (m_bGet && !ActionManager::Instance().GetKey())
+				{
+					Item::Instance().ChangeGold(m_gold);
+					ActionManager::Instance().OnKey();
+					ActionManager::Instance().OffAction();
+					m_isExpired = true;		// 消滅
+				}
+			}
+			// 長押し制御
+			else ActionManager::Instance().OffKey();
+		}
+		// 範囲外なら
+		else
+		{
+			if (m_bGet)
+			{
+				m_bGet = false;
+				ActionManager::Instance().OffAction();
 			}
 		}
 	}
@@ -62,6 +89,8 @@ void DropGold::DrawBright()
 
 void DropGold::DrawSprite()
 {
+	if (!m_bGet)return;
+
 	Math::Vector3 pos = Math::Vector3::Zero;
 	if (!m_camera.expired())
 	{
@@ -90,4 +119,6 @@ void DropGold::Init()
 	m_gold = 0;
 	m_color = { 1.0f,1.0f,1.0f,1.0f };
 	m_addAlpha = 0.015f;
+
+	m_bGet = false;
 }
