@@ -11,9 +11,9 @@ void DropGold::Update()
 	if (!m_player.expired())
 	{
 		Math::Vector3 playerPos = m_player.lock()->GetPos();
-	
+
 		float dist = Math::Vector3::Distance(playerPos, m_pos);
-		
+
 		if (dist < 5.0f)
 		{
 			if (GetAsyncKeyState('F') & 0x8000)
@@ -47,7 +47,7 @@ void DropGold::PostUpdate()
 
 void DropGold::GenerateDepthMapFromLight()
 {
-	KdShaderManager::Instance().m_StandardShader.DrawPolygon(m_polygon, m_world,m_color);
+	KdShaderManager::Instance().m_StandardShader.DrawPolygon(m_polygon, m_world, m_color);
 }
 
 void DropGold::DrawLit()
@@ -66,13 +66,12 @@ void DropGold::DrawSprite()
 	if (!m_camera.expired())
 	{
 		m_camera.lock()->ConvertWorldToScreenDetail(GetPos(), pos);
-		pos.y += 100.0f;
 	}
 	Math::Rectangle rect = { 0,0,(int)m_pTex->GetWidth(),(int)m_pTex->GetHeight() };
-	KdShaderManager::Instance().m_spriteShader.DrawTex(m_pTex, 10,10,128, 40, &rect);
+	KdShaderManager::Instance().m_spriteShader.DrawTex(m_pTex, pos.x, pos.y, 128, 40, &rect);
 }
 
-void DropGold::Set(std::weak_ptr<Player> _player,Math::Vector3 _pos, int _gold)
+void DropGold::Set(std::weak_ptr<Player> _player, Math::Vector3 _pos, int _gold)
 {
 	m_player = _player;
 	m_pos = _pos;
@@ -86,7 +85,7 @@ void DropGold::Init()
 	m_polygon = AssetManager::Instance().GetMaterial("drop");
 
 	m_pTex = AssetManager::Instance().GetTex("get");
-	
+
 	m_pos = {};
 	m_gold = 0;
 	m_color = { 1.0f,1.0f,1.0f,1.0f };

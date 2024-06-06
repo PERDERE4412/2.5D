@@ -13,7 +13,7 @@ public:
 
 private:
 
-	KdTexture m_tex;			// 画像データ
-	Math::Vector3 m_pos;		// 座標
+	KdTexture* m_pTex;			// 画像データ
+	Math::Vector2 m_pos;		// 座標
 	Math::Rectangle m_rect;		// 切り取り範囲
 };

@@ -78,6 +78,9 @@ void AssetManager::Init()
 	LoadTex("number", "Asset/Textures/number.png");
 	LoadTex("levelFrame", "Asset/Textures/levelFrame.png");
 	LoadTex("levelBar", "Asset/Textures/levelBar.png");
+	LoadTex("hpBar", "Asset/Textures/hpBar.png");
+	LoadTex("hpFrame", "Asset/Textures/hpFrame.png");
+	LoadTex("slot", "Asset/Textures/slot.png");
 	LoadTex("get", "Asset/Textures/get.png");
 }
 

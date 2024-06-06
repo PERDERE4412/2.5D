@@ -105,8 +105,6 @@ void BaseScene::Draw()
 		}
 	}
 	KdShaderManager::Instance().m_postProcessShader.EndBright();
-
-	KdShaderManager::Instance().m_spriteShader.SetMatrix(Math::Matrix::Identity);
 }
 
 void BaseScene::DrawSprite()

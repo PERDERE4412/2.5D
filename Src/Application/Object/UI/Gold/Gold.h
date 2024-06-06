@@ -16,9 +16,8 @@ private:
 
 	struct TexData
 	{
-		KdTexture* pTex = nullptr;
-		Math::Vector3 pos;
-		Math::Matrix mat;
+		KdTexture* pTex;
+		Math::Vector2 pos;
 		Math::Rectangle rect;
 	};
 

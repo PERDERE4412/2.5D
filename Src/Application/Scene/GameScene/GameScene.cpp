@@ -36,16 +36,31 @@ void GameScene::Init()
 	m_camera = std::make_shared<KdCamera>();
 	m_pos = { -17.0f,25.0f,-17.0f };
 
+	// キャラクター==================================================
 	// プレイヤー
 	std::shared_ptr<Player> player = std::make_shared<Player>();
 	AddObject(player);
 	m_player = player;
 	EnemyManager::Instance().SetPlayer(player);
 
-	// 仮マップ
+	// マップ========================================================
+	// 背景
+	std::shared_ptr<Back> back = std::make_shared<Back>();
+	AddObject(back);
+
+	// 壁
+	std::shared_ptr<Wall> wall = std::make_shared<Wall>();
+	AddObject(wall);
+
+	// 壁(当たり判定)
+	std::shared_ptr<WallHit> wallHit = std::make_shared<WallHit>();
+	AddObject(wallHit);
+
+	// 床
 	std::shared_ptr<Map> map = std::make_shared<Map>();
 	AddObject(map);
 
+	// UI============================================================
 	// HPバー
 	std::shared_ptr<PlayerHp> hp = std::make_shared<PlayerHp>();
 	AddObject(hp);
@@ -61,18 +76,6 @@ void GameScene::Init()
 	// レベル
 	std::shared_ptr<LevelBar> level = std::make_shared<LevelBar>();
 	AddObject(level);
-
-	// 背景
-	std::shared_ptr<Back> back = std::make_shared<Back>();
-	AddObject(back);
-
-	// 壁
-	std::shared_ptr<Wall> wall = std::make_shared<Wall>();
-	AddObject(wall);
-
-	// 壁(当たり判定)
-	std::shared_ptr<WallHit> wallHit = std::make_shared<WallHit>();
-	AddObject(wallHit);
 }
 
 void GameScene::UpdateCamera()
@@ -89,7 +92,7 @@ void GameScene::UpdateCamera()
 
 	// どこに配置されるか
 	Math::Matrix transMat = Math::Matrix::CreateTranslation(m_pos+playerPos);
-
+	
 	// カメラの「ワールド行列」を作成し、適応させる
 	Math::Matrix worldMat = rotX * rotY * transMat;
 	m_camera->SetCameraMatrix(worldMat);

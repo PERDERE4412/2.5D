@@ -22,11 +22,9 @@ void Gold::Update()
 	{
 		digit[2] = m_currentGold;
 	}
+	for (int i = 0; i < NUM; i++)m_number[i].rect.x = 8 * digit[i];
 
-	m_number[0].rect = { 8 * digit[0],0,8,8 };
-	m_number[1].rect = { 8 * digit[1],0,8,8 };
-	m_number[2].rect = { 8 * digit[2],0,8,8 };
-
+	// 数字の増減アニメーション
 	if (m_currentGold > Item::Instance().GetGold())m_currentGold--;
 	else if (m_currentGold < Item::Instance().GetGold())m_currentGold++;
 }
@@ -34,14 +32,12 @@ void Gold::Update()
 void Gold::DrawSprite()
 {
 	// ゴールド
-	KdShaderManager::Instance().m_spriteShader.SetMatrix(m_gold.mat);
-	KdShaderManager::Instance().m_spriteShader.DrawTex(m_gold.pTex, 0, 0, m_gold.pTex->GetWidth(), m_gold.pTex->GetHeight(), &m_gold.rect);
+	KdShaderManager::Instance().m_spriteShader.DrawTex(m_gold.pTex, m_gold.pos.x, m_gold.pos.y, m_gold.pTex->GetWidth(), m_gold.pTex->GetHeight(), &m_gold.rect);
 
 	// 数字
 	for (int i = 0; i < NUM; i++)
 	{
-		KdShaderManager::Instance().m_spriteShader.SetMatrix(m_number[i].mat);
-		KdShaderManager::Instance().m_spriteShader.DrawTex(m_number[i].pTex, 0, 0, 8, 8, &m_number[i].rect);
+		KdShaderManager::Instance().m_spriteShader.DrawTex(m_number[i].pTex, m_number[i].pos.x, m_number[i].pos.y, m_number[i].pTex->GetWidth() / 10, m_number[i].pTex->GetHeight(), &m_number[i].rect);
 	}
 }
 
@@ -49,8 +45,7 @@ void Gold::Init()
 {
 	// ゴールド
 	m_gold.pTex = AssetManager::Instance().GetTex("gold");
-	m_gold.pos = { -550.0f,-250.0f,0.0f };
-	m_gold.mat = Math::Matrix::CreateTranslation(m_gold.pos);
+	m_gold.pos = { -550.0f,-250.0f };
 	m_gold.rect = { 0,0,(int)m_gold.pTex->GetWidth(),(int)m_gold.pTex->GetHeight() };
 
 	// 数字
@@ -58,8 +53,7 @@ void Gold::Init()
 	{
 		m_number[i].pTex = AssetManager::Instance().GetTex("number");
 		m_number[i].pos = { -530.0f + 10.0f * i,-250.0f,0.0f };
-		m_number[i].mat = Math::Matrix::CreateTranslation(m_number[i].pos);
-		m_number[i].rect = { 0,0,8,8 };
+		m_number[i].rect = { 0,0,(int)m_number[i].pTex->GetWidth() / 10,(int)m_number[i].pTex->GetHeight() };
 	}
 
 	m_currentGold = 0;
