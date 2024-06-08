@@ -91,13 +91,15 @@ void DropGold::DrawSprite()
 {
 	if (!m_bGet)return;
 
+	m_camera = SceneManager::Instance().GetCamera();
+
 	Math::Vector3 pos = Math::Vector3::Zero;
 	if (!m_camera.expired())
 	{
 		m_camera.lock()->ConvertWorldToScreenDetail(GetPos(), pos);
 	}
 	Math::Rectangle rect = { 0,0,(int)m_pTex->GetWidth(),(int)m_pTex->GetHeight() };
-	KdShaderManager::Instance().m_spriteShader.DrawTex(m_pTex, pos.x, pos.y, 128, 40, &rect);
+	KdShaderManager::Instance().m_spriteShader.DrawTex(m_pTex, pos.x, pos.y, m_pTex->GetWidth(), m_pTex->GetHeight(), &rect);
 }
 
 void DropGold::Set(std::weak_ptr<Player> _player, Math::Vector3 _pos, int _gold)
@@ -109,8 +111,6 @@ void DropGold::Set(std::weak_ptr<Player> _player, Math::Vector3 _pos, int _gold)
 
 void DropGold::Init()
 {
-	m_camera = SceneManager::Instance().GetCamera();
-
 	m_polygon = AssetManager::Instance().GetMaterial("drop");
 
 	m_pTex = AssetManager::Instance().GetTex("get");

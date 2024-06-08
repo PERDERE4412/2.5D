@@ -10,6 +10,7 @@
 #include "../../Object//Back/Back.h"
 #include "../../Object/Wall/Wall.h"
 #include "../../Object/Wall/WallHit.h"
+#include "../../Object/Door/Door.h"
 
 #include "../../Object/Chara/Enemy/EnemyManager.h"
 
@@ -59,6 +60,18 @@ void GameScene::Init()
 	// 床
 	std::shared_ptr<Map> map = std::make_shared<Map>();
 	AddObject(map);
+
+	// ドア
+	std::shared_ptr<Door> door = std::make_shared<Door>();
+	door->SetPos({ 22.2f,0.0f,56.1f });
+	door->SetPlayer(player);
+	AddObject(door);
+
+	// ドア２
+	std::shared_ptr<Door> door2 = std::make_shared<Door>();
+	door2->SetPos({ 56.0f,0.0f,29.5f },90);
+	door2->SetPlayer(player);
+	AddObject(door2);
 
 	// UI============================================================
 	// HPバー

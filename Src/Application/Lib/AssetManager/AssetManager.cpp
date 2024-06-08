@@ -72,6 +72,7 @@ void AssetManager::Init()
 	// モデル
 	LoadModel("map", "Asset/Models/floor.gltf");
 	LoadModel("wall", "Asset/Models/wall.gltf");
+	LoadModel("door", "Asset/Models/door.gltf");
 
 	// テクスチャ
 	LoadTex("gold", "Asset/Textures/gold.png");
@@ -82,6 +83,7 @@ void AssetManager::Init()
 	LoadTex("hpFrame", "Asset/Textures/hpFrame.png");
 	LoadTex("slot", "Asset/Textures/slot.png");
 	LoadTex("get", "Asset/Textures/get.png");
+	LoadTex("enter", "Asset/Textures/enter.png");
 }
 
 void AssetManager::SetMaterial(std::string _name, float _scale, KdSquarePolygon::PivotType _pivot, int _splitX, int _splitY)

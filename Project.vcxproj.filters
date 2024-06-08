@@ -145,6 +145,12 @@
     <Filter Include="Src\Application\Object\UI\Action">
       <UniqueIdentifier>{1ddf5b33-0cff-4b43-8be3-6f796f46a1d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Object\Door">
+      <UniqueIdentifier>{3aadf936-f1b8-49c9-b101-b081dd291a26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Map">
+      <UniqueIdentifier>{6b5d5f26-5f83-4d7b-9799-f297be72b3d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -351,6 +357,9 @@
     <ClInclude Include="Src\Application\Object\UI\ActionManager\ActionManager.h">
       <Filter>Src\Application\Object\UI\Action</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Object\Door\Door.h">
+      <Filter>Src\Application\Object\Door</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -532,6 +541,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\UI\ActionManager\ActionManager.cpp">
       <Filter>Src\Application\Object\UI\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Door\Door.cpp">
+      <Filter>Src\Application\Object\Door</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
