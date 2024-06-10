@@ -2,16 +2,13 @@
 #include"../SceneManager.h"
 
 #include "../../Object/Chara/Player/Player.h"
-#include "../../Object/Map/Map.h"
 #include "../../Object/UI/PlayerHp/PlayerHp.h"
 #include "../../Object/UI/Slot/Slot.h"
 #include "../../Object/UI/Gold/Gold.h"
 #include "../../Object/UI/LevelBar/LevelBar.h"
 #include "../../Object//Back/Back.h"
-#include "../../Object/Wall/Wall.h"
-#include "../../Object/Wall/WallHit.h"
-#include "../../Object/Door/Door.h"
 
+#include "../../Map/MapManager.h"
 #include "../../Object/Chara/Enemy/EnemyManager.h"
 
 void GameScene::Event()
@@ -24,8 +21,7 @@ void GameScene::Event()
 	{
 		if (!a)
 		{
-			a = true;
-			EnemyManager::Instance().Spawn();
+			a = true;	
 		}
 	}
 	else a = false;
@@ -43,35 +39,12 @@ void GameScene::Init()
 	AddObject(player);
 	m_player = player;
 	EnemyManager::Instance().SetPlayer(player);
+	MapManager::Instance().SetPlayer(player);
 
 	// マップ========================================================
 	// 背景
 	std::shared_ptr<Back> back = std::make_shared<Back>();
 	AddObject(back);
-
-	// 壁
-	std::shared_ptr<Wall> wall = std::make_shared<Wall>();
-	AddObject(wall);
-
-	// 壁(当たり判定)
-	std::shared_ptr<WallHit> wallHit = std::make_shared<WallHit>();
-	AddObject(wallHit);
-
-	// 床
-	std::shared_ptr<Map> map = std::make_shared<Map>();
-	AddObject(map);
-
-	// ドア
-	std::shared_ptr<Door> door = std::make_shared<Door>();
-	door->SetPos({ 22.2f,0.0f,56.1f });
-	door->SetPlayer(player);
-	AddObject(door);
-
-	// ドア２
-	std::shared_ptr<Door> door2 = std::make_shared<Door>();
-	door2->SetPos({ 56.0f,0.0f,29.5f },90);
-	door2->SetPlayer(player);
-	AddObject(door2);
 
 	// UI============================================================
 	// HPバー

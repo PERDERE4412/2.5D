@@ -94,9 +94,6 @@
     <Filter Include="Src\Application\Lib\Utility">
       <UniqueIdentifier>{cf6d859c-a2be-4e54-81d7-4bb3cf96933b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Object\Map">
-      <UniqueIdentifier>{d7d38c11-fdf5-485f-a462-d40b7f0e2093}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Object\Back">
       <UniqueIdentifier>{fafae681-50a4-4674-a6a9-f90b5f9794c2}</UniqueIdentifier>
     </Filter>
@@ -150,6 +147,9 @@
     </Filter>
     <Filter Include="Src\Application\Map">
       <UniqueIdentifier>{6b5d5f26-5f83-4d7b-9799-f297be72b3d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Floor">
+      <UniqueIdentifier>{339347a1-9aa9-46d8-aa4d-122917053a0b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -303,9 +303,6 @@
     <ClInclude Include="Src\Application\Animation\Animation.h">
       <Filter>Src\Application\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\Map\Map.h">
-      <Filter>Src\Application\Object\Map</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Object\Back\Back.h">
       <Filter>Src\Application\Object\Back</Filter>
     </ClInclude>
@@ -359,6 +356,12 @@
     </ClInclude>
     <ClInclude Include="Src\Application\Object\Door\Door.h">
       <Filter>Src\Application\Object\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Map\MapManager.h">
+      <Filter>Src\Application\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Floor\Floor.h">
+      <Filter>Src\Application\Object\Floor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -488,9 +491,6 @@
     <ClCompile Include="Src\Application\Animation\Animation.cpp">
       <Filter>Src\Application\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\Map\Map.cpp">
-      <Filter>Src\Application\Object\Map</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Object\Back\Back.cpp">
       <Filter>Src\Application\Object\Back</Filter>
     </ClCompile>
@@ -544,6 +544,12 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Door\Door.cpp">
       <Filter>Src\Application\Object\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Map\MapManager.cpp">
+      <Filter>Src\Application\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Floor\Floor.cpp">
+      <Filter>Src\Application\Object\Floor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

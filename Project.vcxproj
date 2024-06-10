@@ -156,6 +156,7 @@
     <ClInclude Include="Src\Application\Lib\AssetManager\AssetManager.h" />
     <ClInclude Include="Src\Application\Lib\Utility\Utility.h" />
     <ClInclude Include="Src\Application\main.h" />
+    <ClInclude Include="Src\Application\Map\MapManager.h" />
     <ClInclude Include="Src\Application\Object\Back\Back.h" />
     <ClInclude Include="Src\Application\Object\Chara\BaseChara.h" />
     <ClInclude Include="Src\Application\Object\Chara\Enemy\Enemy01\Enemy01.h" />
@@ -163,7 +164,7 @@
     <ClInclude Include="Src\Application\Object\Chara\Player\Player.h" />
     <ClInclude Include="Src\Application\Object\Door\Door.h" />
     <ClInclude Include="Src\Application\Object\DropGold\DropGold.h" />
-    <ClInclude Include="Src\Application\Object\Map\Map.h" />
+    <ClInclude Include="Src\Application\Object\Floor\Floor.h" />
     <ClInclude Include="Src\Application\Object\UI\ActionManager\ActionManager.h" />
     <ClInclude Include="Src\Application\Object\UI\Gold\Gold.h" />
     <ClInclude Include="Src\Application\Object\UI\LevelBar\LevelBar.h" />
@@ -221,6 +222,7 @@
     <ClCompile Include="Src\Application\Data\Status\Player\PlayerStatus.cpp" />
     <ClCompile Include="Src\Application\Lib\AssetManager\AssetManager.cpp" />
     <ClCompile Include="Src\Application\main.cpp" />
+    <ClCompile Include="Src\Application\Map\MapManager.cpp" />
     <ClCompile Include="Src\Application\Object\Back\Back.cpp" />
     <ClCompile Include="Src\Application\Object\Chara\BaseChara.cpp" />
     <ClCompile Include="Src\Application\Object\Chara\Enemy\Enemy01\Enemy01.cpp" />
@@ -228,7 +230,7 @@
     <ClCompile Include="Src\Application\Object\Chara\Player\Player.cpp" />
     <ClCompile Include="Src\Application\Object\Door\Door.cpp" />
     <ClCompile Include="Src\Application\Object\DropGold\DropGold.cpp" />
-    <ClCompile Include="Src\Application\Object\Map\Map.cpp" />
+    <ClCompile Include="Src\Application\Object\Floor\Floor.cpp" />
     <ClCompile Include="Src\Application\Object\UI\ActionManager\ActionManager.cpp" />
     <ClCompile Include="Src\Application\Object\UI\Gold\Gold.cpp" />
     <ClCompile Include="Src\Application\Object\UI\LevelBar\LebelBar.cpp" />

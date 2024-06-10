@@ -1,1 +1,11 @@
-100	100	10	10
+mapID,WallType,DoorType
+1,LR,L/U
+2,LR,L/U/R
+3,LR,L/U/D
+4,R,U/R
+5,LR,L/U/R/D
+6,L,L/D
+7,R,U/R/D
+8,LR,L/U/R/D
+9,None,R/D
+10,None,D

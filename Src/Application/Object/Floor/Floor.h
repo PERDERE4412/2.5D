@@ -1,11 +1,11 @@
 ﻿#pragma once
 
-class Map :public KdGameObject
+class Floor :public KdGameObject
 {
 public:
 
-	Map() { Init(); }	// コンストラクタ
-	~Map()override {}	// デストラクタ
+	Floor() { Init(); }	// コンストラクタ
+	~Floor()override {}	// デストラクタ
 
 	void DrawLit()override;		// 描画
 	

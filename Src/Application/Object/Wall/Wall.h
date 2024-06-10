@@ -9,6 +9,8 @@ public:
 
 	void DrawLit()override;
 
+	void SetWall(int _type);
+
 private:
 
 	void Init();

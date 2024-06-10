@@ -13,9 +13,9 @@ public:
 	void DrawLit()override;		// 描画
 	void DrawSprite()override;	// 描画
 
-	void SetPlayer(std::shared_ptr<Player> _player) { m_player = _player; }
+	void SetPlayer(std::weak_ptr<Player> _player) { m_player = _player; }
 
-	void SetPos(Math::Vector3 _pos, int _deg = 0);
+	void Set(int _id,Math::Vector3 _pos, int _deg = 0);
 
 private:
 
@@ -23,6 +23,8 @@ private:
 
 	KdModelData m_model;	// モデルデータ
 	Math::Vector3 m_pos;	// 座標
+
+	int m_id;				// ドア番号
 
 	KdTexture* m_pTex;		// 画像データ
 	bool m_bEnter;

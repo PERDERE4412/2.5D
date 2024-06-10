@@ -1,13 +1,13 @@
-﻿#include "Map.h"
+﻿#include "Floor.h"
 
 #include "../../Lib/AssetManager/AssetManager.h"
 
-void Map::DrawLit()
+void Floor::DrawLit()
 {
 	KdShaderManager::Instance().m_StandardShader.DrawModel(m_model);
 }
 
-void Map::Init()
+void Floor::Init()
 {
 	m_model = AssetManager::Instance().GetModel("map");
 }

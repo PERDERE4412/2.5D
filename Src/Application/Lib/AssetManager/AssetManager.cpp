@@ -71,7 +71,8 @@ void AssetManager::Init()
 	
 	// モデル
 	LoadModel("map", "Asset/Models/floor.gltf");
-	LoadModel("wall", "Asset/Models/wall.gltf");
+	LoadModel("wall1", "Asset/Models/wall1.gltf");
+	LoadModel("wall4", "Asset/Models/wall4.gltf");
 	LoadModel("door", "Asset/Models/door.gltf");
 
 	// テクスチャ

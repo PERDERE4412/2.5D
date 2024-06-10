@@ -7,8 +7,7 @@ class EnemyManager
 public:
 
 	void SetPlayer(std::shared_ptr<Player> _player) { m_player = _player; }
-	//std::weak_ptr<Player> GetPlayer() { return m_player; }
-
+	
 	void Spawn();
 
 private:

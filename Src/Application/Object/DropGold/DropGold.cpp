@@ -94,9 +94,11 @@ void DropGold::DrawSprite()
 	m_camera = SceneManager::Instance().GetCamera();
 
 	Math::Vector3 pos = Math::Vector3::Zero;
-	if (!m_camera.expired())
+	if (!m_player.expired())
 	{
-		m_camera.lock()->ConvertWorldToScreenDetail(GetPos(), pos);
+		m_camera.lock()->ConvertWorldToScreenDetail(m_player.lock()->GetPos(), pos);
+		pos.x += 100.0f;
+		pos.y += 30.0f;
 	}
 	Math::Rectangle rect = { 0,0,(int)m_pTex->GetWidth(),(int)m_pTex->GetHeight() };
 	KdShaderManager::Instance().m_spriteShader.DrawTex(m_pTex, pos.x, pos.y, m_pTex->GetWidth(), m_pTex->GetHeight(), &rect);
