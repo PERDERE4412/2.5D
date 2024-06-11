@@ -10,6 +10,9 @@ public:
 	// 経験値取得
 	void SetExp(int _point);
 
+	// ダメージ
+	void Damage(int _damage) { m_statusList["HP"] -= _damage; }
+
 private:
 
 	void Init();	// 初期化

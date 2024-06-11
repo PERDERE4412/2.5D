@@ -48,18 +48,45 @@ void AssetManager::Init()
 	SetMaterial("playerAttack3", 4.0f, pivot, 11, 1);
 
 	// 敵
-	LoadMaterial("enemyIdle", "Asset/Textures/Enemy/idle.png");
-	SetMaterial("enemyIdle", 10.0f, pivot, 8, 1);
+	// ウォリアー
+	LoadMaterial("warriorIdle", "Asset/Textures/Enemy/Warrior/idle.png");
+	SetMaterial("warriorIdle", 10.0f, pivot, 8, 1);
 
-	LoadMaterial("enemyRun", "Asset/Textures/Enemy/run.png");
-	SetMaterial("enemyRun", 10.0f, pivot, 8, 1);
+	LoadMaterial("warriorRun", "Asset/Textures/Enemy/Warrior/run.png");
+	SetMaterial("warriorRun", 10.0f, pivot, 8, 1);
 
-	LoadMaterial("enemyAttack1", "Asset/Textures/Enemy/attack1.png");
-	SetMaterial("enemyAttack1", 10.0f, pivot, 13, 1);
+	LoadMaterial("warriorAttack1", "Asset/Textures/Enemy/Warrior/attack1.png");
+	SetMaterial("warriorAttack1", 10.0f, pivot, 13, 1);
 
-	LoadMaterial("enemyDeath", "Asset/Textures/Enemy/death.png");
-	SetMaterial("enemyDeath", 10.0f, pivot, 16, 1);
+	LoadMaterial("warriorDeath", "Asset/Textures/Enemy/Warrior/death.png");
+	SetMaterial("warriorDeath", 10.0f, pivot, 16, 1);
 	
+	// ファイアウィスプ
+	LoadMaterial("fireWispIdle", "Asset/Textures/Enemy/FireWisp/idle.png");
+	SetMaterial("fireWispIdle", 7.0f, pivot, 4, 1);
+
+	LoadMaterial("fireWispRun", "Asset/Textures/Enemy/FireWisp/run.png");
+	SetMaterial("fireWispRun", 7.0f, pivot, 4, 1);
+
+	LoadMaterial("fireWispAttack", "Asset/Textures/Enemy/FireWisp/attack.png");
+	SetMaterial("fireWispAttack", 7.0f, pivot, 10, 1);
+
+	LoadMaterial("fireWispDeath", "Asset/Textures/Enemy/FireWisp/death.png");
+	SetMaterial("fireWispDeath", 7.0f, pivot, 7, 1);
+
+	// グール
+	LoadMaterial("ghoulIdle", "Asset/Textures/Enemy/Ghoul/idle.png");
+	SetMaterial("ghoulIdle", 4.0f, pivot, 4, 1);
+
+	LoadMaterial("ghoulRun", "Asset/Textures/Enemy/Ghoul/run.png");
+	SetMaterial("ghoulRun", 4.0f, pivot, 6, 1);
+
+	LoadMaterial("ghoulAttack", "Asset/Textures/Enemy/Ghoul/attack.png");
+	SetMaterial("ghoulAttack", 4.0f, pivot, 5, 1);
+
+	LoadMaterial("ghoulDeath", "Asset/Textures/Enemy/Ghoul/death.png");
+	SetMaterial("ghoulDeath", 4.0f, pivot, 8, 1);
+
 	// アイテム
 	LoadMaterial("drop", "Asset/Textures/drop.png");
 	SetMaterial("drop", 2.0f, pivot, 1, 1);

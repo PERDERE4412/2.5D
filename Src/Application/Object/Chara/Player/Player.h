@@ -14,6 +14,8 @@ public:
 	void Update()override;		// 更新
 	void PostUpdate()override;
 	
+	void Hit(int _damage)override;
+
 private:
 
 	void Init()override;		// 初期化
@@ -24,6 +26,8 @@ private:
 
 	Animation::PlayerState m_state;	// 状態
 	Animation::PlayerDir m_dir;		// 向き
+
+	int m_invWait;					// 無敵時間
 
 	enum class Combo
 	{

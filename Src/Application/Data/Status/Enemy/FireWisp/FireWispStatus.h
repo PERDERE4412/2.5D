@@ -2,15 +2,15 @@
 
 #include "../EnemyStatusManager.h"
 
-class WarriorStatus
+class FireWispStatus
 {
 public:
 
-	WarriorStatus() { Init(); }
-	~WarriorStatus() {}
+	FireWispStatus() { Init(); }
+	~FireWispStatus() {}
 
 	void Damage(int _damage) { m_status.hp -= _damage; }
-	
+
 	int GetHp() { return m_status.hp; }
 	int GetMaxHp() { return m_status.maxHp; }
 	int GetAtk() { return m_status.atk; }

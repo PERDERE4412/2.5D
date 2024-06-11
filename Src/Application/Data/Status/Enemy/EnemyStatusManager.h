@@ -4,15 +4,23 @@ class EnemyStatusManager
 {
 public:
 
+	struct Status
+	{
+		int hp;
+		int maxHp;
+		int atk;
+		int def;
+	};
+
 	// ゲッター
-	std::unordered_map<std::string, int> GetStatus(std::string _name) { return m_statusList[_name]; }
+	Status GetStatus(std::string _name) { return m_statusList[_name]; }
 
 private:
 
 	void Init();	// 初期化
 
 	// ステータスリスト
-	std::unordered_map<std::string,std::unordered_map<std::string, int >> m_statusList;
+	std::unordered_map<std::string,Status> m_statusList;
 
 private:
 
@@ -21,6 +29,7 @@ private:
 
 public:
 
+	// シングルトンパターン
 	static EnemyStatusManager& Instance()
 	{
 		static EnemyStatusManager instance;

@@ -4,5 +4,5 @@
 
 void WarriorStatus::Init()
 {
-	m_statusList = EnemyStatusManager::Instance().GetStatus("Warrior");
+	m_status = EnemyStatusManager::Instance().GetStatus("Warrior");
 }

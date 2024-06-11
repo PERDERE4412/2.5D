@@ -1,18 +1,18 @@
 ﻿#pragma once
 
-#include "../../../../Animation/WarriorAnimation.h"
-#include "../../../../Data/Status/Enemy/Warrior/WarriorStatus.h"
+#include "../../../../Animation/FireWispAnimation.h"
+#include "../../../../Data/Status/Enemy/FireWisp/FireWispStatus.h"
 
 #include "../../BaseChara.h"
 
 class Player;
 
-class Warrior :public BaseChara
+class FireWisp :public BaseChara
 {
 public:
 
-	Warrior() { Init(); }
-	~Warrior()override {}
+	FireWisp() { Init(); }
+	~FireWisp()override {}
 
 	void Update()override;
 	void PostUpdate()override;
@@ -33,12 +33,12 @@ private:
 	std::weak_ptr<Player> m_player;
 	Math::Vector3 m_playerPos;
 
-	std::shared_ptr<WarriorAnimation> m_anim;
+	std::shared_ptr<FireWispAnimation> m_anim;
 
-	std::shared_ptr<WarriorStatus> m_status;
+	std::shared_ptr<FireWispStatus> m_status;
 
-	WarriorAnimation::State m_state;	// 状態
-	WarriorAnimation::Dir m_dir;		// 向き
+	FireWispAnimation::State m_state;	// 状態
+	FireWispAnimation::Dir m_dir;		// 向き
 
 	int m_attackWait;					// 攻撃のクールタイム
 

@@ -1,11 +1,11 @@
 ﻿#pragma once
 
-class Enemy01Animation
+class WarriorAnimation
 {
 public:
 
-	Enemy01Animation() { Init(); }		// コンストラクタ
-	~Enemy01Animation() {}				// デストラクタ
+	WarriorAnimation() { Init(); }		// コンストラクタ
+	~WarriorAnimation() {}				// デストラクタ
 
 	// エネミーの状態
 	enum class State

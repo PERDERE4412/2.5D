@@ -1,8 +1,8 @@
-﻿#include "Enemy01Animation.h"
+﻿#include "FireWispAnimation.h"
 
 #include "../Lib/AssetManager/AssetManager.h"
 
-void Enemy01Animation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polygon)
+void FireWispAnimation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polygon)
 {
 	// 現在の状態と異なっていたら
 	if (m_state != _state)
@@ -12,25 +12,25 @@ void Enemy01Animation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _pol
 		switch (m_state)
 		{
 		case State::Idle:
-			*_polygon = AssetManager::Instance().GetMaterial("enemyIdle");
+			*_polygon = AssetManager::Instance().GetMaterial("fireWispIdle");
 			m_cntSpeed = 0.05f;
 			break;
 		case State::Run:
-			*_polygon = AssetManager::Instance().GetMaterial("enemyRun");
+			*_polygon = AssetManager::Instance().GetMaterial("fireWispRun");
 			m_cntSpeed = 0.2f;
 			break;
 		case State::Attack1:
-			*_polygon = AssetManager::Instance().GetMaterial("enemyAttack1");
+			*_polygon = AssetManager::Instance().GetMaterial("fireWispAttack");
 			m_cntSpeed = 0.3f;
 			m_bAction = false;
 			break;
 		case State::Attack2:
-			*_polygon = AssetManager::Instance().GetMaterial("enemyAttack2");
+			*_polygon = AssetManager::Instance().GetMaterial("fireWispAttack2");
 			m_cntSpeed = 0.5f;
 			m_bAction = false;
 			break;
 		case State::Death:
-			*_polygon = AssetManager::Instance().GetMaterial("enemyDeath");
+			*_polygon = AssetManager::Instance().GetMaterial("fireWispDeath");
 			m_cntSpeed = 0.2f;
 			m_bAction = false;
 		}
@@ -46,7 +46,7 @@ void Enemy01Animation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _pol
 	_polygon->SetUVRect((int)m_cnt);
 }
 
-void Enemy01Animation::AnimeCnt()
+void FireWispAnimation::AnimeCnt()
 {
 	if (m_bStiff)
 	{
@@ -82,7 +82,7 @@ void Enemy01Animation::AnimeCnt()
 	}
 }
 
-void Enemy01Animation::Init()
+void FireWispAnimation::Init()
 {
 	m_state = State::Idle;
 

@@ -1,31 +1,31 @@
-﻿#include "Warrior.h"
+﻿#include "Ghoul.h"
 
 #include "../../../../Lib/AssetManager/AssetManager.h"
-#include "../../../../Animation/WarriorAnimation.h"
+#include "../../../../Animation/GhoulAnimation.h"
 #include "../../Player/Player.h"
 #include "../../../../Scene/GameScene/GameScene.h"
 #include "../../../../Data/Status/Player/PlayerStatus.h"
 #include "../../../DropGold/DropGold.h"
 #include "../../../../Scene/SceneManager.h"
 
-void Warrior::Update()
+void Ghoul::Update()
 {
 	// デバッグ用
 	if (GetAsyncKeyState('P') & 0x8000)m_status->Damage(5);
 
 	if (m_status->GetHp() <= 0)
 	{
-		if (m_state != WarriorAnimation::State::Death)
+		if (m_state != GhoulAnimation::State::Death)
 		{
 			PlayerStatus::Instance().SetExp(10);
-			m_state = WarriorAnimation::State::Death;
+			m_state = GhoulAnimation::State::Death;
 		}
 	}
 
 	if (!m_player.expired())m_playerPos = m_player.lock()->GetPos();
 	else return;
 
-	if (m_state != WarriorAnimation::State::Death)
+	if (m_state != GhoulAnimation::State::Death)
 	{
 		if (m_anim->GetAction())Move();
 	}
@@ -42,13 +42,13 @@ void Warrior::Update()
 		m_isExpired = true;
 	}
 
-	if(m_invWait>0)m_invWait--;
+	if (m_invWait > 0)m_invWait--;
 }
 
-void Warrior::PostUpdate()
+void Ghoul::PostUpdate()
 {
 	// 敵の当たり判定を可視化
-	m_pDebugWire->AddDebugSphere(m_pos + Math::Vector3(0, 3.0f, 0), 2.0f, kGreenColor);
+	//m_pDebugWire->AddDebugSphere(m_pos + Math::Vector3(0, 3.0f, 0), 2.0f, kGreenColor);
 
 	//========================================
 	// 球判定
@@ -115,7 +115,7 @@ void Warrior::PostUpdate()
 	//========================================
 	// 攻撃判定
 	//========================================
-	if (m_state == WarriorAnimation::State::Attack1)
+	if (m_state == GhoulAnimation::State::Attack1)
 	{
 		if (m_player.expired()) return;
 
@@ -126,7 +126,7 @@ void Warrior::PostUpdate()
 		Math::Vector3 dir = m_playerPos - m_pos;
 		dir.Normalize();
 		float attackRange = 4.0f;
-		sphere.m_sphere.Center = m_pos + (dir*attackRange);
+		sphere.m_sphere.Center = m_pos + (dir * attackRange);
 		sphere.m_sphere.Center.z += 2.0f;
 
 		// 球の半径を設定
@@ -155,7 +155,7 @@ void Warrior::PostUpdate()
 	m_world = rotX * Math::Matrix::CreateTranslation(m_pos);
 }
 
-void Warrior::Hit(int _damage)
+void Ghoul::Hit(int _damage)
 {
 	if (m_invWait <= 0)
 	{
@@ -164,17 +164,17 @@ void Warrior::Hit(int _damage)
 	}
 }
 
-void Warrior::Init()
+void Ghoul::Init()
 {
-	m_anim = std::make_shared<WarriorAnimation>();
+	m_anim = std::make_shared<GhoulAnimation>();
 
-	m_state = WarriorAnimation::State::Idle;
+	m_state = GhoulAnimation::State::Idle;
 
-	m_dir = WarriorAnimation::Dir::Right;
+	m_dir = GhoulAnimation::Dir::Right;
 
-	m_status = std::make_shared<WarriorStatus>();
+	m_status = std::make_shared<GhoulStatus>();
 
-	m_polygon = AssetManager::Instance().GetMaterial("warriorIdle");
+	m_polygon = AssetManager::Instance().GetMaterial("ghoulIdle");
 	m_polygon.SetUVRect(0);
 
 	m_movePow = 0.15f;
@@ -187,12 +187,12 @@ void Warrior::Init()
 	m_pDebugWire = std::make_unique<KdDebugWireFrame>();
 
 	m_pCollider = std::make_unique<KdCollider>();
-	m_pCollider->RegisterCollisionShape("WarriorCollision", { 0.0f,3.0f,0.0f }, 2.0f, KdCollider::TypeBump|KdCollider::TypeEnemy);
+	m_pCollider->RegisterCollisionShape("GhoulCollision", { 0.0f,3.0f,0.0f }, 2.0f, KdCollider::TypeBump | KdCollider::TypeEnemy);
 }
 
-void Warrior::Move()
+void Ghoul::Move()
 {
-	m_state = WarriorAnimation::State::Idle;
+	m_state = GhoulAnimation::State::Idle;
 
 	m_movePow = 0.15f;
 
@@ -210,17 +210,17 @@ void Warrior::Move()
 
 		if (m_vec.x > 0.0f)
 		{
-			if (m_dir == WarriorAnimation::Dir::Left)
+			if (m_dir == GhoulAnimation::Dir::Left)
 			{
-				m_dir = WarriorAnimation::Dir::Right;
+				m_dir = GhoulAnimation::Dir::Right;
 				m_polygon.TurnScale();
 			}
 		}
 		else if (m_vec.x < 0.0f)
 		{
-			if (m_dir == WarriorAnimation::Dir::Right)
+			if (m_dir == GhoulAnimation::Dir::Right)
 			{
-				m_dir = WarriorAnimation::Dir::Left;
+				m_dir = GhoulAnimation::Dir::Left;
 				m_polygon.TurnScale();
 			}
 		}
@@ -232,19 +232,19 @@ void Warrior::Move()
 
 	if (m_attackWait > 0)m_attackWait--;
 
-	if (m_vec != Math::Vector3::Zero && m_state != WarriorAnimation::State::Attack1)
+	if (m_vec != Math::Vector3::Zero && m_state != GhoulAnimation::State::Attack1)
 	{
-		m_state = WarriorAnimation::State::Run;
+		m_state = GhoulAnimation::State::Run;
 	}
 }
 
-void Warrior::Attack()
+void Ghoul::Attack()
 {
 	m_movePow = 0.0f;
 
 	if (m_attackWait <= 0)
 	{
-		m_state = WarriorAnimation::State::Attack1;
+		m_state = GhoulAnimation::State::Attack1;
 		m_attackWait = 120;
 	}
 }

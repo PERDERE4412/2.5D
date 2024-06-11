@@ -151,6 +151,12 @@
     <Filter Include="Src\Application\Data\Status\Enemy\Warrior">
       <UniqueIdentifier>{4584ffa1-e356-470f-a7c8-7e054d8ad41d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Object\Chara\Enemy\FireWisp">
+      <UniqueIdentifier>{9c7d05fb-aff8-44b4-b892-69810641e676}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Data\Status\Enemy\FireWisp">
+      <UniqueIdentifier>{da5676c2-490f-4da4-8955-d33b8b45cdf4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -318,7 +324,7 @@
     <ClInclude Include="Src\Application\Object\Chara\Player\Player.h">
       <Filter>Src\Application\Object\Chara\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Animation\Enemy01Animation.h">
+    <ClInclude Include="Src\Application\Animation\WarriorAnimation.h">
       <Filter>Src\Application\Animation</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Object\Chara\Enemy\EnemyManager.h">
@@ -362,6 +368,15 @@
     </ClInclude>
     <ClInclude Include="Src\Application\Data\Status\Enemy\Warrior\WarriorStatus.h">
       <Filter>Src\Application\Data\Status\Enemy\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\FireWisp\FireWisp.h">
+      <Filter>Src\Application\Object\Chara\Enemy\FireWisp</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Data\Status\Enemy\FireWisp\FireWispStatus.h">
+      <Filter>Src\Application\Data\Status\Enemy\FireWisp</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Animation\FireWispAnimation.h">
+      <Filter>Src\Application\Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -506,7 +521,7 @@
     <ClCompile Include="Src\Application\Object\Chara\Player\Player.cpp">
       <Filter>Src\Application\Object\Chara\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Animation\Enemy01Animation.cpp">
+    <ClCompile Include="Src\Application\Animation\WarriorAnimation.cpp">
       <Filter>Src\Application\Animation</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Chara\Enemy\EnemyManager.cpp">
@@ -550,6 +565,15 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Data\Status\Enemy\Warrior\WarriorStatus.cpp">
       <Filter>Src\Application\Data\Status\Enemy\Warrior</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\FireWisp\FireWisp.cpp">
+      <Filter>Src\Application\Object\Chara\Enemy\FireWisp</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Data\Status\Enemy\FireWisp\FireWispStatus.cpp">
+      <Filter>Src\Application\Data\Status\Enemy\FireWisp</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Animation\FireWispAnimation.cpp">
+      <Filter>Src\Application\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

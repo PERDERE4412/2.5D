@@ -1,18 +1,18 @@
 ﻿#pragma once
 
-#include "../../../../Animation/WarriorAnimation.h"
-#include "../../../../Data/Status/Enemy/Warrior/WarriorStatus.h"
+#include "../../../../Animation/GhoulAnimation.h"
+#include "../../../../Data/Status/Enemy/Ghoul/GhoulStatus.h"
 
 #include "../../BaseChara.h"
 
 class Player;
 
-class Warrior :public BaseChara
+class Ghoul :public BaseChara
 {
 public:
 
-	Warrior() { Init(); }
-	~Warrior()override {}
+	Ghoul() { Init(); }
+	~Ghoul()override {}
 
 	void Update()override;
 	void PostUpdate()override;
@@ -33,12 +33,12 @@ private:
 	std::weak_ptr<Player> m_player;
 	Math::Vector3 m_playerPos;
 
-	std::shared_ptr<WarriorAnimation> m_anim;
+	std::shared_ptr<GhoulAnimation> m_anim;
 
-	std::shared_ptr<WarriorStatus> m_status;
+	std::shared_ptr<GhoulStatus> m_status;
 
-	WarriorAnimation::State m_state;	// 状態
-	WarriorAnimation::Dir m_dir;		// 向き
+	GhoulAnimation::State m_state;	// 状態
+	GhoulAnimation::Dir m_dir;		// 向き
 
 	int m_attackWait;					// 攻撃のクールタイム
 

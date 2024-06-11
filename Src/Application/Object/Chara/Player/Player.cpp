@@ -11,6 +11,8 @@ void Player::Update()
 
 	// アニメーション作成
 	Animation::Instance().CreateAnime(m_dir, m_state, &m_polygon);
+
+	if(m_invWait>0)m_invWait--;
 }
 
 void Player::PostUpdate()
@@ -18,56 +20,95 @@ void Player::PostUpdate()
 	// =====================
 	// 球判定
 	// =====================
-
-	// 球判定用の変数を作成
-	KdCollider::SphereInfo sphere;
-	// 球の中心点を設定
-	sphere.m_sphere.Center = m_pos;
-	sphere.m_sphere.Center.y += 2.0f;
-	// 球の半径を設定
-	sphere.m_sphere.Radius = 2.0f;
-	// 当たり判定をしたいタイプを設定
-	sphere.m_type = KdCollider::TypeGround | KdCollider::TypeBump;
-
-	//デバッグ表示
-	Math::Color gyro = { 1,1,0,1 };
-	m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, sphere.m_sphere.Radius, gyro);
-
-	// 球に当たったオブジェクトの情報を格納
-	std::list<KdCollider::CollisionResult> retSphereList;
-
-	// 当たり判定だよ！！！！！！！！！！！！！！！！！！！！！
-	for (auto& obj : SceneManager::Instance().GetObjList())
 	{
-		obj->Intersects(sphere, &retSphereList);
-	}
+		// 球判定用の変数を作成
+		KdCollider::SphereInfo sphere;
+		// 球の中心点を設定
+		sphere.m_sphere.Center = m_pos;
+		sphere.m_sphere.Center.y += 2.0f;
+		// 球の半径を設定
+		sphere.m_sphere.Radius = 2.0f;
+		// 当たり判定をしたいタイプを設定
+		sphere.m_type = KdCollider::TypeGround | KdCollider::TypeBump;
 
-	// 球に当たったリストから一番近いオブジェクトを検出
-	float maxOverLap = 0;	// はみでたレイの長さ
-	Math::Vector3 hitDir;	// 当たった方向
-	bool isHit = false;		// 当たっていたらtrue
-	for (auto& ret : retSphereList)
-	{
-		// 球にめりこんで、オーバーした長さが一番長いものを探す
-		if (maxOverLap < ret.m_overlapDistance)
+		//デバッグ表示
+		Math::Color gyro = { 1,1,0,1 };
+		m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, sphere.m_sphere.Radius, gyro);
+
+		// 球に当たったオブジェクトの情報を格納
+		std::list<KdCollider::CollisionResult> retSphereList;
+
+		// 当たり判定だよ！！！！！！！！！！！！！！！！！！！！！
+		for (auto& obj : SceneManager::Instance().GetObjList())
 		{
-			maxOverLap = ret.m_overlapDistance;
-			hitDir = ret.m_hitDir;
-			isHit = true;
+			obj->Intersects(sphere, &retSphereList);
+		}
+
+		// 球に当たったリストから一番近いオブジェクトを検出
+		float maxOverLap = 0;	// はみでたレイの長さ
+		Math::Vector3 hitDir;	// 当たった方向
+		bool isHit = false;		// 当たっていたらtrue
+		for (auto& ret : retSphereList)
+		{
+			// 球にめりこんで、オーバーした長さが一番長いものを探す
+			if (maxOverLap < ret.m_overlapDistance)
+			{
+				maxOverLap = ret.m_overlapDistance;
+				hitDir = ret.m_hitDir;
+				isHit = true;
+			}
+		}
+
+		if (isHit)
+		{
+			// 地面にめり込ませない
+			hitDir.y = 0;
+
+			// 正規化(長さを１にする)
+			// 方向は絶対長さ１
+			hitDir.Normalize();
+
+			// 地面に当たっている
+			m_pos += hitDir * maxOverLap;
 		}
 	}
 
-	if (isHit)
+	// =====================
+	// 攻撃判定
+	// =====================
+	if (m_state == Animation::PlayerState::Attack1 || m_state == Animation::PlayerState::Attack2 || m_state == Animation::PlayerState::Attack3)
 	{
-		// 地面にめり込ませない
-		hitDir.y = 0;
+		// 球判定用の変数を作成
+		KdCollider::SphereInfo sphere;
 
-		// 正規化(長さを１にする)
-		// 方向は絶対長さ１
-		hitDir.Normalize();
+		// 球の中心点を設定
+		Math::Vector3 dir = Math::Vector3::Zero;
+		if (m_dir == Animation::PlayerDir::Left)dir.x = -1.0f;
+		if (m_dir == Animation::PlayerDir::Right)dir.x = 1.0f;
 
-		// 地面に当たっている
-		m_pos += hitDir * maxOverLap;
+		dir.Normalize();
+		float attackRange = 4.0f;
+		sphere.m_sphere.Center = m_pos + (dir * attackRange);
+
+		// 球の半径を設定
+		sphere.m_sphere.Radius = 2.0f;
+
+		// 当たり判定をしたいタイプを設定
+		sphere.m_type = KdCollider::TypeEnemy;
+
+		// 球に当たったオブジェクトの情報を格納
+		std::list<KdCollider::CollisionResult> retSphereList;
+
+		// 当たり判定だよ！！！！！！！！！！！！！！！！！！！！！
+		for (auto& obj : SceneManager::Instance().GetObjList())
+		{
+			if (obj->Intersects(sphere, &retSphereList))
+			{
+				obj->Hit(PlayerStatus::Instance().GetValue("ATK"));
+			}
+		}
+
+		m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, 2.0f, kGreenColor);
 	}
 
 	// 行列作成
@@ -75,8 +116,19 @@ void Player::PostUpdate()
 	m_world = rotX * Math::Matrix::CreateTranslation(m_pos);
 }
 
+void Player::Hit(int _damage)
+{
+	if (m_invWait <= 0)
+	{
+		PlayerStatus::Instance().Damage(_damage);
+		m_invWait = 60;
+	}
+}
+
 void Player::Init()
 {
+	m_invWait = 0;
+
 	// 状態
 	m_state = Animation::PlayerState::Idle;
 
