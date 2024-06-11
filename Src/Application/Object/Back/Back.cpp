@@ -4,10 +4,9 @@
 
 void Back::Update()
 {
-	Math::Matrix rotX=Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
-	Math::Matrix rotY= Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(45));
+	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
 	Math::Matrix trasnMat = Math::Matrix::CreateTranslation(100.0f, 0.0f, 100.0f);
-	m_world = rotX * rotY * trasnMat;
+	m_world = rotX * trasnMat;
 }
 
 void Back::DrawUnLit()

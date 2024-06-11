@@ -1,13 +1,19 @@
 ﻿#include "EnemyManager.h"
 
 #include "../../../Scene/SceneManager.h"
-#include "Enemy01/Enemy01.h"
+#include "../../../Map/MapManager.h"
+#include "Warrior/Warrior.h"
 
-void EnemyManager::Spawn()
+void EnemyManager::Spawn(std::string _name, Math::Vector3 _pos)
 {
-	std::shared_ptr<Enemy01> enemy01 = std::make_shared<Enemy01>();
-	enemy01->SetPlayer(m_player);
-	SceneManager::Instance().AddObject(enemy01);
+	if (_name == "Warrior")
+	{
+		std::shared_ptr<Warrior> warrior = std::make_shared<Warrior>();
+		warrior->SetPos(_pos);
+		warrior->SetPlayer(m_player);
+		SceneManager::Instance().AddObject(warrior);
+		MapManager::Instance().AddObject(warrior);
+	}
 }
 
 void EnemyManager::Init()

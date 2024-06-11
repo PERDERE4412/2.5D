@@ -34,7 +34,7 @@ void Door::Update()
 				{
 					ActionManager::Instance().OnKey();
 					ActionManager::Instance().OffAction();
-					MapManager::Instance().ChangeMap(m_id);
+					MapManager::Instance().ChangeMap(m_type);
 					m_isExpired = true;		// 消滅
 				}
 			}
@@ -80,12 +80,12 @@ void Door::DrawSprite()
 	KdShaderManager::Instance().m_spriteShader.DrawTex(m_pTex, pos.x, pos.y, m_pTex->GetWidth(), m_pTex->GetHeight(), &rect);
 }
 
-void Door::Set(int _id, Math::Vector3 _pos, int _deg)
+void Door::Set(std::string _type)
 {
-	m_id = _id;
-	m_pos = _pos;
+	m_type = _type;
+	m_pos = m_doorList[_type].pos;
 	Math::Matrix transMat = Math::Matrix::CreateTranslation(m_pos);
-	Math::Matrix rotMat = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(_deg));
+	Math::Matrix rotMat = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(m_doorList[m_type].deg));
 	m_world = rotMat * transMat;
 }
 
@@ -95,4 +95,42 @@ void Door::Init()
 
 	m_pTex = AssetManager::Instance().GetTex("enter");
 	m_bEnter = false;
+
+	// ドアデータの読みこみ==================================================
+	{
+		std::ifstream ifs("Asset/Data/Map/Door.csv"); //ファイル操作用の変数
+
+		std::string lineString; //ファイルから1文字列読み取る変数
+
+		std::getline(ifs, lineString);	// 1行目を飛ばす
+
+		//①ファイルが終わるまでファイルから1文字列ずつ読み取る
+		while (std::getline(ifs, lineString))
+		{
+			std::istringstream iss(lineString); // 文字列を操作する変数にファイルから読み取った文字列を格納
+			std::string doorType;				// ドアタイプを格納
+			std::string doorPos;				// ドア座標を格納
+			std::string doorDeg;				// ドア角度を格納
+
+			std::getline(iss, doorType, ',');
+			std::getline(iss, doorPos, ',');
+			std::getline(iss, doorDeg, ',');
+
+			// ドア座標
+			std::istringstream iss2(doorPos);
+			std::string pos;
+
+			std::getline(iss2, pos, '/');
+			m_doorList[doorType].pos.x = atof(pos.c_str());
+			std::getline(iss2, pos, '/');
+			m_doorList[doorType].pos.y = atof(pos.c_str());
+			std::getline(iss2, pos, '/');
+			m_doorList[doorType].pos.z = atof(pos.c_str());
+
+			// ドア角度
+			m_doorList[doorType].deg = stoi(doorDeg);
+		}
+
+		ifs.close();
+	}
 }

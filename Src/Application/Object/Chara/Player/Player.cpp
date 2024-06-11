@@ -71,9 +71,8 @@ void Player::PostUpdate()
 	}
 
 	// 行列作成
-	Math::Matrix rotY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(45));
 	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
-	m_world = rotX * rotY * Math::Matrix::CreateTranslation(m_pos);
+	m_world = rotX * Math::Matrix::CreateTranslation(m_pos);
 }
 
 void Player::Init()
@@ -89,6 +88,9 @@ void Player::Init()
 
 	// デバッグ表示
 	m_pDebugWire = std::make_unique<KdDebugWireFrame>();
+
+	m_pCollider = std::make_unique<KdCollider>();
+	m_pCollider->RegisterCollisionShape("PlayerCollision", { 0.0f,3.0f,0.0f }, 2.0f, KdCollider::TypePlayer);
 }
 
 void Player::Action()

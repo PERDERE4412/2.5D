@@ -17,21 +17,24 @@ void GameScene::Event()
 
 	// デバッグ用
 	static bool a = false;
-	if (GetAsyncKeyState('U') & 0x8000)
-	{
+	//if (GetAsyncKeyState('U') & 0x8000)
+	//{
 		if (!a)
 		{
-			a = true;	
+			MapManager::Instance().ChangeMap();
+			a = true;
+			//MapManager::Instance().ChangeMap(0);
+			
 		}
-	}
-	else a = false;
+	//}
+	//else a = false;
 }
 
 void GameScene::Init()
 {
 	// カメラ
 	m_camera = std::make_shared<KdCamera>();
-	m_pos = { -17.0f,25.0f,-17.0f };
+	m_pos = { 0.0f,25.0f,-25.0f };
 
 	// キャラクター==================================================
 	// プレイヤー
@@ -44,7 +47,7 @@ void GameScene::Init()
 	// マップ========================================================
 	// 背景
 	std::shared_ptr<Back> back = std::make_shared<Back>();
-	AddObject(back);
+	AddObject(back);	
 
 	// UI============================================================
 	// HPバー
@@ -74,12 +77,11 @@ void GameScene::UpdateCamera()
 
 	// どれだけ傾けているか
 	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(40));
-	Math::Matrix rotY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(45));
-
+	
 	// どこに配置されるか
 	Math::Matrix transMat = Math::Matrix::CreateTranslation(m_pos+playerPos);
 	
 	// カメラの「ワールド行列」を作成し、適応させる
-	Math::Matrix worldMat = rotX * rotY * transMat;
+	Math::Matrix worldMat = rotX* transMat;
 	m_camera->SetCameraMatrix(worldMat);
 }

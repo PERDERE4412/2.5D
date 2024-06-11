@@ -3,7 +3,7 @@
 void EnemyStatusManager::Init()
 {
 	// Enemy01
-	std::ifstream ifs("Asset/Data/Enemy/Enemy01/status.csv"); //ファイル操作用の変数
+	std::ifstream ifs("Asset/Data/Enemy/Warrior/status.csv"); //ファイル操作用の変数
 
 	std::string lineString; //ファイルから1文字列読み取る変数
 
@@ -17,7 +17,7 @@ void EnemyStatusManager::Init()
 		std::getline(iss, name, ',');
 		std::getline(iss, value, ',');
 
-		m_statusList["Enemy01"][name] = stoi(value);
+		m_statusList["Warrior"][name] = stoi(value);
 	}
 
 	ifs.close();

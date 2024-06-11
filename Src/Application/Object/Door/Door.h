@@ -15,7 +15,7 @@ public:
 
 	void SetPlayer(std::weak_ptr<Player> _player) { m_player = _player; }
 
-	void Set(int _id,Math::Vector3 _pos, int _deg = 0);
+	void Set(std::string _type);
 
 private:
 
@@ -24,8 +24,17 @@ private:
 	KdModelData m_model;	// モデルデータ
 	Math::Vector3 m_pos;	// 座標
 
-	int m_id;				// ドア番号
+	std::string m_type;		// ドアタイプ
 
+	struct DoorData
+	{
+		Math::Vector3 pos;	// ドア座標
+		int deg;			// 角度
+	};
+
+	std::unordered_map<std::string, DoorData> m_doorList;	// ドアデータリスト
+
+	// UI
 	KdTexture* m_pTex;		// 画像データ
 	bool m_bEnter;
 

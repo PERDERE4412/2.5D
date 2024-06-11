@@ -18,19 +18,19 @@
 			"name":"wall.001",
 			"rotation":[
 				0,
-				1,
+				-0.9238795638084412,
 				0,
-				0
+				0.3826833963394165
 			],
 			"scale":[
-				1.850000023841858,
+				1.850000262260437,
 				3,
 				1
 			],
 			"translation":[
-				0.6744999885559082,
+				-39.477813720703125,
 				0.02831999957561493,
-				-56.683998107910156
+				-40.54574203491211
 			]
 		}
 	],
@@ -203,7 +203,7 @@
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":45087,
+			"count":45088,
 			"max":[
 				-29.860727310180664,
 				3.5999999046325684,
@@ -219,13 +219,13 @@
 		{
 			"bufferView":9,
 			"componentType":5126,
-			"count":45087,
+			"count":45088,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":10,
 			"componentType":5126,
-			"count":45087,
+			"count":45088,
 			"type":"VEC2"
 		},
 		{
@@ -320,56 +320,56 @@
 		},
 		{
 			"buffer":0,
-			"byteLength":541044,
+			"byteLength":541056,
 			"byteOffset":1815648,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":541044,
-			"byteOffset":2356692,
+			"byteLength":541056,
+			"byteOffset":2356704,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":360696,
-			"byteOffset":2897736,
+			"byteLength":360704,
+			"byteOffset":2897760,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":263616,
-			"byteOffset":3258432,
+			"byteOffset":3258464,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":38976,
-			"byteOffset":3522048,
+			"byteOffset":3522080,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":38976,
-			"byteOffset":3561024,
+			"byteOffset":3561056,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":25984,
-			"byteOffset":3600000,
+			"byteOffset":3600032,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":12864,
-			"byteOffset":3625984,
+			"byteOffset":3626016,
 			"target":34963
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":3638848,
+			"byteLength":3638880,
 			"uri":"wall1.bin"
 		}
 	]

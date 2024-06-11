@@ -8,7 +8,7 @@ public:
 
 	void SetPlayer(std::shared_ptr<Player> _player) { m_player = _player; }
 	
-	void Spawn();
+	void Spawn(std::string _name,Math::Vector3 _pos);
 
 private:
 

@@ -7,64 +7,99 @@
 #include "../Object/Door/Door.h"
 #include "../Object/Wall/Wall.h"
 #include "../Object/Wall/WallHit.h"
+#include "../Object/Chara/Enemy/EnemyManager.h"
 
-void MapManager::ChangeMap(int _doorId)
+void MapManager::ChangeMap(std::string _type)
 {
-	// 変更先のマップ番号を取得
-	int mapId = m_linkList[_doorId].linkMap;
+	// リンク先のマップ番号取得
+	int mapId = m_linkMapList[m_nowMapId][_type];
 
 	// マップ生成
-	CreateMap(mapId);
+	if (m_nowMapId != mapId)
+	{
+		CreateMap(mapId);
+	}
+}
+
+void MapManager::ChangeMap()
+{
+	CreateMap(m_nowMapId);
 }
 
 void MapManager::CreateMap(int _mapId)
 {
+	m_nowMapId = _mapId;
+
+	// マップのオブジェクトをクリア
+	if (!m_objList.empty())
+	{
+		for (std::shared_ptr<KdGameObject> obj : m_objList)
+		{
+			obj->Expired();
+		}
+	}
+
 	// 壁生成
 	std::shared_ptr<Wall> wall = std::make_shared<Wall>();;
 	wall->SetWall(m_mapList[_mapId].wall);
 	SceneManager::Instance().AddObject(wall);
+	m_objList.push_back(wall);
 
 	// 壁(当たり判定)
 	std::shared_ptr<WallHit> wallHit = std::make_shared<WallHit>();
 	SceneManager::Instance().AddObject(wallHit);
+	m_objList.push_back(wallHit);
 
 	// 床
 	std::shared_ptr<Floor> floor = std::make_shared<Floor>();
 	SceneManager::Instance().AddObject(floor);
+	m_objList.push_back(floor);
 
 	// ドア
 	if (m_mapList[_mapId].door & DoorType::D_Left)
 	{
 		std::shared_ptr<Door> door = std::make_shared<Door>();
 		door->SetPlayer(m_player);
-		door->Set(m_linkList[_mapId].dorrType["L"], m_doorList["L"].pos, m_doorList["L"].deg);
+		door->Set("L");
 		SceneManager::Instance().AddObject(door);
+		m_objList.push_back(door);
 	}
 	if (m_mapList[_mapId].door & DoorType::D_Up)
 	{
 		std::shared_ptr<Door> door = std::make_shared<Door>();
 		door->SetPlayer(m_player);
-		door->Set(m_linkList[_mapId].dorrType["U"],m_doorList["U"].pos, m_doorList["U"].deg);
+		door->Set("U");
 		SceneManager::Instance().AddObject(door);
+		m_objList.push_back(door);
 	}
 	if (m_mapList[_mapId].door & DoorType::D_Right)
 	{
 		std::shared_ptr<Door> door = std::make_shared<Door>();
 		door->SetPlayer(m_player);
-		door->Set(m_linkList[_mapId].dorrType["R"],m_doorList["R"].pos, m_doorList["R"].deg);
+		door->Set("R");
 		SceneManager::Instance().AddObject(door);
+		m_objList.push_back(door);
 	}
 	if (m_mapList[_mapId].door & DoorType::D_Down)
 	{
 		std::shared_ptr<Door> door = std::make_shared<Door>();
 		door->SetPlayer(m_player);
-		door->Set(m_linkList[_mapId].dorrType["D"],m_doorList["D"].pos, m_doorList["D"].deg);
+		door->Set("D");
 		SceneManager::Instance().AddObject(door);
+		m_objList.push_back(door);
+	}
+
+	// 敵生成
+	for (EnemyData enemy : m_enemyList[_mapId])
+	{
+		EnemyManager::Instance().Spawn(enemy.name, enemy.pos);
 	}
 }
 
 void MapManager::Init()
 {
+	m_nowMapId = 1;
+
 	// 接続先データの読み込み==================================================
 	{
 		std::ifstream ifs("Asset/Data/Map/Link.csv"); //ファイル操作用の変数
@@ -78,18 +113,14 @@ void MapManager::Init()
 		{
 			std::istringstream iss(lineString); // 文字列を操作する変数にファイルから読み取った文字列を格納
 			std::string mapId;					// マップ番号
-			std::string dorrType;				// ドアタイプ
-			std::string doorId;					// ドア番号
+			std::string doorType;				// ドアタイプ
 			std::string linkId;					// 接続先
 
 			std::getline(iss, mapId, ',');
-			std::getline(iss, dorrType, ',');
-			std::getline(iss, doorId, ',');
+			std::getline(iss, doorType, ',');
 			std::getline(iss, linkId, ',');
 
-			m_linkList[stoi(mapId)][dorrType] = ;
-			m_linkList[stoi()]
-			m_linkList[stoi(doorId)].linkMap = stoi(linkId);
+			m_linkMapList[stoi(mapId)][doorType] = stoi(linkId);
 		}
 
 		ifs.close();
@@ -137,9 +168,10 @@ void MapManager::Init()
 		ifs.close();
 	}
 
-	// ドアデータの読みこみ==================================================
+
+	// エネミーデータの読みこみ==================================================
 	{
-		std::ifstream ifs("Asset/Data/Map/Door.csv"); //ファイル操作用の変数
+		std::ifstream ifs("Asset/Data/Map/Enemy.csv"); //ファイル操作用の変数
 
 		std::string lineString; //ファイルから1文字列読み取る変数
 
@@ -149,28 +181,31 @@ void MapManager::Init()
 		while (std::getline(ifs, lineString))
 		{
 			std::istringstream iss(lineString); // 文字列を操作する変数にファイルから読み取った文字列を格納
-			std::string doorType;				// ドアタイプを格納
-			std::string doorPos;				// ドア座標を格納
-			std::string doorDeg;				// ドア角度を格納
+			std::string mapId;					// マップ番号を格納
+			std::string enemyName;				// 名前を格納
+			std::string enemyPos;				// ドアタイプを格納
 
-			std::getline(iss, doorType, ',');
-			std::getline(iss, doorPos, ',');
-			std::getline(iss, doorDeg, ',');
+			std::getline(iss, mapId, ',');
+			std::getline(iss, enemyName, ',');
+			std::getline(iss, enemyPos, ',');
 
-			// ドア座標
-			std::istringstream iss2(doorPos);
+			EnemyData enemy;
 
+			// 名前設定
+			enemy.name = enemyName;
+
+			// 座標設定
 			std::string pos;
+			std::istringstream iss2(enemyPos);
+			
+			std::getline(iss2,pos,'/');
+			enemy.pos.x = atof(pos.c_str());
+			std::getline(iss2, pos, '/');
+			enemy.pos.y = atof(pos.c_str());
+			std::getline(iss2, pos, '/');
+			enemy.pos.z = atof(pos.c_str());
 
-			std::getline(iss2, pos, '/');
-			m_doorList[doorType].pos.x = atof(pos.c_str());
-			std::getline(iss2, pos, '/');
-			m_doorList[doorType].pos.y = atof(pos.c_str());
-			std::getline(iss2, pos, '/');
-			m_doorList[doorType].pos.z = atof(pos.c_str());
-
-			// ドア角度
-			m_doorList[doorType].deg = stoi(doorDeg);
+			m_enemyList[stoi(mapId)].push_back(enemy);
 		}
 
 		ifs.close();

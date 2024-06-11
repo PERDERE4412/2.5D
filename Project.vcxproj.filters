@@ -124,17 +124,11 @@
     <Filter Include="Src\Application\Object\UI\LevelBar">
       <UniqueIdentifier>{602a5dcd-b321-4736-a9c2-dbe849b1e296}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Object\Chara\Enemy\Enemy01">
-      <UniqueIdentifier>{cc53cd13-da47-47b0-a932-2d2f9f7f5287}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Data\Status\Player">
       <UniqueIdentifier>{ad9ebda3-eeeb-4f62-a827-e4aefb0a9196}</UniqueIdentifier>
     </Filter>
     <Filter Include="Src\Application\Data\Status\Enemy">
       <UniqueIdentifier>{1ebbf85f-0927-4e06-a981-014a9882970c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Data\Status\Enemy\Enemy01">
-      <UniqueIdentifier>{4584ffa1-e356-470f-a7c8-7e054d8ad41d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Src\Application\Object\DropGold">
       <UniqueIdentifier>{def7de0e-c30f-4408-9f21-d2d1b7955f21}</UniqueIdentifier>
@@ -150,6 +144,12 @@
     </Filter>
     <Filter Include="Src\Application\Object\Floor">
       <UniqueIdentifier>{339347a1-9aa9-46d8-aa4d-122917053a0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Chara\Enemy\Warrior">
+      <UniqueIdentifier>{b93ff4c2-28a7-4f4f-aa6b-52466ce5b506}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Data\Status\Enemy\Warrior">
+      <UniqueIdentifier>{4584ffa1-e356-470f-a7c8-7e054d8ad41d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -336,17 +336,11 @@
     <ClInclude Include="Src\Application\Object\UI\LevelBar\LevelBar.h">
       <Filter>Src\Application\Object\UI\LevelBar</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\Chara\Enemy\Enemy01\Enemy01.h">
-      <Filter>Src\Application\Object\Chara\Enemy\Enemy01</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Data\Status\PlayerStatus\PlayerStatus.h">
       <Filter>Src\Application\Data\Status\Player</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Data\Status\Enemy\EnemyStatusManager.h">
       <Filter>Src\Application\Data\Status\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Data\Status\Enemy\Enemy01\Enemy01Status.h">
-      <Filter>Src\Application\Data\Status\Enemy\Enemy01</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Object\DropGold\DropGold.h">
       <Filter>Src\Application\Object\DropGold</Filter>
@@ -362,6 +356,12 @@
     </ClInclude>
     <ClInclude Include="Src\Application\Object\Floor\Floor.h">
       <Filter>Src\Application\Object\Floor</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\Warrior\Warrior.h">
+      <Filter>Src\Application\Object\Chara\Enemy\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Data\Status\Enemy\Warrior\WarriorStatus.h">
+      <Filter>Src\Application\Data\Status\Enemy\Warrior</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -524,17 +524,11 @@
     <ClCompile Include="Src\Application\Object\UI\LevelBar\LebelBar.cpp">
       <Filter>Src\Application\Object\UI\LevelBar</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\Chara\Enemy\Enemy01\Enemy01.cpp">
-      <Filter>Src\Application\Object\Chara\Enemy\Enemy01</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Data\Status\Player\PlayerStatus.cpp">
       <Filter>Src\Application\Data\Status\Player</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Data\Status\Enemy\EnemyStatusManager.cpp">
       <Filter>Src\Application\Data\Status\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Data\Status\Enemy\Enemy01\Enemy01Status.cpp">
-      <Filter>Src\Application\Data\Status\Enemy\Enemy01</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Object\DropGold\DropGold.cpp">
       <Filter>Src\Application\Object\DropGold</Filter>
@@ -550,6 +544,12 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Floor\Floor.cpp">
       <Filter>Src\Application\Object\Floor</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\Warrior\Warrior.cpp">
+      <Filter>Src\Application\Object\Chara\Enemy\Warrior</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Data\Status\Enemy\Warrior\WarriorStatus.cpp">
+      <Filter>Src\Application\Data\Status\Enemy\Warrior</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
