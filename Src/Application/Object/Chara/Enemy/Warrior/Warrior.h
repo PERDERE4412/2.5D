@@ -14,6 +14,7 @@ public:
 	Warrior() { Init(); }
 	~Warrior()override {}
 
+	void PreUpdate()override;
 	void Update()override;
 	void PostUpdate()override;
 
@@ -41,6 +42,8 @@ private:
 	WarriorAnimation::Dir m_dir;		// 向き
 
 	int m_attackWait;					// 攻撃のクールタイム
+
+	int m_damageWait;					// 被弾時の光る時間
 
 	int m_invWait;						// 無敵時間
 };

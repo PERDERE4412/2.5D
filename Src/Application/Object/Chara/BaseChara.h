@@ -13,6 +13,7 @@ public:
 protected:
 
 	KdSquarePolygon m_polygon;		// 板ポリゴン
+	Math::Color m_color;			// 色
 	Math::Vector3 m_pos;			// 座標
 	Math::Vector3 m_vec;			// 方向ベクトル
 

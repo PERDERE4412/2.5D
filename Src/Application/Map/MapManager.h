@@ -11,6 +11,8 @@ public:
 
 	void SetPlayer(std::shared_ptr<Player> _player) { m_player = _player; }
 
+	void SetPlayerPos(std::string _type);
+
 	void AddObject(std::shared_ptr<KdGameObject> _obj) { m_objList.push_back(_obj); }
 
 	enum WallType
@@ -46,11 +48,15 @@ private:
 		UINT door;		// ドアタイプ
 		UINT wall;		// 壁タイプ
 	};
-
+	
 	std::unordered_map<int, MapData> m_mapList;				// マップリスト
 
 	std::unordered_map<int, std::unordered_map<std::string, int>> m_linkMapList;		// 接続先リスト
 
+	// プレイヤーの移動座標
+	std::unordered_map<std::string, Math::Vector3> m_playerPosList;
+
+	// エネミー
 	struct EnemyData
 	{
 		std::string name;

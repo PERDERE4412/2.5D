@@ -1,11 +1,11 @@
 ﻿#pragma once
 
-class FireWispAnimation
+class SlimeAnimation
 {
 public:
 
-	FireWispAnimation() { Init(); }		// コンストラクタ
-	~FireWispAnimation() {}				// デストラクタ
+	SlimeAnimation() { Init(); }		// コンストラクタ
+	~SlimeAnimation() {}				// デストラクタ
 
 	// エネミーの状態
 	enum class State
@@ -25,7 +25,7 @@ public:
 
 	State GetState() { return m_state; }
 
-	int GetUVRect() { return (int)m_cnt; }
+	int GetUVrect() { return (int)m_cnt; }
 
 	bool GetAction() { return m_bAction; }
 	bool GetStiff() { return m_bStiff; }

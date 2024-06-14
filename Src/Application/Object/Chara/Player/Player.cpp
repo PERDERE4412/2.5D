@@ -118,10 +118,10 @@ void Player::PostUpdate()
 
 void Player::Hit(int _damage)
 {
-	if (m_invWait <= 0)
+	if (m_invWait <= 0 && m_state != Animation::PlayerState::Roll)
 	{
 		PlayerStatus::Instance().Damage(_damage);
-		m_invWait = 60;
+		m_invWait = 120;
 	}
 }
 
@@ -131,6 +131,8 @@ void Player::Init()
 
 	// 状態
 	m_state = Animation::PlayerState::Idle;
+
+	m_color = { 1,1,1,1 };
 
 	m_movePow = 0.2f;
 	m_dir = Animation::PlayerDir::Right;
@@ -202,7 +204,7 @@ void Player::Move()
 	// 回避
 	if (m_state == Animation::PlayerState::Run)
 	{
-		if (GetAsyncKeyState('R') & 0x8000)
+		if (GetAsyncKeyState(VK_RBUTTON) & 0x8000)
 		{
 			m_movePow = 0.6f;
 			m_state = Animation::PlayerState::Roll;

@@ -148,11 +148,13 @@
     <ClInclude Include="..\Library\tinygltf\tiny_gltf.h" />
     <ClInclude Include="Src\Application\Animation\Animation.h" />
     <ClInclude Include="Src\Application\Animation\FireWispAnimation.h" />
+    <ClInclude Include="Src\Application\Animation\SlimeAnimation.h" />
     <ClInclude Include="Src\Application\Animation\WarriorAnimation.h" />
     <ClInclude Include="Src\Application\Data\Item\Item.h" />
     <ClInclude Include="Src\Application\Data\Skill\Skill.h" />
     <ClInclude Include="Src\Application\Data\Status\Enemy\EnemyStatusManager.h" />
     <ClInclude Include="Src\Application\Data\Status\Enemy\FireWisp\FireWispStatus.h" />
+    <ClInclude Include="Src\Application\Data\Status\Enemy\Slime\SlimeStatus.h" />
     <ClInclude Include="Src\Application\Data\Status\Enemy\Warrior\WarriorStatus.h" />
     <ClInclude Include="Src\Application\Data\Status\PlayerStatus\PlayerStatus.h" />
     <ClInclude Include="Src\Application\Lib\AssetManager\AssetManager.h" />
@@ -163,6 +165,8 @@
     <ClInclude Include="Src\Application\Object\Chara\BaseChara.h" />
     <ClInclude Include="Src\Application\Object\Chara\Enemy\EnemyManager.h" />
     <ClInclude Include="Src\Application\Object\Chara\Enemy\FireWisp\FireWisp.h" />
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\FireWisp\FireWispBullet.h" />
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\Slime\Slime.h" />
     <ClInclude Include="Src\Application\Object\Chara\Enemy\Warrior\Warrior.h" />
     <ClInclude Include="Src\Application\Object\Chara\Player\Player.h" />
     <ClInclude Include="Src\Application\Object\Door\Door.h" />
@@ -218,11 +222,13 @@
   <ItemGroup>
     <ClCompile Include="Src\Application\Animation\Animation.cpp" />
     <ClCompile Include="Src\Application\Animation\FireWispAnimation.cpp" />
+    <ClCompile Include="Src\Application\Animation\SlimeAnimation.cpp" />
     <ClCompile Include="Src\Application\Animation\WarriorAnimation.cpp" />
     <ClCompile Include="Src\Application\Data\Item\Item.cpp" />
     <ClCompile Include="Src\Application\Data\Skill\Skill.cpp" />
     <ClCompile Include="Src\Application\Data\Status\Enemy\EnemyStatusManager.cpp" />
     <ClCompile Include="Src\Application\Data\Status\Enemy\FireWisp\FireWispStatus.cpp" />
+    <ClCompile Include="Src\Application\Data\Status\Enemy\Slime\SlimeStatus.cpp" />
     <ClCompile Include="Src\Application\Data\Status\Enemy\Warrior\WarriorStatus.cpp" />
     <ClCompile Include="Src\Application\Data\Status\Player\PlayerStatus.cpp" />
     <ClCompile Include="Src\Application\Lib\AssetManager\AssetManager.cpp" />
@@ -232,6 +238,8 @@
     <ClCompile Include="Src\Application\Object\Chara\BaseChara.cpp" />
     <ClCompile Include="Src\Application\Object\Chara\Enemy\EnemyManager.cpp" />
     <ClCompile Include="Src\Application\Object\Chara\Enemy\FireWisp\FireWisp.cpp" />
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\FireWisp\FireWispBullet.cpp" />
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\Slime\Slime.cpp" />
     <ClCompile Include="Src\Application\Object\Chara\Enemy\Warrior\Warrior.cpp" />
     <ClCompile Include="Src\Application\Object\Chara\Player\Player.cpp" />
     <ClCompile Include="Src\Application\Object\Door\Door.cpp" />

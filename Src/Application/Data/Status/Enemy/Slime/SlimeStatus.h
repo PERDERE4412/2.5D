@@ -2,12 +2,12 @@
 
 #include "../EnemyStatusManager.h"
 
-class GhoulStatus
+class SlimeStatus
 {
 public:
 
-	GhoulStatus() { Init(); }
-	~GhoulStatus() {}
+	SlimeStatus() { Init(); }
+	~SlimeStatus() {}
 
 	void Damage(int _damage) { m_status.hp -= _damage; }
 

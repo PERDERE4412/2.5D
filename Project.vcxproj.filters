@@ -157,6 +157,12 @@
     <Filter Include="Src\Application\Data\Status\Enemy\FireWisp">
       <UniqueIdentifier>{da5676c2-490f-4da4-8955-d33b8b45cdf4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Object\Chara\Enemy\Slime">
+      <UniqueIdentifier>{76ec8d80-7e8a-4008-ae6e-205138882206}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Data\Status\Enemy\Slime">
+      <UniqueIdentifier>{b23be5cb-1e3f-4c2e-bcec-a70455e6b20d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -378,6 +384,18 @@
     <ClInclude Include="Src\Application\Animation\FireWispAnimation.h">
       <Filter>Src\Application\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\Slime\Slime.h">
+      <Filter>Src\Application\Object\Chara\Enemy\Slime</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Animation\SlimeAnimation.h">
+      <Filter>Src\Application\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Data\Status\Enemy\Slime\SlimeStatus.h">
+      <Filter>Src\Application\Data\Status\Enemy\Slime</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\FireWisp\FireWispBullet.h">
+      <Filter>Src\Application\Object\Chara\Enemy\FireWisp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -574,6 +592,18 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Animation\FireWispAnimation.cpp">
       <Filter>Src\Application\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\Slime\Slime.cpp">
+      <Filter>Src\Application\Object\Chara\Enemy\Slime</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Animation\SlimeAnimation.cpp">
+      <Filter>Src\Application\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Data\Status\Enemy\Slime\SlimeStatus.cpp">
+      <Filter>Src\Application\Data\Status\Enemy\Slime</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\FireWisp\FireWispBullet.cpp">
+      <Filter>Src\Application\Object\Chara\Enemy\FireWisp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

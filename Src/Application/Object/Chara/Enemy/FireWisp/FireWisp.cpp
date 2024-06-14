@@ -1,12 +1,22 @@
 ﻿#include "FireWisp.h"
 
 #include "../../../../Lib/AssetManager/AssetManager.h"
-//#include "../../../../Animation/FireWispAnimation.h"
+#include "../../../../Map/MapManager.h"
 #include "../../Player/Player.h"
 #include "../../../../Scene/GameScene/GameScene.h"
 #include "../../../../Data/Status/Player/PlayerStatus.h"
 #include "../../../DropGold/DropGold.h"
 #include "../../../../Scene/SceneManager.h"
+#include "FireWispBullet.h"
+
+void FireWisp::PreUpdate()
+{
+	if (m_damageWait > 0)m_damageWait--;
+	if (m_damageWait <= 0)
+	{
+		m_color = { 1,1,1,1 };
+	}
+}
 
 void FireWisp::Update()
 {
@@ -32,6 +42,22 @@ void FireWisp::Update()
 
 	// アニメーション作成
 	m_anim->CreateAnime(m_dir, m_state, &m_polygon);
+
+	// 弾生成
+	if (m_anim->GetState() == FireWispAnimation::State::Attack1 && m_anim->GetUVRect() == 7)
+	{
+		if (!m_bBullet)
+		{
+			m_bBullet = true;
+
+			// 弾生成
+			m_vec.Normalize();
+			std::shared_ptr<FireWispBullet> bullet = std::make_shared<FireWispBullet>();
+			bullet->Set(m_pos, m_vec, m_status->GetAtk());
+			SceneManager::Instance().AddObject(bullet);
+			MapManager::Instance().AddObject(bullet);
+		}
+	}
 
 	// 消滅
 	if (m_anim->GetKill())
@@ -112,44 +138,6 @@ void FireWisp::PostUpdate()
 		}
 	}
 
-	//========================================
-	// 攻撃判定
-	//========================================
-	if (m_state == FireWispAnimation::State::Attack1)
-	{
-		if (m_player.expired()) return;
-
-		// 球判定用の変数を作成
-		KdCollider::SphereInfo sphere;
-
-		// 球の中心点を設定
-		Math::Vector3 dir = m_playerPos - m_pos;
-		dir.Normalize();
-		float attackRange = 4.0f;
-		sphere.m_sphere.Center = m_pos + (dir * attackRange);
-		sphere.m_sphere.Center.z += 2.0f;
-
-		// 球の半径を設定
-		sphere.m_sphere.Radius = 2.0f;
-
-		// 当たり判定をしたいタイプを設定
-		sphere.m_type = KdCollider::TypePlayer;
-
-		//球に当たったオブジェクトの状態を格納
-		std::list<KdCollider::CollisionResult> retSphereList;
-
-		// 当たり判定(sphere)
-		for (auto& obj : SceneManager::Instance().GetObjList())
-		{
-			if (obj->Intersects(sphere, &retSphereList))
-			{
-				obj->Hit(m_status->GetAtk());
-			}
-		}
-
-		m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, 2.0f, kGreenColor);
-	}
-
 	// 行列作成
 	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
 	m_world = rotX * Math::Matrix::CreateTranslation(m_pos);
@@ -160,7 +148,9 @@ void FireWisp::Hit(int _damage)
 	if (m_invWait <= 0)
 	{
 		m_status->Damage(_damage);
-		m_invWait = 60;
+		m_invWait = 30;
+		m_damageWait = 10;
+		m_color = { 10,10,10,1 };
 	}
 }
 
@@ -174,12 +164,16 @@ void FireWisp::Init()
 
 	m_status = std::make_shared<FireWispStatus>();
 
+	m_color = { 1,1,1,1 };
+
 	m_polygon = AssetManager::Instance().GetMaterial("fireWispIdle");
 	m_polygon.SetUVRect(0);
 
 	m_movePow = 0.15f;
 
 	m_attackWait = 0;
+
+	m_bBullet = false;
 
 	m_invWait = 0;
 
@@ -198,12 +192,10 @@ void FireWisp::Move()
 
 	// 方向ベクトル初期化
 	m_vec = Math::Vector3::Zero;
+	m_vec = m_playerPos - m_pos;
 
-	float dist = Math::Vector3::Distance(m_playerPos, m_pos);
-	if (dist < 15.0f && dist > 6.0f)
+	if (m_vec.Length()< 25.0f && m_vec.Length() > 15.0f)
 	{
-		m_vec = m_playerPos - m_pos;
-
 		m_vec.Normalize();
 		m_vec *= m_movePow;
 		m_pos += m_vec;
@@ -225,7 +217,7 @@ void FireWisp::Move()
 			}
 		}
 	}
-	else if (dist <= 6.0f)
+	else if (m_vec.Length() <= 15.0f)
 	{
 		Attack();
 	}
@@ -246,5 +238,6 @@ void FireWisp::Attack()
 	{
 		m_state = FireWispAnimation::State::Attack1;
 		m_attackWait = 120;
+		m_bBullet = false;
 	}
 }

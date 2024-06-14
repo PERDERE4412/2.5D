@@ -1,8 +1,8 @@
-﻿#include "WarriorAnimation.h"
+﻿#include "SlimeAnimation.h"
 
 #include "../Lib/AssetManager/AssetManager.h"
 
-void WarriorAnimation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polygon)
+void SlimeAnimation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polygon)
 {
 	// 現在の状態と異なっていたら
 	if (m_state != _state)
@@ -12,26 +12,26 @@ void WarriorAnimation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _pol
 		switch (m_state)
 		{
 		case State::Idle:
-			*_polygon = AssetManager::Instance().GetMaterial("warriorIdle");
+			*_polygon = AssetManager::Instance().GetMaterial("slimeIdle");
 			m_cntSpeed = 0.05f;
 			break;
 		case State::Run:
-			*_polygon = AssetManager::Instance().GetMaterial("warriorRun");
+			*_polygon = AssetManager::Instance().GetMaterial("slimeRun");
 			m_cntSpeed = 0.2f;
 			break;
 		case State::Attack1:
-			*_polygon = AssetManager::Instance().GetMaterial("warriorAttack1");
-			m_cntSpeed = 0.2f;
+			*_polygon = AssetManager::Instance().GetMaterial("slimeAttack");
+			m_cntSpeed = 0.1f;
 			m_bAction = false;
 			break;
 		case State::Attack2:
-			*_polygon = AssetManager::Instance().GetMaterial("warriorAttack2");
+			*_polygon = AssetManager::Instance().GetMaterial("slimeAttack2");
 			m_cntSpeed = 0.5f;
 			m_bAction = false;
 			break;
 		case State::Death:
-			*_polygon = AssetManager::Instance().GetMaterial("warriorDeath");
-			m_cntSpeed = 0.2f;
+			*_polygon = AssetManager::Instance().GetMaterial("slimeDeath");
+			m_cntSpeed = 0.1f;
 			m_bAction = false;
 		}
 
@@ -46,7 +46,7 @@ void WarriorAnimation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _pol
 	_polygon->SetUVRect((int)m_cnt);
 }
 
-void WarriorAnimation::AnimeCnt()
+void SlimeAnimation::AnimeCnt()
 {
 	if (m_bStiff)
 	{
@@ -82,7 +82,7 @@ void WarriorAnimation::AnimeCnt()
 	}
 }
 
-void WarriorAnimation::Init()
+void SlimeAnimation::Init()
 {
 	m_state = State::Idle;
 

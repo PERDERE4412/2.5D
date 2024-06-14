@@ -4,7 +4,7 @@
 #include "../../../Map/MapManager.h"
 #include "Warrior/Warrior.h"
 #include "FireWisp/FireWisp.h"
-#include "Ghoul/Ghoul.h"
+#include "Slime/Slime.h"
 
 void EnemyManager::Spawn(std::string _name, Math::Vector3 _pos)
 {
@@ -26,13 +26,13 @@ void EnemyManager::Spawn(std::string _name, Math::Vector3 _pos)
 		MapManager::Instance().AddObject(fireWisp);
 	}
 
-	if (_name == "Ghoul")
+	if (_name == "Slime")
 	{
-		std::shared_ptr<Ghoul> ghoul = std::make_shared<Ghoul>();
-		ghoul->SetPos(_pos);
-		ghoul->SetPlayer(m_player);
-		SceneManager::Instance().AddObject(ghoul);
-		MapManager::Instance().AddObject(ghoul);
+		std::shared_ptr<Slime> slime = std::make_shared<Slime>();
+		slime->SetPos(_pos);
+		slime->SetPlayer(m_player);
+		SceneManager::Instance().AddObject(slime);
+		MapManager::Instance().AddObject(slime);
 	}
 }
 

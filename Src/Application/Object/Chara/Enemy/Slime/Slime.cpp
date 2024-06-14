@@ -1,31 +1,40 @@
-﻿#include "Ghoul.h"
+﻿#include "Slime.h"
 
 #include "../../../../Lib/AssetManager/AssetManager.h"
-#include "../../../../Animation/GhoulAnimation.h"
+#include "../../../../Animation/SlimeAnimation.h"
 #include "../../Player/Player.h"
 #include "../../../../Scene/GameScene/GameScene.h"
 #include "../../../../Data/Status/Player/PlayerStatus.h"
 #include "../../../DropGold/DropGold.h"
 #include "../../../../Scene/SceneManager.h"
 
-void Ghoul::Update()
+void Slime::PreUpdate()
+{
+	if (m_damageWait > 0)m_damageWait--;
+	if (m_damageWait <= 0)
+	{
+		m_color = { 1,1,1,1 };
+	}
+}
+
+void Slime::Update()
 {
 	// デバッグ用
 	if (GetAsyncKeyState('P') & 0x8000)m_status->Damage(5);
 
 	if (m_status->GetHp() <= 0)
 	{
-		if (m_state != GhoulAnimation::State::Death)
+		if (m_state != SlimeAnimation::State::Death)
 		{
 			PlayerStatus::Instance().SetExp(10);
-			m_state = GhoulAnimation::State::Death;
+			m_state = SlimeAnimation::State::Death;
 		}
 	}
 
 	if (!m_player.expired())m_playerPos = m_player.lock()->GetPos();
 	else return;
 
-	if (m_state != GhoulAnimation::State::Death)
+	if (m_state != SlimeAnimation::State::Death)
 	{
 		if (m_anim->GetAction())Move();
 	}
@@ -45,10 +54,10 @@ void Ghoul::Update()
 	if (m_invWait > 0)m_invWait--;
 }
 
-void Ghoul::PostUpdate()
+void Slime::PostUpdate()
 {
 	// 敵の当たり判定を可視化
-	//m_pDebugWire->AddDebugSphere(m_pos + Math::Vector3(0, 3.0f, 0), 2.0f, kGreenColor);
+	m_pDebugWire->AddDebugSphere(m_pos + Math::Vector3(0, 3.0f, 0), 2.0f, kGreenColor);
 
 	//========================================
 	// 球判定
@@ -115,39 +124,41 @@ void Ghoul::PostUpdate()
 	//========================================
 	// 攻撃判定
 	//========================================
-	if (m_state == GhoulAnimation::State::Attack1)
+	if (m_state == SlimeAnimation::State::Attack1)
 	{
-		if (m_player.expired()) return;
-
-		// 球判定用の変数を作成
-		KdCollider::SphereInfo sphere;
-
-		// 球の中心点を設定
-		Math::Vector3 dir = m_playerPos - m_pos;
-		dir.Normalize();
-		float attackRange = 4.0f;
-		sphere.m_sphere.Center = m_pos + (dir * attackRange);
-		sphere.m_sphere.Center.z += 2.0f;
-
-		// 球の半径を設定
-		sphere.m_sphere.Radius = 2.0f;
-
-		// 当たり判定をしたいタイプを設定
-		sphere.m_type = KdCollider::TypePlayer;
-
-		//球に当たったオブジェクトの状態を格納
-		std::list<KdCollider::CollisionResult> retSphereList;
-
-		// 当たり判定(sphere)
-		for (auto& obj : SceneManager::Instance().GetObjList())
+		if (m_anim->GetUVrect() == 4)
 		{
-			if (obj->Intersects(sphere, &retSphereList))
-			{
-				obj->Hit(m_status->GetAtk());
-			}
-		}
 
-		m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, 2.0f, kGreenColor);
+			// 球判定用の変数を作成
+			KdCollider::SphereInfo sphere;
+
+			// 球の中心点を設定
+			Math::Vector3 dir = m_playerPos - m_pos;
+			dir.Normalize();
+			float attackRange = 4.0f;
+			sphere.m_sphere.Center = m_pos + (dir * attackRange);
+			sphere.m_sphere.Center.z += 2.0f;
+
+			// 球の半径を設定
+			sphere.m_sphere.Radius = 2.0f;
+
+			// 当たり判定をしたいタイプを設定
+			sphere.m_type = KdCollider::TypePlayer;
+
+			//球に当たったオブジェクトの状態を格納
+			std::list<KdCollider::CollisionResult> retSphereList;
+
+			// 当たり判定(sphere)
+			for (auto& obj : SceneManager::Instance().GetObjList())
+			{
+				if (obj->Intersects(sphere, &retSphereList))
+				{
+					obj->Hit(m_status->GetAtk());
+				}
+			}
+
+			m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, 2.0f, kGreenColor);
+		}
 	}
 
 	// 行列作成
@@ -155,26 +166,32 @@ void Ghoul::PostUpdate()
 	m_world = rotX * Math::Matrix::CreateTranslation(m_pos);
 }
 
-void Ghoul::Hit(int _damage)
+void Slime::Hit(int _damage)
 {
 	if (m_invWait <= 0)
 	{
 		m_status->Damage(_damage);
-		m_invWait = 60;
+		m_invWait = 30;
+		m_damageWait = 10;
+		m_color = { 10,10,10,1 };
 	}
 }
 
-void Ghoul::Init()
+void Slime::Init()
 {
-	m_anim = std::make_shared<GhoulAnimation>();
+	m_anim = std::make_shared<SlimeAnimation>();
 
-	m_state = GhoulAnimation::State::Idle;
+	m_state = SlimeAnimation::State::Idle;
 
-	m_dir = GhoulAnimation::Dir::Right;
+	m_dir = SlimeAnimation::Dir::Right;
 
-	m_status = std::make_shared<GhoulStatus>();
+	m_status = std::make_shared<SlimeStatus>();
 
-	m_polygon = AssetManager::Instance().GetMaterial("ghoulIdle");
+	m_color = { 1,1,1,1 };
+
+	m_damageWait = 0;
+
+	m_polygon = AssetManager::Instance().GetMaterial("slimeIdle");
 	m_polygon.SetUVRect(0);
 
 	m_movePow = 0.15f;
@@ -187,12 +204,12 @@ void Ghoul::Init()
 	m_pDebugWire = std::make_unique<KdDebugWireFrame>();
 
 	m_pCollider = std::make_unique<KdCollider>();
-	m_pCollider->RegisterCollisionShape("GhoulCollision", { 0.0f,3.0f,0.0f }, 2.0f, KdCollider::TypeBump | KdCollider::TypeEnemy);
+	m_pCollider->RegisterCollisionShape("SlimeCollision", { 0.0f,3.0f,0.0f }, 2.0f, KdCollider::TypeBump | KdCollider::TypeEnemy);
 }
 
-void Ghoul::Move()
+void Slime::Move()
 {
-	m_state = GhoulAnimation::State::Idle;
+	m_state = SlimeAnimation::State::Idle;
 
 	m_movePow = 0.15f;
 
@@ -210,17 +227,17 @@ void Ghoul::Move()
 
 		if (m_vec.x > 0.0f)
 		{
-			if (m_dir == GhoulAnimation::Dir::Left)
+			if (m_dir == SlimeAnimation::Dir::Left)
 			{
-				m_dir = GhoulAnimation::Dir::Right;
+				m_dir = SlimeAnimation::Dir::Right;
 				m_polygon.TurnScale();
 			}
 		}
 		else if (m_vec.x < 0.0f)
 		{
-			if (m_dir == GhoulAnimation::Dir::Right)
+			if (m_dir == SlimeAnimation::Dir::Right)
 			{
-				m_dir = GhoulAnimation::Dir::Left;
+				m_dir = SlimeAnimation::Dir::Left;
 				m_polygon.TurnScale();
 			}
 		}
@@ -232,19 +249,19 @@ void Ghoul::Move()
 
 	if (m_attackWait > 0)m_attackWait--;
 
-	if (m_vec != Math::Vector3::Zero && m_state != GhoulAnimation::State::Attack1)
+	if (m_vec != Math::Vector3::Zero && m_state != SlimeAnimation::State::Attack1)
 	{
-		m_state = GhoulAnimation::State::Run;
+		m_state = SlimeAnimation::State::Run;
 	}
 }
 
-void Ghoul::Attack()
+void Slime::Attack()
 {
 	m_movePow = 0.0f;
 
 	if (m_attackWait <= 0)
 	{
-		m_state = GhoulAnimation::State::Attack1;
+		m_state = SlimeAnimation::State::Attack1;
 		m_attackWait = 120;
 	}
 }

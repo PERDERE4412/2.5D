@@ -8,6 +8,15 @@
 #include "../../../DropGold/DropGold.h"
 #include "../../../../Scene/SceneManager.h"
 
+void Warrior::PreUpdate()
+{
+	if (m_damageWait > 0)m_damageWait--;
+	if (m_damageWait <= 0)
+	{
+		m_color = { 1,1,1,1 };
+	}
+}
+
 void Warrior::Update()
 {
 	// デバッグ用
@@ -117,37 +126,38 @@ void Warrior::PostUpdate()
 	//========================================
 	if (m_state == WarriorAnimation::State::Attack1)
 	{
-		if (m_player.expired()) return;
-
-		// 球判定用の変数を作成
-		KdCollider::SphereInfo sphere;
-
-		// 球の中心点を設定
-		Math::Vector3 dir = m_playerPos - m_pos;
-		dir.Normalize();
-		float attackRange = 4.0f;
-		sphere.m_sphere.Center = m_pos + (dir*attackRange);
-		sphere.m_sphere.Center.z += 2.0f;
-
-		// 球の半径を設定
-		sphere.m_sphere.Radius = 2.0f;
-
-		// 当たり判定をしたいタイプを設定
-		sphere.m_type = KdCollider::TypePlayer;
-
-		//球に当たったオブジェクトの状態を格納
-		std::list<KdCollider::CollisionResult> retSphereList;
-
-		// 当たり判定(sphere)
-		for (auto& obj : SceneManager::Instance().GetObjList())
+		if (m_anim->GetUVRect() >= 6 && m_anim->GetUVRect() <= 8)
 		{
-			if (obj->Intersects(sphere, &retSphereList))
-			{
-				obj->Hit(m_status->GetAtk());
-			}
-		}
+			// 球判定用の変数を作成
+			KdCollider::SphereInfo sphere;
 
-		m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, 2.0f, kGreenColor);
+			// 球の中心点を設定
+			Math::Vector3 dir = m_playerPos - m_pos;
+			dir.Normalize();
+			float attackRange = 4.0f;
+			sphere.m_sphere.Center = m_pos + (dir * attackRange);
+			sphere.m_sphere.Center.z += 2.0f;
+
+			// 球の半径を設定
+			sphere.m_sphere.Radius = 2.0f;
+
+			// 当たり判定をしたいタイプを設定
+			sphere.m_type = KdCollider::TypePlayer;
+
+			//球に当たったオブジェクトの状態を格納
+			std::list<KdCollider::CollisionResult> retSphereList;
+
+			// 当たり判定(sphere)
+			for (auto& obj : SceneManager::Instance().GetObjList())
+			{
+				if (obj->Intersects(sphere, &retSphereList))
+				{
+					obj->Hit(m_status->GetAtk());
+				}
+			}
+
+			m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, 2.0f, kGreenColor);
+		}
 	}
 
 	// 行列作成
@@ -160,7 +170,9 @@ void Warrior::Hit(int _damage)
 	if (m_invWait <= 0)
 	{
 		m_status->Damage(_damage);
-		m_invWait = 60;
+		m_invWait = 30;
+		m_damageWait = 10;
+		m_color = { 10,10,10,1 };
 	}
 }
 
@@ -173,6 +185,10 @@ void Warrior::Init()
 	m_dir = WarriorAnimation::Dir::Right;
 
 	m_status = std::make_shared<WarriorStatus>();
+
+	m_color = { 1,1,1,1 };
+
+	m_damageWait = 0;
 
 	m_polygon = AssetManager::Instance().GetMaterial("warriorIdle");
 	m_polygon.SetUVRect(0);

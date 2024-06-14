@@ -25,6 +25,8 @@ public:
 
 	State GetState() { return m_state; }
 
+	int GetUVRect() { return (int)m_cnt; }
+
 	bool GetAction() { return m_bAction; }
 	bool GetStiff() { return m_bStiff; }
 

@@ -26,6 +26,19 @@ void MapManager::ChangeMap()
 	CreateMap(m_nowMapId);
 }
 
+void MapManager::SetPlayerPos(std::string _type)
+{
+	if (!m_player.expired())
+	{
+		Math::Vector3 pos;
+		if (_type == "L")pos=m_playerPosList["R"];
+		if (_type == "U")pos=m_playerPosList["D"];
+		if (_type == "R")pos=m_playerPosList["L"];
+		if (_type == "D")pos=m_playerPosList["U"];
+		m_player.lock()->SetPos(pos);
+	}
+}
+
 void MapManager::CreateMap(int _mapId)
 {
 	m_nowMapId = _mapId;
@@ -210,4 +223,10 @@ void MapManager::Init()
 
 		ifs.close();
 	}
+
+	// プレイヤーの座標リスト
+	m_playerPosList["L"] = { -17,0,53 };
+	m_playerPosList["U"] = { 17,0,53 };
+	m_playerPosList["R"] = { 17,0,20 };
+	m_playerPosList["D"] = { -17,0,20 };
 }

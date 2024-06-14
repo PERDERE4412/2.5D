@@ -34,8 +34,8 @@ void Door::Update()
 				{
 					ActionManager::Instance().OnKey();
 					ActionManager::Instance().OffAction();
+					MapManager::Instance().SetPlayerPos(m_type);
 					MapManager::Instance().ChangeMap(m_type);
-					m_isExpired = true;		// 消滅
 				}
 			}
 			// 長押し制御

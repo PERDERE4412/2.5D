@@ -74,18 +74,24 @@ void AssetManager::Init()
 	LoadMaterial("fireWispDeath", "Asset/Textures/Enemy/FireWisp/death.png");
 	SetMaterial("fireWispDeath", 7.0f, pivot, 7, 1);
 
-	// グール
-	LoadMaterial("ghoulIdle", "Asset/Textures/Enemy/Ghoul/idle.png");
-	SetMaterial("ghoulIdle", 4.0f, pivot, 4, 1);
+	LoadMaterial("fireWispBullet", "Asset/Textures/Enemy/FireWisp/bullet.png");
+	SetMaterial("fireWispBullet", 4.0f, pivot, 1, 1);
 
-	LoadMaterial("ghoulRun", "Asset/Textures/Enemy/Ghoul/run.png");
-	SetMaterial("ghoulRun", 4.0f, pivot, 6, 1);
+	// スライム
+	LoadMaterial("slimeIdle", "Asset/Textures/Enemy/Slime/idle.png");
+	SetMaterial("slimeIdle", 4.0f, pivot, 4, 1);
 
-	LoadMaterial("ghoulAttack", "Asset/Textures/Enemy/Ghoul/attack.png");
-	SetMaterial("ghoulAttack", 4.0f, pivot, 5, 1);
+	LoadMaterial("slimeRun", "Asset/Textures/Enemy/Slime/run.png");
+	SetMaterial("slimeRun", 4.0f, pivot, 4, 1);
 
-	LoadMaterial("ghoulDeath", "Asset/Textures/Enemy/Ghoul/death.png");
-	SetMaterial("ghoulDeath", 4.0f, pivot, 8, 1);
+	LoadMaterial("slimeAttack", "Asset/Textures/Enemy/Slime/attack.png");
+	SetMaterial("slimeAttack", 4.0f, pivot, 5, 1);
+
+	LoadMaterial("slimeHurt", "Asset/Textures/Enemy/Slime/hurt.png");
+	SetMaterial("slimeHurt", 4.0f, pivot, 4, 1);
+
+	LoadMaterial("slimeDeath", "Asset/Textures/Enemy/Slime/death.png");
+	SetMaterial("slimeDeath", 4.0f, pivot, 4, 1);
 
 	// アイテム
 	LoadMaterial("drop", "Asset/Textures/drop.png");
@@ -99,6 +105,8 @@ void AssetManager::Init()
 	// モデル
 	LoadModel("map", "Asset/Models/floor.gltf");
 	LoadModel("wall1", "Asset/Models/wall1.gltf");
+	LoadModel("wall2", "Asset/Models/wall2.gltf");
+	LoadModel("wall3", "Asset/Models/wall3.gltf");
 	LoadModel("wall4", "Asset/Models/wall4.gltf");
 	LoadModel("door", "Asset/Models/door.gltf");
 

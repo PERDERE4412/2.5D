@@ -1,19 +1,20 @@
 ﻿#pragma once
 
-#include "../../../../Animation/GhoulAnimation.h"
-#include "../../../../Data/Status/Enemy/Ghoul/GhoulStatus.h"
+#include "../../../../Animation/SlimeAnimation.h"
+#include "../../../../Data/Status/Enemy/Slime/SlimeStatus.h"
 
 #include "../../BaseChara.h"
 
 class Player;
 
-class Ghoul :public BaseChara
+class Slime :public BaseChara
 {
 public:
 
-	Ghoul() { Init(); }
-	~Ghoul()override {}
+	Slime() { Init(); }
+	~Slime()override {}
 
+	void PreUpdate()override;
 	void Update()override;
 	void PostUpdate()override;
 
@@ -33,14 +34,16 @@ private:
 	std::weak_ptr<Player> m_player;
 	Math::Vector3 m_playerPos;
 
-	std::shared_ptr<GhoulAnimation> m_anim;
+	std::shared_ptr<SlimeAnimation> m_anim;
 
-	std::shared_ptr<GhoulStatus> m_status;
+	std::shared_ptr<SlimeStatus> m_status;
 
-	GhoulAnimation::State m_state;	// 状態
-	GhoulAnimation::Dir m_dir;		// 向き
+	SlimeAnimation::State m_state;	// 状態
+	SlimeAnimation::Dir m_dir;		// 向き
 
 	int m_attackWait;					// 攻撃のクールタイム
+
+	int m_damageWait;					// 被弾時の光る時間
 
 	int m_invWait;						// 無敵時間
 };

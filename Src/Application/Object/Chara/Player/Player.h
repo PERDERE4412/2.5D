@@ -16,6 +16,8 @@ public:
 	
 	void Hit(int _damage)override;
 
+	void SetPos(Math::Vector3 _pos) { m_pos = _pos; }
+
 private:
 
 	void Init()override;		// 初期化
