@@ -5,6 +5,7 @@
 #include "Warrior/Warrior.h"
 #include "FireWisp/FireWisp.h"
 #include "Slime/Slime.h"
+#include "Lich/Lich.h"
 
 void EnemyManager::Spawn(std::string _name, Math::Vector3 _pos)
 {
@@ -33,6 +34,15 @@ void EnemyManager::Spawn(std::string _name, Math::Vector3 _pos)
 		slime->SetPlayer(m_player);
 		SceneManager::Instance().AddObject(slime);
 		MapManager::Instance().AddObject(slime);
+	}
+
+	if (_name == "Lich")
+	{
+		std::shared_ptr<Lich> lich = std::make_shared<Lich>();
+		lich->SetPos(_pos);
+		lich->SetPlayer(m_player);
+		SceneManager::Instance().AddObject(lich);
+		MapManager::Instance().AddObject(lich);
 	}
 }
 

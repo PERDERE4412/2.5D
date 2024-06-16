@@ -93,6 +93,28 @@ void AssetManager::Init()
 	LoadMaterial("slimeDeath", "Asset/Textures/Enemy/Slime/death.png");
 	SetMaterial("slimeDeath", 4.0f, pivot, 4, 1);
 
+	// リッチ(ボス)
+	LoadMaterial("lichIdle", "Asset/Textures/Enemy/Lich/idle.png");
+	SetMaterial("lichIdle", 12.0f, pivot, 16, 1);
+
+	LoadMaterial("lichAttack1", "Asset/Textures/Enemy/Lich/attack1.png");
+	SetMaterial("lichAttack1", 12.0f, pivot, 16, 1);
+
+	LoadMaterial("lichAttack2", "Asset/Textures/Enemy/Lich/attack2.png");
+	SetMaterial("lichAttack2", 12.0f, pivot, 16, 1);
+
+	LoadMaterial("lichAttack3", "Asset/Textures/Enemy/Lich/attack3.png");
+	SetMaterial("lichAttack3", 12.0f, pivot, 32, 1);
+
+	LoadMaterial("lichDeath", "Asset/Textures/Enemy/Lich/death.png");
+	SetMaterial("lichDeath", 12.0f, pivot, 12, 1);
+
+	LoadMaterial("lichBullet", "Asset/Textures/Enemy/Lich/bullet.png");
+	SetMaterial("lichBullet", 3.5f, pivot, 4, 1);
+
+	LoadMaterial("lichBulletExp", "Asset/Textures/Enemy/Lich/bulletExp.png");
+	SetMaterial("lichBulletExp", 4.0f, pivot, 4, 1);
+
 	// アイテム
 	LoadMaterial("drop", "Asset/Textures/drop.png");
 	SetMaterial("drop", 2.0f, pivot, 1, 1);

@@ -1,15 +1,14 @@
-﻿#include "FireWisp.h"
+﻿#include "Lich.h"
 
-#include "../../../../Lib/AssetManager/AssetManager.h"
-#include "../../../../Map/MapManager.h"
 #include "../../Player/Player.h"
-#include "../../../../Scene/GameScene/GameScene.h"
-#include "../../../../Data/Status/Player/PlayerStatus.h"
-#include "../../../DropGold/DropGold.h"
 #include "../../../../Scene/SceneManager.h"
-#include "FireWispBullet.h"
+#include "../../../../Lib/AssetManager/AssetManager.h"
+#include "../../../DropGold/DropGold.h"
+#include "../../../../Data/Status/Player/PlayerStatus.h"
+#include "../../../../Map/MapManager.h"
+#include "LichBullet.h"
 
-void FireWisp::PreUpdate()
+void Lich::PreUpdate()
 {
 	if (m_damageWait > 0)m_damageWait--;
 	if (m_damageWait <= 0)
@@ -18,23 +17,23 @@ void FireWisp::PreUpdate()
 	}
 }
 
-void FireWisp::Update()
+void Lich::Update()
 {
 	// デバッグ用
 	if (GetAsyncKeyState('P') & 0x8000)m_status->Damage(5);
 
 	if (m_status->GetHp() <= 0)
 	{
-		if (m_state != FireWispAnimation::State::Death)
+		if (m_state != LichAnimation::State::Death)
 		{
 			PlayerStatus::Instance().SetExp(10);
-			m_state = FireWispAnimation::State::Death;
+			m_state = LichAnimation::State::Death;
 		}
 	}
 
 	if (!m_player.expired())m_playerPos = m_player.lock()->GetPos();
 
-	if (m_state != FireWispAnimation::State::Death)
+	if (m_state != LichAnimation::State::Death)
 	{
 		if (m_anim->GetAction())Move();
 	}
@@ -43,16 +42,15 @@ void FireWisp::Update()
 	m_anim->CreateAnime(m_dir, m_state, &m_polygon);
 
 	// 弾生成
-	if (m_anim->GetState() == FireWispAnimation::State::Attack1 && m_anim->GetUVRect() == 7)
+	if (m_anim->GetState() == LichAnimation::State::Attack1 && m_anim->GetUVRect() == 9)
 	{
 		if (!m_bBullet)
 		{
 			m_bBullet = true;
 
 			// 弾生成
-			m_vec = m_playerPos - m_pos;
-			m_vec.Normalize();
-			std::shared_ptr<FireWispBullet> bullet = std::make_shared<FireWispBullet>();
+			std::shared_ptr<LichBullet> bullet = std::make_shared<LichBullet>();
+			if (!m_player.expired())bullet->SetPlayer(m_player.lock());
 			bullet->Set(m_pos, m_vec, m_status->GetAtk());
 			SceneManager::Instance().AddObject(bullet);
 			MapManager::Instance().AddObject(bullet);
@@ -71,10 +69,10 @@ void FireWisp::Update()
 	if (m_invWait > 0)m_invWait--;
 }
 
-void FireWisp::PostUpdate()
+void Lich::PostUpdate()
 {
 	// 敵の当たり判定を可視化
-	m_pDebugWire->AddDebugSphere(m_pos + Math::Vector3(0, 3.0f, 0), 2.0f, kGreenColor);
+	m_pDebugWire->AddDebugSphere(m_pos + Math::Vector3(0, 3.0f, 4.0f), 2.0f, kGreenColor);
 
 	//========================================
 	// 球判定
@@ -84,7 +82,7 @@ void FireWisp::PostUpdate()
 		KdCollider::SphereInfo sphere;
 
 		// 球の中心点を設定
-		Math::Vector3 pos = { 0.0f,0.5f,0.0f };
+		Math::Vector3 pos = { 0.0f,3.0f,4.0f };
 		sphere.m_sphere.Center = m_pos + pos;
 
 		// 球の半径を設定
@@ -143,7 +141,7 @@ void FireWisp::PostUpdate()
 	m_world = rotX * Math::Matrix::CreateTranslation(m_pos);
 }
 
-void FireWisp::Hit(int _damage)
+void Lich::Hit(int _damage)
 {
 	if (m_invWait <= 0)
 	{
@@ -154,19 +152,21 @@ void FireWisp::Hit(int _damage)
 	}
 }
 
-void FireWisp::Init()
+void Lich::Init()
 {
-	m_anim = std::make_shared<FireWispAnimation>();
+	m_anim = std::make_shared<LichAnimation>();
 
-	m_state = FireWispAnimation::State::Idle;
+	m_state = LichAnimation::State::Idle;
 
-	m_dir = FireWispAnimation::Dir::Right;
+	m_dir = LichAnimation::Dir::Right;
 
-	m_status = std::make_shared<FireWispStatus>();
+	m_status = std::make_shared<LichStatus>();
 
 	m_color = { 1,1,1,1 };
 
-	m_polygon = AssetManager::Instance().GetMaterial("fireWispIdle");
+	m_damageWait = 0;
+
+	m_polygon = AssetManager::Instance().GetMaterial("lichIdle");
 	m_polygon.SetUVRect(0);
 
 	m_movePow = 0.15f;
@@ -181,12 +181,12 @@ void FireWisp::Init()
 	m_pDebugWire = std::make_unique<KdDebugWireFrame>();
 
 	m_pCollider = std::make_unique<KdCollider>();
-	m_pCollider->RegisterCollisionShape("FireWispCollision", { 0.0f,3.0f,0.0f }, 2.0f, KdCollider::TypeBump | KdCollider::TypeEnemy);
+	m_pCollider->RegisterCollisionShape("LichCollision", { 0.0f,3.0f,4.0f }, 2.0f, KdCollider::TypeBump | KdCollider::TypeEnemy);
 }
 
-void FireWisp::Move()
+void Lich::Move()
 {
-	m_state = FireWispAnimation::State::Idle;
+	m_state = LichAnimation::State::Idle;
 
 	m_movePow = 0.15f;
 
@@ -194,49 +194,44 @@ void FireWisp::Move()
 	m_vec = Math::Vector3::Zero;
 	m_vec = m_playerPos - m_pos;
 
-	if (m_vec.Length()< 25.0f && m_vec.Length() > 15.0f)
+	if (m_vec.x > 0.0f)
+	{
+		if (m_dir == LichAnimation::Dir::Left)
+		{
+			m_dir = LichAnimation::Dir::Right;
+			m_polygon.TurnScale();
+		}
+	}
+	else if (m_vec.x < 0.0f)
+	{
+		if (m_dir == LichAnimation::Dir::Right)
+		{
+			m_dir = LichAnimation::Dir::Left;
+			m_polygon.TurnScale();
+		}
+	}
+
+	if (m_vec.Length() < 30.0f && m_vec.Length() > 20.0f)
 	{
 		m_vec.Normalize();
 		m_vec *= m_movePow;
 		m_pos += m_vec;
-
-		if (m_vec.x > 0.0f)
-		{
-			if (m_dir == FireWispAnimation::Dir::Left)
-			{
-				m_dir = FireWispAnimation::Dir::Right;
-				m_polygon.TurnScale();
-			}
-		}
-		else if (m_vec.x < 0.0f)
-		{
-			if (m_dir == FireWispAnimation::Dir::Right)
-			{
-				m_dir = FireWispAnimation::Dir::Left;
-				m_polygon.TurnScale();
-			}
-		}
 	}
-	else if (m_vec.Length() <= 15.0f)
+	else if (m_vec.Length() <= 20.0f)
 	{
 		Attack();
 	}
 
 	if (m_attackWait > 0)m_attackWait--;
-
-	if (m_vec != Math::Vector3::Zero && m_state != FireWispAnimation::State::Attack1)
-	{
-		m_state = FireWispAnimation::State::Run;
-	}
 }
 
-void FireWisp::Attack()
+void Lich::Attack()
 {
 	m_movePow = 0.0f;
 
 	if (m_attackWait <= 0)
 	{
-		m_state = FireWispAnimation::State::Attack1;
+		m_state = LichAnimation::State::Attack1;
 		m_attackWait = 120;
 		m_bBullet = false;
 	}

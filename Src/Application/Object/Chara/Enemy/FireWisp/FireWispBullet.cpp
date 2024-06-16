@@ -28,7 +28,7 @@ void FireWispBullet::PostUpdate()
 	sphere.m_sphere.Radius = 1.5f;
 
 	// 当たり判定をしたいタイプを設定
-	sphere.m_type = KdCollider::TypePlayer | KdCollider::TypeGround;
+	sphere.m_type = KdCollider::TypePlayer;
 
 	//球に当たったオブジェクトの状態を格納
 	std::list<KdCollider::CollisionResult> retSphereList;
@@ -44,6 +44,14 @@ void FireWispBullet::PostUpdate()
 				m_isExpired = true;
 			}
 		}
+	}
+
+	// 壁との当たり判定
+	retSphereList.clear();
+	sphere.m_type = KdCollider::TypeGround;
+	for (auto& obj : SceneManager::Instance().GetObjList())
+	{
+		if (obj->Intersects(sphere, &retSphereList))m_isExpired = true;
 	}
 
 	// 行列作成

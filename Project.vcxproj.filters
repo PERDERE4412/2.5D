@@ -172,6 +172,12 @@
     <Filter Include="Src\Application\Object\UI\MiniMap">
       <UniqueIdentifier>{6ce2a662-7add-468f-bced-5ea6836f0b4a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Object\Chara\Enemy\Lich">
+      <UniqueIdentifier>{26ebf1a8-7e46-425a-bf4d-748fd2c3c5ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Data\Status\Enemy\Lich">
+      <UniqueIdentifier>{850908ae-0ff7-467b-95c6-4bce3edb1266}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -411,6 +417,21 @@
     <ClInclude Include="Src\Application\Object\UI\MiniMap\MiniMap.h">
       <Filter>Src\Application\Object\UI\MiniMap</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\Lich\Lich.h">
+      <Filter>Src\Application\Object\Chara\Enemy\Lich</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Animation\LichAnimation.h">
+      <Filter>Src\Application\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Data\Status\Enemy\Lich\LichStatus.h">
+      <Filter>Src\Application\Data\Status\Enemy\Lich</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\Lich\LichBullet.h">
+      <Filter>Src\Application\Object\Chara\Enemy\Lich</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\Lich\LichBulletExp.h">
+      <Filter>Src\Application\Object\Chara\Enemy\Lich</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -625,6 +646,21 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\UI\MiniMap\MiniMap.cpp">
       <Filter>Src\Application\Object\UI\MiniMap</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\Lich\Lich.cpp">
+      <Filter>Src\Application\Object\Chara\Enemy\Lich</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Animation\LichAnimation.cpp">
+      <Filter>Src\Application\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Data\Status\Enemy\Lich\LichStatus.cpp">
+      <Filter>Src\Application\Data\Status\Enemy\Lich</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\Lich\LichBullet.cpp">
+      <Filter>Src\Application\Object\Chara\Enemy\Lich</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\Lich\LichBulletExp.cpp">
+      <Filter>Src\Application\Object\Chara\Enemy\Lich</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
