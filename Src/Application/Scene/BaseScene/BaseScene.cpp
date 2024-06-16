@@ -1,5 +1,7 @@
 ﻿#include "BaseScene.h"
 
+#include "../../Fade/Fade.h"
+
 void BaseScene::PreUpdate()
 {
 	// Updateの前の更新処理
@@ -28,11 +30,16 @@ void BaseScene::PreUpdate()
 
 void BaseScene::Update()
 {
-	// KdGameObjectを継承した全てのオブジェクトの更新 (ポリモーフィズム)
-	for (auto& obj : m_objList)
+	if (!Fade::Instance().GetFade())
 	{
-		obj->Update();
+		// KdGameObjectを継承した全てのオブジェクトの更新 (ポリモーフィズム)
+		for (auto& obj : m_objList)
+		{
+			obj->Update();
+		}
 	}
+
+	Fade::Instance().Update();
 
 	// シーン毎のイベント処理
 	Event();
@@ -117,6 +124,8 @@ void BaseScene::DrawSprite()
 		{
 			obj->DrawSprite();
 		}
+
+		Fade::Instance().DrawSprite();
 	}
 	KdShaderManager::Instance().m_spriteShader.End();
 }

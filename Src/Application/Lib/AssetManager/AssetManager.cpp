@@ -99,11 +99,11 @@ void AssetManager::Init()
 
 	// 背景
 	pivot = KdSquarePolygon::PivotType::Center_Middle;
-	LoadMaterial("back", "Asset/Textures/back.png");
+	LoadMaterial("back", "Asset/Textures/black.png");
 	SetMaterial("back", 1.0f, pivot, 1, 1);
 	
 	// モデル
-	LoadModel("map", "Asset/Models/floor.gltf");
+	LoadModel("floor", "Asset/Models/floor.gltf");
 	LoadModel("wall1", "Asset/Models/wall1.gltf");
 	LoadModel("wall2", "Asset/Models/wall2.gltf");
 	LoadModel("wall3", "Asset/Models/wall3.gltf");
@@ -111,6 +111,7 @@ void AssetManager::Init()
 	LoadModel("door", "Asset/Models/door.gltf");
 
 	// テクスチャ
+	LoadTex("black", "Asset/Textures/black.png");
 	LoadTex("gold", "Asset/Textures/gold.png");
 	LoadTex("number", "Asset/Textures/number.png");
 	LoadTex("levelFrame", "Asset/Textures/levelFrame.png");
@@ -120,6 +121,9 @@ void AssetManager::Init()
 	LoadTex("slot", "Asset/Textures/slot.png");
 	LoadTex("get", "Asset/Textures/get.png");
 	LoadTex("enter", "Asset/Textures/enter.png");
+	LoadTex("miniMapFrame", "Asset/Textures/miniMapFrame.png");
+	LoadTex("miniMap", "Asset/Textures/miniMap.png");
+	LoadTex("mapPlayer", "Asset/Textures/mapPlayer.png");
 }
 
 void AssetManager::SetMaterial(std::string _name, float _scale, KdSquarePolygon::PivotType _pivot, int _splitX, int _splitY)

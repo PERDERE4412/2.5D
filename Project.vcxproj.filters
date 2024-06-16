@@ -94,12 +94,6 @@
     <Filter Include="Src\Application\Lib\Utility">
       <UniqueIdentifier>{cf6d859c-a2be-4e54-81d7-4bb3cf96933b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Object\Back">
-      <UniqueIdentifier>{fafae681-50a4-4674-a6a9-f90b5f9794c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Object\Wall">
-      <UniqueIdentifier>{1f440039-d8ff-4f73-ae4e-f6b32d92d186}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Object\Chara">
       <UniqueIdentifier>{df5045c6-9f89-4673-bca4-d9611df50e4e}</UniqueIdentifier>
     </Filter>
@@ -136,14 +130,8 @@
     <Filter Include="Src\Application\Object\UI\Action">
       <UniqueIdentifier>{1ddf5b33-0cff-4b43-8be3-6f796f46a1d3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Object\Door">
-      <UniqueIdentifier>{3aadf936-f1b8-49c9-b101-b081dd291a26}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Map">
       <UniqueIdentifier>{6b5d5f26-5f83-4d7b-9799-f297be72b3d1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Object\Floor">
-      <UniqueIdentifier>{339347a1-9aa9-46d8-aa4d-122917053a0b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Src\Application\Object\Chara\Enemy\Warrior">
       <UniqueIdentifier>{b93ff4c2-28a7-4f4f-aa6b-52466ce5b506}</UniqueIdentifier>
@@ -162,6 +150,27 @@
     </Filter>
     <Filter Include="Src\Application\Data\Status\Enemy\Slime">
       <UniqueIdentifier>{b23be5cb-1e3f-4c2e-bcec-a70455e6b20d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Map">
+      <UniqueIdentifier>{6d7f0c51-d534-4c0e-a95c-7f9fe9f40dc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Map\Door">
+      <UniqueIdentifier>{6f617f7b-4bf6-4483-bb5c-8aec46c66662}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Map\Floor">
+      <UniqueIdentifier>{e91a4e53-111c-4b80-9fed-95882f41bc5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Map\Wall">
+      <UniqueIdentifier>{cd2c4fab-f8cf-49ca-90b1-d34c411c373b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Map\Back">
+      <UniqueIdentifier>{b2f034fe-9252-4343-828b-7a4b7b877046}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Fade">
+      <UniqueIdentifier>{78875d5f-c459-45fb-ab32-7ab78fe53288}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\UI\MiniMap">
+      <UniqueIdentifier>{6ce2a662-7add-468f-bced-5ea6836f0b4a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -315,15 +324,6 @@
     <ClInclude Include="Src\Application\Animation\Animation.h">
       <Filter>Src\Application\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\Back\Back.h">
-      <Filter>Src\Application\Object\Back</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\Wall\Wall.h">
-      <Filter>Src\Application\Object\Wall</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\Wall\WallHit.h">
-      <Filter>Src\Application\Object\Wall</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Object\Chara\BaseChara.h">
       <Filter>Src\Application\Object\Chara</Filter>
     </ClInclude>
@@ -360,14 +360,8 @@
     <ClInclude Include="Src\Application\Object\UI\ActionManager\ActionManager.h">
       <Filter>Src\Application\Object\UI\Action</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\Door\Door.h">
-      <Filter>Src\Application\Object\Door</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Map\MapManager.h">
       <Filter>Src\Application\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Object\Floor\Floor.h">
-      <Filter>Src\Application\Object\Floor</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Object\Chara\Enemy\Warrior\Warrior.h">
       <Filter>Src\Application\Object\Chara\Enemy\Warrior</Filter>
@@ -395,6 +389,27 @@
     </ClInclude>
     <ClInclude Include="Src\Application\Object\Chara\Enemy\FireWisp\FireWispBullet.h">
       <Filter>Src\Application\Object\Chara\Enemy\FireWisp</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Map\Floor\Floor.h">
+      <Filter>Src\Application\Object\Map\Floor</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Map\Wall\Wall.h">
+      <Filter>Src\Application\Object\Map\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Map\Wall\WallHit.h">
+      <Filter>Src\Application\Object\Map\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Map\Door\Door.h">
+      <Filter>Src\Application\Object\Map\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Map\Back\Back.h">
+      <Filter>Src\Application\Object\Map\Back</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Fade\Fade.h">
+      <Filter>Src\Application\Fade</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\UI\MiniMap\MiniMap.h">
+      <Filter>Src\Application\Object\UI\MiniMap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -524,15 +539,6 @@
     <ClCompile Include="Src\Application\Animation\Animation.cpp">
       <Filter>Src\Application\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\Back\Back.cpp">
-      <Filter>Src\Application\Object\Back</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\Wall\Wall.cpp">
-      <Filter>Src\Application\Object\Wall</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\Wall\WallHit.cpp">
-      <Filter>Src\Application\Object\Wall</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Object\Chara\BaseChara.cpp">
       <Filter>Src\Application\Object\Chara</Filter>
     </ClCompile>
@@ -569,14 +575,8 @@
     <ClCompile Include="Src\Application\Object\UI\ActionManager\ActionManager.cpp">
       <Filter>Src\Application\Object\UI\Action</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\Door\Door.cpp">
-      <Filter>Src\Application\Object\Door</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Map\MapManager.cpp">
       <Filter>Src\Application\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\Floor\Floor.cpp">
-      <Filter>Src\Application\Object\Floor</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Chara\Enemy\Warrior\Warrior.cpp">
       <Filter>Src\Application\Object\Chara\Enemy\Warrior</Filter>
@@ -604,6 +604,27 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Chara\Enemy\FireWisp\FireWispBullet.cpp">
       <Filter>Src\Application\Object\Chara\Enemy\FireWisp</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Map\Floor\Floor.cpp">
+      <Filter>Src\Application\Object\Map\Floor</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Map\Wall\Wall.cpp">
+      <Filter>Src\Application\Object\Map\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Map\Wall\WallHit.cpp">
+      <Filter>Src\Application\Object\Map\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Map\Door\Door.cpp">
+      <Filter>Src\Application\Object\Map\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Map\Back\Back.cpp">
+      <Filter>Src\Application\Object\Map\Back</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Fade\Fade.cpp">
+      <Filter>Src\Application\Fade</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\UI\MiniMap\MiniMap.cpp">
+      <Filter>Src\Application\Object\UI\MiniMap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

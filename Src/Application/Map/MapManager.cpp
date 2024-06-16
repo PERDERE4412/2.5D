@@ -3,10 +3,11 @@
 #include "../Scene/SceneManager.h"
 
 #include "../Object/Chara/Player/Player.h"
-#include "../Object/Floor/Floor.h"
-#include "../Object/Door/Door.h"
-#include "../Object/Wall/Wall.h"
-#include "../Object/Wall/WallHit.h"
+#include "../Object/UI/MiniMap/MiniMap.h"
+#include "../Object/Map/Floor/Floor.h"
+#include "../Object/Map/Door/Door.h"
+#include "../Object/Map/Wall/Wall.h"
+#include "../Object/Map/Wall/WallHit.h"
 #include "../Object/Chara/Enemy/EnemyManager.h"
 
 void MapManager::ChangeMap(std::string _type)
@@ -107,6 +108,12 @@ void MapManager::CreateMap(int _mapId)
 	{
 		EnemyManager::Instance().Spawn(enemy.name, enemy.pos);
 	}
+
+	// ミニマップ切り替え
+	if (!m_miniMap.expired())
+	{
+		m_miniMap.lock()->Set(m_nowMapId);
+	}
 }
 
 void MapManager::Init()
@@ -181,11 +188,10 @@ void MapManager::Init()
 		ifs.close();
 	}
 
-
 	// エネミーデータの読みこみ==================================================
 	{
 		std::ifstream ifs("Asset/Data/Map/Enemy.csv"); //ファイル操作用の変数
-
+		
 		std::string lineString; //ファイルから1文字列読み取る変数
 
 		std::getline(ifs, lineString);	// 1行目を飛ばす

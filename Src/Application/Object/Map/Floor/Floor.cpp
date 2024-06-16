@@ -1,6 +1,6 @@
 ﻿#include "Floor.h"
 
-#include "../../Lib/AssetManager/AssetManager.h"
+#include "../../../Lib/AssetManager/AssetManager.h"
 
 void Floor::DrawLit()
 {
@@ -9,5 +9,5 @@ void Floor::DrawLit()
 
 void Floor::Init()
 {
-	m_model = AssetManager::Instance().GetModel("map");
+	m_model = AssetManager::Instance().GetModel("floor");
 }

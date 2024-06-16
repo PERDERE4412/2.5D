@@ -1,6 +1,6 @@
 ﻿#include "WallHit.h"
 
-#include "../../Lib/AssetManager/AssetManager.h"
+#include "../../../Lib/AssetManager/AssetManager.h"
 
 void WallHit::DrawLit()
 {

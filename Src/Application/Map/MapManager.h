@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 class Player;
+class MiniMap;
 
 class MapManager
 {
@@ -10,6 +11,7 @@ public:
 	void ChangeMap();
 
 	void SetPlayer(std::shared_ptr<Player> _player) { m_player = _player; }
+	void SetMiniMap(std::shared_ptr<MiniMap> _miniMap) { m_miniMap = _miniMap; }
 
 	void SetPlayerPos(std::string _type);
 
@@ -28,7 +30,8 @@ private:
 
 	void CreateMap(int _mapId);		// マップ生成
 
-	std::weak_ptr<Player> m_player;	// プレイヤーのWeakポインタ
+	std::weak_ptr<Player> m_player;		// プレイヤーのWeakポインタ
+	std::weak_ptr<MiniMap> m_miniMap;	// ミニマップのWeakポインタ
 
 	std::vector<std::shared_ptr<KdGameObject>> m_objList;	// マップのオブジェクト一覧
 

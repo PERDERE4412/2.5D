@@ -1,11 +1,12 @@
 ﻿#include "Door.h"
 
-#include "../../Lib/AssetManager/AssetManager.h"
+#include "../../../Lib/AssetManager/AssetManager.h"
 
-#include "../../Scene/SceneManager.h"
-#include "../UI/ActionManager/ActionManager.h"
-#include "../../Map/MapManager.h"
-#include "../Chara/Player/Player.h"
+#include "../../../Scene/SceneManager.h"
+#include "../../UI/ActionManager/ActionManager.h"
+#include "../../../Map/MapManager.h"
+#include "../../Chara/Player/Player.h"
+#include "../../../Fade/Fade.h"
 
 void Door::Update()
 {
@@ -34,8 +35,9 @@ void Door::Update()
 				{
 					ActionManager::Instance().OnKey();
 					ActionManager::Instance().OffAction();
-					MapManager::Instance().SetPlayerPos(m_type);
-					MapManager::Instance().ChangeMap(m_type);
+					Fade::Instance().BootChangeMap(m_type);
+					//MapManager::Instance().SetPlayerPos(m_type);
+					//MapManager::Instance().ChangeMap(m_type);
 				}
 			}
 			// 長押し制御
@@ -44,11 +46,11 @@ void Door::Update()
 		// 範囲外なら
 		else
 		{
-			if (m_bEnter)
-			{
+			//if (m_bEnter)
+			//{
 				m_bEnter = false;
 				ActionManager::Instance().OffAction();
-			}
+			//}
 		}
 	}
 }
@@ -63,7 +65,7 @@ void Door::DrawSprite()
 	if (!m_bEnter)return;	// 早期リターン
 
 	m_camera = SceneManager::Instance().GetCamera();
-	
+
 	Math::Vector3 pos = Math::Vector3::Zero;
 	if (!m_camera.expired())
 	{

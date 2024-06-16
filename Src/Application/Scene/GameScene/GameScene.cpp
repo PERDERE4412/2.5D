@@ -6,7 +6,8 @@
 #include "../../Object/UI/Slot/Slot.h"
 #include "../../Object/UI/Gold/Gold.h"
 #include "../../Object/UI/LevelBar/LevelBar.h"
-#include "../../Object//Back/Back.h"
+#include "../../Object/UI/MiniMap/MiniMap.h"
+#include "../../Object/Map/Back/Back.h"
 
 #include "../../Map/MapManager.h"
 #include "../../Object/Chara/Enemy/EnemyManager.h"
@@ -60,6 +61,11 @@ void GameScene::Init()
 	// レベル
 	std::shared_ptr<LevelBar> level = std::make_shared<LevelBar>();
 	AddObject(level);
+
+	// ミニマップ
+	std::shared_ptr<MiniMap> miniMap = std::make_shared<MiniMap>();
+	AddObject(miniMap);
+	MapManager::Instance().SetMiniMap(miniMap);
 }
 
 void GameScene::UpdateCamera()
