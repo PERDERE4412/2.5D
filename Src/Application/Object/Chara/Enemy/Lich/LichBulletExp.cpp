@@ -5,7 +5,7 @@
 void LichBulletExp::Update()
 {
 	m_animeCnt += m_animeSpeed;
-	if (int(m_animeCnt) > m_polygon.GetSplitX() - 1)
+	if (int(m_animeCnt) > (int)m_polygon.GetSplitX() - 1)
 	{
 		m_isExpired = true;
 	}

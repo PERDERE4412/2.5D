@@ -2,6 +2,7 @@
 
 #include "../../../Scene/SceneManager.h"
 #include "../../../Map/MapManager.h"
+#include "../../../Movie/Movie.h"
 #include "Warrior/Warrior.h"
 #include "FireWisp/FireWisp.h"
 #include "Slime/Slime.h"
@@ -43,6 +44,7 @@ void EnemyManager::Spawn(std::string _name, Math::Vector3 _pos)
 		lich->SetPlayer(m_player);
 		SceneManager::Instance().AddObject(lich);
 		MapManager::Instance().AddObject(lich);
+		Movie::Instance().SetLich(lich);
 	}
 }
 

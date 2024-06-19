@@ -68,6 +68,7 @@ public:
 	bool Intersects(const KdCollider::RayInfo& targetShape, std::list<KdCollider::CollisionResult>* pResults);
 
 	// 当たり処理
+	virtual void Hit() {}
 	virtual void Hit(int _damage) {}
 
 protected:

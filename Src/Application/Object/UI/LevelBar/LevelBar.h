@@ -16,9 +16,9 @@ private:
 
 	struct  TexData
 	{
-		KdTexture* pTex;		// 画像のポインタ
-		Math::Vector2 pos;		// 座標
-		Math::Rectangle rect;	// 切り取り範囲
+		KdTexture* pTex = nullptr;	// 画像のポインタ
+		Math::Vector2 pos;			// 座標
+		Math::Rectangle rect;		// 切り取り範囲
 	};
 
 	TexData m_frame;

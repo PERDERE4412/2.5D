@@ -178,6 +178,15 @@
     <Filter Include="Src\Application\Data\Status\Enemy\Lich">
       <UniqueIdentifier>{850908ae-0ff7-467b-95c6-4bce3edb1266}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Movie">
+      <UniqueIdentifier>{6dbd17db-df78-4ad0-b51a-8fff4fee5fee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Effect">
+      <UniqueIdentifier>{1936f615-786f-4fe4-ad80-41b44a9ed8d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Effect\LichSpawn">
+      <UniqueIdentifier>{4b318568-d5fe-4ce6-af40-67513bc967c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -432,6 +441,24 @@
     <ClInclude Include="Src\Application\Object\Chara\Enemy\Lich\LichBulletExp.h">
       <Filter>Src\Application\Object\Chara\Enemy\Lich</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Player\PlayerSwordEffect1.h">
+      <Filter>Src\Application\Object\Chara\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Player\PlayerSwordEffect3.h">
+      <Filter>Src\Application\Object\Chara\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Player\PlayerSwordEffect2.h">
+      <Filter>Src\Application\Object\Chara\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Movie\Movie.h">
+      <Filter>Src\Application\Movie</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Effect\LichSpawn\Lightning.h">
+      <Filter>Src\Application\Object\Effect\LichSpawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Effect\LichSpawn\LightExp.h">
+      <Filter>Src\Application\Object\Effect\LichSpawn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -661,6 +688,24 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Chara\Enemy\Lich\LichBulletExp.cpp">
       <Filter>Src\Application\Object\Chara\Enemy\Lich</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Player\PlayerSwordEffect1.cpp">
+      <Filter>Src\Application\Object\Chara\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Player\PlayerSwordEffect3.cpp">
+      <Filter>Src\Application\Object\Chara\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Player\PlayerSwordEffect2.cpp">
+      <Filter>Src\Application\Object\Chara\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Movie\Movie.cpp">
+      <Filter>Src\Application\Movie</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Effect\LichSpawn\Lightning.cpp">
+      <Filter>Src\Application\Object\Effect\LichSpawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Effect\LichSpawn\LightExp.cpp">
+      <Filter>Src\Application\Object\Effect\LichSpawn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

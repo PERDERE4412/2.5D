@@ -29,7 +29,7 @@ private:
 	struct DoorData
 	{
 		Math::Vector3 pos;	// ドア座標
-		int deg;			// 角度
+		float deg=0.0f;		// 角度
 	};
 
 	std::unordered_map<std::string, DoorData> m_doorList;	// ドアデータリスト

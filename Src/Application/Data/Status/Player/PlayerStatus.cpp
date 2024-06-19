@@ -11,7 +11,7 @@ void PlayerStatus::SetExp(int _point)
 
 		m_statusList["LEVEL"]++;
 		m_statusList["EXP"] = 0;
-		m_statusList["NEXTEXP"] *= 1.5;
+		m_statusList["NEXTEXP"] = (int)(m_statusList["NEXTEXP"]*1.5f);
 	}
 }
 

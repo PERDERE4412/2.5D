@@ -14,7 +14,7 @@ public:
 	void Update()override;		// 更新
 	void PostUpdate()override;
 	
-	void Hit(int _damage)override;
+	void Hit(int _damage);
 
 	void SetPos(Math::Vector3 _pos) { m_pos = _pos; }
 

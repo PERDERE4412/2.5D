@@ -9,6 +9,7 @@
 #include "../Object/Map/Wall/Wall.h"
 #include "../Object/Map/Wall/WallHit.h"
 #include "../Object/Chara/Enemy/EnemyManager.h"
+#include "../Movie/Movie.h"
 
 void MapManager::ChangeMap(std::string _type)
 {
@@ -24,7 +25,8 @@ void MapManager::ChangeMap(std::string _type)
 
 void MapManager::ChangeMap()
 {
-	CreateMap(m_nowMapId);
+	//CreateMap(m_nowMapId);
+	CreateMap(8);
 }
 
 void MapManager::SetPlayerPos(std::string _type)
@@ -32,10 +34,10 @@ void MapManager::SetPlayerPos(std::string _type)
 	if (!m_player.expired())
 	{
 		Math::Vector3 pos;
-		if (_type == "L")pos=m_playerPosList["R"];
-		if (_type == "U")pos=m_playerPosList["D"];
-		if (_type == "R")pos=m_playerPosList["L"];
-		if (_type == "D")pos=m_playerPosList["U"];
+		if (_type == "L")pos = m_playerPosList["R"];
+		if (_type == "U")pos = m_playerPosList["D"];
+		if (_type == "R")pos = m_playerPosList["L"];
+		if (_type == "D")pos = m_playerPosList["U"];
 		m_player.lock()->SetPos(pos);
 	}
 }
@@ -43,6 +45,9 @@ void MapManager::SetPlayerPos(std::string _type)
 void MapManager::CreateMap(int _mapId)
 {
 	m_nowMapId = _mapId;
+
+	// ボス部屋ならムービー起動
+	if (m_mapList[_mapId].isBoss)Movie::Instance().BootMovie();
 
 	// マップのオブジェクトをクリア
 	if (!m_objList.empty())
@@ -104,9 +109,12 @@ void MapManager::CreateMap(int _mapId)
 	}
 
 	// 敵生成
-	for (EnemyData enemy : m_enemyList[_mapId])
+	if (!Movie::Instance().GetMovie())
 	{
-		EnemyManager::Instance().Spawn(enemy.name, enemy.pos);
+		for (EnemyData enemy : m_enemyList[_mapId])
+		{
+			EnemyManager::Instance().Spawn(enemy.name, enemy.pos);
+		}
 	}
 
 	// ミニマップ切り替え
@@ -158,13 +166,15 @@ void MapManager::Init()
 		while (std::getline(ifs, lineString))
 		{
 			std::istringstream iss(lineString); // 文字列を操作する変数にファイルから読み取った文字列を格納
-			std::string mapId;					// マップ番号を格納
-			std::string wallType;				// 壁タイプを格納
-			std::string doorType;				// ドアタイプを格納
+			std::string mapId;					// マップ番号
+			std::string wallType;				// 壁タイプ
+			std::string doorType;				// ドアタイプ
+			std::string isBoss;					// ボス部屋フラグ
 
 			std::getline(iss, mapId, ',');
 			std::getline(iss, wallType, ',');
 			std::getline(iss, doorType, ',');
+			std::getline(iss, isBoss, ',');
 
 			// 壁タイプ設定
 			if (wallType == "None")m_mapList[stoi(mapId)].wall |= WallType::W_None;
@@ -183,6 +193,10 @@ void MapManager::Init()
 				if (type == "R")m_mapList[stoi(mapId)].door |= DoorType::D_Right;
 				if (type == "D")m_mapList[stoi(mapId)].door |= DoorType::D_Down;
 			}
+
+			// ボス部屋設定
+			if (isBoss == "TRUE")m_mapList[stoi(mapId)].isBoss = true;
+			if (isBoss == "FALSE")m_mapList[stoi(mapId)].isBoss = false;
 		}
 
 		ifs.close();
@@ -191,7 +205,7 @@ void MapManager::Init()
 	// エネミーデータの読みこみ==================================================
 	{
 		std::ifstream ifs("Asset/Data/Map/Enemy.csv"); //ファイル操作用の変数
-		
+
 		std::string lineString; //ファイルから1文字列読み取る変数
 
 		std::getline(ifs, lineString);	// 1行目を飛ばす
@@ -216,13 +230,13 @@ void MapManager::Init()
 			// 座標設定
 			std::string pos;
 			std::istringstream iss2(enemyPos);
-			
-			std::getline(iss2,pos,'/');
-			enemy.pos.x = atof(pos.c_str());
+
 			std::getline(iss2, pos, '/');
-			enemy.pos.y = atof(pos.c_str());
+			enemy.pos.x = (float)atof(pos.c_str());
 			std::getline(iss2, pos, '/');
-			enemy.pos.z = atof(pos.c_str());
+			enemy.pos.y = (float)atof(pos.c_str());
+			std::getline(iss2, pos, '/');
+			enemy.pos.z = (float)atof(pos.c_str());
 
 			m_enemyList[stoi(mapId)].push_back(enemy);
 		}

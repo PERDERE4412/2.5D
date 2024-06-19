@@ -22,7 +22,7 @@ public:
 
 	void SetPos(Math::Vector3 _pos) { m_pos = _pos; }
 
-	void Hit(int _damage)override;
+	void Hit(int _damage);
 
 private:
 

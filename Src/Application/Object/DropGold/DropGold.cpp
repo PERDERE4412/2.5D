@@ -101,7 +101,7 @@ void DropGold::DrawSprite()
 		pos.y += 30.0f;
 	}
 	Math::Rectangle rect = { 0,0,(int)m_pTex->GetWidth(),(int)m_pTex->GetHeight() };
-	KdShaderManager::Instance().m_spriteShader.DrawTex(m_pTex, pos.x, pos.y, m_pTex->GetWidth(), m_pTex->GetHeight(), &rect);
+	KdShaderManager::Instance().m_spriteShader.DrawTex(m_pTex, (int)pos.x, (int)pos.y, m_pTex->GetWidth(), m_pTex->GetHeight(), &rect);
 }
 
 void DropGold::Set(std::weak_ptr<Player> _player, Math::Vector3 _pos, int _gold)

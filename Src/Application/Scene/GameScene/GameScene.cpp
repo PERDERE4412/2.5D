@@ -8,13 +8,13 @@
 #include "../../Object/UI/LevelBar/LevelBar.h"
 #include "../../Object/UI/MiniMap/MiniMap.h"
 #include "../../Object/Map/Back/Back.h"
-
 #include "../../Map/MapManager.h"
 #include "../../Object/Chara/Enemy/EnemyManager.h"
+#include "../../Movie/Movie.h"
 
 void GameScene::Event()
 {
-	UpdateCamera();
+	if(!Movie::Instance().GetStart())UpdateCamera();
 
 	// デバッグ用
 	static bool a = false;
@@ -31,6 +31,7 @@ void GameScene::Init()
 	// カメラ
 	m_camera = std::make_shared<KdCamera>();
 	m_pos = { 0.0f,25.0f,-25.0f };
+	Movie::Instance().SetCamera(m_camera);
 
 	// キャラクター==================================================
 	// プレイヤー
@@ -39,6 +40,7 @@ void GameScene::Init()
 	m_player = player;
 	EnemyManager::Instance().SetPlayer(player);
 	MapManager::Instance().SetPlayer(player);
+	Movie::Instance().SetPlayer(player);
 
 	// マップ========================================================
 	// 背景

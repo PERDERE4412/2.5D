@@ -4,6 +4,9 @@
 #include "../../../Lib/AssetManager/AssetManager.h"
 #include "../../../Data/Status/Player/PlayerStatus.h"
 #include "../../../Scene/SceneManager.h"
+#include "PlayerSwordEffect1.h"
+#include "PlayerSwordEffect2.h"
+#include "PlayerSwordEffect3.h"
 
 void Player::Update()
 {
@@ -12,7 +15,7 @@ void Player::Update()
 	// アニメーション作成
 	Animation::Instance().CreateAnime(m_dir, m_state, &m_polygon);
 
-	if(m_invWait>0)m_invWait--;
+	if (m_invWait > 0)m_invWait--;
 }
 
 void Player::PostUpdate()
@@ -71,44 +74,6 @@ void Player::PostUpdate()
 			// 地面に当たっている
 			m_pos += hitDir * maxOverLap;
 		}
-	}
-
-	// =====================
-	// 攻撃判定
-	// =====================
-	if (m_state == Animation::PlayerState::Attack1 || m_state == Animation::PlayerState::Attack2 || m_state == Animation::PlayerState::Attack3)
-	{
-		// 球判定用の変数を作成
-		KdCollider::SphereInfo sphere;
-
-		// 球の中心点を設定
-		Math::Vector3 dir = Math::Vector3::Zero;
-		if (m_dir == Animation::PlayerDir::Left)dir.x = -1.0f;
-		if (m_dir == Animation::PlayerDir::Right)dir.x = 1.0f;
-
-		dir.Normalize();
-		float attackRange = 4.0f;
-		sphere.m_sphere.Center = m_pos + (dir * attackRange);
-
-		// 球の半径を設定
-		sphere.m_sphere.Radius = 2.0f;
-
-		// 当たり判定をしたいタイプを設定
-		sphere.m_type = KdCollider::TypeEnemy;
-
-		// 球に当たったオブジェクトの情報を格納
-		std::list<KdCollider::CollisionResult> retSphereList;
-
-		// 当たり判定だよ！！！！！！！！！！！！！！！！！！！！！
-		for (auto& obj : SceneManager::Instance().GetObjList())
-		{
-			if (obj->Intersects(sphere, &retSphereList))
-			{
-				obj->Hit(PlayerStatus::Instance().GetValue("ATK"));
-			}
-		}
-
-		m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, 2.0f, kGreenColor);
 	}
 
 	// 行列作成
@@ -217,22 +182,35 @@ void Player::Attack()
 	if (GetAsyncKeyState(VK_LBUTTON) & 0x8000)
 	{
 		m_movePow = 0.0f;
+
+		bool right = true;
+		if (m_dir == Animation::PlayerDir::Left)right = false;
+
 		if (m_combo == Combo::None)
 		{
 			m_combo = Combo::One;
 			m_state = Animation::PlayerState::Attack1;
+			std::shared_ptr<PlayerSwordEffect1> effect = std::make_shared<PlayerSwordEffect1>();
+			effect->SetPos(m_pos, right, PlayerStatus::Instance().GetValue("ATK"));
+			SceneManager::Instance().AddObject(effect);
 			m_comboTime = 30;
 		}
 		else if (m_combo == Combo::One)
 		{
 			m_combo = Combo::Two;
 			m_state = Animation::PlayerState::Attack2;
+			std::shared_ptr<PlayerSwordEffect2> effect = std::make_shared<PlayerSwordEffect2>();
+			effect->SetPos(m_pos, right, PlayerStatus::Instance().GetValue("ATK"));
+			SceneManager::Instance().AddObject(effect);
 			m_comboTime = 30;
 		}
 		else if (m_combo == Combo::Two)
 		{
 			m_combo = Combo::None;
 			m_state = Animation::PlayerState::Attack3;
+			std::shared_ptr<PlayerSwordEffect3> effect = std::make_shared<PlayerSwordEffect3>();
+			effect->SetPos(m_pos, right, PlayerStatus::Instance().GetValue("ATK"));
+			SceneManager::Instance().AddObject(effect);
 			m_comboTime = 30;
 		}
 	}

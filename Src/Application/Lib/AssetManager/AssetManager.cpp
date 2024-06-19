@@ -2,26 +2,17 @@
 
 KdSquarePolygon AssetManager::GetMaterial(std::string _name)
 {
-	if (m_materialList.find(_name) != m_materialList.end())
-	{
-		return m_materialList.at(_name);
-	}
+	return m_materialList.at(_name);
 }
 
 KdModelData AssetManager::GetModel(std::string _name)
 {
-	if (m_modelList.find(_name) != m_modelList.end())
-	{
-		return m_modelList.at(_name);
-	}
+	return m_modelList.at(_name);
 }
 
 KdTexture* AssetManager::GetTex(std::string _name)
 {
-	if (m_texList.find(_name) != m_texList.end())
-	{
-		return &m_texList.at(_name);
-	}
+	return &m_texList.at(_name);
 }
 
 void AssetManager::Init()
@@ -47,8 +38,18 @@ void AssetManager::Init()
 	LoadMaterial("playerAttack3", "Asset/Textures/Player/attack3.png");
 	SetMaterial("playerAttack3", 4.0f, pivot, 11, 1);
 
+	LoadMaterial("playerSwordEffect1", "Asset/Textures/Player/swordEffect1.png");
+	SetMaterial("playerSwordEffect1", 7.0f, pivot, 6, 1);
+
+	LoadMaterial("playerSwordEffect2", "Asset/Textures/Player/swordEffect2.png");
+	SetMaterial("playerSwordEffect2", 6.0f, pivot, 6, 1);
+
+	LoadMaterial("playerSwordEffect3", "Asset/Textures/Player/swordEffect3.png");
+	SetMaterial("playerSwordEffect3", 6.0f, pivot, 3, 1);
+
 	// 敵
 	// ウォリアー
+	pivot = KdSquarePolygon::PivotType::Center_Bottom;
 	LoadMaterial("warriorIdle", "Asset/Textures/Enemy/Warrior/idle.png");
 	SetMaterial("warriorIdle", 10.0f, pivot, 8, 1);
 
@@ -60,7 +61,7 @@ void AssetManager::Init()
 
 	LoadMaterial("warriorDeath", "Asset/Textures/Enemy/Warrior/death.png");
 	SetMaterial("warriorDeath", 10.0f, pivot, 16, 1);
-	
+
 	// ファイアウィスプ
 	LoadMaterial("fireWispIdle", "Asset/Textures/Enemy/FireWisp/idle.png");
 	SetMaterial("fireWispIdle", 7.0f, pivot, 4, 1);
@@ -75,7 +76,7 @@ void AssetManager::Init()
 	SetMaterial("fireWispDeath", 7.0f, pivot, 7, 1);
 
 	LoadMaterial("fireWispBullet", "Asset/Textures/Enemy/FireWisp/bullet.png");
-	SetMaterial("fireWispBullet", 4.0f, pivot, 1, 1);
+	SetMaterial("fireWispBullet", 4.0f, pivot, 4, 1);
 
 	// スライム
 	LoadMaterial("slimeIdle", "Asset/Textures/Enemy/Slime/idle.png");
@@ -115,6 +116,12 @@ void AssetManager::Init()
 	LoadMaterial("lichBulletExp", "Asset/Textures/Enemy/Lich/bulletExp.png");
 	SetMaterial("lichBulletExp", 4.0f, pivot, 4, 1);
 
+	LoadMaterial("lightning", "Asset/Textures/Enemy/Lich/lightning.png");
+	SetMaterial("lightning", 12.0f, pivot, 11, 1);
+
+	LoadMaterial("lightExp", "Asset/Textures/Enemy/Lich/lightExp.png");
+	SetMaterial("lightExp", 16.0f, pivot, 16, 1);
+
 	// アイテム
 	LoadMaterial("drop", "Asset/Textures/drop.png");
 	SetMaterial("drop", 2.0f, pivot, 1, 1);
@@ -123,7 +130,7 @@ void AssetManager::Init()
 	pivot = KdSquarePolygon::PivotType::Center_Middle;
 	LoadMaterial("back", "Asset/Textures/black.png");
 	SetMaterial("back", 1.0f, pivot, 1, 1);
-	
+
 	// モデル
 	LoadModel("floor", "Asset/Models/floor.gltf");
 	LoadModel("wall1", "Asset/Models/wall1.gltf");

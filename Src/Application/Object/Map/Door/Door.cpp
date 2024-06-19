@@ -79,7 +79,7 @@ void Door::DrawSprite()
 
 	// 描画
 	Math::Rectangle rect = { 0,0,(int)m_pTex->GetWidth(),(int)m_pTex->GetHeight() };
-	KdShaderManager::Instance().m_spriteShader.DrawTex(m_pTex, pos.x, pos.y, m_pTex->GetWidth(), m_pTex->GetHeight(), &rect);
+	KdShaderManager::Instance().m_spriteShader.DrawTex(m_pTex, (int)pos.x, (int)pos.y, m_pTex->GetWidth(), m_pTex->GetHeight(), &rect);
 }
 
 void Door::Set(std::string _type)
@@ -123,14 +123,14 @@ void Door::Init()
 			std::string pos;
 
 			std::getline(iss2, pos, '/');
-			m_doorList[doorType].pos.x = atof(pos.c_str());
+			m_doorList[doorType].pos.x = (float)atof(pos.c_str());
 			std::getline(iss2, pos, '/');
-			m_doorList[doorType].pos.y = atof(pos.c_str());
+			m_doorList[doorType].pos.y = (float)atof(pos.c_str());
 			std::getline(iss2, pos, '/');
-			m_doorList[doorType].pos.z = atof(pos.c_str());
+			m_doorList[doorType].pos.z = (float)atof(pos.c_str());
 
 			// ドア角度
-			m_doorList[doorType].deg = stoi(doorDeg);
+			m_doorList[doorType].deg = (float)atof(doorDeg.c_str());
 		}
 
 		ifs.close();

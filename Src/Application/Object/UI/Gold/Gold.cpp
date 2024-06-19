@@ -32,12 +32,12 @@ void Gold::Update()
 void Gold::DrawSprite()
 {
 	// ゴールド
-	KdShaderManager::Instance().m_spriteShader.DrawTex(m_gold.pTex, m_gold.pos.x, m_gold.pos.y, m_gold.pTex->GetWidth(), m_gold.pTex->GetHeight(), &m_gold.rect);
+	KdShaderManager::Instance().m_spriteShader.DrawTex(m_gold.pTex, (int)m_gold.pos.x, (int)m_gold.pos.y, m_gold.pTex->GetWidth(), m_gold.pTex->GetHeight(), &m_gold.rect);
 
 	// 数字
 	for (int i = 0; i < NUM; i++)
 	{
-		KdShaderManager::Instance().m_spriteShader.DrawTex(m_number[i].pTex, m_number[i].pos.x, m_number[i].pos.y, m_number[i].pTex->GetWidth() / 10, m_number[i].pTex->GetHeight(), &m_number[i].rect);
+		KdShaderManager::Instance().m_spriteShader.DrawTex(m_number[i].pTex, (int)m_number[i].pos.x, (int)m_number[i].pos.y, m_number[i].pTex->GetWidth() / 10, m_number[i].pTex->GetHeight(), &m_number[i].rect);
 	}
 }
 

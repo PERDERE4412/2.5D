@@ -8,7 +8,7 @@ void Slot::Update()
 
 void Slot::DrawSprite()
 {
-	KdShaderManager::Instance().m_spriteShader.DrawTex(m_pTex, m_pos.x, m_pos.y, m_pTex->GetWidth(), m_pTex->GetHeight(), &m_rect);
+	KdShaderManager::Instance().m_spriteShader.DrawTex(m_pTex, (int)m_pos.x, (int)m_pos.y, m_pTex->GetWidth(), m_pTex->GetHeight(), &m_rect);
 }
 
 void Slot::Init()

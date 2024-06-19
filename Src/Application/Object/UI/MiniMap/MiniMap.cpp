@@ -11,7 +11,7 @@ void MiniMap::DrawSprite()
 	KdShaderManager::Instance().m_spriteShader.DrawTex(m_mapTex, 470, 220);
 
 	// プレイヤー
-	KdShaderManager::Instance().m_spriteShader.DrawTex(m_playerTex, m_nowPlayerPos.x, m_nowPlayerPos.y);
+	KdShaderManager::Instance().m_spriteShader.DrawTex(m_playerTex, (int)m_nowPlayerPos.x, (int)m_nowPlayerPos.y);
 }
 
 void MiniMap::Set(int _mapId)

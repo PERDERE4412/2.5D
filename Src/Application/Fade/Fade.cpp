@@ -2,6 +2,7 @@
 
 #include "../Lib/AssetManager/AssetManager.h"
 #include "../Map/MapManager.h"
+#include "../Movie/Movie.h"
 
 void Fade::Update()
 {
@@ -32,6 +33,7 @@ void Fade::UpdateMapChange(std::string _type)
 		{
 			m_bFade = false;
 			m_alpha = 0.0f;
+			if (Movie::Instance().GetMovie())Movie::Instance().StartMovie();
 		}
 	}	
 }

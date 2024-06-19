@@ -7,8 +7,8 @@ class MapManager
 {
 public:
 
-	void ChangeMap(std::string _type);	// マップ変更
-	void ChangeMap();
+	void ChangeMap(std::string _type);	// マップ変更(２回目以降)
+	void ChangeMap();					// マップ変更(初回)
 
 	void SetPlayer(std::shared_ptr<Player> _player) { m_player = _player; }
 	void SetMiniMap(std::shared_ptr<MiniMap> _miniMap) { m_miniMap = _miniMap; }
@@ -50,6 +50,7 @@ private:
 	{
 		UINT door;		// ドアタイプ
 		UINT wall;		// 壁タイプ
+		bool isBoss;	// ボス部屋か？
 	};
 	
 	std::unordered_map<int, MapData> m_mapList;				// マップリスト

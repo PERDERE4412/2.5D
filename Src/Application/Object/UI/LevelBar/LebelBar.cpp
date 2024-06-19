@@ -27,7 +27,7 @@ void LevelBar::Update()
 	int nextExp = PlayerStatus::Instance().GetValue("NEXTEXP");
 
 	// 切り取り範囲の変更
-	rectX = m_bar.pTex->GetWidth() * ((float)exp / nextExp);
+	rectX = (int)(m_bar.pTex->GetWidth() * ((float)exp / nextExp));
 	m_bar.rect.width = rectX;
 
 	// 座標の移動
@@ -39,14 +39,14 @@ void LevelBar::DrawSprite()
 	// レベル
 	for (int i = 0; i < NUM; i++)
 	{
-		KdShaderManager::Instance().m_spriteShader.DrawTex(m_level[i].pTex, m_level[i].pos.x, m_level[i].pos.y, m_level[i].pTex->GetWidth() / 10, m_level[i].pTex->GetHeight(), &m_level[i].rect);
+		KdShaderManager::Instance().m_spriteShader.DrawTex(m_level[i].pTex, (int)m_level[i].pos.x, (int)m_level[i].pos.y, m_level[i].pTex->GetWidth() / 10, m_level[i].pTex->GetHeight(), &m_level[i].rect);
 	}
 
 	// フレーム
-	KdShaderManager::Instance().m_spriteShader.DrawTex(m_frame.pTex, m_frame.pos.x, m_frame.pos.y, m_frame.pTex->GetWidth(), m_frame.pTex->GetHeight(), &m_frame.rect);
+	KdShaderManager::Instance().m_spriteShader.DrawTex(m_frame.pTex, (int)m_frame.pos.x, (int)m_frame.pos.y, m_frame.pTex->GetWidth(), m_frame.pTex->GetHeight(), &m_frame.rect);
 
 	// バー
-	KdShaderManager::Instance().m_spriteShader.DrawTex(m_bar.pTex, m_bar.pos.x, m_bar.pos.y, rectX, m_bar.pTex->GetHeight(), &m_bar.rect);
+	KdShaderManager::Instance().m_spriteShader.DrawTex(m_bar.pTex, (int)m_bar.pos.x, (int)m_bar.pos.y, rectX, m_bar.pTex->GetHeight(), &m_bar.rect);
 }
 
 void LevelBar::Init()

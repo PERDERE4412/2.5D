@@ -12,7 +12,7 @@ void LichBullet::Update()
 	m_pos += m_move;
 
 	m_animeCnt += m_animeSpeed;
-	if (int(m_animeCnt) > m_polygon.GetSplitX() - 1)
+	if (int(m_animeCnt) > (int)m_polygon.GetSplitX() - 1)
 	{
 		m_animeCnt = 0;
 	}
@@ -106,7 +106,6 @@ void LichBullet::Set(Math::Vector3 _pos, Math::Vector3 _dir, int _atk)
 	if (_dir.x > 0)
 	{
 		// 右向き
-		m_polygon.TurnScale();
 		m_pos.x += 5.0f;
 	}
 	else
@@ -120,6 +119,8 @@ void LichBullet::Set(Math::Vector3 _pos, Math::Vector3 _dir, int _atk)
 		dir = m_player.lock()->GetPos() - m_pos;
 		dir.Normalize();
 	}
+
+	if(dir.x>0)m_polygon.TurnScale();
 
 	m_move = dir * m_speed;
 

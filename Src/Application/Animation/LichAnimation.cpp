@@ -36,7 +36,7 @@ void LichAnimation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polygo
 			m_bAction = false;
 		}
 
-		if (_dir == Dir::Left)_polygon->TurnScale();
+		if(_dir == Dir::Left)_polygon->TurnScale();
 
 		m_maxAnime = _polygon->GetSplitX();
 		m_cnt = 0.0f;

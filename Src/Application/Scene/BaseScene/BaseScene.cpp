@@ -1,6 +1,7 @@
 ﻿#include "BaseScene.h"
 
 #include "../../Fade/Fade.h"
+#include "../../Movie/Movie.h"
 
 void BaseScene::PreUpdate()
 {
@@ -40,6 +41,7 @@ void BaseScene::Update()
 	}
 
 	Fade::Instance().Update();
+	Movie::Instance().Update();
 
 	// シーン毎のイベント処理
 	Event();

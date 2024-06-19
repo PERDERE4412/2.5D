@@ -53,6 +53,7 @@ void FireWisp::Update()
 			m_vec = m_playerPos - m_pos;
 			m_vec.Normalize();
 			std::shared_ptr<FireWispBullet> bullet = std::make_shared<FireWispBullet>();
+			if (!m_player.expired())bullet->SetPlayer(m_player.lock());
 			bullet->Set(m_pos, m_vec, m_status->GetAtk());
 			SceneManager::Instance().AddObject(bullet);
 			MapManager::Instance().AddObject(bullet);
@@ -194,28 +195,28 @@ void FireWisp::Move()
 	m_vec = Math::Vector3::Zero;
 	m_vec = m_playerPos - m_pos;
 
+	if (m_vec.x > 0.0f)
+	{
+		if (m_dir == FireWispAnimation::Dir::Left)
+		{
+			m_dir = FireWispAnimation::Dir::Right;
+			m_polygon.TurnScale();
+		}
+	}
+	else if (m_vec.x < 0.0f)
+	{
+		if (m_dir == FireWispAnimation::Dir::Right)
+		{
+			m_dir = FireWispAnimation::Dir::Left;
+			m_polygon.TurnScale();
+		}
+	}
+
 	if (m_vec.Length()< 25.0f && m_vec.Length() > 15.0f)
 	{
 		m_vec.Normalize();
 		m_vec *= m_movePow;
 		m_pos += m_vec;
-
-		if (m_vec.x > 0.0f)
-		{
-			if (m_dir == FireWispAnimation::Dir::Left)
-			{
-				m_dir = FireWispAnimation::Dir::Right;
-				m_polygon.TurnScale();
-			}
-		}
-		else if (m_vec.x < 0.0f)
-		{
-			if (m_dir == FireWispAnimation::Dir::Right)
-			{
-				m_dir = FireWispAnimation::Dir::Left;
-				m_polygon.TurnScale();
-			}
-		}
 	}
 	else if (m_vec.Length() <= 15.0f)
 	{
