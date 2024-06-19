@@ -3,18 +3,20 @@
 #include "../Scene/SceneManager.h"
 #include "../Object/Chara/Player/Player.h"
 #include "../Object/Chara/Enemy/Lich/Lich.h"
-#include "../Object/Effect/LichSpawn/Lightning.h"
-#include "../Object/Effect/LichSpawn/LightExp.h"
+#include "../Object/Effect/LichSpawn/LichSpawn1.h"
+#include "../Object/Effect/LichSpawn/LichSpawn2.h"
+#include "../Object/Effect/LichSpawn/LichSpawn3.h"
+#include "../Object/Effect/LichSpawn/LichSpawn4.h"
 
 void Movie::Update()
 {
 	if (!m_bStart)return;
 
 	// スポーン中じゃなければカメラ移動
-	if(!m_bSpawn)MoveCamera();
+	if (!m_bSpawn)MoveCamera();
 
 	// スポーン演出
-	if(m_bSpawn)BossSpawn();
+	if (m_bSpawn)BossSpawn();
 }
 
 void Movie::Init()
@@ -28,6 +30,10 @@ void Movie::Init()
 	m_playerPos = { -17.0f,0.0f,20.0f };
 	m_cameraPos = { -17.0f,0.0f,20.0f };
 	m_lichSpawnPos = { 5.4f, 0.0f, 39.6f };
+
+	m_cnt = 0;
+	m_wait = 0;
+	m_moveWait = 120;
 }
 
 void Movie::MoveCamera()
@@ -35,13 +41,22 @@ void Movie::MoveCamera()
 	float speed = 0.15f;
 
 	Math::Vector3 dir;
-	if (m_bMove)dir=m_lichSpawnPos - m_cameraPos;
-	else dir=m_playerPos - m_cameraPos;
+	if (m_bMove)dir = m_lichSpawnPos - m_cameraPos;
+	else dir = m_playerPos - m_cameraPos;
 
+	// カメラ移動完了
 	if (dir.Length() < speed)
 	{
 		speed = dir.Length();
-		m_bSpawn = true;		// スポーン演出を始める
+		if (m_bMove)
+		{
+			m_bSpawn = true;		// スポーン演出を始める
+			m_bMove = false;
+		}
+		else if (!m_bMove)
+		{
+			m_bStart = false;
+		}
 	}
 
 	dir.Normalize();
@@ -61,20 +76,51 @@ void Movie::MoveCamera()
 
 void Movie::BossSpawn()
 {
-	static bool bLight=false;
-	if (!bLight)
-	{
-		bLight = true;
-		std::shared_ptr<Lightning> lightning = std::make_shared<Lightning>();
-		lightning->SetPos(m_lichSpawnPos);
-		SceneManager::Instance().AddObject(lightning);
+	if (m_wait > 0)m_wait--;
 
-		std::shared_ptr<LightExp> lightExp = std::make_shared<LightExp>();
-		lightExp->SetPos(m_lichSpawnPos);
-		SceneManager::Instance().AddObject(lightExp);
+	if (m_wait <= 0 && m_cnt < 10)
+	{
+		m_cnt++;
+		m_wait = 15;
+
+		Math::Vector3 pos = Math::Vector3::Zero;
+		pos = { (rand() % 41 - 20) / 10.0f,0.0f,(rand() % 41 - 20) / 10.0f };
+
+		std::shared_ptr<LichSpawn3> spawn3 = std::make_shared<LichSpawn3>();
+		spawn3->SetPos(m_lichSpawnPos + pos);
+		SceneManager::Instance().AddObject(spawn3);
+
+		pos = { ((rand() % 41 - 20) / 10.0f) * -1.0f,0.0f,((rand() % 41 - 20) / 10.0f) * -1.0f };
+
+		std::shared_ptr<LichSpawn4> spawn4 = std::make_shared<LichSpawn4>();
+		spawn4->SetPos(m_lichSpawnPos + pos);
+		SceneManager::Instance().AddObject(spawn4);
+	}
+
+	static bool bExp = false;
+	if (!bExp && m_cnt >= 10)
+	{
+		bExp = true;
+		std::shared_ptr<LichSpawn1> spawn1 = std::make_shared<LichSpawn1>();
+		spawn1->SetPos(m_lichSpawnPos);
+		SceneManager::Instance().AddObject(spawn1);
+
+		std::shared_ptr<LichSpawn2> spawn2 = std::make_shared<LichSpawn2>();
+		spawn2->SetPos(m_lichSpawnPos);
+		SceneManager::Instance().AddObject(spawn2);
 
 		std::shared_ptr<Lich> lich = std::make_shared<Lich>();
 		lich->SetPos(m_lichSpawnPos);
+		lich->SetPlayer(m_player);
 		SceneManager::Instance().AddObject(lich);
+	}
+
+	if (bExp)
+	{
+		m_moveWait--;
+		if (m_moveWait < 0)
+		{
+			m_bSpawn = false;
+		}
 	}
 }

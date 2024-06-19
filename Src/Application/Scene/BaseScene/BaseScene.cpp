@@ -31,7 +31,7 @@ void BaseScene::PreUpdate()
 
 void BaseScene::Update()
 {
-	if (!Fade::Instance().GetFade())
+	if (!Fade::Instance().GetFade() && !Movie::Instance().GetStart())
 	{
 		// KdGameObjectを継承した全てのオブジェクトの更新 (ポリモーフィズム)
 		for (auto& obj : m_objList)

@@ -453,11 +453,20 @@
     <ClInclude Include="Src\Application\Movie\Movie.h">
       <Filter>Src\Application\Movie</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\Effect\LichSpawn\Lightning.h">
+    <ClInclude Include="Src\Application\Object\Effect\LichSpawn\LichSpawn2.h">
       <Filter>Src\Application\Object\Effect\LichSpawn</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\Effect\LichSpawn\LightExp.h">
+    <ClInclude Include="Src\Application\Object\Effect\LichSpawn\LichSpawn1.h">
       <Filter>Src\Application\Object\Effect\LichSpawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Effect\LichSpawn\LichSpawn3.h">
+      <Filter>Src\Application\Object\Effect\LichSpawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Effect\LichSpawn\LichSpawn4.h">
+      <Filter>Src\Application\Object\Effect\LichSpawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Effect\BaseEffect.h">
+      <Filter>Src\Application\Object\Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -701,11 +710,20 @@
     <ClCompile Include="Src\Application\Movie\Movie.cpp">
       <Filter>Src\Application\Movie</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\Effect\LichSpawn\Lightning.cpp">
+    <ClCompile Include="Src\Application\Object\Effect\LichSpawn\LichSpawn2.cpp">
       <Filter>Src\Application\Object\Effect\LichSpawn</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\Effect\LichSpawn\LightExp.cpp">
+    <ClCompile Include="Src\Application\Object\Effect\LichSpawn\LichSpawn1.cpp">
       <Filter>Src\Application\Object\Effect\LichSpawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Effect\LichSpawn\LichSpawn3.cpp">
+      <Filter>Src\Application\Object\Effect\LichSpawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Effect\LichSpawn\LichSpawn4.cpp">
+      <Filter>Src\Application\Object\Effect\LichSpawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Effect\BaseEffect.cpp">
+      <Filter>Src\Application\Object\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

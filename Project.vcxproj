@@ -179,8 +179,11 @@
     <ClInclude Include="Src\Application\Object\Chara\Player\PlayerSwordEffect2.h" />
     <ClInclude Include="Src\Application\Object\Chara\Player\PlayerSwordEffect3.h" />
     <ClInclude Include="Src\Application\Object\DropGold\DropGold.h" />
-    <ClInclude Include="Src\Application\Object\Effect\LichSpawn\LightExp.h" />
-    <ClInclude Include="Src\Application\Object\Effect\LichSpawn\Lightning.h" />
+    <ClInclude Include="Src\Application\Object\Effect\BaseEffect.h" />
+    <ClInclude Include="Src\Application\Object\Effect\LichSpawn\LichSpawn1.h" />
+    <ClInclude Include="Src\Application\Object\Effect\LichSpawn\LichSpawn2.h" />
+    <ClInclude Include="Src\Application\Object\Effect\LichSpawn\LichSpawn3.h" />
+    <ClInclude Include="Src\Application\Object\Effect\LichSpawn\LichSpawn4.h" />
     <ClInclude Include="Src\Application\Object\Map\Back\Back.h" />
     <ClInclude Include="Src\Application\Object\Map\Door\Door.h" />
     <ClInclude Include="Src\Application\Object\Map\Floor\Floor.h" />
@@ -265,8 +268,11 @@
     <ClCompile Include="Src\Application\Object\Chara\Player\PlayerSwordEffect2.cpp" />
     <ClCompile Include="Src\Application\Object\Chara\Player\PlayerSwordEffect3.cpp" />
     <ClCompile Include="Src\Application\Object\DropGold\DropGold.cpp" />
-    <ClCompile Include="Src\Application\Object\Effect\LichSpawn\LightExp.cpp" />
-    <ClCompile Include="Src\Application\Object\Effect\LichSpawn\Lightning.cpp" />
+    <ClCompile Include="Src\Application\Object\Effect\BaseEffect.cpp" />
+    <ClCompile Include="Src\Application\Object\Effect\LichSpawn\LichSpawn1.cpp" />
+    <ClCompile Include="Src\Application\Object\Effect\LichSpawn\LichSpawn2.cpp" />
+    <ClCompile Include="Src\Application\Object\Effect\LichSpawn\LichSpawn3.cpp" />
+    <ClCompile Include="Src\Application\Object\Effect\LichSpawn\LichSpawn4.cpp" />
     <ClCompile Include="Src\Application\Object\Map\Back\Back.cpp" />
     <ClCompile Include="Src\Application\Object\Map\Door\Door.cpp" />
     <ClCompile Include="Src\Application\Object\Map\Floor\Floor.cpp" />

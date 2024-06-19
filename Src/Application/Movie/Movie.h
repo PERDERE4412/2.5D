@@ -41,6 +41,10 @@ private:
 	Math::Vector3 m_playerPos;		// プレイヤー座標
 	Math::Vector3 m_lichSpawnPos;	// スポーン座標
 
+	int m_cnt;						// 演出発生回数
+	int m_wait;						// 演出の間隔
+	int m_moveWait;					// カメラが動き出すまでの間隔
+
 private:
 
 	Movie() { Init(); }

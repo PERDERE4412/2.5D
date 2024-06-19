@@ -17,6 +17,8 @@ public:
 	void PreUpdate()override;
 	void Update()override;
 	void PostUpdate()override;
+	void GenerateDepthMapFromLight()override;
+	void DrawLit()override;
 
 	void SetPlayer(std::weak_ptr<Player> _player) { m_player = _player; }
 

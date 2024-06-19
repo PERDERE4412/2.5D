@@ -196,6 +196,8 @@ bool Application::Init(int w, int h)
 	//===================================================================
 	KdAudioManager::Instance().Init();
 
+	srand(timeGetTime());
+
 	return true;
 }
 

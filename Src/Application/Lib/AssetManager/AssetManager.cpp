@@ -116,11 +116,17 @@ void AssetManager::Init()
 	LoadMaterial("lichBulletExp", "Asset/Textures/Enemy/Lich/bulletExp.png");
 	SetMaterial("lichBulletExp", 4.0f, pivot, 4, 1);
 
-	LoadMaterial("lightning", "Asset/Textures/Enemy/Lich/lightning.png");
-	SetMaterial("lightning", 12.0f, pivot, 11, 1);
+	LoadMaterial("lichSpawn1", "Asset/Textures/Enemy/Lich/spawn1.png");
+	SetMaterial("lichSpawn1", 12.0f, pivot, 11, 1);
 
-	LoadMaterial("lightExp", "Asset/Textures/Enemy/Lich/lightExp.png");
-	SetMaterial("lightExp", 16.0f, pivot, 16, 1);
+	LoadMaterial("lichSpawn2", "Asset/Textures/Enemy/Lich/spawn2.png");
+	SetMaterial("lichSpawn2", 16.0f, pivot, 16, 1);
+
+	LoadMaterial("lichSpawn3", "Asset/Textures/Enemy/Lich/spawn3.png");
+	SetMaterial("lichSpawn3", 2.5f, pivot, 3, 1);
+
+	LoadMaterial("lichSpawn4", "Asset/Textures/Enemy/Lich/spawn4.png");
+	SetMaterial("lichSpawn4", 4.0f, pivot, 4, 1);
 
 	// アイテム
 	LoadMaterial("drop", "Asset/Textures/drop.png");

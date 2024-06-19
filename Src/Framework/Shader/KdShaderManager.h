@@ -212,6 +212,9 @@ public:
 	// 解放
 	void Release();
 
+	void OnPixelArt() { m_pixelArtStyle = true; }
+	void OffPixelArt() { m_pixelArtStyle = false; }
+
 private:
 
 	KdShaderManager() {}

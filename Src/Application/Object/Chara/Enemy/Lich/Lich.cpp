@@ -141,6 +141,40 @@ void Lich::PostUpdate()
 	m_world = rotX * Math::Matrix::CreateTranslation(m_pos);
 }
 
+void Lich::GenerateDepthMapFromLight()
+{
+	// ディゾルブ
+	static float d = 1.0f;
+	d -= 0.02f;
+	if (d < 0.0f)
+	{
+		d = 0.0f;
+	}
+
+	KdShaderManager::Instance().m_StandardShader.SetDissolve(d);
+	
+	KdShaderManager::Instance().OffPixelArt();
+	KdShaderManager::Instance().m_StandardShader.DrawPolygon(m_polygon, m_world, m_color);
+	KdShaderManager::Instance().OnPixelArt();
+}
+
+void Lich::DrawLit()
+{
+	// ディゾルブ
+	static float d = 1.0f;
+	d -= 0.02f;
+	if (d < 0.0f)
+	{
+		d = 0.0f;
+	}
+
+	KdShaderManager::Instance().m_StandardShader.SetDissolve(d);
+
+	KdShaderManager::Instance().OffPixelArt();
+	KdShaderManager::Instance().m_StandardShader.DrawPolygon(m_polygon, m_world, m_color);
+	KdShaderManager::Instance().OnPixelArt();
+}
+
 void Lich::Hit(int _damage)
 {
 	if (m_invWait <= 0)
