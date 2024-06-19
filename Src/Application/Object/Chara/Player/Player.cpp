@@ -8,12 +8,21 @@
 #include "PlayerSwordEffect2.h"
 #include "PlayerSwordEffect3.h"
 
+void Player::PreUpdate()
+{
+	if (Animation::Instance().GetAction())
+	{
+		// 移動量初期化
+		if (Animation::Instance().GetState() != Animation::PlayerState::Roll)m_movePow = 0.3f;
+
+		// 状態を初期化
+		m_state = Animation::PlayerState::Idle;
+	}
+}
+
 void Player::Update()
 {
 	Action();
-
-	// アニメーション作成
-	Animation::Instance().CreateAnime(m_dir, m_state, &m_polygon);
 
 	if (m_invWait > 0)m_invWait--;
 }
@@ -75,6 +84,9 @@ void Player::PostUpdate()
 			m_pos += hitDir * maxOverLap;
 		}
 	}
+
+	// アニメーション作成
+	Animation::Instance().CreateAnime(m_dir, m_state, &m_polygon);
 
 	// 行列作成
 	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));

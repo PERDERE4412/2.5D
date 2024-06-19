@@ -11,6 +11,7 @@ public:
 	Player() { Init(); }		// コンストラクタ
 	~Player()override {}		// デストラクタ
 
+	void PreUpdate()override;
 	void Update()override;		// 更新
 	void PostUpdate()override;
 	
