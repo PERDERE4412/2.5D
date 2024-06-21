@@ -1,6 +1,7 @@
 ﻿#include "Movie.h"
 
 #include "../Scene/SceneManager.h"
+#include "../Map/MapManager.h"
 #include "../Object/Chara/Player/Player.h"
 #include "../Object/Chara/Enemy/Lich/Lich.h"
 #include "../Object/Effect/LichSpawn/LichSpawn1.h"
@@ -84,13 +85,13 @@ void Movie::BossSpawn()
 		m_wait = 15;
 
 		Math::Vector3 pos = Math::Vector3::Zero;
-		pos = { (rand() % 41 - 20) / 10.0f,0.0f,(rand() % 41 - 20) / 10.0f };
+		pos = { (rand() % 41 - 20) / 10.0f,0.0f,4.0f+(rand() % 41 - 20) / 10.0f };
 
 		std::shared_ptr<LichSpawn3> spawn3 = std::make_shared<LichSpawn3>();
 		spawn3->SetPos(m_lichSpawnPos + pos);
 		SceneManager::Instance().AddObject(spawn3);
 
-		pos = { ((rand() % 41 - 20) / 10.0f) * -1.0f,0.0f,((rand() % 41 - 20) / 10.0f) * -1.0f };
+		pos = { ((rand() % 41 - 20) / 10.0f) * -1.0f,0.0f,4.0f+((rand() % 41 - 20) / 10.0f) * -1.0f };
 
 		std::shared_ptr<LichSpawn4> spawn4 = std::make_shared<LichSpawn4>();
 		spawn4->SetPos(m_lichSpawnPos + pos);
@@ -113,6 +114,7 @@ void Movie::BossSpawn()
 		lich->SetPos(m_lichSpawnPos);
 		lich->SetPlayer(m_player);
 		SceneManager::Instance().AddObject(lich);
+		MapManager::Instance().AddObject(lich);
 	}
 
 	if (bExp)

@@ -50,65 +50,65 @@ void AssetManager::Init()
 	// 敵
 	// ウォリアー
 	pivot = KdSquarePolygon::PivotType::Center_Bottom;
-	LoadMaterial("warriorIdle", "Asset/Textures/Enemy/Warrior/idle.png");
-	SetMaterial("warriorIdle", 10.0f, pivot, 8, 1);
+	LoadMaterial("WarriorIdle", "Asset/Textures/Enemy/Warrior/idle.png");
+	SetMaterial("WarriorIdle", 10.0f, pivot, 8, 1);
 
-	LoadMaterial("warriorRun", "Asset/Textures/Enemy/Warrior/run.png");
-	SetMaterial("warriorRun", 10.0f, pivot, 8, 1);
+	LoadMaterial("WarriorRun", "Asset/Textures/Enemy/Warrior/run.png");
+	SetMaterial("WarriorRun", 10.0f, pivot, 8, 1);
 
-	LoadMaterial("warriorAttack1", "Asset/Textures/Enemy/Warrior/attack1.png");
-	SetMaterial("warriorAttack1", 10.0f, pivot, 13, 1);
+	LoadMaterial("WarriorAttack", "Asset/Textures/Enemy/Warrior/attack1.png");
+	SetMaterial("WarriorAttack", 10.0f, pivot, 13, 1);
 
-	LoadMaterial("warriorDeath", "Asset/Textures/Enemy/Warrior/death.png");
-	SetMaterial("warriorDeath", 10.0f, pivot, 16, 1);
+	LoadMaterial("WarriorDeath", "Asset/Textures/Enemy/Warrior/death.png");
+	SetMaterial("WarriorDeath", 10.0f, pivot, 16, 1);
 
 	// ファイアウィスプ
-	LoadMaterial("fireWispIdle", "Asset/Textures/Enemy/FireWisp/idle.png");
-	SetMaterial("fireWispIdle", 7.0f, pivot, 4, 1);
+	LoadMaterial("FireWispIdle", "Asset/Textures/Enemy/FireWisp/idle.png");
+	SetMaterial("FireWispIdle", 7.0f, pivot, 4, 1);
 
-	LoadMaterial("fireWispRun", "Asset/Textures/Enemy/FireWisp/run.png");
-	SetMaterial("fireWispRun", 7.0f, pivot, 4, 1);
+	LoadMaterial("FireWispRun", "Asset/Textures/Enemy/FireWisp/run.png");
+	SetMaterial("FireWispRun", 7.0f, pivot, 4, 1);
 
-	LoadMaterial("fireWispAttack", "Asset/Textures/Enemy/FireWisp/attack.png");
-	SetMaterial("fireWispAttack", 7.0f, pivot, 10, 1);
+	LoadMaterial("FireWispAttack", "Asset/Textures/Enemy/FireWisp/attack.png");
+	SetMaterial("FireWispAttack", 7.0f, pivot, 10, 1);
 
-	LoadMaterial("fireWispDeath", "Asset/Textures/Enemy/FireWisp/death.png");
-	SetMaterial("fireWispDeath", 7.0f, pivot, 7, 1);
+	LoadMaterial("FireWispDeath", "Asset/Textures/Enemy/FireWisp/death.png");
+	SetMaterial("FireWispDeath", 7.0f, pivot, 7, 1);
 
-	LoadMaterial("fireWispBullet", "Asset/Textures/Enemy/FireWisp/bullet.png");
-	SetMaterial("fireWispBullet", 4.0f, pivot, 4, 1);
+	LoadMaterial("FireWispBullet", "Asset/Textures/Enemy/FireWisp/bullet.png");
+	SetMaterial("FireWispBullet", 4.0f, pivot, 4, 1);
 
 	// スライム
-	LoadMaterial("slimeIdle", "Asset/Textures/Enemy/Slime/idle.png");
-	SetMaterial("slimeIdle", 4.0f, pivot, 4, 1);
+	LoadMaterial("SlimeIdle", "Asset/Textures/Enemy/Slime/idle.png");
+	SetMaterial("SlimeIdle", 4.0f, pivot, 4, 1);
 
-	LoadMaterial("slimeRun", "Asset/Textures/Enemy/Slime/run.png");
-	SetMaterial("slimeRun", 4.0f, pivot, 4, 1);
+	LoadMaterial("SlimeRun", "Asset/Textures/Enemy/Slime/run.png");
+	SetMaterial("SlimeRun", 4.0f, pivot, 4, 1);
 
-	LoadMaterial("slimeAttack", "Asset/Textures/Enemy/Slime/attack.png");
-	SetMaterial("slimeAttack", 4.0f, pivot, 5, 1);
+	LoadMaterial("SlimeAttack", "Asset/Textures/Enemy/Slime/attack.png");
+	SetMaterial("SlimeAttack", 4.0f, pivot, 5, 1);
 
-	LoadMaterial("slimeHurt", "Asset/Textures/Enemy/Slime/hurt.png");
-	SetMaterial("slimeHurt", 4.0f, pivot, 4, 1);
+	LoadMaterial("SlimeHurt", "Asset/Textures/Enemy/Slime/hurt.png");
+	SetMaterial("SlimeHurt", 4.0f, pivot, 4, 1);
 
-	LoadMaterial("slimeDeath", "Asset/Textures/Enemy/Slime/death.png");
-	SetMaterial("slimeDeath", 4.0f, pivot, 4, 1);
+	LoadMaterial("SlimeDeath", "Asset/Textures/Enemy/Slime/death.png");
+	SetMaterial("SlimeDeath", 4.0f, pivot, 4, 1);
 
 	// リッチ(ボス)
 	LoadMaterial("lichIdle", "Asset/Textures/Enemy/Lich/idle.png");
-	SetMaterial("lichIdle", 12.0f, pivot, 16, 1);
+	SetMaterial("lichIdle", 24.0f, pivot, 16, 1);
 
 	LoadMaterial("lichAttack1", "Asset/Textures/Enemy/Lich/attack1.png");
-	SetMaterial("lichAttack1", 12.0f, pivot, 16, 1);
+	SetMaterial("lichAttack1", 24.0f, pivot, 16, 1);
 
 	LoadMaterial("lichAttack2", "Asset/Textures/Enemy/Lich/attack2.png");
-	SetMaterial("lichAttack2", 12.0f, pivot, 16, 1);
+	SetMaterial("lichAttack2", 24.0f, pivot, 16, 1);
 
 	LoadMaterial("lichAttack3", "Asset/Textures/Enemy/Lich/attack3.png");
-	SetMaterial("lichAttack3", 12.0f, pivot, 32, 1);
+	SetMaterial("lichAttack3", 24.0f, pivot, 32, 1);
 
 	LoadMaterial("lichDeath", "Asset/Textures/Enemy/Lich/death.png");
-	SetMaterial("lichDeath", 12.0f, pivot, 12, 1);
+	SetMaterial("lichDeath", 24.0f, pivot, 12, 1);
 
 	LoadMaterial("lichBullet", "Asset/Textures/Enemy/Lich/bullet.png");
 	SetMaterial("lichBullet", 3.5f, pivot, 4, 1);
@@ -117,20 +117,31 @@ void AssetManager::Init()
 	SetMaterial("lichBulletExp", 4.0f, pivot, 4, 1);
 
 	LoadMaterial("lichSpawn1", "Asset/Textures/Enemy/Lich/spawn1.png");
-	SetMaterial("lichSpawn1", 12.0f, pivot, 11, 1);
+	SetMaterial("lichSpawn1", 24.0f, pivot, 11, 1);
 
 	LoadMaterial("lichSpawn2", "Asset/Textures/Enemy/Lich/spawn2.png");
-	SetMaterial("lichSpawn2", 16.0f, pivot, 16, 1);
+	SetMaterial("lichSpawn2", 32.0f, pivot, 16, 1);
 
 	LoadMaterial("lichSpawn3", "Asset/Textures/Enemy/Lich/spawn3.png");
-	SetMaterial("lichSpawn3", 2.5f, pivot, 3, 1);
+	SetMaterial("lichSpawn3", 5.0f, pivot, 3, 1);
 
 	LoadMaterial("lichSpawn4", "Asset/Textures/Enemy/Lich/spawn4.png");
-	SetMaterial("lichSpawn4", 4.0f, pivot, 4, 1);
+	SetMaterial("lichSpawn4", 8.0f, pivot, 4, 1);
+
+	LoadMaterial("lichThunder", "Asset/Textures/Enemy/Lich/thunder.png");
+	SetMaterial("lichThunder", 16.0f, pivot, 7, 1);
+
+	pivot = KdSquarePolygon::PivotType::Center_Middle;
+	LoadMaterial("lichThunderCircle", "Asset/Textures/Enemy/Lich/circle.png");
+	SetMaterial("lichThunderCircle", 1.0f, pivot, 1, 1);
 
 	// アイテム
+	pivot = KdSquarePolygon::PivotType::Center_Bottom;
 	LoadMaterial("drop", "Asset/Textures/drop.png");
 	SetMaterial("drop", 2.0f, pivot, 1, 1);
+
+	LoadMaterial("heal", "Asset/Textures/heal.png");
+	SetMaterial("heal", 4.5f, pivot, 4, 1);
 
 	// 背景
 	pivot = KdSquarePolygon::PivotType::Center_Middle;
@@ -159,6 +170,10 @@ void AssetManager::Init()
 	LoadTex("miniMapFrame", "Asset/Textures/miniMapFrame.png");
 	LoadTex("miniMap", "Asset/Textures/miniMap.png");
 	LoadTex("mapPlayer", "Asset/Textures/mapPlayer.png");
+	LoadTex("bossHpFrame", "Asset/Textures/Enemy/Lich/hpFrame.png");
+	LoadTex("bossHpBar", "Asset/Textures/Enemy/Lich/hpBar.png");
+	LoadTex("potion", "Asset/Textures/potion.png");
+	LoadTex("GetPotion", "Asset/Textures/getPotion.png");
 }
 
 void AssetManager::SetMaterial(std::string _name, float _scale, KdSquarePolygon::PivotType _pivot, int _splitX, int _splitY)

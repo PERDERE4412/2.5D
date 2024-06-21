@@ -1,6 +1,5 @@
 ﻿#include "FireWispBullet.h"
 
-#include "../../../../Lib/AssetManager/AssetManager.h"
 #include "../../../../Scene/SceneManager.h"
 #include "../../../../Map/MapManager.h"
 #include "../../../../Animation/Animation.h"
@@ -125,7 +124,7 @@ void FireWispBullet::Set(Math::Vector3 _pos, Math::Vector3 _dir, int _atk)
 
 void FireWispBullet::Init()
 {
-	m_polygon = AssetManager::Instance().GetMaterial("fireWispBullet");
+	m_polygon = AssetManager::Instance().GetMaterial("FireWispBullet");
 
 	m_speed = 0.3f;
 

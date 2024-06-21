@@ -7,7 +7,6 @@ public:
 	Slot() { Init(); }			// コンストラクタ
 	~Slot()override {}			// デストラクタ
 
-	void Update()override;		// 更新
 	void DrawSprite()override;	// 描画
 	void Init()override;		// 初期化
 

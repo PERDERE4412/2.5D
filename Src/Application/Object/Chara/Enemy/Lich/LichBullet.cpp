@@ -1,6 +1,5 @@
 ﻿#include "LichBullet.h"
 
-#include "../../../../Lib/AssetManager/AssetManager.h"
 #include "../../../../Scene/SceneManager.h"
 #include "../../../../Map/MapManager.h"
 #include "../../../../Animation/Animation.h"

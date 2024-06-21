@@ -1,6 +1,5 @@
 ﻿#include "PlayerSwordEffect2.h"
 
-#include "../../../Lib/AssetManager/AssetManager.h"
 #include "../../../Scene/SceneManager.h"
 
 void PlayerSwordEffect2::Update()

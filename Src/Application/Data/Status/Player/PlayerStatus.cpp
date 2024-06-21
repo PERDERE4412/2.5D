@@ -10,8 +10,26 @@ void PlayerStatus::SetExp(int _point)
 		if (m_statusList["LEVEL"] > 99)return;
 
 		m_statusList["LEVEL"]++;
-		m_statusList["EXP"] = 0;
-		m_statusList["NEXTEXP"] = (int)(m_statusList["NEXTEXP"]*1.5f);
+		m_statusList["EXP"] = m_statusList["EXP"] - m_statusList["NEXTEXP"];
+		m_statusList["NEXTEXP"] = (int)(m_statusList["NEXTEXP"] * 1.5f);
+	}
+}
+
+void PlayerStatus::Damage(int _damage)
+{
+	m_statusList["HP"] -= _damage;
+	if (m_statusList["HP"] <= 0)
+	{
+		m_statusList["HP"] = 0;
+	}
+}
+
+void PlayerStatus::Heal(int _heal)
+{
+	m_statusList["HP"] += _heal;
+	if (m_statusList["HP"] > m_statusList["MAXHP"])
+	{
+		m_statusList["HP"] = m_statusList["MAXHP"];
 	}
 }
 

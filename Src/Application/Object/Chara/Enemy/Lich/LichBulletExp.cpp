@@ -1,7 +1,5 @@
 ﻿#include "LichBulletExp.h"
 
-#include "../../../../Lib/AssetManager/AssetManager.h"
-
 void LichBulletExp::Update()
 {
 	m_animeCnt += m_animeSpeed;

@@ -1,7 +1,5 @@
 ﻿#include "Door.h"
 
-#include "../../../Lib/AssetManager/AssetManager.h"
-
 #include "../../../Scene/SceneManager.h"
 #include "../../UI/ActionManager/ActionManager.h"
 #include "../../../Map/MapManager.h"

@@ -1,6 +1,5 @@
 ﻿#include "Fade.h"
 
-#include "../Lib/AssetManager/AssetManager.h"
 #include "../Map/MapManager.h"
 #include "../Movie/Movie.h"
 

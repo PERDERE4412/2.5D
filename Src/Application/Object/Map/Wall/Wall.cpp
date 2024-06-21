@@ -1,6 +1,5 @@
 ﻿#include "Wall.h"
 
-#include "../../../Lib/AssetManager/AssetManager.h"
 #include "../../../Map/MapManager.h"
 
 void Wall::DrawLit()

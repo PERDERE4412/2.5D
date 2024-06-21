@@ -15,6 +15,6 @@ protected:
 
 	KdSquarePolygon m_polygon;
 
-	float m_animeCnt;
-	float m_animeSpeed;
+	float m_animeCnt = 0.0f;
+	float m_animeSpeed = 0.0f;
 };

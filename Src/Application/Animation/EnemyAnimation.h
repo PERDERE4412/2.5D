@@ -1,26 +1,19 @@
 ﻿#pragma once
 
-class FireWispAnimation
+class EnemyAnimation
 {
 public:
 
-	FireWispAnimation() { Init(); }		// コンストラクタ
-	~FireWispAnimation() {}				// デストラクタ
+	EnemyAnimation() { Init(); }		// コンストラクタ
+	~EnemyAnimation() {}				// デストラクタ
 
 	// エネミーの状態
 	enum class State
 	{
 		Idle,
 		Run,
-		Attack1,
-		Attack2,
+		Attack,
 		Death,
-	};
-
-	enum class Dir
-	{
-		Right,
-		Left
 	};
 
 	State GetState() { return m_state; }
@@ -33,7 +26,7 @@ public:
 	bool GetKill() { return m_bKill; }
 
 	// アニメーション作成
-	void CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polygon);
+	void CreateAnime(std::string _name,Utility::CharaDir _dir, State _state, KdSquarePolygon* _polygon);
 
 private:
 

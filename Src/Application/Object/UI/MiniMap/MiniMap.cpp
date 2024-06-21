@@ -1,7 +1,5 @@
 ﻿#include "MiniMap.h"
 
-#include "../../../Lib/AssetManager/AssetManager.h"
-
 void MiniMap::DrawSprite()
 {
 	// フレーム

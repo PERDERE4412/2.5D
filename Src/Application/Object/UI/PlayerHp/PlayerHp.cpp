@@ -1,6 +1,5 @@
 ﻿#include "PlayerHp.h"
 
-#include "../../../Lib/AssetManager/AssetManager.h"
 #include "../../../Data/Status/Player/PlayerStatus.h"
 
 void PlayerHp::Update()

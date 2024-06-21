@@ -1,8 +1,6 @@
-﻿#include "SlimeAnimation.h"
+﻿#include "EnemyAnimation.h"
 
-#include "../Lib/AssetManager/AssetManager.h"
-
-void SlimeAnimation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polygon)
+void EnemyAnimation::CreateAnime(std::string _name,Utility::CharaDir _dir, State _state, KdSquarePolygon* _polygon)
 {
 	// 現在の状態と異なっていたら
 	if (m_state != _state)
@@ -12,30 +10,30 @@ void SlimeAnimation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polyg
 		switch (m_state)
 		{
 		case State::Idle:
-			*_polygon = AssetManager::Instance().GetMaterial("slimeIdle");
+			_name += "Idle";
+			*_polygon = AssetManager::Instance().GetMaterial(_name);
 			m_cntSpeed = 0.05f;
 			break;
 		case State::Run:
-			*_polygon = AssetManager::Instance().GetMaterial("slimeRun");
+			_name += "Run";
+			*_polygon = AssetManager::Instance().GetMaterial(_name);
 			m_cntSpeed = 0.2f;
 			break;
-		case State::Attack1:
-			*_polygon = AssetManager::Instance().GetMaterial("slimeAttack");
-			m_cntSpeed = 0.1f;
-			m_bAction = false;
-			break;
-		case State::Attack2:
-			*_polygon = AssetManager::Instance().GetMaterial("slimeAttack2");
-			m_cntSpeed = 0.5f;
+		case State::Attack:
+			_name += "Attack";
+			*_polygon = AssetManager::Instance().GetMaterial(_name);
+			m_cntSpeed = 0.2f;
 			m_bAction = false;
 			break;
 		case State::Death:
-			*_polygon = AssetManager::Instance().GetMaterial("slimeDeath");
-			m_cntSpeed = 0.1f;
+			_name += "Death";
+			*_polygon = AssetManager::Instance().GetMaterial(_name);
+			m_cntSpeed = 0.2f;
 			m_bAction = false;
+			break;
 		}
 
-		if (_dir == Dir::Left)_polygon->TurnScale();
+		if (_dir == Utility::CharaDir::Left)_polygon->TurnScale();
 
 		m_maxAnime = _polygon->GetSplitX();
 		m_cnt = 0.0f;
@@ -46,7 +44,7 @@ void SlimeAnimation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polyg
 	_polygon->SetUVRect((int)m_cnt);
 }
 
-void SlimeAnimation::AnimeCnt()
+void EnemyAnimation::AnimeCnt()
 {
 	if (m_bStiff)
 	{
@@ -62,13 +60,7 @@ void SlimeAnimation::AnimeCnt()
 
 	if (m_cnt >= m_maxAnime)	// アニメーションが１週したら
 	{
-		if (m_state == State::Attack1)
-		{
-			m_bStiff = true;
-			m_bAction = true;
-			m_wait = 10;
-		}
-		else if (m_state == State::Attack2)
+		if (m_state == State::Attack)
 		{
 			m_bStiff = true;
 			m_bAction = true;
@@ -82,7 +74,7 @@ void SlimeAnimation::AnimeCnt()
 	}
 }
 
-void SlimeAnimation::Init()
+void EnemyAnimation::Init()
 {
 	m_state = State::Idle;
 

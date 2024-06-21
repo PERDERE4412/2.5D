@@ -1,9 +1,8 @@
 ﻿#include "Player.h"
 
-#include "../../../Lib/Utility/Utility.h"
-#include "../../../Lib/AssetManager/AssetManager.h"
 #include "../../../Data/Status/Player/PlayerStatus.h"
 #include "../../../Scene/SceneManager.h"
+#include "../../Item/ItemManager.h"
 #include "PlayerSwordEffect1.h"
 #include "PlayerSwordEffect2.h"
 #include "PlayerSwordEffect3.h"
@@ -17,6 +16,12 @@ void Player::PreUpdate()
 
 		// 状態を初期化
 		m_state = Animation::PlayerState::Idle;
+	}
+
+	if (m_damageWait > 0)m_damageWait--;
+	if (m_damageWait <= 0)
+	{
+		m_color = { 1,1,1,1 };
 	}
 }
 
@@ -99,6 +104,8 @@ void Player::Hit(int _damage)
 	{
 		PlayerStatus::Instance().Damage(_damage);
 		m_invWait = 120;
+		m_color = { 10,10,10,1 };
+		m_damageWait = 10;
 	}
 }
 
@@ -110,6 +117,7 @@ void Player::Init()
 	m_state = Animation::PlayerState::Idle;
 
 	m_color = { 1,1,1,1 };
+	m_damageWait = 0;
 
 	m_movePow = 0.2f;
 	m_dir = Animation::PlayerDir::Right;
@@ -129,17 +137,23 @@ void Player::Action()
 	// アクション可能か？
 	if (Animation::Instance().GetAction())
 	{
-		// 移動量初期化
-		if (Animation::Instance().GetState() != Animation::PlayerState::Roll)m_movePow = 0.3f;
-
-		// 状態を初期化
-		m_state = Animation::PlayerState::Idle;
-
 		// 硬直状態じゃなければ
 		if (!Animation::Instance().GetStiff())
 		{
 			// 方向ベクトル初期化
 			m_vec = Math::Vector3::Zero;
+
+			// アイテム使用
+			static bool Key = false;
+			if (GetAsyncKeyState('U') & 0x8000)
+			{
+				if (!Key)
+				{
+					Key = true;
+					ItemManager::Instance().Use();
+				}
+			}
+			else Key = false;
 
 			// 移動
 			Move();

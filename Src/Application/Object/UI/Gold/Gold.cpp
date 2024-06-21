@@ -1,6 +1,5 @@
 ﻿#include "Gold.h"
 
-#include "../../../Lib/AssetManager/AssetManager.h"
 #include "../../../Data/Item/Item.h"
 
 void Gold::Update()

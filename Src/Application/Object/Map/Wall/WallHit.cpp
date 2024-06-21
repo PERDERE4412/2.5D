@@ -1,7 +1,5 @@
 ﻿#include "WallHit.h"
 
-#include "../../../Lib/AssetManager/AssetManager.h"
-
 void WallHit::DrawLit()
 {
 	KdShaderManager::Instance().m_StandardShader.DrawModel(*m_model);

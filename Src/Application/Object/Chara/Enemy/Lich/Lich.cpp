@@ -2,11 +2,12 @@
 
 #include "../../Player/Player.h"
 #include "../../../../Scene/SceneManager.h"
-#include "../../../../Lib/AssetManager/AssetManager.h"
-#include "../../../DropGold/DropGold.h"
+#include "../../../Drop/DropGold.h"
 #include "../../../../Data/Status/Player/PlayerStatus.h"
 #include "../../../../Map/MapManager.h"
+#include "../../../UI/BossHp/BossHp.h"
 #include "LichBullet.h"
+#include "LichThunderCircle.h"
 
 void Lich::PreUpdate()
 {
@@ -47,7 +48,7 @@ void Lich::Update()
 		if (!m_bBullet)
 		{
 			m_bBullet = true;
-
+			
 			// 弾生成
 			std::shared_ptr<LichBullet> bullet = std::make_shared<LichBullet>();
 			if (!m_player.expired())bullet->SetPlayer(m_player.lock());
@@ -57,9 +58,28 @@ void Lich::Update()
 		}
 	}
 
+	// 雷生成
+	if (m_anim->GetState() == LichAnimation::State::Attack2 && m_anim->GetUVRect() == 8)
+	{
+		if (!m_bThunder)
+		{
+			m_bThunder = true;
+
+			// 雷範囲生成
+			std::shared_ptr<LichThunderCircle> circle = std::make_shared<LichThunderCircle>();
+			circle->Set(m_playerPos, m_status->GetAtk());
+			SceneManager::Instance().AddObject(circle);
+			MapManager::Instance().AddObject(circle);
+		}
+	}
+
 	// 消滅
 	if (m_anim->GetKill())
 	{
+		// HPバー消滅
+		m_hpBar->Expired();
+
+		// ドロップ
 		std::shared_ptr<DropGold> drop = std::make_shared<DropGold>();
 		drop->Set(m_player, m_pos, 10);
 		SceneManager::Instance().AddObject(drop);
@@ -152,7 +172,7 @@ void Lich::GenerateDepthMapFromLight()
 	}
 
 	KdShaderManager::Instance().m_StandardShader.SetDissolve(d);
-	
+
 	KdShaderManager::Instance().OffPixelArt();
 	KdShaderManager::Instance().m_StandardShader.DrawPolygon(m_polygon, m_world, m_color);
 	KdShaderManager::Instance().OnPixelArt();
@@ -192,7 +212,7 @@ void Lich::Init()
 
 	m_state = LichAnimation::State::Idle;
 
-	m_dir = LichAnimation::Dir::Right;
+	m_dir = LichAnimation::Dir::Left;
 
 	m_status = std::make_shared<LichStatus>();
 
@@ -202,14 +222,21 @@ void Lich::Init()
 
 	m_polygon = AssetManager::Instance().GetMaterial("lichIdle");
 	m_polygon.SetUVRect(0);
+	m_polygon.TurnScale();
 
 	m_movePow = 0.15f;
 
 	m_attackWait = 0;
 
 	m_bBullet = false;
+	m_bThunder = false;
 
 	m_invWait = 0;
+
+	std::shared_ptr<BossHp> hpBar = std::make_shared<BossHp>();
+	hpBar->SetStatus(m_status);
+	SceneManager::Instance().AddObject(hpBar);
+	m_hpBar = hpBar;
 
 	// デバッグ用
 	m_pDebugWire = std::make_unique<KdDebugWireFrame>();
@@ -263,10 +290,24 @@ void Lich::Attack()
 {
 	m_movePow = 0.0f;
 
-	if (m_attackWait <= 0)
+	if (m_attackWait > 0)return;
+
+	AtkType atkType = (AtkType)(rand() % 3);
+
+	switch (atkType)
 	{
+	case AtkType::FireBall:
 		m_state = LichAnimation::State::Attack1;
 		m_attackWait = 120;
 		m_bBullet = false;
+		break;
+	case AtkType::Thunder:
+		m_state = LichAnimation::State::Attack2;
+		m_attackWait = 300;
+		m_bThunder = false;
+		break;
+	case AtkType::summon:
+		m_attackWait = 10;
+		break;
 	}
 }

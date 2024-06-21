@@ -1,6 +1,5 @@
 ﻿#include "LevelBar.h"
 
-#include "../../../Lib/AssetManager/AssetManager.h"
 #include "../../../Data/Status/Player/PlayerStatus.h"
 
 void LevelBar::Update()

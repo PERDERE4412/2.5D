@@ -6,10 +6,12 @@ public:
 
 	struct Status
 	{
-		int hp;
-		int maxHp;
-		int atk;
-		int def;
+		std::string name;
+		int hp = 0;
+		int maxHp = 0;
+		int atk = 0;
+		int def = 0;
+		int exp = 0;
 	};
 
 	// ゲッター
@@ -20,7 +22,7 @@ private:
 	void Init();	// 初期化
 
 	// ステータスリスト
-	std::unordered_map<std::string,Status> m_statusList;
+	std::unordered_map<std::string, Status> m_statusList;
 
 private:
 

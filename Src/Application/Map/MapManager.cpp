@@ -109,12 +109,9 @@ void MapManager::CreateMap(int _mapId)
 	}
 
 	// 敵生成
-	if (!Movie::Instance().GetMovie())
+	for (EnemyData enemy : m_enemyList[_mapId])
 	{
-		for (EnemyData enemy : m_enemyList[_mapId])
-		{
-			EnemyManager::Instance().Spawn(enemy.name, enemy.pos);
-		}
+		EnemyManager::Instance().Spawn(enemy.name, enemy.pos);
 	}
 
 	// ミニマップ切り替え

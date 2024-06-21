@@ -17,17 +17,21 @@ void EnemyStatusManager::Init()
 		std::string maxHp;					// 最大HP
 		std::string atk;					// 攻撃力
 		std::string def;					// 防御力
+		std::string exp;					// 経験値
 
 		std::getline(iss, name, ',');
 		std::getline(iss, hp, ',');
 		std::getline(iss, maxHp, ',');
 		std::getline(iss, atk, ',');
 		std::getline(iss, def, ',');
+		std::getline(iss, exp, ',');
 
+		m_statusList[name].name = name;
 		m_statusList[name].hp = stoi(hp);
 		m_statusList[name].maxHp = stoi(maxHp);
 		m_statusList[name].atk = stoi(atk);
 		m_statusList[name].def = stoi(def);
+		m_statusList[name].exp = stoi(exp);
 	}
 
 	ifs.close();

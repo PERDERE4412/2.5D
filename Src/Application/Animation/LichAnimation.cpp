@@ -1,7 +1,5 @@
 ﻿#include "LichAnimation.h"
 
-#include "../Lib/AssetManager/AssetManager.h"
-
 void LichAnimation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polygon)
 {
 	// 現在の状態と異なっていたら
@@ -22,7 +20,7 @@ void LichAnimation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polygo
 			break;
 		case State::Attack2:
 			*_polygon = AssetManager::Instance().GetMaterial("lichAttack2");
-			m_cntSpeed = 0.5f;
+			m_cntSpeed = 0.2f;
 			m_bAction = false;
 			break;
 		case State::Attack3:

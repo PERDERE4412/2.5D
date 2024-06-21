@@ -1,7 +1,5 @@
 ﻿#include "Floor.h"
 
-#include "../../../Lib/AssetManager/AssetManager.h"
-
 void Floor::DrawLit()
 {
 	KdShaderManager::Instance().m_StandardShader.DrawModel(m_model);

@@ -1,7 +1,5 @@
 ﻿#include "Back.h"
 
-#include "../../../Lib/AssetManager/AssetManager.h"
-
 void Back::Update()
 {
 	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));

@@ -15,7 +15,7 @@ public:
 	void Update()override;		// 更新
 	void PostUpdate()override;
 	
-	void Hit(int _damage);
+	void Hit(int _damage)override;
 
 	void SetPos(Math::Vector3 _pos) { m_pos = _pos; }
 
@@ -31,6 +31,7 @@ private:
 	Animation::PlayerDir m_dir;		// 向き
 
 	int m_invWait;					// 無敵時間
+	int m_damageWait;				// 被弾時の光る時間
 
 	enum class Combo
 	{

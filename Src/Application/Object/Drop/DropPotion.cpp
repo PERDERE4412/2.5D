@@ -1,22 +1,22 @@
-﻿#include "DropGold.h"
+﻿#include "DropPotion.h"
 
 #include "../../Object/UI/ActionManager/ActionManager.h"
 #include "../../Scene/SceneManager.h"
-#include "../../Lib/AssetManager/AssetManager.h"
 #include "../Chara/Player/Player.h"
 #include "../../Data/Item/Item.h"
+#include "../UI/GetPotion/GetPotion.h"
+#include "../Item/ItemManager.h"
+#include "../../Map/MapManager.h"
 
-void DropGold::Update()
+void DropPotion::Update()
 {
 	// 拾う
 	if (!m_player.expired())
 	{
-		Math::Vector3 playerPos = m_player.lock()->GetPos();
-
-		float dist = Math::Vector3::Distance(playerPos, m_pos);
-
+		Math::Vector3 dist = m_player.lock()->GetPos() - m_pos;
+		
 		// 範囲内なら
-		if (dist < 5.0f)
+		if (dist.Length() < 5.0f)
 		{
 			// UIを表示
 			if (!ActionManager::Instance().GetAction())
@@ -31,10 +31,15 @@ void DropGold::Update()
 				// UIが表示されてる && キーが押されていなければ
 				if (m_bGet && !ActionManager::Instance().GetKey())
 				{
-					Item::Instance().ChangeGold(m_gold);
 					ActionManager::Instance().OnKey();
 					ActionManager::Instance().OffAction();
 					m_isExpired = true;		// 消滅
+
+					// ポーション獲得
+					ItemManager::Instance().GetItem("Potion");
+					std::shared_ptr<GetPotion> potion = std::make_shared<GetPotion>();
+					SceneManager::Instance().AddObject(potion);
+					MapManager::Instance().AddObject(potion);
 				}
 			}
 			// 長押し制御
@@ -65,29 +70,29 @@ void DropGold::Update()
 	}
 }
 
-void DropGold::PostUpdate()
+void DropPotion::PostUpdate()
 {
 	Math::Matrix rotY = Math::Matrix::CreateRotationY(DirectX::XMConvertToRadians(45));
 	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));
 	m_world = rotX * rotY * Math::Matrix::CreateTranslation(m_pos);
 }
 
-void DropGold::GenerateDepthMapFromLight()
+void DropPotion::GenerateDepthMapFromLight()
 {
 	KdShaderManager::Instance().m_StandardShader.DrawPolygon(m_polygon, m_world, m_color);
 }
 
-void DropGold::DrawLit()
+void DropPotion::DrawLit()
 {
 	KdShaderManager::Instance().m_StandardShader.DrawPolygon(m_polygon, m_world, m_color);
 }
 
-void DropGold::DrawBright()
+void DropPotion::DrawBright()
 {
 	KdShaderManager::Instance().m_StandardShader.DrawPolygon(m_polygon, m_world, m_color);
 }
 
-void DropGold::DrawSprite()
+void DropPotion::DrawSprite()
 {
 	if (!m_bGet)return;
 
@@ -104,21 +109,18 @@ void DropGold::DrawSprite()
 	KdShaderManager::Instance().m_spriteShader.DrawTex(m_pTex, (int)pos.x, (int)pos.y, m_pTex->GetWidth(), m_pTex->GetHeight(), &rect);
 }
 
-void DropGold::Set(std::weak_ptr<Player> _player, Math::Vector3 _pos, int _gold)
+void DropPotion::Set(std::weak_ptr<Player> _player, Math::Vector3 _pos)
 {
 	m_player = _player;
 	m_pos = _pos;
-	m_gold = _gold;
 }
 
-void DropGold::Init()
+void DropPotion::Init()
 {
 	m_polygon = AssetManager::Instance().GetMaterial("drop");
 
 	m_pTex = AssetManager::Instance().GetTex("get");
 
-	m_pos = {};
-	m_gold = 0;
 	m_color = { 1.0f,1.0f,1.0f,1.0f };
 	m_addAlpha = 0.015f;
 

@@ -1,7 +1,5 @@
 ﻿#include "LichSpawn1.h"
 
-#include "../../../Lib/AssetManager/AssetManager.h"
-
 void LichSpawn1::Init()
 {
 	m_polygon = AssetManager::Instance().GetMaterial("lichSpawn1");

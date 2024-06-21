@@ -11,7 +11,10 @@ public:
 	void SetExp(int _point);
 
 	// ダメージ
-	void Damage(int _damage) { m_statusList["HP"] -= _damage; }
+	void Damage(int _damage);
+
+	// 回復
+	void Heal(int _heal);
 
 private:
 

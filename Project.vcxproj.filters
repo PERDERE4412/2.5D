@@ -124,9 +124,6 @@
     <Filter Include="Src\Application\Data\Status\Enemy">
       <UniqueIdentifier>{1ebbf85f-0927-4e06-a981-014a9882970c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Object\DropGold">
-      <UniqueIdentifier>{def7de0e-c30f-4408-9f21-d2d1b7955f21}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Object\UI\Action">
       <UniqueIdentifier>{1ddf5b33-0cff-4b43-8be3-6f796f46a1d3}</UniqueIdentifier>
     </Filter>
@@ -136,20 +133,11 @@
     <Filter Include="Src\Application\Object\Chara\Enemy\Warrior">
       <UniqueIdentifier>{b93ff4c2-28a7-4f4f-aa6b-52466ce5b506}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Data\Status\Enemy\Warrior">
-      <UniqueIdentifier>{4584ffa1-e356-470f-a7c8-7e054d8ad41d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Object\Chara\Enemy\FireWisp">
       <UniqueIdentifier>{9c7d05fb-aff8-44b4-b892-69810641e676}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Data\Status\Enemy\FireWisp">
-      <UniqueIdentifier>{da5676c2-490f-4da4-8955-d33b8b45cdf4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Object\Chara\Enemy\Slime">
       <UniqueIdentifier>{76ec8d80-7e8a-4008-ae6e-205138882206}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Data\Status\Enemy\Slime">
-      <UniqueIdentifier>{b23be5cb-1e3f-4c2e-bcec-a70455e6b20d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Src\Application\Object\Map">
       <UniqueIdentifier>{6d7f0c51-d534-4c0e-a95c-7f9fe9f40dc9}</UniqueIdentifier>
@@ -186,6 +174,24 @@
     </Filter>
     <Filter Include="Src\Application\Object\Effect\LichSpawn">
       <UniqueIdentifier>{4b318568-d5fe-4ce6-af40-67513bc967c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\UI\BossHp">
+      <UniqueIdentifier>{fdc2b3ce-4d8d-484a-a5f6-c873ad51bc20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Item">
+      <UniqueIdentifier>{070edfc7-cb49-4ce6-b01a-787b6dbeaee9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Item\Potion">
+      <UniqueIdentifier>{d7b1ddbf-f457-482b-a2f1-dfa96f7ab545}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Drop">
+      <UniqueIdentifier>{def7de0e-c30f-4408-9f21-d2d1b7955f21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Effect\Heal">
+      <UniqueIdentifier>{9e39d153-7fc0-47e5-aa3e-555d4405bee9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\UI\GetPotion">
+      <UniqueIdentifier>{3cb62fc5-b110-437c-9364-253a03230300}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -345,9 +351,6 @@
     <ClInclude Include="Src\Application\Object\Chara\Player\Player.h">
       <Filter>Src\Application\Object\Chara\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Animation\WarriorAnimation.h">
-      <Filter>Src\Application\Animation</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Object\Chara\Enemy\EnemyManager.h">
       <Filter>Src\Application\Object\Chara\Enemy</Filter>
     </ClInclude>
@@ -369,9 +372,6 @@
     <ClInclude Include="Src\Application\Data\Status\Enemy\EnemyStatusManager.h">
       <Filter>Src\Application\Data\Status\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\DropGold\DropGold.h">
-      <Filter>Src\Application\Object\DropGold</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Object\UI\ActionManager\ActionManager.h">
       <Filter>Src\Application\Object\UI\Action</Filter>
     </ClInclude>
@@ -381,26 +381,11 @@
     <ClInclude Include="Src\Application\Object\Chara\Enemy\Warrior\Warrior.h">
       <Filter>Src\Application\Object\Chara\Enemy\Warrior</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Data\Status\Enemy\Warrior\WarriorStatus.h">
-      <Filter>Src\Application\Data\Status\Enemy\Warrior</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Object\Chara\Enemy\FireWisp\FireWisp.h">
       <Filter>Src\Application\Object\Chara\Enemy\FireWisp</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Data\Status\Enemy\FireWisp\FireWispStatus.h">
-      <Filter>Src\Application\Data\Status\Enemy\FireWisp</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Animation\FireWispAnimation.h">
-      <Filter>Src\Application\Animation</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Object\Chara\Enemy\Slime\Slime.h">
       <Filter>Src\Application\Object\Chara\Enemy\Slime</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Animation\SlimeAnimation.h">
-      <Filter>Src\Application\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Data\Status\Enemy\Slime\SlimeStatus.h">
-      <Filter>Src\Application\Data\Status\Enemy\Slime</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Object\Chara\Enemy\FireWisp\FireWispBullet.h">
       <Filter>Src\Application\Object\Chara\Enemy\FireWisp</Filter>
@@ -467,6 +452,45 @@
     </ClInclude>
     <ClInclude Include="Src\Application\Object\Effect\BaseEffect.h">
       <Filter>Src\Application\Object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\Lich\LichThunder.h">
+      <Filter>Src\Application\Object\Chara\Enemy\Lich</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\Lich\LichThunderCircle.h">
+      <Filter>Src\Application\Object\Chara\Enemy\Lich</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\UI\BossHp\BossHp.h">
+      <Filter>Src\Application\Object\UI\BossHp</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Item\ItemManager.h">
+      <Filter>Src\Application\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Item\Potion\Potion.h">
+      <Filter>Src\Application\Object\Item\Potion</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Item\BaseItem.h">
+      <Filter>Src\Application\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Drop\DropGold.h">
+      <Filter>Src\Application\Object\Drop</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Drop\DropPotion.h">
+      <Filter>Src\Application\Object\Drop</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\BaseEnemy.h">
+      <Filter>Src\Application\Object\Chara\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Animation\EnemyAnimation.h">
+      <Filter>Src\Application\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Data\Status\Enemy\EnemyStatus.h">
+      <Filter>Src\Application\Data\Status\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Effect\Heal\Heal.h">
+      <Filter>Src\Application\Object\Effect\Heal</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\UI\GetPotion\GetPotion.h">
+      <Filter>Src\Application\Object\UI\GetPotion</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -602,9 +626,6 @@
     <ClCompile Include="Src\Application\Object\Chara\Player\Player.cpp">
       <Filter>Src\Application\Object\Chara\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Animation\WarriorAnimation.cpp">
-      <Filter>Src\Application\Animation</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Object\Chara\Enemy\EnemyManager.cpp">
       <Filter>Src\Application\Object\Chara\Enemy</Filter>
     </ClCompile>
@@ -626,9 +647,6 @@
     <ClCompile Include="Src\Application\Data\Status\Enemy\EnemyStatusManager.cpp">
       <Filter>Src\Application\Data\Status\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\DropGold\DropGold.cpp">
-      <Filter>Src\Application\Object\DropGold</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Object\UI\ActionManager\ActionManager.cpp">
       <Filter>Src\Application\Object\UI\Action</Filter>
     </ClCompile>
@@ -638,26 +656,11 @@
     <ClCompile Include="Src\Application\Object\Chara\Enemy\Warrior\Warrior.cpp">
       <Filter>Src\Application\Object\Chara\Enemy\Warrior</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Data\Status\Enemy\Warrior\WarriorStatus.cpp">
-      <Filter>Src\Application\Data\Status\Enemy\Warrior</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Object\Chara\Enemy\FireWisp\FireWisp.cpp">
       <Filter>Src\Application\Object\Chara\Enemy\FireWisp</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Data\Status\Enemy\FireWisp\FireWispStatus.cpp">
-      <Filter>Src\Application\Data\Status\Enemy\FireWisp</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Animation\FireWispAnimation.cpp">
-      <Filter>Src\Application\Animation</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Object\Chara\Enemy\Slime\Slime.cpp">
       <Filter>Src\Application\Object\Chara\Enemy\Slime</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Animation\SlimeAnimation.cpp">
-      <Filter>Src\Application\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Data\Status\Enemy\Slime\SlimeStatus.cpp">
-      <Filter>Src\Application\Data\Status\Enemy\Slime</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Chara\Enemy\FireWisp\FireWispBullet.cpp">
       <Filter>Src\Application\Object\Chara\Enemy\FireWisp</Filter>
@@ -724,6 +727,45 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\Effect\BaseEffect.cpp">
       <Filter>Src\Application\Object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\Lich\LichThunder.cpp">
+      <Filter>Src\Application\Object\Chara\Enemy\Lich</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\Lich\LichThunderCircle.cpp">
+      <Filter>Src\Application\Object\Chara\Enemy\Lich</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\UI\BossHp\BossHp.cpp">
+      <Filter>Src\Application\Object\UI\BossHp</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Item\ItemManager.cpp">
+      <Filter>Src\Application\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Item\Potion\Potion.cpp">
+      <Filter>Src\Application\Object\Item\Potion</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Item\BaseItem.cpp">
+      <Filter>Src\Application\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Drop\DropGold.cpp">
+      <Filter>Src\Application\Object\Drop</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Drop\DropPotion.cpp">
+      <Filter>Src\Application\Object\Drop</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\BaseEnemy.cpp">
+      <Filter>Src\Application\Object\Chara\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Animation\EnemyAnimation.cpp">
+      <Filter>Src\Application\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Data\Status\Enemy\EnemyStatus.cpp">
+      <Filter>Src\Application\Data\Status\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Effect\Heal\Heal.cpp">
+      <Filter>Src\Application\Object\Effect\Heal</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\UI\GetPotion\GetPotion.cpp">
+      <Filter>Src\Application\Object\UI\GetPotion</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

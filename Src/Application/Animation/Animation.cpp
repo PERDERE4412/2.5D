@@ -1,7 +1,5 @@
 ﻿#include "Animation.h"
 
-#include "../Lib/AssetManager/AssetManager.h"
-
 void Animation::CreateAnime(PlayerDir _dir,PlayerState _state, KdSquarePolygon* _polygon)
 {
 	// 現在の状態と異なっていたら

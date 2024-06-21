@@ -9,6 +9,7 @@
 #include "../../Object/UI/MiniMap/MiniMap.h"
 #include "../../Object/Map/Back/Back.h"
 #include "../../Map/MapManager.h"
+#include "../../Object/Item/ItemManager.h"
 #include "../../Object/Chara/Enemy/EnemyManager.h"
 #include "../../Movie/Movie.h"
 
@@ -22,6 +23,7 @@ void GameScene::Event()
 	if (!a)
 	{
 		MapManager::Instance().ChangeMap();
+		ItemManager::Instance().ChangeItem("Potion");
 		a = true;
 	}
 }
@@ -40,6 +42,7 @@ void GameScene::Init()
 	m_player = player;
 	EnemyManager::Instance().SetPlayer(player);
 	MapManager::Instance().SetPlayer(player);
+	ItemManager::Instance().SetPlayer(player);
 	Movie::Instance().SetPlayer(player);
 
 	// マップ========================================================

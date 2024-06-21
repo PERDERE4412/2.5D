@@ -18,3 +18,14 @@ namespace Screen
 	const float MapMaxZ = 14.0f;		// マップの奥端(Z軸)
 	const float MapMinZ = -20.5f;		// マップの手前端(Z軸)
 }
+
+class Utility
+{
+public:
+
+	enum class CharaDir
+	{
+		Right,
+		Left
+	};
+};
