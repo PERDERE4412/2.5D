@@ -79,12 +79,6 @@
     <Filter Include="Src\Application\Object">
       <UniqueIdentifier>{8c1df753-a2e9-46c2-8006-b0672a9d8b8b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Data\Item">
-      <UniqueIdentifier>{3ee22b58-fff5-429c-8153-159a63a5ab02}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Data\Skill">
-      <UniqueIdentifier>{35053b26-fca5-47f6-afa2-40324feb1d08}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Data\Status">
       <UniqueIdentifier>{824a3edc-68cf-4f67-bb32-c6506f4850d4}</UniqueIdentifier>
     </Filter>
@@ -108,9 +102,6 @@
     </Filter>
     <Filter Include="Src\Application\Object\UI\Slot">
       <UniqueIdentifier>{79e84d01-4663-4c7e-ba67-367527ce492c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Object\UI\Gold">
-      <UniqueIdentifier>{cb70a7d0-9130-4cf7-b83e-ced6fb55fc80}</UniqueIdentifier>
     </Filter>
     <Filter Include="Src\Application\Object\UI\PlayerHp">
       <UniqueIdentifier>{44d311cc-92a9-49e4-a394-18cb5e5bb328}</UniqueIdentifier>
@@ -192,6 +183,27 @@
     </Filter>
     <Filter Include="Src\Application\Object\UI\GetPotion">
       <UniqueIdentifier>{3cb62fc5-b110-437c-9364-253a03230300}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Effect\Hurt">
+      <UniqueIdentifier>{23d778c1-5324-4b1a-9a57-27eaa3a9d2df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\UI\StageClear">
+      <UniqueIdentifier>{40f6537c-84e8-41b6-a1c6-18ca46fd1bea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\UI\Book">
+      <UniqueIdentifier>{160ddb1e-b7f6-49d6-a93e-74896ebfc4cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Inventory">
+      <UniqueIdentifier>{46326b1e-867e-4b28-a9fe-305e1355f6aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\UI\Title">
+      <UniqueIdentifier>{0707749c-a248-43be-9894-51e902eeab70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\UI\ClickStart">
+      <UniqueIdentifier>{5135244a-cfb0-4e30-87c5-d211a51e988b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Object\Chara\TitlePlayer">
+      <UniqueIdentifier>{b447c18e-276d-4a12-9f11-d56e77a2d5f9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -330,12 +342,6 @@
     <ClInclude Include="Src\Application\Scene\TitleScene\TitleScene.h">
       <Filter>Src\Application\Scene\TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Data\Skill\Skill.h">
-      <Filter>Src\Application\Data\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Data\Item\Item.h">
-      <Filter>Src\Application\Data\Item</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Lib\Utility\Utility.h">
       <Filter>Src\Application\Lib\Utility</Filter>
     </ClInclude>
@@ -357,17 +363,11 @@
     <ClInclude Include="Src\Application\Object\UI\Slot\Slot.h">
       <Filter>Src\Application\Object\UI\Slot</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\UI\Gold\Gold.h">
-      <Filter>Src\Application\Object\UI\Gold</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Object\UI\PlayerHp\PlayerHp.h">
       <Filter>Src\Application\Object\UI\PlayerHp</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Object\UI\LevelBar\LevelBar.h">
       <Filter>Src\Application\Object\UI\LevelBar</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Data\Status\PlayerStatus\PlayerStatus.h">
-      <Filter>Src\Application\Data\Status\Player</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Data\Status\Enemy\EnemyStatusManager.h">
       <Filter>Src\Application\Data\Status\Enemy</Filter>
@@ -471,9 +471,6 @@
     <ClInclude Include="Src\Application\Object\Item\BaseItem.h">
       <Filter>Src\Application\Object\Item</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Object\Drop\DropGold.h">
-      <Filter>Src\Application\Object\Drop</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Object\Drop\DropPotion.h">
       <Filter>Src\Application\Object\Drop</Filter>
     </ClInclude>
@@ -491,6 +488,33 @@
     </ClInclude>
     <ClInclude Include="Src\Application\Object\UI\GetPotion\GetPotion.h">
       <Filter>Src\Application\Object\UI\GetPotion</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Effect\Hurt\Hurt.h">
+      <Filter>Src\Application\Object\Effect\Hurt</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\UI\StageClear\StageClear.h">
+      <Filter>Src\Application\Object\UI\StageClear</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Data\Status\Player\PlayerStatus.h">
+      <Filter>Src\Application\Data\Status\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\UI\Book\Book.h">
+      <Filter>Src\Application\Object\UI\Book</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Inventory\Inventory.h">
+      <Filter>Src\Application\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\Enemy\Warrior\WarriorAttack.h">
+      <Filter>Src\Application\Object\Chara\Enemy\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\UI\ClickStart\ClickStart.h">
+      <Filter>Src\Application\Object\UI\ClickStart</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\Chara\TitlePlayer\TitlePlayer.h">
+      <Filter>Src\Application\Object\Chara\TitlePlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Object\UI\Title\Title.h">
+      <Filter>Src\Application\Object\UI\Title</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -608,12 +632,6 @@
     <ClCompile Include="Src\Application\Scene\TitleScene\TitleScene.cpp">
       <Filter>Src\Application\Scene\TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Data\Skill\Skill.cpp">
-      <Filter>Src\Application\Data\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Data\Item\Item.cpp">
-      <Filter>Src\Application\Data\Item</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Lib\AssetManager\AssetManager.cpp">
       <Filter>Src\Application\Lib\AssetManager</Filter>
     </ClCompile>
@@ -631,9 +649,6 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\UI\Slot\Slot.cpp">
       <Filter>Src\Application\Object\UI\Slot</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Object\UI\Gold\Gold.cpp">
-      <Filter>Src\Application\Object\UI\Gold</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Object\UI\PlayerHp\PlayerHp.cpp">
       <Filter>Src\Application\Object\UI\PlayerHp</Filter>
@@ -746,9 +761,6 @@
     <ClCompile Include="Src\Application\Object\Item\BaseItem.cpp">
       <Filter>Src\Application\Object\Item</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Object\Drop\DropGold.cpp">
-      <Filter>Src\Application\Object\Drop</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Object\Drop\DropPotion.cpp">
       <Filter>Src\Application\Object\Drop</Filter>
     </ClCompile>
@@ -766,6 +778,30 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\UI\GetPotion\GetPotion.cpp">
       <Filter>Src\Application\Object\UI\GetPotion</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Effect\Hurt\Hurt.cpp">
+      <Filter>Src\Application\Object\Effect\Hurt</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\UI\StageClear\StageClear.cpp">
+      <Filter>Src\Application\Object\UI\StageClear</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\UI\Book\Book.cpp">
+      <Filter>Src\Application\Object\UI\Book</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Inventory\Inventory.cpp">
+      <Filter>Src\Application\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\Enemy\Warrior\WarriorAttack.cpp">
+      <Filter>Src\Application\Object\Chara\Enemy\Warrior</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\UI\ClickStart\ClickStart.cpp">
+      <Filter>Src\Application\Object\UI\ClickStart</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Chara\TitlePlayer\TitlePlayer.cpp">
+      <Filter>Src\Application\Object\Chara\TitlePlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\UI\Title\Title.cpp">
+      <Filter>Src\Application\Object\UI\Title</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

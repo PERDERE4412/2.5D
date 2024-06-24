@@ -30,9 +30,9 @@ public:
 	// アニメーション作成
 	void CreateAnime(PlayerDir _dir,PlayerState _state, KdSquarePolygon* _polygon);
 
-private:
-
 	void Init();				// 初期化
+
+private:
 
 	void AnimeCnt();
 

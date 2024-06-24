@@ -1,6 +1,5 @@
 ﻿#include "LichThunderCircle.h"
 
-#include "../../../../Scene/SceneManager.h"
 #include "../../../../Map/MapManager.h"
 #include "LichThunder.h"
 

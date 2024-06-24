@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+class Player;
+
 class LevelBar :public KdGameObject
 {
 public:
@@ -10,9 +12,13 @@ public:
 	void Update()override;
 	void DrawSprite()override;
 
+	void SetPlayer(std::shared_ptr<Player> _player) { m_player = _player; }
+
 private:
 
 	void Init()override;
+
+	std::weak_ptr<Player> m_player;
 
 	struct  TexData
 	{

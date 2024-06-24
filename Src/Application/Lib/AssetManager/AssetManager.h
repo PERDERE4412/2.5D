@@ -15,6 +15,9 @@ public:
 	// テクスチャ
 	KdTexture* GetTex(std::string _name);
 
+	// サウンド
+	
+
 private:
 
 	// ポリゴン

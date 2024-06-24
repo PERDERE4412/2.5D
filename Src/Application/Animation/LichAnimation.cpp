@@ -30,7 +30,7 @@ void LichAnimation::CreateAnime(Dir _dir, State _state, KdSquarePolygon* _polygo
 			break;
 		case State::Death:
 			*_polygon = AssetManager::Instance().GetMaterial("lichDeath");
-			m_cntSpeed = 0.2f;
+			m_cntSpeed = 0.15f;
 			m_bAction = false;
 		}
 

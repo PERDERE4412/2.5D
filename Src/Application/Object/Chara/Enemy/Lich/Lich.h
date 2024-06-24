@@ -35,7 +35,6 @@ private:
 	{
 		FireBall,
 		Thunder,
-		summon
 	};
 
 	std::weak_ptr<Player> m_player;

@@ -42,6 +42,8 @@ protected:
 
 	Utility::CharaDir m_dir;
 
+	bool m_bAttack;
+
 	int m_attackWait;					// 攻撃のクールタイム管理値
 	int m_setAttackWait;				// 攻撃のクールタイムセット値
 

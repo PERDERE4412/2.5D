@@ -1,6 +1,5 @@
 ﻿#include "Movie.h"
 
-#include "../Scene/SceneManager.h"
 #include "../Map/MapManager.h"
 #include "../Object/Chara/Player/Player.h"
 #include "../Object/Chara/Enemy/Lich/Lich.h"
@@ -26,6 +25,8 @@ void Movie::Init()
 	m_bStart = false;
 	m_bMove = true;
 	m_bSpawn = false;
+
+	m_bExp = false;
 
 	m_cameraDistPos = { 0.0f,25.0f,-25.0f };
 	m_playerPos = { -17.0f,0.0f,20.0f };
@@ -57,6 +58,7 @@ void Movie::MoveCamera()
 		else if (!m_bMove)
 		{
 			m_bStart = false;
+			KdAudioManager::Instance().Play("Asset/Sounds/boss.wav", true, 0.02f);
 		}
 	}
 
@@ -98,10 +100,9 @@ void Movie::BossSpawn()
 		SceneManager::Instance().AddObject(spawn4);
 	}
 
-	static bool bExp = false;
-	if (!bExp && m_cnt >= 10)
+	if (!m_bExp && m_cnt >= 10)
 	{
-		bExp = true;
+		m_bExp = true;
 		std::shared_ptr<LichSpawn1> spawn1 = std::make_shared<LichSpawn1>();
 		spawn1->SetPos(m_lichSpawnPos);
 		SceneManager::Instance().AddObject(spawn1);
@@ -117,7 +118,7 @@ void Movie::BossSpawn()
 		MapManager::Instance().AddObject(lich);
 	}
 
-	if (bExp)
+	if (m_bExp)
 	{
 		m_moveWait--;
 		if (m_moveWait < 0)

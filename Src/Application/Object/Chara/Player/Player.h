@@ -4,6 +4,8 @@
 
 #include "../BaseChara.h"
 
+class PlayerStatus;
+
 class Player :public BaseChara
 {
 public:
@@ -19,6 +21,8 @@ public:
 
 	void SetPos(Math::Vector3 _pos) { m_pos = _pos; }
 
+	std::shared_ptr<PlayerStatus> GetStatus() { return m_status; }
+
 private:
 
 	void Init()override;		// 初期化
@@ -29,6 +33,8 @@ private:
 
 	Animation::PlayerState m_state;	// 状態
 	Animation::PlayerDir m_dir;		// 向き
+
+	std::shared_ptr<PlayerStatus> m_status;
 
 	int m_invWait;					// 無敵時間
 	int m_damageWait;				// 被弾時の光る時間
@@ -41,4 +47,8 @@ private:
 	};
 	int m_comboTime;				// コンボ時間
 	Combo m_combo;					// 現在のコンボ
+
+	bool m_bUse;
+
+	int m_walkSoundWait;			// 足音を発生させる間隔
 };

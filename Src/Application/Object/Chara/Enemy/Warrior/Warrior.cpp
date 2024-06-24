@@ -4,66 +4,34 @@
 #include "../../../../Scene/GameScene/GameScene.h"
 #include "../../../../Map/MapManager.h"
 #include "../../../Drop/DropPotion.h"
-#include "../../../../Scene/SceneManager.h"
+#include "WarriorAttack.h"
 
 void Warrior::Update()
 {
 	BaseEnemy::Update();
 
-	// 消滅
-	if (m_anim->GetKill())
+	// 攻撃生成
+	if (m_anim->GetState() == EnemyAnimation::State::Attack && m_anim->GetUVRect() == 7)
 	{
-		std::shared_ptr<DropPotion> drop = std::make_shared<DropPotion>();
-		drop->Set(m_player, m_pos);
-		SceneManager::Instance().AddObject(drop);
-		MapManager::Instance().AddObject(drop);
-		m_isExpired = true;
+		if (!m_bAttack)
+		{
+			m_bAttack = true;
+
+			// 攻撃生成
+			m_vec = m_player.lock()->GetPos() - m_pos;
+			m_vec.Normalize();
+			std::shared_ptr<WarriorAttack> attack = std::make_shared<WarriorAttack>();
+			if (!m_player.expired())attack->SetPlayer(m_player.lock());
+			attack->Set(m_pos, m_vec, m_status->GetAtk());
+			SceneManager::Instance().AddObject(attack);
+			MapManager::Instance().AddObject(attack);
+		}
 	}
 }
 
 void Warrior::PostUpdate()
 {
 	BaseEnemy::PostUpdate();
-
-	//========================================
-	// 攻撃判定
-	//========================================
-	if (m_state == EnemyAnimation::State::Attack)
-	{
-		if (m_anim->GetUVRect() >= 6 && m_anim->GetUVRect() <= 8)
-		{
-			// 球判定用の変数を作成
-			KdCollider::SphereInfo sphere;
-
-			// 球の中心点を設定
-			//Math::Vector3 dir = m_playerPos - m_pos;
-			Math::Vector3 dir = m_player.lock()->GetPos() - m_pos;
-			dir.Normalize();
-			float attackRange = 4.0f;
-			sphere.m_sphere.Center = m_pos + (dir * attackRange);
-			sphere.m_sphere.Center.z += 2.0f;
-
-			// 球の半径を設定
-			sphere.m_sphere.Radius = 2.0f;
-
-			// 当たり判定をしたいタイプを設定
-			sphere.m_type = KdCollider::TypePlayer;
-
-			//球に当たったオブジェクトの状態を格納
-			std::list<KdCollider::CollisionResult> retSphereList;
-
-			// 当たり判定(sphere)
-			for (auto& obj : SceneManager::Instance().GetObjList())
-			{
-				if (obj->Intersects(sphere, &retSphereList))
-				{
-					obj->Hit(m_status->GetAtk());
-				}
-			}
-
-			m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, 2.0f, kGreenColor);
-		}
-	}
 
 	// 行列作成
 	Math::Matrix rotX = Math::Matrix::CreateRotationX(DirectX::XMConvertToRadians(45));

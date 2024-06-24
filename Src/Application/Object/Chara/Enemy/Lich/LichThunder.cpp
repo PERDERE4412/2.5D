@@ -1,13 +1,9 @@
 ﻿#include "LichThunder.h"
 
-#include "../../../../Scene/SceneManager.h"
-
 void LichThunder::PostUpdate()
 {
-	// デバッグ表示
 	Math::Vector3 pos = { 0.0f,0.0f,3.0f };
-	m_pDebugWire->AddDebugSphere(m_world.Translation() + pos, 5.0f);
-
+	
 	//========================================
 	// 攻撃判定
 	//========================================
@@ -64,6 +60,8 @@ void LichThunder::Init()
 
 	m_animeCnt = 0.0f;
 	m_animeSpeed = 0.2f;
+
+	KdAudioManager::Instance().Play("Asset/Sounds/thunder.wav", false, 0.2f);
 
 	m_pDebugWire = std::make_unique<KdDebugWireFrame>();
 }

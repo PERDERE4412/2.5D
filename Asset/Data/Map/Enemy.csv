@@ -1,4 +1,16 @@
 mapId,Name,Pos
+1,Slime,0.0/0.0/20.0
+3,Warrior,5.0/0.0/20.0
+3,Slime,6.0/0.0/50.0
+4,FireWisp,10.0/0.0/30.0
+5,Warrior,0.0/0.0/15.0
+5,FireWisp,6.0/0.0/50.0
+6,FireWisp,0.0/0.0/50.0
+6,Slime,5.4/0.0/30.0
+7,FireWisp,0.0/0.0/50.0
+7,FireWisp,10.0/0.0/30.0
 8,Warrior,6.0/0.0/50.0
 8,FireWisp,5.4/0.0/20.0
 8,Slime,0.0/0.0/10.0
+9,Warrior,0.0/0.0/10.0
+9,Warrior,5.0/0.0/50.0

@@ -104,3 +104,4 @@
 #include "Framework/KdFramework.h"
 #include "Application/Lib/Utility/Utility.h"
 #include "Application/Lib/AssetManager/AssetManager.h"
+#include "Application/Scene/SceneManager.h"

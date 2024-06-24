@@ -51,6 +51,17 @@ public:
 		m_cb0.Work().mTransform = m;
 	}
 
+	// 自作
+	//void DrawTex(const KdTexture* tex, int x, int y, const Math::Rectangle* srcRect = nullptr, float alpha=1.0f, const Math::Vector2& pivot = { 0.5, 0.5f })
+	//{
+	//	if (tex == nullptr)return;
+
+	//	Math::Color color;
+	//	color = { 1,1,1,alpha };
+
+	//	DrawTex(tex, x, y, tex->GetInfo().Width, tex->GetInfo().Height, srcRect, &color, pivot);
+	//}
+
 	// 2D画像描画(Begin～End間で実行すると、処理効率が上がる)
 	// ・tex			… 描画するテクスチャ(Texture)
 	// ・x				… x座標(ピクセル)

@@ -6,4 +6,6 @@ void LichSpawn3::Init()
 
 	m_animeCnt = 0.0f;
 	m_animeSpeed = 0.2f;
+
+	KdAudioManager::Instance().Play("Asset/Sounds/lightning.wav", false, 0.1f);
 }

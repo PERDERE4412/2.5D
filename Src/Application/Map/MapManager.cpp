@@ -1,7 +1,5 @@
 ﻿#include "MapManager.h"
 
-#include "../Scene/SceneManager.h"
-
 #include "../Object/Chara/Player/Player.h"
 #include "../Object/UI/MiniMap/MiniMap.h"
 #include "../Object/Map/Floor/Floor.h"
@@ -25,8 +23,8 @@ void MapManager::ChangeMap(std::string _type)
 
 void MapManager::ChangeMap()
 {
-	//CreateMap(m_nowMapId);
-	CreateMap(8);
+	CreateMap(2);
+	SetPlayerPos("U");
 }
 
 void MapManager::SetPlayerPos(std::string _type)
@@ -47,7 +45,12 @@ void MapManager::CreateMap(int _mapId)
 	m_nowMapId = _mapId;
 
 	// ボス部屋ならムービー起動
-	if (m_mapList[_mapId].isBoss)Movie::Instance().BootMovie();
+	if (m_mapList[_mapId].isBoss)
+	{
+		Movie::Instance().Init();
+		Movie::Instance().BootMovie();
+		KdAudioManager::Instance().StopAllSound();
+	}
 
 	// マップのオブジェクトをクリア
 	if (!m_objList.empty())

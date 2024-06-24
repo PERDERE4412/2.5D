@@ -4,7 +4,6 @@
 #include "../../Object/Chara/Player/Player.h"
 #include "../../Object/UI/PlayerHp/PlayerHp.h"
 #include "../../Object/UI/Slot/Slot.h"
-#include "../../Object/UI/Gold/Gold.h"
 #include "../../Object/UI/LevelBar/LevelBar.h"
 #include "../../Object/UI/MiniMap/MiniMap.h"
 #include "../../Object/Map/Back/Back.h"
@@ -12,19 +11,20 @@
 #include "../../Object/Item/ItemManager.h"
 #include "../../Object/Chara/Enemy/EnemyManager.h"
 #include "../../Movie/Movie.h"
+#include "../../Inventory/Inventory.h"
 
 void GameScene::Event()
 {
 	if(!Movie::Instance().GetStart())UpdateCamera();
 
-	// デバッグ用
-	static bool a = false;
+	Inventory::Instance().Update();
 
-	if (!a)
+	if (!m_bCreateMap)
 	{
+		m_bCreateMap = true;
 		MapManager::Instance().ChangeMap();
-		ItemManager::Instance().ChangeItem("Potion");
-		a = true;
+		KdAudioManager::Instance().StopAllSound();
+		KdAudioManager::Instance().Play("Asset/Sounds/stage.wav", true, 0.02f);
 	}
 }
 
@@ -35,6 +35,8 @@ void GameScene::Init()
 	m_pos = { 0.0f,25.0f,-25.0f };
 	Movie::Instance().SetCamera(m_camera);
 
+	Movie::Instance().Init();
+
 	// キャラクター==================================================
 	// プレイヤー
 	std::shared_ptr<Player> player = std::make_shared<Player>();
@@ -44,6 +46,8 @@ void GameScene::Init()
 	MapManager::Instance().SetPlayer(player);
 	ItemManager::Instance().SetPlayer(player);
 	Movie::Instance().SetPlayer(player);
+	Animation::Instance().Init();
+	Inventory::Instance().SetPlayer(player);
 
 	// マップ========================================================
 	// 背景
@@ -53,24 +57,24 @@ void GameScene::Init()
 	// UI============================================================
 	// HPバー
 	std::shared_ptr<PlayerHp> hp = std::make_shared<PlayerHp>();
+	hp->SetPlayer(player);
 	AddObject(hp);
 
 	// スロット
 	std::shared_ptr<Slot> slot = std::make_shared<Slot>();
 	AddObject(slot);
 
-	// ゴールド
-	std::shared_ptr<Gold> gold = std::make_shared<Gold>();
-	AddObject(gold);
-
 	// レベル
 	std::shared_ptr<LevelBar> level = std::make_shared<LevelBar>();
+	level->SetPlayer(player);
 	AddObject(level);
 
 	// ミニマップ
 	std::shared_ptr<MiniMap> miniMap = std::make_shared<MiniMap>();
 	AddObject(miniMap);
 	MapManager::Instance().SetMiniMap(miniMap);
+
+	m_bCreateMap = false;
 }
 
 void GameScene::UpdateCamera()

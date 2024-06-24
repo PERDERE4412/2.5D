@@ -1,11 +1,12 @@
 ﻿#include "Player.h"
 
 #include "../../../Data/Status/Player/PlayerStatus.h"
-#include "../../../Scene/SceneManager.h"
+#include "../../../Map/MapManager.h"
 #include "../../Item/ItemManager.h"
 #include "PlayerSwordEffect1.h"
 #include "PlayerSwordEffect2.h"
 #include "PlayerSwordEffect3.h"
+#include "../../Effect/Hurt/Hurt.h"
 
 void Player::PreUpdate()
 {
@@ -47,10 +48,6 @@ void Player::PostUpdate()
 		sphere.m_sphere.Radius = 2.0f;
 		// 当たり判定をしたいタイプを設定
 		sphere.m_type = KdCollider::TypeGround | KdCollider::TypeBump;
-
-		//デバッグ表示
-		Math::Color gyro = { 1,1,0,1 };
-		m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, sphere.m_sphere.Radius, gyro);
 
 		// 球に当たったオブジェクトの情報を格納
 		std::list<KdCollider::CollisionResult> retSphereList;
@@ -102,10 +99,22 @@ void Player::Hit(int _damage)
 {
 	if (m_invWait <= 0 && m_state != Animation::PlayerState::Roll)
 	{
-		PlayerStatus::Instance().Damage(_damage);
+		// ダメージ計算
+		int damage;
+		if (_damage <= m_status->GetValue("DEF"))damage = 1;
+		else damage = _damage - m_status->GetValue("DEF");
+		m_status->Damage(damage);
+
 		m_invWait = 120;
 		m_color = { 10,10,10,1 };
 		m_damageWait = 10;
+
+		KdAudioManager::Instance().Play("Asset/Sounds/playerHit.wav", false, 0.2f);
+
+		std::shared_ptr<Hurt> hurt = std::make_shared<Hurt>();
+		hurt->SetPos(m_pos);
+		SceneManager::Instance().AddObject(hurt);
+		MapManager::Instance().AddObject(hurt);
 	}
 }
 
@@ -113,8 +122,13 @@ void Player::Init()
 {
 	m_invWait = 0;
 
+	m_polygon = AssetManager::Instance().GetMaterial("playerIdle");
+
 	// 状態
 	m_state = Animation::PlayerState::Idle;
+
+	// ステータス
+	m_status = std::make_shared<PlayerStatus>();
 
 	m_color = { 1,1,1,1 };
 	m_damageWait = 0;
@@ -124,6 +138,10 @@ void Player::Init()
 
 	m_comboTime = 0;
 	m_combo = Combo::None;
+
+	m_bUse = false;
+
+	m_walkSoundWait = 0;
 
 	// デバッグ表示
 	m_pDebugWire = std::make_unique<KdDebugWireFrame>();
@@ -144,16 +162,15 @@ void Player::Action()
 			m_vec = Math::Vector3::Zero;
 
 			// アイテム使用
-			static bool Key = false;
 			if (GetAsyncKeyState('U') & 0x8000)
 			{
-				if (!Key)
+				if (!m_bUse)
 				{
-					Key = true;
+					m_bUse = true;
 					ItemManager::Instance().Use();
 				}
 			}
-			else Key = false;
+			else m_bUse = false;
 
 			// 移動
 			Move();
@@ -190,7 +207,19 @@ void Player::Move()
 			m_polygon.TurnScale();
 		}
 	}
-	if (m_vec != Math::Vector3::Zero)m_state = Animation::PlayerState::Run;
+
+	if (m_vec != Math::Vector3::Zero)
+	{
+		if (m_walkSoundWait <= 0)
+		{
+			KdAudioManager::Instance().Play("Asset/Sounds/walk.wav",false, 0.1f);
+			m_walkSoundWait = 30;
+		}
+
+		m_state = Animation::PlayerState::Run;
+	}
+
+	if (m_walkSoundWait > 0)m_walkSoundWait--;
 
 	// 回避
 	if (m_state == Animation::PlayerState::Run)
@@ -199,6 +228,7 @@ void Player::Move()
 		{
 			m_movePow = 0.6f;
 			m_state = Animation::PlayerState::Roll;
+			KdAudioManager::Instance().Play("Asset/Sounds/roll.wav", false, 0.1f);
 		}
 	}
 }
@@ -217,8 +247,9 @@ void Player::Attack()
 			m_combo = Combo::One;
 			m_state = Animation::PlayerState::Attack1;
 			std::shared_ptr<PlayerSwordEffect1> effect = std::make_shared<PlayerSwordEffect1>();
-			effect->SetPos(m_pos, right, PlayerStatus::Instance().GetValue("ATK"));
+			effect->SetPos(m_pos, right, m_status->GetValue("ATK"));
 			SceneManager::Instance().AddObject(effect);
+			KdAudioManager::Instance().Play("Asset/Sounds/attack1.wav", false, 0.2f);
 			m_comboTime = 30;
 		}
 		else if (m_combo == Combo::One)
@@ -226,8 +257,9 @@ void Player::Attack()
 			m_combo = Combo::Two;
 			m_state = Animation::PlayerState::Attack2;
 			std::shared_ptr<PlayerSwordEffect2> effect = std::make_shared<PlayerSwordEffect2>();
-			effect->SetPos(m_pos, right, PlayerStatus::Instance().GetValue("ATK"));
+			effect->SetPos(m_pos, right, m_status->GetValue("ATK"));
 			SceneManager::Instance().AddObject(effect);
+			KdAudioManager::Instance().Play("Asset/Sounds/attack1.wav", false, 0.2f);
 			m_comboTime = 30;
 		}
 		else if (m_combo == Combo::Two)
@@ -235,8 +267,9 @@ void Player::Attack()
 			m_combo = Combo::None;
 			m_state = Animation::PlayerState::Attack3;
 			std::shared_ptr<PlayerSwordEffect3> effect = std::make_shared<PlayerSwordEffect3>();
-			effect->SetPos(m_pos, right, PlayerStatus::Instance().GetValue("ATK"));
+			effect->SetPos(m_pos, right,m_status->GetValue("ATK"));
 			SceneManager::Instance().AddObject(effect);
+			KdAudioManager::Instance().Play("Asset/Sounds/attack2.wav", false, 0.2f);
 			m_comboTime = 30;
 		}
 	}

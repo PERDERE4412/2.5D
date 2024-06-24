@@ -1,7 +1,5 @@
 ﻿#include "main.h"
 
-#include "Scene/SceneManager.h"
-
 // ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// /////
 // エントリーポイント
 // アプリケーションはこの関数から進行する
@@ -299,6 +297,9 @@ void Application::Execute()
 		//=========================================
 
 		m_fpsController.Update();
+
+		std::string titleBar = "Shadow Labyrinth FPS:" + std::to_string(m_fpsController.m_nowfps);
+		SetWindowTextA(m_window.GetWndHandle(), titleBar.c_str());
 	}
 
 	//===================================================================

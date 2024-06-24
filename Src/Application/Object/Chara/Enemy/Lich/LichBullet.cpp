@@ -1,6 +1,5 @@
 ﻿#include "LichBullet.h"
 
-#include "../../../../Scene/SceneManager.h"
 #include "../../../../Map/MapManager.h"
 #include "../../../../Animation/Animation.h"
 #include "../../Player/Player.h"
@@ -23,8 +22,7 @@ void LichBullet::PostUpdate()
 {
 	// デバッグ表示
 	Math::Vector3 pos = { 0.0f,2.5f,1.0f };
-	m_pDebugWire->AddDebugSphere(m_pos + pos, 2.0f);
-
+	
 	//========================================
 	// 攻撃判定
 	//========================================
@@ -136,6 +134,8 @@ void LichBullet::Init()
 
 	m_animeCnt = 0.0f;
 	m_animeSpeed = 0.2f;
+
+	KdAudioManager::Instance().Play("Asset/Sounds/fire.wav", false, 0.1f);
 
 	m_pDebugWire = std::make_unique<KdDebugWireFrame>();
 }

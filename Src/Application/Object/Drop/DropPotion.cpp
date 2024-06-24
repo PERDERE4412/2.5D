@@ -1,9 +1,7 @@
 ﻿#include "DropPotion.h"
 
 #include "../../Object/UI/ActionManager/ActionManager.h"
-#include "../../Scene/SceneManager.h"
 #include "../Chara/Player/Player.h"
-#include "../../Data/Item/Item.h"
 #include "../UI/GetPotion/GetPotion.h"
 #include "../Item/ItemManager.h"
 #include "../../Map/MapManager.h"
@@ -40,6 +38,7 @@ void DropPotion::Update()
 					std::shared_ptr<GetPotion> potion = std::make_shared<GetPotion>();
 					SceneManager::Instance().AddObject(potion);
 					MapManager::Instance().AddObject(potion);
+					KdAudioManager::Instance().Play("Asset/Sounds/get.wav", false, 0.2f);
 				}
 			}
 			// 長押し制御

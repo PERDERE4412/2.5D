@@ -19,18 +19,20 @@ public:
 	void SetPlayer(std::shared_ptr<Player> _player) { m_player = _player; }
 	void SetLich(std::shared_ptr<Lich> _lich) { m_lich = _lich; }
 
-private:
-
 	void Init();		// 初期化
+
+private:
 
 	void MoveCamera();	// カメラの移動
 	void BossSpawn();	// ボスの出現アニメーション
 
-	bool m_bMovie;		// ムービーをするか？
+	bool m_bMovie;		// ムービーをするか
 	bool m_bStart;		// ムービー起動
 
 	bool m_bMove;		// カメラ移動(true:スポーン座標 false:プレイヤー座標)する
 	bool m_bSpawn;		// スポーン中か
+
+	bool m_bExp;		// 爆発エフェクトを出したか
 
 	std::weak_ptr<KdCamera> m_camera;
 	std::weak_ptr<Player> m_player;

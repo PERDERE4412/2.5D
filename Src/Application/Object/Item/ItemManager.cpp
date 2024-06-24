@@ -1,6 +1,5 @@
 ﻿#include "ItemManager.h"
 
-#include "../../Scene/SceneManager.h"
 #include "Potion/Potion.h"
 
 void ItemManager::Use()

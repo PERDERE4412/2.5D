@@ -1,13 +1,12 @@
 ﻿#include "Lich.h"
 
 #include "../../Player/Player.h"
-#include "../../../../Scene/SceneManager.h"
-#include "../../../Drop/DropGold.h"
 #include "../../../../Data/Status/Player/PlayerStatus.h"
 #include "../../../../Map/MapManager.h"
 #include "../../../UI/BossHp/BossHp.h"
 #include "LichBullet.h"
 #include "LichThunderCircle.h"
+#include "../../../UI/StageClear/StageClear.h"
 
 void Lich::PreUpdate()
 {
@@ -27,7 +26,7 @@ void Lich::Update()
 	{
 		if (m_state != LichAnimation::State::Death)
 		{
-			PlayerStatus::Instance().SetExp(10);
+			m_player.lock()->GetStatus()->SetExp(10);
 			m_state = LichAnimation::State::Death;
 		}
 	}
@@ -48,7 +47,7 @@ void Lich::Update()
 		if (!m_bBullet)
 		{
 			m_bBullet = true;
-			
+
 			// 弾生成
 			std::shared_ptr<LichBullet> bullet = std::make_shared<LichBullet>();
 			if (!m_player.expired())bullet->SetPlayer(m_player.lock());
@@ -79,10 +78,10 @@ void Lich::Update()
 		// HPバー消滅
 		m_hpBar->Expired();
 
-		// ドロップ
-		std::shared_ptr<DropGold> drop = std::make_shared<DropGold>();
-		drop->Set(m_player, m_pos, 10);
-		SceneManager::Instance().AddObject(drop);
+		// クリア画面
+		std::shared_ptr<StageClear> clear = std::make_shared<StageClear>();
+		SceneManager::Instance().AddObject(clear);
+
 		m_isExpired = true;
 	}
 
@@ -91,9 +90,6 @@ void Lich::Update()
 
 void Lich::PostUpdate()
 {
-	// 敵の当たり判定を可視化
-	m_pDebugWire->AddDebugSphere(m_pos + Math::Vector3(0, 3.0f, 4.0f), 2.0f, kGreenColor);
-
 	//========================================
 	// 球判定
 	//========================================
@@ -199,7 +195,14 @@ void Lich::Hit(int _damage)
 {
 	if (m_invWait <= 0)
 	{
-		m_status->Damage(_damage);
+		// ダメージ計算
+		int damage;
+		if (_damage <= m_status->GetDef())damage = 1;
+		else damage = _damage - m_status->GetDef();
+		m_status->Damage(damage);
+		
+		KdAudioManager::Instance().Play("Asset/Sounds/enemyHit.wav", false, 0.2f);
+
 		m_invWait = 30;
 		m_damageWait = 10;
 		m_color = { 10,10,10,1 };
@@ -292,7 +295,7 @@ void Lich::Attack()
 
 	if (m_attackWait > 0)return;
 
-	AtkType atkType = (AtkType)(rand() % 3);
+	AtkType atkType = (AtkType)(rand() % 2);
 
 	switch (atkType)
 	{
@@ -305,9 +308,6 @@ void Lich::Attack()
 		m_state = LichAnimation::State::Attack2;
 		m_attackWait = 300;
 		m_bThunder = false;
-		break;
-	case AtkType::summon:
-		m_attackWait = 10;
 		break;
 	}
 }

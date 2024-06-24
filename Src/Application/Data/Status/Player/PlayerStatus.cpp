@@ -4,7 +4,7 @@ void PlayerStatus::SetExp(int _point)
 {
 	m_statusList["EXP"] += _point;	// 経験値を加算
 
-	// 次のレベルまでの経験値を超えたら
+	// 次のレベルまでの経験値を超えたらレベルアップ
 	if (m_statusList["EXP"] >= m_statusList["NEXTEXP"])
 	{
 		if (m_statusList["LEVEL"] > 99)return;
@@ -12,15 +12,22 @@ void PlayerStatus::SetExp(int _point)
 		m_statusList["LEVEL"]++;
 		m_statusList["EXP"] = m_statusList["EXP"] - m_statusList["NEXTEXP"];
 		m_statusList["NEXTEXP"] = (int)(m_statusList["NEXTEXP"] * 1.5f);
+	
+		m_statusList["POINT"] += 5;
 	}
 }
 
 void PlayerStatus::Damage(int _damage)
 {
 	m_statusList["HP"] -= _damage;
-	if (m_statusList["HP"] <= 0)
+	/*if (m_statusList["HP"] <= 0)
 	{
 		m_statusList["HP"] = 0;
+	}*/
+
+	if (m_statusList["HP"] <= 10)
+	{
+		m_statusList["HP"] = 10;
 	}
 }
 
@@ -35,7 +42,7 @@ void PlayerStatus::Heal(int _heal)
 
 void PlayerStatus::Init()
 {
-	std::ifstream ifs("Asset/Data/Player/PlayerStatus.csv"); //ファイル操作用の変数
+	std::ifstream ifs("Asset/Data/Status/PlayerStatus.csv"); //ファイル操作用の変数
 
 	std::string lineString; //ファイルから1文字列読み取る変数
 

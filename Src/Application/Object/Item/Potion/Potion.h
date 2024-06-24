@@ -2,6 +2,8 @@
 
 #include "../BaseItem.h"
 
+class Player;
+
 class Potion :public BaseItem
 {
 public:

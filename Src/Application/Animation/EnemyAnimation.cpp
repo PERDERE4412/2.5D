@@ -76,7 +76,7 @@ void EnemyAnimation::AnimeCnt()
 
 void EnemyAnimation::Init()
 {
-	m_state = State::Idle;
+	m_state = State::None;
 
 	m_cnt = 0.0f;
 	m_cntSpeed = 0.2f;

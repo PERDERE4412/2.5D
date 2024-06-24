@@ -1,0 +1,5 @@
+name,HP,MAXHP,ATK,DEF,EXP
+Warrior,80,80,20,10,20
+FireWisp,30,30,15,10,10
+Slime,20,20,15,10,10
+Lich,200,200,30,10,100

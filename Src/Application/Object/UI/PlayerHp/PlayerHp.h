@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+class Player;
+
 class PlayerHp :public KdGameObject
 {
 public:
@@ -9,9 +11,14 @@ public:
 
 	void Update()override;		// 更新
 	void DrawSprite()override;	// 描画
-	void Init()override;		// 初期化
+	
+	void SetPlayer(std::shared_ptr<Player> _player) { m_player = _player; }
 
 private:
+
+	void Init()override;		// 初期化
+
+	std::weak_ptr<Player> m_player;
 
 	// 画像の変数をまとめた構造体
 	struct texData

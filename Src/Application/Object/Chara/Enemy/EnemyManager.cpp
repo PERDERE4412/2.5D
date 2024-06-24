@@ -1,6 +1,5 @@
 ﻿#include "EnemyManager.h"
 
-#include "../../../Scene/SceneManager.h"
 #include "../../../Map/MapManager.h"
 #include "../../../Movie/Movie.h"
 #include "Warrior/Warrior.h"

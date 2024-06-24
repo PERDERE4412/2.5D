@@ -1,6 +1,5 @@
 ﻿#include "Door.h"
 
-#include "../../../Scene/SceneManager.h"
 #include "../../UI/ActionManager/ActionManager.h"
 #include "../../../Map/MapManager.h"
 #include "../../Chara/Player/Player.h"
@@ -34,8 +33,7 @@ void Door::Update()
 					ActionManager::Instance().OnKey();
 					ActionManager::Instance().OffAction();
 					Fade::Instance().BootChangeMap(m_type);
-					//MapManager::Instance().SetPlayerPos(m_type);
-					//MapManager::Instance().ChangeMap(m_type);
+					KdAudioManager::Instance().Play("Asset/Sounds/door.wav",false,0.2f);
 				}
 			}
 			// 長押し制御

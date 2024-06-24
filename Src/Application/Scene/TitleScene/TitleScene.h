@@ -13,4 +13,9 @@ private :
 
 	void Event() override;
 	void Init() override;
+
+	Math::Vector3 m_pos = {};
+
+	bool m_bCreate;
+	bool m_bKey;
 };

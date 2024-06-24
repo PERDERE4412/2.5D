@@ -1,7 +1,5 @@
 ﻿#include "PlayerSwordEffect3.h"
 
-#include "../../../Scene/SceneManager.h"
-
 void PlayerSwordEffect3::Update()
 {
 	m_animeCnt += m_animeSpeed;
@@ -42,8 +40,6 @@ void PlayerSwordEffect3::PostUpdate()
 			obj->Hit(m_atk);
 		}
 	}
-
-	m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, 2.0f, kGreenColor);
 }
 
 void PlayerSwordEffect3::DrawUnLit()

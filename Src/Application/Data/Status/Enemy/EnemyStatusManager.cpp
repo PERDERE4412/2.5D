@@ -2,7 +2,7 @@
 
 void EnemyStatusManager::Init()
 {
-	std::ifstream ifs("Asset/Data/Enemy/status.csv"); // ファイル操作用の変数
+	std::ifstream ifs("Asset/Data/Status/EnemyStatus.csv"); // ファイル操作用の変数
 
 	std::string lineString;			// ファイルから1文字列読み取る変数
 

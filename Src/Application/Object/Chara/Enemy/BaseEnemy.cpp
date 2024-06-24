@@ -1,7 +1,9 @@
 ﻿#include "BaseEnemy.h"
 
-#include "../../../Scene/SceneManager.h"
 #include "../../../Data/Status/Player/PlayerStatus.h"
+#include "../../Chara/Player/Player.h"
+#include "../../../Map/MapManager.h"
+#include "../../Drop/DropPotion.h"
 
 void BaseEnemy::PreUpdate()
 {
@@ -22,7 +24,7 @@ void BaseEnemy::Update()
 	{
 		if (m_state != EnemyAnimation::State::Death)
 		{
-			PlayerStatus::Instance().SetExp(m_status->GetExp());
+			m_player.lock()->GetStatus()->SetExp(m_status->GetExp());
 			m_state = EnemyAnimation::State::Death;
 		}
 	}
@@ -34,13 +36,24 @@ void BaseEnemy::Update()
 
 	// アニメーション作成
 	m_anim->CreateAnime(m_status->GetName(),m_dir, m_state, &m_polygon);
+
+	// 消滅
+	if (m_anim->GetKill())
+	{
+		if ((rand() % 100) < 50)
+		{
+			std::shared_ptr<DropPotion> drop = std::make_shared<DropPotion>();
+			drop->Set(m_player, m_pos);
+			SceneManager::Instance().AddObject(drop);
+			MapManager::Instance().AddObject(drop);
+		}
+
+		m_isExpired = true;
+	}
 }
 
 void BaseEnemy::PostUpdate()
 {
-	// 敵の当たり判定を可視化
-	m_pDebugWire->AddDebugSphere(m_pos + Math::Vector3(0, 3.0f, 0), 2.0f, kGreenColor);
-
 	//========================================
 	// 球判定
 	//========================================
@@ -108,7 +121,14 @@ void BaseEnemy::Hit(int _damage)
 {
 	if (m_invWait <= 0)
 	{
-		m_status->Damage(_damage);
+		// ダメージ計算
+		int damage;
+		if (_damage <= m_status->GetDef())damage = 1;
+		else damage = _damage - m_status->GetDef();
+		m_status->Damage(damage);
+		
+		KdAudioManager::Instance().Play("Asset/Sounds/enemyHit.wav", false, 0.2f);
+
 		m_invWait = m_setInvWait;
 		m_damageWait = m_setDamageWait;
 		m_color = { 10,10,10,1 };
@@ -142,5 +162,6 @@ void BaseEnemy::Attack()
 	{
 		m_state = EnemyAnimation::State::Attack;
 		m_attackWait = m_setAttackWait;
+		m_bAttack = false;
 	}
 }

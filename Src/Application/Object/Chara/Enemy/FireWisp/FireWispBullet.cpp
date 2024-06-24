@@ -1,6 +1,5 @@
 ﻿#include "FireWispBullet.h"
 
-#include "../../../../Scene/SceneManager.h"
 #include "../../../../Map/MapManager.h"
 #include "../../../../Animation/Animation.h"
 #include "../Lich/LichBulletExp.h"
@@ -22,9 +21,7 @@ void FireWispBullet::Update()
 
 void FireWispBullet::PostUpdate()
 {
-	// デバッグ表示
 	Math::Vector3 pos = { -1.0f,2.5f,1.0f };
-	m_pDebugWire->AddDebugSphere(m_pos + pos, 1.5f);
 
 	//========================================
 	// 攻撃判定
@@ -130,6 +127,8 @@ void FireWispBullet::Init()
 
 	m_animeCnt = 0.0f;
 	m_animeSpeed = 0.2f;
+
+	KdAudioManager::Instance().Play("Asset/Sounds/fire.wav", false, 0.1f);
 
 	m_pDebugWire = std::make_unique<KdDebugWireFrame>();
 }

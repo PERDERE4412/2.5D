@@ -11,7 +11,7 @@ public:
 	GameScene() { Init(); }
 	~GameScene() {}
 
-	std::weak_ptr<Player> GetPlayer() { return m_player; }
+	//std::weak_ptr<Player> GetPlayer() { return m_player; }
 
 private:
 
@@ -22,4 +22,6 @@ private:
 
 	Math::Vector3 m_pos = {};
 	std::weak_ptr<Player> m_player;
+
+	bool m_bCreateMap;
 };

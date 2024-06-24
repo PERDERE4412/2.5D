@@ -2,21 +2,10 @@
 
 #include "../../Player/Player.h"
 #include "../../../../Scene/GameScene/GameScene.h"
-#include "../../../Drop/DropGold.h"
-#include "../../../../Scene/SceneManager.h"
 
 void Slime::Update()
 {
 	BaseEnemy::Update();
-
-	// 消滅
-	if (m_anim->GetKill())
-	{
-		std::shared_ptr<DropGold> drop = std::make_shared<DropGold>();
-		drop->Set(m_player, m_pos, 10);
-		SceneManager::Instance().AddObject(drop);
-		m_isExpired = true;
-	}
 }
 
 void Slime::PostUpdate()
@@ -58,8 +47,6 @@ void Slime::PostUpdate()
 					obj->Hit(m_status->GetAtk());
 				}
 			}
-
-			m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, 2.0f, kGreenColor);
 		}
 	}
 
@@ -88,7 +75,7 @@ void Slime::Init()
 	// デバッグ用
 	m_pDebugWire = std::make_unique<KdDebugWireFrame>();
 
-	m_pCollider->RegisterCollisionShape("SlimeCollision", { 0.0f,3.0f,0.0f }, 2.0f, KdCollider::TypeBump | KdCollider::TypeEnemy);
+	m_pCollider->RegisterCollisionShape("SlimeCollision", { 0.0f,0.5f,0.0f }, 2.0f, KdCollider::TypeBump | KdCollider::TypeEnemy);
 }
 
 void Slime::Move()

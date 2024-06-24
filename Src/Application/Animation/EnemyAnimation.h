@@ -10,6 +10,7 @@ public:
 	// エネミーの状態
 	enum class State
 	{
+		None,
 		Idle,
 		Run,
 		Attack,

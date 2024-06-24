@@ -1,14 +1,15 @@
 ﻿#include "PlayerHp.h"
 
 #include "../../../Data/Status/Player/PlayerStatus.h"
+#include "../../Chara/Player/Player.h"
 
 void PlayerHp::Update()
 {
 	int hp = 0, maxHp = 0;
 
 	// プレイヤーのHPと最大HPを取得
-	hp = PlayerStatus::Instance().GetValue("HP");
-	maxHp = PlayerStatus::Instance().GetValue("MAXHP");
+	hp = m_player.lock()->GetStatus()->GetValue("HP");
+	maxHp = m_player.lock()->GetStatus()->GetValue("MAXHP");
 
 	// 切り取り範囲の変更
 	rectX = (int)(m_bar.pTex->GetWidth() * ((float)hp / maxHp));

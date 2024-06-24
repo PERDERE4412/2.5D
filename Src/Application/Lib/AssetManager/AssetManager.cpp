@@ -47,6 +47,9 @@ void AssetManager::Init()
 	LoadMaterial("playerSwordEffect3", "Asset/Textures/Player/swordEffect3.png");
 	SetMaterial("playerSwordEffect3", 6.0f, pivot, 3, 1);
 
+	LoadMaterial("playerHurt", "Asset/Textures/Player/hurt.png");
+	SetMaterial("playerHurt", 5.0f, pivot, 4, 1);
+
 	// 敵
 	// ウォリアー
 	pivot = KdSquarePolygon::PivotType::Center_Bottom;
@@ -158,6 +161,7 @@ void AssetManager::Init()
 
 	// テクスチャ
 	LoadTex("black", "Asset/Textures/black.png");
+	LoadTex("white", "Asset/Textures/white.png");
 	LoadTex("gold", "Asset/Textures/gold.png");
 	LoadTex("number", "Asset/Textures/number.png");
 	LoadTex("levelFrame", "Asset/Textures/levelFrame.png");
@@ -174,6 +178,13 @@ void AssetManager::Init()
 	LoadTex("bossHpBar", "Asset/Textures/Enemy/Lich/hpBar.png");
 	LoadTex("potion", "Asset/Textures/potion.png");
 	LoadTex("GetPotion", "Asset/Textures/getPotion.png");
+	LoadTex("clear", "Asset/Textures/clear.png");
+	LoadTex("book", "Asset/Textures/book.png");
+	LoadTex("plus", "Asset/Textures/plus.png");
+	LoadTex("minus", "Asset/Textures/minus.png");
+	LoadTex("set", "Asset/Textures/set.png");
+	LoadTex("ClickStart", "Asset/Textures/gameStart.png");
+	LoadTex("title", "Asset/Textures/title.png");
 }
 
 void AssetManager::SetMaterial(std::string _name, float _scale, KdSquarePolygon::PivotType _pivot, int _splitX, int _splitY)

@@ -1,5 +1,6 @@
 ﻿#include "BaseScene.h"
 
+#include "../../Inventory/Inventory.h"
 #include "../../Fade/Fade.h"
 #include "../../Movie/Movie.h"
 
@@ -31,7 +32,7 @@ void BaseScene::PreUpdate()
 
 void BaseScene::Update()
 {
-	if (!Fade::Instance().GetFade() && !Movie::Instance().GetStart())
+	if (!Inventory::Instance().GetOpen()&&!Fade::Instance().GetMapFade() && !Movie::Instance().GetStart())
 	{
 		// KdGameObjectを継承した全てのオブジェクトの更新 (ポリモーフィズム)
 		for (auto& obj : m_objList)

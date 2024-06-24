@@ -6,7 +6,7 @@ void BossHp::Update()
 	int w = m_bar.pTex->GetWidth();
 	// HP１の時に幅いくつの領域を表示するのか
 	float singleW = (float)w / m_status.lock()->GetMaxHp();
-	m_bar.rect = { 0,0,(long)(singleW * m_status.lock()->GetHp()),(long)m_bar.pTex->GetHeight() };
+	m_bar.rect.width = (long)(singleW * m_status.lock()->GetHp());
 }
 
 void BossHp::DrawSprite()
