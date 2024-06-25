@@ -89,7 +89,7 @@ void Slime::Move()
 
 	Math::Vector3 dist = m_player.lock()->GetPos() - m_pos;
 
-	if (dist.Length() < 15.0f && dist.Length() > 6.0f)
+	if (dist.Length() < 20.0f && dist.Length() > 6.0f)
 	{
 		m_vec = dist;
 

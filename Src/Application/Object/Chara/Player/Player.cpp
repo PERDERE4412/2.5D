@@ -101,9 +101,9 @@ void Player::Hit(int _damage)
 	{
 		// ダメージ計算
 		int damage;
-		if (_damage <= m_status->GetValue("DEF"))damage = 1;
-		else damage = _damage - m_status->GetValue("DEF");
-		m_status->Damage(damage);
+		if (_damage <= m_status.lock()->GetValue("DEF"))damage = 1;
+		else damage = _damage - m_status.lock()->GetValue("DEF");
+		m_status.lock()->Damage(damage);
 
 		m_invWait = 120;
 		m_color = { 10,10,10,1 };
@@ -129,7 +129,7 @@ void Player::Init()
 
 	// ステータス
 	m_status = std::make_shared<PlayerStatus>();
-
+	
 	m_color = { 1,1,1,1 };
 	m_damageWait = 0;
 
@@ -247,7 +247,7 @@ void Player::Attack()
 			m_combo = Combo::One;
 			m_state = Animation::PlayerState::Attack1;
 			std::shared_ptr<PlayerSwordEffect1> effect = std::make_shared<PlayerSwordEffect1>();
-			effect->SetPos(m_pos, right, m_status->GetValue("ATK"));
+			effect->SetPos(m_pos, right, m_status.lock()->GetValue("ATK"));
 			SceneManager::Instance().AddObject(effect);
 			KdAudioManager::Instance().Play("Asset/Sounds/attack1.wav", false, 0.2f);
 			m_comboTime = 30;
@@ -257,7 +257,7 @@ void Player::Attack()
 			m_combo = Combo::Two;
 			m_state = Animation::PlayerState::Attack2;
 			std::shared_ptr<PlayerSwordEffect2> effect = std::make_shared<PlayerSwordEffect2>();
-			effect->SetPos(m_pos, right, m_status->GetValue("ATK"));
+			effect->SetPos(m_pos, right, m_status.lock()->GetValue("ATK"));
 			SceneManager::Instance().AddObject(effect);
 			KdAudioManager::Instance().Play("Asset/Sounds/attack1.wav", false, 0.2f);
 			m_comboTime = 30;
@@ -267,7 +267,7 @@ void Player::Attack()
 			m_combo = Combo::None;
 			m_state = Animation::PlayerState::Attack3;
 			std::shared_ptr<PlayerSwordEffect3> effect = std::make_shared<PlayerSwordEffect3>();
-			effect->SetPos(m_pos, right,m_status->GetValue("ATK"));
+			effect->SetPos(m_pos, right,m_status.lock()->GetValue("ATK"));
 			SceneManager::Instance().AddObject(effect);
 			KdAudioManager::Instance().Play("Asset/Sounds/attack2.wav", false, 0.2f);
 			m_comboTime = 30;

@@ -146,6 +146,10 @@ void AssetManager::Init()
 	LoadMaterial("heal", "Asset/Textures/heal.png");
 	SetMaterial("heal", 4.5f, pivot, 4, 1);
 
+	// レベルアップ
+	LoadMaterial("levelUp", "Asset/Textures/levelUp.png");
+	SetMaterial("levelUp",2.5f, pivot, 1, 1);
+
 	// 背景
 	pivot = KdSquarePolygon::PivotType::Center_Middle;
 	LoadMaterial("back", "Asset/Textures/black.png");
@@ -185,6 +189,8 @@ void AssetManager::Init()
 	LoadTex("set", "Asset/Textures/set.png");
 	LoadTex("ClickStart", "Asset/Textures/gameStart.png");
 	LoadTex("title", "Asset/Textures/title.png");
+	LoadTex("level", "Asset/Textures/level.png");
+	LoadTex("hurt", "Asset/Textures/hurt.png");
 }
 
 void AssetManager::SetMaterial(std::string _name, float _scale, KdSquarePolygon::PivotType _pivot, int _splitX, int _splitY)

@@ -182,6 +182,7 @@
     <ClInclude Include="Src\Application\Object\Effect\BaseEffect.h" />
     <ClInclude Include="Src\Application\Object\Effect\Heal\Heal.h" />
     <ClInclude Include="Src\Application\Object\Effect\Hurt\Hurt.h" />
+    <ClInclude Include="Src\Application\Object\Effect\LevelUp\LevelUp.h" />
     <ClInclude Include="Src\Application\Object\Effect\LichSpawn\LichSpawn1.h" />
     <ClInclude Include="Src\Application\Object\Effect\LichSpawn\LichSpawn2.h" />
     <ClInclude Include="Src\Application\Object\Effect\LichSpawn\LichSpawn3.h" />
@@ -281,6 +282,7 @@
     <ClCompile Include="Src\Application\Object\Effect\BaseEffect.cpp" />
     <ClCompile Include="Src\Application\Object\Effect\Heal\Heal.cpp" />
     <ClCompile Include="Src\Application\Object\Effect\Hurt\Hurt.cpp" />
+    <ClCompile Include="Src\Application\Object\Effect\LevelUp\LevelUp.cpp" />
     <ClCompile Include="Src\Application\Object\Effect\LichSpawn\LichSpawn1.cpp" />
     <ClCompile Include="Src\Application\Object\Effect\LichSpawn\LichSpawn2.cpp" />
     <ClCompile Include="Src\Application\Object\Effect\LichSpawn\LichSpawn3.cpp" />

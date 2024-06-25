@@ -1,15 +1,17 @@
 ﻿#include "PlayerHp.h"
 
 #include "../../../Data/Status/Player/PlayerStatus.h"
-#include "../../Chara/Player/Player.h"
 
 void PlayerHp::Update()
 {
 	int hp = 0, maxHp = 0;
 
 	// プレイヤーのHPと最大HPを取得
-	hp = m_player.lock()->GetStatus()->GetValue("HP");
-	maxHp = m_player.lock()->GetStatus()->GetValue("MAXHP");
+	if (!m_status.expired())
+	{
+		hp = m_status.lock()->GetValue("HP");
+		maxHp = m_status.lock()->GetValue("MAXHP");
+	}
 
 	// 切り取り範囲の変更
 	rectX = (int)(m_bar.pTex->GetWidth() * ((float)hp / maxHp));
@@ -26,6 +28,9 @@ void PlayerHp::DrawSprite()
 
 	// バー
 	KdShaderManager::Instance().m_spriteShader.DrawTex(m_bar.pTex, (int)m_bar.pos.x, (int)m_bar.pos.y, rectX, m_bar.pTex->GetHeight(), &m_bar.rect);
+
+	// ハート
+	KdShaderManager::Instance().m_spriteShader.DrawTex(m_hurt.pTex, m_hurt.pos.x, m_hurt.pos.y,m_hurt.rect.width/13,m_hurt.rect.height/13,&m_hurt.rect);
 }
 
 void PlayerHp::Init()
@@ -39,4 +44,9 @@ void PlayerHp::Init()
 	m_bar.pTex = AssetManager::Instance().GetTex("hpBar");
 	m_bar.pos = { -450.0f,-300.0f};
 	m_bar.rect = { 0,0,(int)m_bar.pTex->GetWidth(),(int)m_bar.pTex->GetHeight() };
+
+	// ハート
+	m_hurt.pTex = AssetManager::Instance().GetTex("hurt");
+	m_hurt.pos = { -555,-265 };
+	m_hurt.rect = { 0,0,(int)m_hurt.pTex->GetWidth(),(int)m_hurt.pTex->GetHeight() };
 }

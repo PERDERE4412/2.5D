@@ -26,7 +26,7 @@ void Lich::Update()
 	{
 		if (m_state != LichAnimation::State::Death)
 		{
-			m_player.lock()->GetStatus()->SetExp(10);
+			m_player.lock()->GetStatus()->SetExp(m_status->GetExp());
 			m_state = LichAnimation::State::Death;
 		}
 	}
@@ -306,7 +306,7 @@ void Lich::Attack()
 		break;
 	case AtkType::Thunder:
 		m_state = LichAnimation::State::Attack2;
-		m_attackWait = 300;
+		m_attackWait = 180;
 		m_bThunder = false;
 		break;
 	}

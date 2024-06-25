@@ -1,5 +1,8 @@
 ﻿#include "PlayerStatus.h"
 
+#include "../../../Object/Effect/LevelUp/LevelUp.h"
+#include "../../../Object/Chara/Player/Player.h"
+
 void PlayerStatus::SetExp(int _point)
 {
 	m_statusList["EXP"] += _point;	// 経験値を加算
@@ -14,6 +17,11 @@ void PlayerStatus::SetExp(int _point)
 		m_statusList["NEXTEXP"] = (int)(m_statusList["NEXTEXP"] * 1.5f);
 	
 		m_statusList["POINT"] += 5;
+
+		std::shared_ptr<LevelUp> levelUp = std::make_shared<LevelUp>();
+		levelUp->SetPlayer(m_player.lock());
+		levelUp->SetPos(m_player.lock()->GetPos());
+		SceneManager::Instance().AddObject(levelUp);
 	}
 }
 

@@ -2,6 +2,7 @@
 #include"../SceneManager.h"
 
 #include "../../Object/Chara/Player/Player.h"
+#include "../../Data/Status/Player/PlayerStatus.h"
 #include "../../Object/UI/PlayerHp/PlayerHp.h"
 #include "../../Object/UI/Slot/Slot.h"
 #include "../../Object/UI/LevelBar/LevelBar.h"
@@ -49,6 +50,11 @@ void GameScene::Init()
 	Animation::Instance().Init();
 	Inventory::Instance().SetPlayer(player);
 
+	// プレイヤーステータス
+	m_status = std::make_shared<PlayerStatus>();
+	m_status->SetPlayer(player);
+	player->SetStatus(m_status);
+
 	// マップ========================================================
 	// 背景
 	std::shared_ptr<Back> back = std::make_shared<Back>();
@@ -57,7 +63,8 @@ void GameScene::Init()
 	// UI============================================================
 	// HPバー
 	std::shared_ptr<PlayerHp> hp = std::make_shared<PlayerHp>();
-	hp->SetPlayer(player);
+	//hp->SetPlayer(player);
+	hp->SetStatus(m_status);
 	AddObject(hp);
 
 	// スロット
@@ -66,7 +73,8 @@ void GameScene::Init()
 
 	// レベル
 	std::shared_ptr<LevelBar> level = std::make_shared<LevelBar>();
-	level->SetPlayer(player);
+	level->SetStatus(m_status);
+	//level->SetPlayer(player);
 	AddObject(level);
 
 	// ミニマップ

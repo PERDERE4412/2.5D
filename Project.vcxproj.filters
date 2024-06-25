@@ -205,6 +205,9 @@
     <Filter Include="Src\Application\Object\Chara\TitlePlayer">
       <UniqueIdentifier>{b447c18e-276d-4a12-9f11-d56e77a2d5f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Object\Effect\LevelUp">
+      <UniqueIdentifier>{cd51867c-8647-479f-abc3-bfb443bb813d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -516,6 +519,9 @@
     <ClInclude Include="Src\Application\Object\UI\Title\Title.h">
       <Filter>Src\Application\Object\UI\Title</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Object\Effect\LevelUp\LevelUp.h">
+      <Filter>Src\Application\Object\Effect\LevelUp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -802,6 +808,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Object\UI\Title\Title.cpp">
       <Filter>Src\Application\Object\UI\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Object\Effect\LevelUp\LevelUp.cpp">
+      <Filter>Src\Application\Object\Effect\LevelUp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

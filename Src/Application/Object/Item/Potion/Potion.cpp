@@ -18,6 +18,7 @@ void Potion::Use()
 	
 	// エフェクト
 	std::shared_ptr<Heal> heal = std::make_shared<Heal>();
+	heal->SetPlayer(m_player.lock());
 	heal->SetPos(m_player.lock()->GetPos());
 	SceneManager::Instance().AddObject(heal);
 }

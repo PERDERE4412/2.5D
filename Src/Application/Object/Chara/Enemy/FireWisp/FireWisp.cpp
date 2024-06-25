@@ -73,7 +73,7 @@ void FireWisp::Move()
 
 	Math::Vector3 dist = m_player.lock()->GetPos() - m_pos;
 
-	if (m_vec.x > 0.0f)
+	if (dist.x > 0.0f)
 	{
 		if (m_dir == Utility::CharaDir::Left)
 		{
@@ -81,7 +81,7 @@ void FireWisp::Move()
 			m_polygon.TurnScale();
 		}
 	}
-	else if (m_vec.x < 0.0f)
+	else if (dist.x < 0.0f)
 	{
 		if (m_dir == Utility::CharaDir::Right)
 		{
@@ -92,6 +92,7 @@ void FireWisp::Move()
 
 	if (dist.Length() < 25.0f && dist.Length() > 15.0f)
 	{
+		m_vec = dist;
 		m_vec.Normalize();
 		m_vec *= m_movePow;
 		m_pos += m_vec;

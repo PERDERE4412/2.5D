@@ -21,7 +21,9 @@ public:
 
 	void SetPos(Math::Vector3 _pos) { m_pos = _pos; }
 
-	std::shared_ptr<PlayerStatus> GetStatus() { return m_status; }
+	std::shared_ptr<PlayerStatus> GetStatus() { return m_status.lock(); }
+
+	void SetStatus(std::shared_ptr<PlayerStatus> _status) { m_status = _status; }
 
 private:
 
@@ -34,7 +36,8 @@ private:
 	Animation::PlayerState m_state;	// 状態
 	Animation::PlayerDir m_dir;		// 向き
 
-	std::shared_ptr<PlayerStatus> m_status;
+	//std::shared_ptr<PlayerStatus> m_status;
+	std::weak_ptr<PlayerStatus> m_status;
 
 	int m_invWait;					// 無敵時間
 	int m_damageWait;				// 被弾時の光る時間

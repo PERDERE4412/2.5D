@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-class Player;
+class PlayerStatus;
 
 class PlayerHp :public KdGameObject
 {
@@ -12,13 +12,13 @@ public:
 	void Update()override;		// 更新
 	void DrawSprite()override;	// 描画
 	
-	void SetPlayer(std::shared_ptr<Player> _player) { m_player = _player; }
+	void SetStatus(std::shared_ptr<PlayerStatus> _status) { m_status = _status; }
 
 private:
 
 	void Init()override;		// 初期化
 
-	std::weak_ptr<Player> m_player;
+	std::weak_ptr<PlayerStatus> m_status;
 
 	// 画像の変数をまとめた構造体
 	struct texData
@@ -28,8 +28,9 @@ private:
 		Math::Rectangle rect;		// 切り取り範囲
 	};
 
-	texData m_frame;			// フレーム
+	texData m_frame;			// 枠
 	texData m_bar;				// バー
+	texData m_hurt;				// ハート
 
 	int rectX;					// 切り取り範囲
 };

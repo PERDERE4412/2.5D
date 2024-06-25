@@ -15,6 +15,7 @@ public:
 	int GetMaxHp() { return m_status.maxHp; }
 	int GetAtk() { return m_status.atk; }
 	int GetDef() { return m_status.def; }
+	int GetExp() { return m_status.exp; }
 
 private:
 

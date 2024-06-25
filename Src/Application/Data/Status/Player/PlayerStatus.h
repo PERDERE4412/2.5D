@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+class Player;
+
 class PlayerStatus
 {
 public:
@@ -24,9 +26,13 @@ public:
 	// 回復
 	void Heal(int _heal);
 
+	void SetPlayer(std::shared_ptr<Player> _player) { m_player = _player; }
+
 private:
 
 	void Init();	// 初期化
+
+	std::weak_ptr<Player> m_player;
 
 	// ステータスリスト
 	std::unordered_map<std::string, int> m_statusList;

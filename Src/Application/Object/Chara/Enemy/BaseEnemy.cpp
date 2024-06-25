@@ -40,13 +40,13 @@ void BaseEnemy::Update()
 	// 消滅
 	if (m_anim->GetKill())
 	{
-		if ((rand() % 100) < 50)
-		{
+		//if ((rand() % 100) < 50)
+		//{
 			std::shared_ptr<DropPotion> drop = std::make_shared<DropPotion>();
 			drop->Set(m_player, m_pos);
 			SceneManager::Instance().AddObject(drop);
 			MapManager::Instance().AddObject(drop);
-		}
+		//}
 
 		m_isExpired = true;
 	}
