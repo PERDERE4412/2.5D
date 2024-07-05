@@ -37,6 +37,11 @@ void Animation::CreateAnime(PlayerDir _dir,PlayerState _state, KdSquarePolygon* 
 			m_cntSpeed = 0.5f;
 			m_bAction = false;
 			break;
+		case PlayerState::Death:
+			*_polygon = AssetManager::Instance().GetMaterial("playerDeath");
+			m_cntSpeed = 0.2f;
+			m_bAction = false;
+			break;
 		}
 
 		if (_dir == PlayerDir::Left)_polygon->TurnScale();

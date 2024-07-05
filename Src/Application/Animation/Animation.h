@@ -13,7 +13,8 @@ public:
 		Roll,
 		Attack1,
 		Attack2,
-		Attack3
+		Attack3,
+		Death
 	};
 
 	enum class PlayerDir

@@ -28,14 +28,9 @@ void PlayerStatus::SetExp(int _point)
 void PlayerStatus::Damage(int _damage)
 {
 	m_statusList["HP"] -= _damage;
-	/*if (m_statusList["HP"] <= 0)
+	if (m_statusList["HP"] <= 0)
 	{
 		m_statusList["HP"] = 0;
-	}*/
-
-	if (m_statusList["HP"] <= 10)
-	{
-		m_statusList["HP"] = 10;
 	}
 }
 

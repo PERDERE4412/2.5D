@@ -28,7 +28,15 @@ void Player::PreUpdate()
 
 void Player::Update()
 {
-	Action();
+	if (m_status.lock()->GetValue("HP") <= 0)
+	{
+		if (m_state != Animation::PlayerState::Death)
+		{
+			m_state = Animation::PlayerState::Death;
+		}
+	}
+
+	if(m_state!=Animation::PlayerState::Death)Action();
 
 	if (m_invWait > 0)m_invWait--;
 }

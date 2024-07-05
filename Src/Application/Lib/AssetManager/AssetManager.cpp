@@ -50,6 +50,9 @@ void AssetManager::Init()
 	LoadMaterial("playerHurt", "Asset/Textures/Player/hurt.png");
 	SetMaterial("playerHurt", 5.0f, pivot, 4, 1);
 
+	LoadMaterial("playerDeath", "Asset/Textures/Player/death.png");
+	SetMaterial("playerDeath", 3.0f, pivot, 4, 1);
+
 	// 敵
 	// ウォリアー
 	pivot = KdSquarePolygon::PivotType::Center_Bottom;

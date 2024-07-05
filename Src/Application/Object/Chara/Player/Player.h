@@ -36,7 +36,6 @@ private:
 	Animation::PlayerState m_state;	// 状態
 	Animation::PlayerDir m_dir;		// 向き
 
-	//std::shared_ptr<PlayerStatus> m_status;
 	std::weak_ptr<PlayerStatus> m_status;
 
 	int m_invWait;					// 無敵時間
